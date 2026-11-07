@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>পেনাল্টি শুটআউট</title>
+<style>
+:root{--bg:#f3f7f2;--card:#fff;--tx:#14221a;--mut:#5b6b61;--ac:#1f9d55;--ac2:#e8f5ec;--bd:#d5e0d8;--bad:#d64545;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1712;--card:#17231c;--tx:#eaf3ed;--mut:#9ab0a2;--ac:#2fbf6f;--ac2:#1d3326;--bd:#2a3d31;--bad:#ef6a6a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1712;--card:#17231c;--tx:#eaf3ed;--mut:#9ab0a2;--ac:#2fbf6f;--ac2:#1d3326;--bd:#2a3d31;--bad:#ef6a6a;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Noto Sans Bengali","Segoe UI",sans-serif;min-height:100vh}
+main{max-width:480px;margin:0 auto;padding:14px}
+h1{font-size:26px;margin:6px 0 2px;text-align:center}
+.sub{text-align:center;color:var(--mut);margin:0 0 14px;font-size:14px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px;margin-bottom:12px}
+input{width:100%;padding:13px;border-radius:12px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font-size:16px}
+button{font:inherit;cursor:pointer;border:0;border-radius:12px;padding:14px;font-size:16px;font-weight:600;background:var(--ac);color:#fff;width:100%;margin-top:8px}
+button.sec{background:var(--ac2);color:var(--tx);border:1px solid var(--bd)}
+button:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:8px}.row>*{flex:1}
+.msg{color:var(--bad);font-size:14px;min-height:20px;margin-top:6px;text-align:center}
+.code{font-size:48px;letter-spacing:8px;font-weight:800;text-align:center;color:var(--ac);margin:8px 0}
+.hide{display:none}
+.sb{display:grid;gap:6px}
+.pl{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:12px;background:var(--ac2);border:2px solid transparent}
+.pl.act{border-color:var(--ac)}
+.pl b{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dots{display:flex;gap:4px;font-size:14px}
+.sc{font-size:24px;font-weight:800;min-width:26px;text-align:right}
+svg{width:100%;height:auto;display:block;border-radius:14px;margin:10px 0;background:#2f8f4e}
+#ball,#kp{transition:transform .45s cubic-bezier(.3,.7,.4,1)}
+.info{text-align:center;font-weight:600;min-height:44px;margin:4px 0}
+.ctl{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.ctl button{margin:0;padding:18px 4px;font-size:17px}
+#end{text-align:center}
+#end h2{font-size:30px;margin:4px 0}
+.tag{display:inline-block;background:var(--ac2);border-radius:99px;padding:3px 10px;font-size:12px;color:var(--mut)}
+.pw{display:flex;gap:6px;margin-bottom:8px}.pw button{margin:0;padding:10px 4px;font-size:14px}.pw button.on{background:var(--ac);color:#fff}
+.em{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.em button{width:auto;flex:0 0 auto;margin:0;padding:8px 11px;font-size:15px}
+.cm{font-size:14px;color:var(--mut);text-align:center;min-height:20px;margin:4px 0}
+.lb>div>div{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--bd);font-size:14px}
+select{width:100%;padding:12px;margin-top:8px;border-radius:12px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font-size:16px}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+</head>
+<body>
+<main>
+<h1>⚽ পেনাল্টি শুটআউট</h1>
+<p class="sub">বন্ধুর সাথে রুম কোড দিয়ে খেলো</p>
+
+<section id="menu">
+  <div class="card">
+    <input id="name" maxlength="14" placeholder="তোমার নাম"><select id="team"></select>
+    <button id="bCpu">🤖 কম্পিউটারের সাথে খেলো</button>
+    <button id="bCreate" class="sec" disabled>🏟️ নতুন রুম তৈরি করো</button>
+    <div class="row" style="margin-top:8px">
+      <input id="jcode" maxlength="4" placeholder="রুম কোড" style="text-transform:uppercase;text-align:center;letter-spacing:4px">
+      <button id="bJoin" class="sec" style="margin:0" disabled>জয়েন</button>
+    </div>
+    <div class="msg" id="mmsg"></div>
+  </div>
+  <div class="card" style="font-size:14px;color:var(--mut)">
+    নিয়ম: ৫টি করে শট। শুটার একটি দিক বাছে, গোলকিপারও একটি দিকে ডাইভ দেয়। ৬টি জোনের একটি বাছো। একই জোনে সেভ, কাছের জোনেও সেভের সুযোগ আছে। জোরালো শটে কিপারের সেভ কঠিন, তবে বাইরে যাওয়ার ঝুঁকিও বেশি! সমান হলে সাডেন ডেথ।
+  </div>
+  
+  
+</section>
+
+<section id="lobby" class="hide">
+  <div class="card" style="text-align:center">
+    <div class="sub" style="margin:0">রুম কোড</div>
+    <div class="code" id="lcode">----</div>
+    <button id="bCopy" class="sec">📋 কোড কপি করো</button><button id="bLink" class="sec">🔗 লিংক শেয়ার করো</button>
+    <p class="sub" style="margin-top:12px">বন্ধু জয়েন করলেই খেলা শুরু হবে… (খেলা শেষ না হওয়া পর্যন্ত এই পেজ খোলা রাখো)</p>
+    <button id="bLeave" class="sec">ফিরে যাও</button>
+  </div>
+</section>
+
+<section id="game" class="hide">
+  <div class="card">
+    <div class="sb" id="sb"></div>
+    <div style="text-align:center;margin-top:8px"><span class="tag" id="rnd"></span> <span class="tag hide" id="rcode"></span></div>
+  </div>
+  <svg viewBox="0 0 300 190" aria-label="গোলপোস্ট">
+    <defs><pattern id="net" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 0H8M0 0V8" stroke="#fff" stroke-opacity=".35" stroke-width=".7"/></pattern></defs>
+    <rect x="0" y="125" width="300" height="65" fill="#26793f"/>
+    <rect x="40" y="30" width="220" height="95" fill="url(#net)"/>
+    <rect x="40" y="30" width="220" height="95" fill="none" stroke="#fff" stroke-width="5"/>
+    <g id="kp" style="transform:translate(150px,100px)">
+      <rect x="-9" y="-22" width="18" height="30" rx="5" fill="#ffd23f"/>
+      <circle cy="-30" r="8" fill="#f2c9a0"/>
+      <rect x="-24" y="-20" width="48" height="6" rx="3" fill="#ffd23f"/>
+      <rect x="-8" y="8" width="6" height="16" fill="#222"/><rect x="2" y="8" width="6" height="16" fill="#222"/>
+    </g>
+    <circle cx="150" cy="150" r="2" fill="#fff"/>
+    <g id="ball" style="transform:translate(150px,168px)"><circle r="9" fill="#fff" stroke="#222" stroke-width="1.5"/><path d="M0-4l4 3-1.5 4.5h-5L-4-1z" fill="#222"/></g>
+    <text id="res" x="150" y="85" text-anchor="middle" font-size="34" font-weight="800" fill="#fff" stroke="#000" stroke-width="1" opacity="0"></text>
+  </svg>
+  <div class="cm" id="cm"></div><div class="info" id="info"></div><div class="pw" id="pw"></div>
+  <div class="ctl" id="ctl">
+    <button data-d="L">⬅️<br>বাম</button>
+    <button data-d="C">⬆️<br>মাঝ</button>
+    <button data-d="R">➡️<br>ডান</button>
+  </div>
+  <div class="em" id="em"></div><div class="cm" id="chat"></div>
+  <div class="card hide" id="end" style="margin-top:12px">
+    <h2 id="etitle"></h2>
+    <div id="escore" class="sub"></div>
+    <button id="bAgain">🔄 আবার খেলো</button>
+    <button id="bHome" class="sec">মেনুতে ফিরে যাও</button>
+  </div>
+</section>
+</main>
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ZN=['TL','TC','TR','BL','BC','BR'],ZX={L:85,C:150,R:215},ZY={T:55,B:100};
+const ZL={TL:'উপর-বাম',TC:'উপর-মাঝ',TR:'উপর-ডান',BL:'নিচ-বাম',BC:'নিচ-মাঝ',BR:'নিচ-ডান'};
+const TEAMS=[['বাংলাদেশ','#0a8f4a'],['আর্জেন্টিনা','#6cb4ee'],['ব্রাজিল','#f5c400'],['জার্মানি','#e8e8e8'],['ফ্রান্স','#1f4fd8'],['স্পেন','#d62828'],['পর্তুগাল','#9b1c31'],['ইংল্যান্ড','#f2f2f2']];
+const EM=['👏','😂','😭','🔥','😎','ভালো শট!','দারুণ সেভ!','আবার হবে!'];
+const CM={goal:['গোওওল! {k} জাল কাঁপিয়ে দিলেন!','অসাধারণ শট! কিপার কিছুই করতে পারলেন না!','নিখুঁত প্লেসমেন্ট! বল জালে জড়িয়ে গেল!','{k}-এর কী ঠান্ডা মাথার ফিনিশ!'],save:['দুর্দান্ত সেভ! {g} দেয়াল হয়ে দাঁড়ালেন!','ঠিক জায়গায় ঝাঁপ দিলেন! আটকে দিলেন!','অবিশ্বাস্য রিফ্লেক্স! গোল হলো না!'],part:['আঙুলের ডগায় ঠেকিয়ে দিলেন {g}!','কোনোমতে হাত ছুঁয়ে বাঁচিয়ে দিলেন!'],miss:['ওহ! বল উড়ে গেল বারের উপর দিয়ে!','পোস্ট ঘেঁষে বাইরে! হতাশ {k}!','এ কী করলেন! সুযোগ নষ্ট!']};
+let power=2,counted=false;
+$('ctl').innerHTML=ZN.map(z=>`<button data-d='${z}'>${ZL[z]}</button>`).join('');
+$('pw').innerHTML=['দুর্বল','মাঝারি','জোরালো'].map((t,i)=>`<button class='sec${i==1?' on':''}' data-p='${i+1}'>💪 ${t}</button>`).join('');
+$('em').innerHTML=EM.map((e,i)=>`<button class='sec' data-i='${i}'>${e}</button>`).join('');
+$('team').innerHTML=TEAMS.map((t,i)=>`<option value='${i}'>${t[0]} জার্সি</option>`).join('');
+try{$('team').value=localStorage.getItem('ps_team')||0}catch(e){}
+const myTeam=()=>{const v=+$('team').value||0;try{localStorage.setItem('ps_team',v)}catch(e){}return v};
+let db=null,ref=null,unsub=null,mi=0,S=null,view=null,lastLen=0,busy=false,resolvingN=-1,local=false;
+let uid='';try{uid=sessionStorage.getItem('ps_uid')||''}catch(e){}
+if(!uid){uid=Math.random().toString(36).slice(2,10);try{sessionStorage.setItem('ps_uid',uid)}catch(e){}}
+try{const n=localStorage.getItem('ps_name');if(n)$('name').value=n}catch(e){}
+const myName=()=>{const v=$('name').value.trim()||'প্লেয়ার';try{localStorage.setItem('ps_name',v)}catch(e){}return v};
+const show=id=>['menu','lobby','game'].forEach(x=>$(x).classList.toggle('hide',x!==id));
+const beep=(f,d)=>{try{const a=new(window.AudioContext||window.webkitAudioContext)(),o=a.createOscillator(),g=a.createGain();o.frequency.value=f;g.gain.value=.08;o.connect(g);g.connect(a.destination);o.start();o.stop(a.currentTime+d)}catch(e){}};
+const buzz=()=>{try{navigator.vibrate&&navigator.vibrate(60)}catch(e){}};
+
+// অনলাইন (PeerJS, হোস্ট-ভিত্তিক)
+let peer=null;
+setTimeout(()=>{if(window.Peer){$('bCreate').disabled=false;$('bJoin').disabled=false;boot()}else $('mmsg').textContent='অনলাইন লাইব্রেরি লোড হয়নি — ইন্টারনেট দেখো। কম্পিউটারের সাথে খেলতে পারো।'},0);
+
+function newState(p1,p2){return{p1,p2,status:p2?'play':'lobby',n:0,score:[0,0],hist:[],pk:null,pg:null,chat:[]}}
+function cmText(h,s){if(h.c==null)return'';const kind=h.r==='goal'?'goal':h.r==='miss'?'miss':h.x?'part':'save';const kn=(h.n%2?s.p2:s.p1).name,gn=(h.n%2?s.p1:s.p2).name;return (CM[kind][h.c]||'').replace('{k}',kn).replace('{g}',gn)}
+function boot(){let h='',sv='',nm='';try{h=location.hash.slice(1).toUpperCase();sv=localStorage.getItem('ps_room')||'';nm=localStorage.getItem('ps_name')||''}catch(e){}
+  if(/^[A-Z0-9]{4}$/.test(h)){$('jcode').value=h;if(nm)doJoin(h);else $('mmsg').textContent='নাম লিখে "জয়েন" চাপো।'}
+  else if(sv)doJoin(sv,true)}
+function resolveShot(s){
+  const z=s.pk.slice(0,2),p=+s.pk[2]||2,g=s.pg,ci=c=>'LCR'.indexOf(c),cd=Math.abs(ci(z[1])-ci(g[1]));
+  const near=z===g?2:(((z[0]===g[0]&&cd===1)||(z[1]===g[1]))?1:0);
+  let res='goal',x=0;
+  if(Math.random()<.04+(p-1)*.07+(z[0]==='T'?.05:0))res='miss';
+  else if(near===2&&!(p===3&&Math.random()<.2))res='save';
+  else if(near===1&&Math.random()<.5-(p-1)*.2){res='save';x=1}
+  const kind=res==='goal'?'goal':res==='miss'?'miss':x?'part':'save',c=Math.floor(Math.random()*CM[kind].length),kick=s.n%2,score=[...s.score];
+  if(res==='goal')score[kick]++;
+  const hist=[...s.hist,{n:s.n,k:z,g,r:res,x,c}],n=s.n+1;
+  const sh=[Math.ceil(n/2),Math.floor(n/2)];let status='play';
+  if(n<=10){const rem=[5-sh[0],5-sh[1]];if(score[0]>score[1]+rem[1]||score[1]>score[0]+rem[0])status='done'}
+  if(n>=10&&n%2===0&&score[0]!==score[1])status='done';
+  return{hist,score,n,pk:null,pg:null,status};
+}
+
+function leave(){try{localStorage.removeItem('ps_room');location.hash=''}catch(e){}if(unsub){unsub();unsub=null}try{const pp=peer;peer=null;pp&&pp.destroy()}catch(e){}ref=null;S=null;view=null;local=false;lastLen=0;busy=false;show('menu')}
+
+// স্থানীয় (CPU)
+$('bCpu').onclick=()=>{local=true;mi=0;lastLen=0;onState(newState({id:uid,name:myName(),team:myTeam()},{id:'cpu',name:'কম্পিউটার',team:Math.floor(Math.random()*TEAMS.length)}))};
+
+// রুম তৈরি (হোস্ট)
+function hostRoom(code,p){
+  let D=null;const subs=[],conns=[];
+  const snap=()=>({exists:true,data:()=>JSON.parse(JSON.stringify(D))});
+  const emit=()=>{subs.slice().forEach(f=>f(snap()));conns.forEach(c=>{try{c.open&&c.send({t:'state',s:D})}catch(e){}})};
+  const api={id:code,isHost:true,
+    set(d){D=d;emit();return Promise.resolve()},
+    update(x){D={...D,...x};emit();return Promise.resolve()},
+    onSnapshot(cb){subs.push(cb);if(D)cb(snap());return()=>{const i=subs.indexOf(cb);if(i>=0)subs.splice(i,1)}}};
+  p.on('connection',c=>{
+    conns.push(c);
+    c.on('close',()=>{const i=conns.indexOf(c);if(i>=0)conns.splice(i,1)});
+    c.on('data',m=>{
+      if(!m||!D)return;
+      if(m.t==='join'&&m.p&&m.p.id){
+        const q=m.p;
+        if(D.p1.id===q.id||(D.p2&&D.p2.id!==q.id)){try{c.send({t:'full'})}catch(e){}return}
+        c.pid=q.id;
+        D={...D,p2:{id:q.id,name:String(q.name||'প্লেয়ার').slice(0,14),team:+q.team||0},status:D.status==='lobby'?'play':D.status};
+        emit();return}
+      if(m.t==='upd'&&D.p2&&c.pid===D.p2.id&&D.status==='play'){
+        const x=m.patch||{},ok=/^[TB][LCR][123]?$/,out={};
+        if(D.n%2===1){if(typeof x.pk==='string'&&ok.test(x.pk)&&!D.pk)out.pk=x.pk}
+        else{if(typeof x.pg==='string'&&ok.test(x.pg)&&!D.pg)out.pg=x.pg}
+        const last=Array.isArray(x.chat)?x.chat[x.chat.length-1]:null;
+        if(last&&typeof last.t==='string')out.chat=[...(D.chat||[]).slice(-19),{u:1,t:last.t.slice(0,30)}];
+        if(Object.keys(out).length)api.update(out)}
+    });
+  });
+  return api;
+}
+$('bCreate').onclick=()=>{
+  const name=myName();$('mmsg').textContent='';$('bCreate').disabled=true;
+  const A='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let tries=0;
+  const attempt=()=>{
+    const code=Array.from({length:4},()=>A[Math.floor(Math.random()*A.length)]).join('');
+    const p=new Peer('pso-'+code);let done=false;
+    p.on('open',()=>{done=true;peer=p;mi=0;lastLen=0;counted=false;ref=hostRoom(code,p);
+      ref.set({code,...newState({id:uid,name,team:myTeam()},null)});$('bCreate').disabled=false;sub()});
+    p.on('error',e=>{
+      if(done)return;
+      try{p.destroy()}catch(x){}
+      if(e.type==='unavailable-id'&&tries++<5){attempt();return}
+      $('mmsg').textContent='রুম তৈরি করা যায়নি, আবার চেষ্টা করো।';$('bCreate').disabled=false});
+    p.on('disconnected',()=>{try{p.reconnect()}catch(e){}});
+  };
+  attempt();
+};
+// জয়েন (গেস্ট)
+$('bJoin').onclick=()=>doJoin($('jcode').value);
+function doJoin(c0,rj){
+  const code=String(c0).trim().toUpperCase(),name=myName();$('mmsg').textContent='';
+  if(!/^[A-Z0-9]{4}$/.test(code)){$('mmsg').textContent='৪ অক্ষরের কোড দাও।';return}
+  try{const o=peer;peer=null;o&&o.destroy()}catch(e){}
+  const p=new Peer();peer=p;let ok=false,conn=null,tries=0;
+  const room={id:code,isHost:false,_cb:null,_last:null,
+    update(x){if(conn&&conn.open)conn.send({t:'upd',patch:x});return Promise.resolve()},
+    onSnapshot(cb){room._cb=cb;if(room._last)cb({exists:true,data:()=>JSON.parse(JSON.stringify(room._last))});return()=>{room._cb=null}}};
+  const fail=t=>{if(ok)return;clearTimeout(timer);try{p.destroy()}catch(e){}if(peer===p)peer=null;
+    if(rj){try{localStorage.removeItem('ps_room')}catch(e){}}else $('mmsg').textContent=t};
+  const timer=setTimeout(()=>fail('সংযোগ করা যায়নি। কোডটি ঠিক আছে কি না দেখো।'),10000);
+  const retry=()=>{if(peer!==p)return;
+    if(tries++>=10){$('info').textContent='হোস্ট অফলাইন। বের হয়ে আবার জয়েন করো।';return}
+    setTimeout(()=>{if(peer!==p)return;try{conn=p.connect('pso-'+code,{reliable:true});wire(conn)}catch(e){retry()}},3000)};
+  const wire=c=>{
+    c.on('open',()=>c.send({t:'join',p:{id:uid,name,team:myTeam()}}));
+    c.on('data',m=>{
+      if(!m)return;
+      if(m.t==='full'){fail('রুম ভর্তি, অথবা তুমি নিজেই এই রুমের হোস্ট।');return}
+      if(m.t!=='state')return;
+      tries=0;
+      if(!ok){clearTimeout(timer);ok=true;mi=1;ref=room;lastLen=m.s.hist?m.s.hist.length:0;counted=false;room._last=m.s;sub();return}
+      room._last=m.s;if(room._cb)room._cb({exists:true,data:()=>JSON.parse(JSON.stringify(m.s))})});
+    c.on('close',()=>{if(!ok||peer!==p)return;$('info').textContent='🔌 সংযোগ বিচ্ছিন্ন, আবার চেষ্টা করছি…';retry()});
+  };
+  p.on('open',()=>{conn=p.connect('pso-'+code,{reliable:true});wire(conn)});
+  p.on('disconnected',()=>{try{p.reconnect()}catch(e){}});
+  p.on('error',e=>{
+    if(ok){if(e.type==='peer-unavailable')retry();return}
+    fail(e.type==='peer-unavailable'?'এই কোডের রুম পাওয়া যায়নি।':'সংযোগে সমস্যা হয়েছে।')});
+}
+function sub(){
+  if(unsub)unsub();let first=true;try{if(!ref.isHost)localStorage.setItem('ps_room',ref.id);location.hash=ref.id}catch(e){}
+  unsub=ref.onSnapshot(snap=>{if(!snap.exists)return;const d=snap.data();if(first){lastLen=d.hist.length;first=false}onState(d)},()=>{$('info').textContent='🔌 সংযোগ নেই, আবার চেষ্টা করছি…';setTimeout(()=>ref&&sub(),3000)});
+}
+
+function onState(s){
+  S=s;
+  if(s.hist.length<lastLen)lastLen=s.hist.length;if(!s.hist.length)counted=false;
+  if(s.status==='lobby'){show('lobby');$('lcode').textContent=s.code;view=s;return}
+  show('game');$('rcode').classList.toggle('hide',local);if(!local){$('rcode').textContent='রুম '+s.code}
+  if(ref&&mi===0&&s.status==='play'&&s.pk&&s.pg&&resolvingN!==s.n){resolvingN=s.n;ref.update(resolveShot(s)).catch(()=>{resolvingN=-1})}
+  if(s.hist.length>lastLen){
+    const h=s.hist[s.hist.length-1];lastLen=s.hist.length;busy=true;view=null;render(true);
+    animate(h,()=>{busy=false;view=S;render()});
+  }else if(!busy){view=s;render()}
+}
+
+function render(pre){
+  const s=pre?(view||S):(view||S);if(!s)return;
+  const names=[s.p1.name,s.p2?s.p2.name:'…'];const tc=i=>TEAMS[((i?s.p2:s.p1)||{}).team||0][1];
+  const shown=busy?{...S,hist:S.hist.slice(0,-1),score:S.score.map((v,i)=>v-((S.hist[S.hist.length-1]||{}).r==='goal'&&(S.hist.length-1)%2===i?1:0))}:s;
+  const kicker=shown.n%2;
+  $('sb').innerHTML=[0,1].map(i=>{
+    const mine=shown.hist.filter(h=>h.n%2===i),cnt=Math.max(5,mine.length+(shown.status==='play'&&kicker===i?1:0));
+    let dots='';for(let j=0;j<cnt;j++)dots+=mine[j]?(mine[j].r==='goal'?'✅':'❌'):'⚪';
+    return `<div class="pl ${shown.status==='play'&&kicker===i?'act':''}" style="border-left:8px solid ${tc(i)}"><b>${esc(names[i])}${i===mi?' (তুমি)':''}</b><span class="dots">${dots}</span><span class="sc">${shown.score[i]}</span></div>`}).join('');
+  $('rnd').textContent=shown.n>=10?'⚡ সাডেন ডেথ':'শট '+(Math.floor(shown.n/2)+1)+'/5';
+  const f=(shown.n%2===mi)?'pk':'pg',locked=!!S[f]&&!busy,isK=shown.n%2===mi;
+  const done=s.status==='done'&&!busy;
+  $('ctl').classList.toggle('hide',done);$('pw').classList.toggle('hide',done||!isK);$('em').classList.toggle('hide',local);
+  $('chat').innerHTML=(S.chat||[]).slice(-3).map(m=>`<div>${esc(names[m.u]||'')}: ${esc(m.t)}</div>`).join('');
+  if(!busy){const lh=s.hist[s.hist.length-1];$('cm').textContent=lh?cmText(lh,s):'';const kc=tc(1-kicker);document.querySelectorAll('#kp rect').forEach((e,i)=>{if(i<2)e.setAttribute('fill',kc)})}
+  
+  document.querySelectorAll('#ctl button').forEach(b=>b.disabled=busy||locked||!S.p2);
+  $('info').textContent=busy?'':locked?'⏳ প্রতিপক্ষের অপেক্ষায়…':isK?'⚽ তুমি শুটার — কোন দিকে মারবে?':'🧤 তুমি গোলকিপার — কোন দিকে ঝাঁপ দেবে?';
+  $('end').classList.toggle('hide',!done);
+  if(done){
+    const w=s.score[0]===s.score[1]?-1:(s.score[0]>s.score[1]?0:1);
+    $('etitle').textContent=w===mi?'🏆 তুমি জিতেছ!':'😔 তুমি হেরেছ';
+    $('escore').textContent=names[0]+' '+s.score[0]+' – '+s.score[1]+' '+names[1];
+    $('bAgain').disabled=!local&&mi!==0;$('bAgain').textContent=(!local&&mi!==0)?'⏳ হোস্টের রিম্যাচের অপেক্ষা…':'🔄 আবার খেলো';
+  }
+}
+
+function animate(h,cb){
+  const b=$('ball'),k=$('kp'),r=$('res');
+  const miss=h.r==='miss';
+  b.style.transform=`translate(${ZX[h.k[1]]+(miss?(h.k[1]==='C'?40:(h.k[1]==='L'?-45:45)):0)}px,${miss?5:ZY[h.k[0]]}px)`;
+  k.style.transform=`translate(${ZX[h.g[1]]}px,${ZY[h.g[0]]+(h.g[0]==='T'?10:0)}px) rotate(${h.g[1]==='L'?-55:h.g[1]==='R'?55:0}deg)`;
+  setTimeout(()=>{
+    r.textContent=h.r==='goal'?'গোওওল! ⚽':h.r==='save'?'সেভ! 🧤':'বাইরে! ❌';
+    r.setAttribute('opacity','1');$('cm').textContent=cmText(h,S);buzz();beep(h.r==='goal'?660:h.r==='save'?330:200,.25);
+  },480);
+  setTimeout(()=>{
+    r.setAttribute('opacity','0');
+    [b,k].forEach(e=>e.style.transition='none');
+    b.style.transform='translate(150px,168px)';k.style.transform='translate(150px,100px)';
+    void b.getBoundingClientRect();[b,k].forEach(e=>e.style.transition='');cb();
+  },1800);
+}
+
+document.querySelectorAll('#ctl button').forEach(btn=>btn.onclick=()=>{
+  if(busy||!S||S.status!=='play')return;
+  const isK=S.n%2===mi,d=btn.dataset.d+(isK?power:'');
+  if(local){
+    const c=ZN[Math.floor(Math.random()*6)]+(isK?'':1+Math.floor(Math.random()*3)),s={...S};
+    s.pk=isK?d:c;s.pg=isK?c:d;onState({...s,...resolveShot(s)});
+  }else{
+    const f=isK?'pk':'pg';if(S[f])return;
+    S={...S,[f]:d};render();ref.update({[f]:d}).catch(()=>{$('info').textContent='পাঠানো যায়নি, আবার চেষ্টা করো।'});
+  }
+});
+$('bAgain').onclick=()=>{
+  if(local){onState(newState(S.p1,S.p2));lastLen=0;return}
+  if(mi===0){lastLen=0;resolvingN=-1;ref.update({n:0,score:[0,0],hist:[],pk:null,pg:null,status:'play'})}
+};
+$('bHome').onclick=leave;$('bLeave').onclick=leave;
+$('bLink').onclick=async()=>{const u=location.href.split('#')[0]+'#'+S.code,t='পেনাল্টি শুটআউট খেলতে এসো! রুম কোড: '+S.code;
+  try{if(navigator.share){await navigator.share({title:'পেনাল্টি শুটআউট',text:t,url:u});return}}catch(e){return}
+  try{await navigator.clipboard.writeText(t+' '+u);$('bLink').textContent='✅ লিংক কপি হয়েছে'}catch(e){$('bLink').textContent='কোড: '+S.code}};
+$('pw').onclick=e=>{const b=e.target.closest('button');if(!b)return;power=+b.dataset.p;[...$('pw').children].forEach(x=>x.classList.toggle('on',x===b))};
+$('em').onclick=e=>{const b=e.target.closest('button');if(!b||!ref||!S)return;ref.update({chat:[...(S.chat||[]).slice(-19),{u:mi,t:EM[+b.dataset.i]}]}).catch(()=>{})};
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&ref&&!local)sub()});
+$('bCopy').onclick=async()=>{try{await navigator.clipboard.writeText(S.code);$('bCopy').textContent='✅ কপি হয়েছে'}catch(e){$('bCopy').textContent='কোডটি হাতে লিখে নাও'}};
+$('jcode').addEventListener('input',e=>{e.target.value=e.target.value.toUpperCase()});
+</script>
+</body>
+</html>
