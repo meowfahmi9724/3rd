@@ -143,7 +143,53 @@ svg.pvb{height:210px;width:100%;margin:6px 0;background:linear-gradient(#bfe6ff,
 @keyframes fpIn{from{transform:translateY(-120%)}to{transform:none}}
 .gfx{font-size:76px;animation:gfb 1s ease infinite}@keyframes gfb{0%,100%{transform:scale(1) rotate(-6deg)}50%{transform:scale(1.15) rotate(6deg)}}
 .gfc{display:inline-block;background:var(--ac2);border:1px solid var(--bd);border-radius:99px;padding:6px 12px;margin:4px;font-weight:700}
+
+/* ===== প্রিমিয়াম নাইট-স্টেডিয়াম থিম ===== */
+:root,:root:not([data-theme="light"]),:root[data-theme="dark"],:root[data-theme="light"]{--bg:#070b12;--card:rgba(14,20,32,.66);--tx:#f4f6fb;--mut:#9aa6bd;--ac:#f5c451;--ac2:rgba(255,255,255,.07);--bd:rgba(255,255,255,.13);--bad:#ff7b7b;--pitch:#06110c;--bigbg:rgba(255,255,255,.08);--bigtx:#fff;--lobA:rgba(16,185,129,.12);--lobB:rgba(59,130,246,.10);--lobBd:rgba(255,255,255,.14);color-scheme:dark}
+html{background:#05090f}
+body{font-family:"Hind Siliguri","Noto Sans Bengali",system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.1px;background-color:#05090f;background-image:var(--bgimg,none),radial-gradient(ellipse 55% 34% at 14% -4%,rgba(255,246,220,.34),transparent 70%),radial-gradient(ellipse 55% 34% at 86% -4%,rgba(255,246,220,.34),transparent 70%),radial-gradient(ellipse 100% 55% at 50% 108%,rgba(26,122,70,.62),transparent 72%),linear-gradient(180deg,#0a1322 0%,#08120f 48%,#0b2a1b 100%);background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat}
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 42%,transparent 38%,rgba(0,0,0,.7) 100%),repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 38px,rgba(0,0,0,.06) 38px 76px) bottom/100% 42% no-repeat}
+h1{font-weight:800;letter-spacing:.3px;background:linear-gradient(180deg,#fff,#f5c451);-webkit-background-clip:text;background-clip:text;color:transparent}
+.card{background:var(--card);-webkit-backdrop-filter:blur(16px) saturate(150%);backdrop-filter:blur(16px) saturate(150%);border:1px solid var(--bd);border-radius:20px;box-shadow:0 12px 32px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.09)}
+button{transition:transform .12s ease,box-shadow .2s ease,filter .2s ease;background:linear-gradient(180deg,#ffd978,#e5a526);color:#251a00;border:0;border-radius:14px;font-weight:700;box-shadow:0 8px 20px rgba(229,165,38,.26),inset 0 1px 0 rgba(255,255,255,.55);text-shadow:none}
+button:active{transform:scale(.97);filter:brightness(.93);background:linear-gradient(180deg,#ffd978,#e5a526);color:#251a00}
+button.on{background:linear-gradient(180deg,#ffd978,#e5a526);color:#251a00;border:0}
+button.sec{background:rgba(255,255,255,.07);color:#f4f6fb;border:1px solid rgba(255,255,255,.15);box-shadow:none;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+button.sec:active,button.sec.on{background:linear-gradient(180deg,#ffd978,#e5a526);color:#251a00;border-color:transparent}
+button.big{background:linear-gradient(180deg,rgba(255,255,255,.13),rgba(255,255,255,.05));color:#fff;border:1px solid rgba(255,255,255,.17);box-shadow:0 8px 22px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.14)}
+button.big:active{background:rgba(245,196,81,.9);color:#251a00}
+button:disabled{opacity:.42;filter:saturate(.6);box-shadow:none}
+input,select{background:rgba(255,255,255,.07);color:#fff;border:1px solid rgba(255,255,255,.16);border-radius:14px;transition:border-color .2s,box-shadow .2s}
+input:focus,select:focus{outline:0;border-color:#f5c451;box-shadow:0 0 0 3px rgba(245,196,81,.22)}
+input::placeholder{color:#7f8aa1}select option,select optgroup{background:#0f1624;color:#f4f6fb}
+.pl{background:linear-gradient(90deg,rgba(255,255,255,.1),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.1);border-radius:14px}
+.pl.act{border-color:#f5c451;box-shadow:0 0 0 3px rgba(245,196,81,.18),0 0 18px rgba(245,196,81,.25)}
+.sc{color:#f5c451;font-variant-numeric:tabular-nums;text-shadow:0 0 12px rgba(245,196,81,.45)}
+.tag{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);color:#c3cde0}
+.code{color:#f5c451;text-shadow:0 0 22px rgba(245,196,81,.5)}
+.tm{color:#f5c451;text-shadow:0 0 14px rgba(245,196,81,.5)}
+.msg.pill:not(:empty){background:rgba(255,123,123,.16);color:#ffb3b3;border:1px solid rgba(255,123,123,.35)}
+.tile{border-radius:20px}.tile small{color:var(--mut)}
+.chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.days div{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1)}
+.days div.got{background:linear-gradient(180deg,#ffd978,#e5a526);color:#251a00;border-color:transparent}.days div.now{border-color:#f5c451;box-shadow:0 0 12px rgba(245,196,81,.4)}
+.itr{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px}.itr.sel{border-color:#f5c451;background:rgba(245,196,81,.1)}
+#toast{background:linear-gradient(180deg,#ffd978,#e5a526);color:#251a00;border-radius:14px;box-shadow:0 10px 28px rgba(0,0,0,.5)}
+#ann{background:linear-gradient(90deg,rgba(245,196,81,.2),rgba(245,196,81,.08));color:#ffe9a8;border:1px solid rgba(245,196,81,.35);border-radius:14px}
+.ov,.mod{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);background:rgba(3,6,12,.72)}
+.pc,.mod .card,#shM .card{background:linear-gradient(160deg,#16203a,#0a101c);border:1px solid rgba(255,255,255,.14);border-radius:24px;box-shadow:0 24px 60px rgba(0,0,0,.65);color:#f4f6fb}
+.rb{border-radius:18px;box-shadow:0 10px 26px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.22)}
+#game svg#pitch{border-radius:20px;box-shadow:0 16px 40px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.16)}
+#game .ctl button{background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));color:#fff;border:1px solid rgba(255,255,255,.2);box-shadow:0 6px 16px rgba(0,0,0,.4);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+#game .ctl button:active,#game .ctl button.on{background:linear-gradient(180deg,#ffd978,#e5a526);color:#251a00;border-color:transparent}
+#ctl.blink{animation:glow2 .5s infinite alternate}@keyframes glow2{from{box-shadow:0 0 0 0 rgba(245,196,81,0)}to{box-shadow:0 0 0 7px rgba(245,196,81,.38)}}
+.edb{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.22);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.frTabs button{background:rgba(255,255,255,.07);color:#f4f6fb;border:1px solid rgba(255,255,255,.12);box-shadow:none}
+.fc{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1)}
+#lobby>.card{border-color:rgba(255,255,255,.14)}
+details.card summary{color:#fff}
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
@@ -1123,7 +1169,7 @@ function applyCfg(c){CFG=c||{};const st=document.documentElement.style;
 function statLog(s,my,won){try{if(!fs||!ME)return;const f=firebase.firestore.FieldValue.increment,m=local?'cpu':s.career?'career':s.tm?'team':s.fr?'friend':'room';fs.doc('stats/'+dayId()).set({plays:f(1),goals:f(my),wins:f(won?1:0),['m_'+m]:f(1)},{merge:true}).catch(()=>{})}catch(e){}}
 try{if(fs)fs.doc('cfg/app').onSnapshot(sn=>applyCfg(sn.data()||{}),()=>{})}catch(e){}
 $('lobScene').innerHTML=lobScene();renderAcct();
-const APP_VER='20261108-c';
+const APP_VER='20261108-d';
 let verBase=null,updPend=0;const verHash=t=>{let h=5381;for(let i=0;i<t.length;i++)h=((h<<5)+h+t.charCodeAt(i))|0;return h};
 async function verCheck(){try{const r=await fetch(location.pathname+'?_v='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text(),m=t.match(/const APP_VER='([^']+)'/);if(!m)return;
   const h=verHash(t);if(verBase===null)verBase=h;
@@ -1131,6 +1177,10 @@ async function verCheck(){try{const r=await fetch(location.pathname+'?_v='+Date.
     if(!S&&!local&&!typing){location.replace(location.pathname+'?r='+Date.now()+location.hash);return}
     if(!verShown){verShown=1;toast('🔄 নতুন আপডেট এসেছে — ম্যাচ শেষে মেনুতে ফিরলেই নিজে থেকে আপডেট হয়ে যাবে',5000)}}}catch(e){}}
 setTimeout(verCheck,4000);setInterval(verCheck,60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)verCheck()});
+</script>
+<script>
+// ব্যাকগ্রাউন্ড ফটো: নিজের লাইসেন্স করা ছবি 'bg.jpg' নামে index.html এর পাশে রাখলেই বসে যাবে (না থাকলে স্টেডিয়াম-নাইট থিম)
+(function(){var u=window.BG_URL||'bg.jpg',i=new Image();i.onload=function(){document.documentElement.style.setProperty('--bgimg',"linear-gradient(rgba(5,9,15,.38),rgba(5,9,15,.74)),url('"+u+"')")};i.src=u})();
 </script>
 </body>
 </html>
