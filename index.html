@@ -144,50 +144,52 @@ svg.pvb{height:210px;width:100%;margin:6px 0;background:linear-gradient(#bfe6ff,
 .gfx{font-size:76px;animation:gfb 1s ease infinite}@keyframes gfb{0%,100%{transform:scale(1) rotate(-6deg)}50%{transform:scale(1.15) rotate(6deg)}}
 .gfc{display:inline-block;background:var(--ac2);border:1px solid var(--bd);border-radius:99px;padding:6px 12px;margin:4px;font-weight:700}
 
-/* ===== প্রিমিয়াম নাইট-স্টেডিয়াম থিম ===== */
-:root,:root:not([data-theme="light"]),:root[data-theme="dark"],:root[data-theme="light"]{--bg:#070b12;--card:rgba(14,20,32,.66);--tx:#f4f6fb;--mut:#9aa6bd;--ac:#f5c451;--ac2:rgba(255,255,255,.07);--bd:rgba(255,255,255,.13);--bad:#ff7b7b;--pitch:#06110c;--bigbg:rgba(255,255,255,.08);--bigtx:#fff;--lobA:rgba(16,185,129,.12);--lobB:rgba(59,130,246,.10);--lobBd:rgba(255,255,255,.14);color-scheme:dark}
-html{background:#05090f}
-body{font-family:"Hind Siliguri","Noto Sans Bengali",system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.1px;background-color:#05090f;background-image:var(--bgimg,none),radial-gradient(ellipse 55% 34% at 14% -4%,rgba(255,246,220,.34),transparent 70%),radial-gradient(ellipse 55% 34% at 86% -4%,rgba(255,246,220,.34),transparent 70%),radial-gradient(ellipse 100% 55% at 50% 108%,rgba(26,122,70,.62),transparent 72%),linear-gradient(180deg,#0a1322 0%,#08120f 48%,#0b2a1b 100%);background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat}
-body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 42%,transparent 38%,rgba(0,0,0,.7) 100%),repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 38px,rgba(0,0,0,.06) 38px 76px) bottom/100% 42% no-repeat}
-h1{font-weight:800;letter-spacing:.3px;background:linear-gradient(180deg,#fff,#f5c451);-webkit-background-clip:text;background-clip:text;color:transparent}
-.card{background:var(--card);-webkit-backdrop-filter:blur(16px) saturate(150%);backdrop-filter:blur(16px) saturate(150%);border:1px solid var(--bd);border-radius:20px;box-shadow:0 12px 32px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.09)}
-button{transition:transform .12s ease,box-shadow .2s ease,filter .2s ease;background:linear-gradient(180deg,#ffd978,#e5a526);color:#251a00;border:0;border-radius:14px;font-weight:700;box-shadow:0 8px 20px rgba(229,165,38,.26),inset 0 1px 0 rgba(255,255,255,.55);text-shadow:none}
-button:active{transform:scale(.97);filter:brightness(.93);background:linear-gradient(180deg,#ffd978,#e5a526);color:#251a00}
-button.on{background:linear-gradient(180deg,#ffd978,#e5a526);color:#251a00;border:0}
-button.sec{background:rgba(255,255,255,.07);color:#f4f6fb;border:1px solid rgba(255,255,255,.15);box-shadow:none;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
-button.sec:active,button.sec.on{background:linear-gradient(180deg,#ffd978,#e5a526);color:#251a00;border-color:transparent}
-button.big{background:linear-gradient(180deg,rgba(255,255,255,.13),rgba(255,255,255,.05));color:#fff;border:1px solid rgba(255,255,255,.17);box-shadow:0 8px 22px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.14)}
-button.big:active{background:rgba(245,196,81,.9);color:#251a00}
-button:disabled{opacity:.42;filter:saturate(.6);box-shadow:none}
-input,select{background:rgba(255,255,255,.07);color:#fff;border:1px solid rgba(255,255,255,.16);border-radius:14px;transition:border-color .2s,box-shadow .2s}
-input:focus,select:focus{outline:0;border-color:#f5c451;box-shadow:0 0 0 3px rgba(245,196,81,.22)}
-input::placeholder{color:#7f8aa1}select option,select optgroup{background:#0f1624;color:#f4f6fb}
-.pl{background:linear-gradient(90deg,rgba(255,255,255,.1),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.1);border-radius:14px}
-.pl.act{border-color:#f5c451;box-shadow:0 0 0 3px rgba(245,196,81,.18),0 0 18px rgba(245,196,81,.25)}
-.sc{color:#f5c451;font-variant-numeric:tabular-nums;text-shadow:0 0 12px rgba(245,196,81,.45)}
-.tag{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);color:#c3cde0}
-.code{color:#f5c451;text-shadow:0 0 22px rgba(245,196,81,.5)}
-.tm{color:#f5c451;text-shadow:0 0 14px rgba(245,196,81,.5)}
-.msg.pill:not(:empty){background:rgba(255,123,123,.16);color:#ffb3b3;border:1px solid rgba(255,123,123,.35)}
-.tile{border-radius:20px}.tile small{color:var(--mut)}
-.chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
-.days div{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1)}
-.days div.got{background:linear-gradient(180deg,#ffd978,#e5a526);color:#251a00;border-color:transparent}.days div.now{border-color:#f5c451;box-shadow:0 0 12px rgba(245,196,81,.4)}
-.itr{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px}.itr.sel{border-color:#f5c451;background:rgba(245,196,81,.1)}
-#toast{background:linear-gradient(180deg,#ffd978,#e5a526);color:#251a00;border-radius:14px;box-shadow:0 10px 28px rgba(0,0,0,.5)}
-#ann{background:linear-gradient(90deg,rgba(245,196,81,.2),rgba(245,196,81,.08));color:#ffe9a8;border:1px solid rgba(245,196,81,.35);border-radius:14px}
-.ov,.mod{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);background:rgba(3,6,12,.72)}
-.pc,.mod .card,#shM .card{background:linear-gradient(160deg,#16203a,#0a101c);border:1px solid rgba(255,255,255,.14);border-radius:24px;box-shadow:0 24px 60px rgba(0,0,0,.65);color:#f4f6fb}
-.rb{border-radius:18px;box-shadow:0 10px 26px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.22)}
-#game svg#pitch{border-radius:20px;box-shadow:0 16px 40px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.16)}
-#game .ctl button{background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));color:#fff;border:1px solid rgba(255,255,255,.2);box-shadow:0 6px 16px rgba(0,0,0,.4);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
-#game .ctl button:active,#game .ctl button.on{background:linear-gradient(180deg,#ffd978,#e5a526);color:#251a00;border-color:transparent}
-#ctl.blink{animation:glow2 .5s infinite alternate}@keyframes glow2{from{box-shadow:0 0 0 0 rgba(245,196,81,0)}to{box-shadow:0 0 0 7px rgba(245,196,81,.38)}}
-.edb{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.22);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-.frTabs button{background:rgba(255,255,255,.07);color:#f4f6fb;border:1px solid rgba(255,255,255,.12);box-shadow:none}
-.fc{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1)}
-#lobby>.card{border-color:rgba(255,255,255,.14)}
-details.card summary{color:#fff}
+/* ===== প্রিমিয়াম থিম (লাইট = ডেলাইট স্টেডিয়াম, ডার্ক = নাইট স্টেডিয়াম) ===== */
+:root,:root[data-theme="light"]{--bg:#eef6f0;--card:rgba(255,255,255,.82);--tx:#14211a;--mut:#53665b;--ac:#16a34a;--ac2:rgba(22,163,74,.09);--bd:rgba(20,33,26,.12);--bad:#d64545;--pitch:#1c7a45;--bigbg:rgba(255,255,255,.88);--bigtx:#14211a;--lobA:rgba(16,185,129,.14);--lobB:rgba(59,130,246,.10);--lobBd:rgba(20,33,26,.12);--hl:#f5b82e;--hlx:#2a1c00;--glass:rgba(255,255,255,.2);--glassTx:#fff;--glassBd:rgba(255,255,255,.4);--scrim:linear-gradient(rgba(0,0,0,.10),rgba(0,0,0,.30));--modal:linear-gradient(160deg,#ffffff,#eaf5ee);--sh:0 10px 28px rgba(16,60,35,.22);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#070b12;--card:rgba(14,20,32,.72);--tx:#f4f6fb;--mut:#9aa6bd;--ac:#f5c451;--ac2:rgba(255,255,255,.07);--bd:rgba(255,255,255,.13);--bad:#ff7b7b;--pitch:#06110c;--bigbg:rgba(255,255,255,.1);--bigtx:#fff;--lobA:rgba(16,185,129,.12);--lobB:rgba(59,130,246,.10);--lobBd:rgba(255,255,255,.14);--glass:rgba(255,255,255,.08);--glassTx:#fff;--glassBd:rgba(255,255,255,.16);--scrim:linear-gradient(rgba(5,9,15,.35),rgba(5,9,15,.65));--modal:linear-gradient(160deg,#16203a,#0a101c);--sh:0 12px 32px rgba(0,0,0,.45);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#070b12;--card:rgba(14,20,32,.72);--tx:#f4f6fb;--mut:#9aa6bd;--ac:#f5c451;--ac2:rgba(255,255,255,.07);--bd:rgba(255,255,255,.13);--bad:#ff7b7b;--pitch:#06110c;--bigbg:rgba(255,255,255,.1);--bigtx:#fff;--lobA:rgba(16,185,129,.12);--lobB:rgba(59,130,246,.10);--lobBd:rgba(255,255,255,.14);--glass:rgba(255,255,255,.08);--glassTx:#fff;--glassBd:rgba(255,255,255,.16);--scrim:linear-gradient(rgba(5,9,15,.35),rgba(5,9,15,.65));--modal:linear-gradient(160deg,#16203a,#0a101c);--sh:0 12px 32px rgba(0,0,0,.45);color-scheme:dark}
+body{font-family:"Hind Siliguri","Noto Sans Bengali",system-ui,-apple-system,"Segoe UI",sans-serif;background:#1c7a45}
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;transform:translateZ(0);will-change:transform;background-color:#2f9b5c;background-image:var(--bgimg,none),repeating-linear-gradient(90deg,rgba(255,255,255,.07) 0 38px,rgba(0,0,0,.05) 38px 76px),linear-gradient(180deg,#8fd0f2 0%,#bfe6d0 30%,#38a468 55%,#1c7a45 100%);background-size:cover,100% 55%,cover;background-position:center,bottom,center;background-repeat:no-repeat;background-attachment:scroll}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body::before{background-image:var(--bgimg,none),repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 38px,rgba(0,0,0,.06) 38px 76px),radial-gradient(ellipse 55% 34% at 14% -4%,rgba(255,246,220,.28),transparent 70%),radial-gradient(ellipse 55% 34% at 86% -4%,rgba(255,246,220,.28),transparent 70%),linear-gradient(180deg,#0a1322,#08120f 48%,#0b2a1b);background-size:cover,100% 42%,cover,cover,cover;background-position:center,bottom,center,center,center}}
+:root[data-theme="dark"] body::before{background-image:var(--bgimg,none),repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 38px,rgba(0,0,0,.06) 38px 76px),radial-gradient(ellipse 55% 34% at 14% -4%,rgba(255,246,220,.28),transparent 70%),radial-gradient(ellipse 55% 34% at 86% -4%,rgba(255,246,220,.28),transparent 70%),linear-gradient(180deg,#0a1322,#08120f 48%,#0b2a1b);background-size:cover,100% 42%,cover,cover,cover;background-position:center,bottom,center,center,center}
+h1{font-weight:800;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.35)}
+.sub{color:var(--mut)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:20px;box-shadow:var(--sh),inset 0 1px 0 rgba(255,255,255,.35)}
+button{transition:transform .12s ease,box-shadow .2s ease,filter .2s ease;background:linear-gradient(180deg,#ffd978,#f0b132);color:var(--hlx,#251a00);border:0;border-radius:14px;font-weight:700;box-shadow:0 6px 16px rgba(240,177,50,.32),inset 0 1px 0 rgba(255,255,255,.6)}
+button:active,button.on{transform:scale(.97);filter:brightness(.94);background:linear-gradient(180deg,#ffd978,#f0b132);color:#251a00;border:0}
+button.sec{background:var(--ac2);color:var(--tx);border:1px solid var(--bd);box-shadow:none}
+button.sec:active,button.sec.on{background:linear-gradient(180deg,#ffd978,#f0b132);color:#251a00;border-color:transparent}
+button.big{background:var(--bigbg);color:var(--bigtx);border:1px solid var(--bd);box-shadow:var(--sh)}
+button.big:active{background:#ffd978;color:#251a00}
+button:disabled{opacity:.45;filter:saturate(.6);box-shadow:none}
+input,select{background:var(--ac2);color:var(--tx);border:1px solid var(--bd);border-radius:14px;transition:border-color .2s,box-shadow .2s}
+input:focus,select:focus{outline:0;border-color:var(--ac);box-shadow:0 0 0 3px rgba(22,163,74,.22)}
+input::placeholder{color:var(--mut)}select option,select optgroup{background:var(--bg);color:var(--tx)}
+.pl{background:var(--ac2);border:1px solid var(--bd);border-radius:14px}
+.pl.act{border-color:var(--hl);box-shadow:0 0 0 3px rgba(245,184,46,.25),0 0 16px rgba(245,184,46,.3)}
+.sc{color:var(--ac);font-variant-numeric:tabular-nums}
+.tag{background:var(--ac2);border:1px solid var(--bd);color:var(--mut)}
+.code{color:var(--ac)}.tm{color:var(--ac);font-weight:800}
+.msg.pill:not(:empty){background:rgba(214,69,69,.12);color:var(--bad);border:1px solid rgba(214,69,69,.3)}
+.chip{background:var(--glass);color:var(--glassTx);border:1px solid var(--glassBd);}
+.days div{background:var(--ac2);border-color:var(--bd)}
+.days div.got{background:linear-gradient(180deg,#ffd978,#f0b132);color:#251a00;border-color:transparent}.days div.now{border-color:var(--hl);box-shadow:0 0 10px rgba(245,184,46,.45)}
+.itr{background:var(--ac2);border:1px solid var(--bd);border-radius:16px}.itr.sel{border-color:var(--hl);background:rgba(245,184,46,.14)}
+#toast{background:linear-gradient(180deg,#ffd978,#f0b132);color:#251a00;border-radius:14px;box-shadow:0 10px 26px rgba(0,0,0,.35)}
+#ann{background:linear-gradient(90deg,#fff1c2,#ffe39a);color:#5b4300;border:1px solid #f5d77a;border-radius:14px}
+.ov,.mod{background:rgba(5,12,8,.55)}
+.pc,.mod .card,#shM .card{background:var(--modal);border:1px solid var(--bd);border-radius:24px;box-shadow:0 24px 60px rgba(0,0,0,.45);color:var(--tx)}
+.rb{border-radius:18px;box-shadow:0 10px 26px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.25)}
+#game svg#pitch{border-radius:20px;box-shadow:0 14px 34px rgba(0,0,0,.4),0 0 0 2px rgba(255,255,255,.35)}
+#game .ctl button{background:var(--bigbg);color:var(--bigtx);border:1px solid var(--bd);box-shadow:var(--sh)}
+#game .ctl button:active,#game .ctl button.on{background:linear-gradient(180deg,#ffd978,#f0b132);color:#251a00;border-color:transparent}
+#ctl.blink{animation:glow2 .5s infinite alternate}@keyframes glow2{from{box-shadow:0 0 0 0 rgba(245,184,46,0)}to{box-shadow:0 0 0 7px rgba(245,184,46,.45)}}
+.edb{background:var(--glass);color:var(--glassTx);border:1px solid var(--glassBd);}
+.frTabs button{background:var(--ac2);color:var(--tx);border:1px solid var(--bd);box-shadow:none}
+.fc{background:var(--ac2);border-color:var(--bd)}
+details.card summary{color:var(--tx)}
+.lt,.ls{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6)}.ls{opacity:1}
+.cm,#game .info,#game .tm{color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.7)}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
@@ -1169,18 +1171,18 @@ function applyCfg(c){CFG=c||{};const st=document.documentElement.style;
 function statLog(s,my,won){try{if(!fs||!ME)return;const f=firebase.firestore.FieldValue.increment,m=local?'cpu':s.career?'career':s.tm?'team':s.fr?'friend':'room';fs.doc('stats/'+dayId()).set({plays:f(1),goals:f(my),wins:f(won?1:0),['m_'+m]:f(1)},{merge:true}).catch(()=>{})}catch(e){}}
 try{if(fs)fs.doc('cfg/app').onSnapshot(sn=>applyCfg(sn.data()||{}),()=>{})}catch(e){}
 $('lobScene').innerHTML=lobScene();renderAcct();
-const APP_VER='20261108-d';
+const APP_VER='20261108-f';
 let verBase=null,updPend=0;const verHash=t=>{let h=5381;for(let i=0;i<t.length;i++)h=((h<<5)+h+t.charCodeAt(i))|0;return h};
 async function verCheck(){try{const r=await fetch(location.pathname+'?_v='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text(),m=t.match(/const APP_VER='([^']+)'/);if(!m)return;
   const h=verHash(t);if(verBase===null)verBase=h;
   if(m[1]!==APP_VER||h!==verBase){updPend=1;const ae=document.activeElement,typing=ae&&/^(INPUT|SELECT|TEXTAREA)$/.test(ae.tagName);
     if(!S&&!local&&!typing){location.replace(location.pathname+'?r='+Date.now()+location.hash);return}
     if(!verShown){verShown=1;toast('🔄 নতুন আপডেট এসেছে — ম্যাচ শেষে মেনুতে ফিরলেই নিজে থেকে আপডেট হয়ে যাবে',5000)}}}catch(e){}}
-setTimeout(verCheck,4000);setInterval(verCheck,60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)verCheck()});
+setTimeout(verCheck,4000);setInterval(verCheck,120000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)verCheck()});
 </script>
 <script>
 // ব্যাকগ্রাউন্ড ফটো: নিজের লাইসেন্স করা ছবি 'bg.jpg' নামে index.html এর পাশে রাখলেই বসে যাবে (না থাকলে স্টেডিয়াম-নাইট থিম)
-(function(){var u=window.BG_URL||'bg.jpg',i=new Image();i.onload=function(){document.documentElement.style.setProperty('--bgimg',"linear-gradient(rgba(5,9,15,.38),rgba(5,9,15,.74)),url('"+u+"')")};i.src=u})();
+(function(){var u=window.BG_URL||'bg.jpg',i=new Image();i.onload=function(){document.documentElement.style.setProperty('--bgimg',"var(--scrim),url('"+u+"')")};i.src=u})();
 </script>
 </body>
 </html>
