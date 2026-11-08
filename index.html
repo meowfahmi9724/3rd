@@ -508,7 +508,8 @@ function hostRoom(code,p){
   const api={id:code,isHost:true,
     set(d){D=d;emit();return Promise.resolve()},
     update(x){if(x.rdHost){x={rd:[1,(D.rd||[0,0])[1]]}}if(x.rmHost){const r=[...D.rm];r[x.rmHost-1]=1;x={rm:r}}
-      if(x.hs)x={pl:slotSet(D.pl,{id:uid,name:myName(),team:myTeam()},x.hs[0],x.hs[1])};
+      if(x.pfHost){const pf=myPf();x={p1:{...D.p1,pf},pl:D.pl?D.pl.map(a=>a.map(q=>q&&q.id===uid?{...q,pf}:q)):D.pl}}
+      if(x.hs)x={pl:slotSet(D.pl,{id:uid,name:myName(),team:myTeam(),pf:myPf()},x.hs[0],x.hs[1])};
       if(x.go){if(!(D.tm&&D.status==='lobby'))return Promise.resolve();const pl=D.pl.map(a=>a.filter(Boolean));if(!pl.every(a=>a.length>=1)||pl[0].length+pl[1].length<3)return Promise.resolve();
         const sh=n=>{const o=[...Array(n).keys()];for(let i=n-1;i>0;i--){const j=Math.random()*(i+1)|0;[o[i],o[j]]=[o[j],o[i]]}return o};
         x={pl,ord:pl.map(a=>sh(a.length)),status:'play',p1:{...D.p1,team:pl[0][0].team},p2:{...D.p2,team:pl[1][0].team}}}
@@ -535,7 +536,7 @@ function hostRoom(code,p){
       if(m.t==='join'&&m.p&&m.p.id){
         const q=m.p;
         if(D.tm){const inn=D.pl.some(a=>a.some(p=>p&&p.id===q.id));if(q.id===uid||(D.status!=='lobby'&&!inn)){try{c.send({t:'full'})}catch(e){}return}
-          c.pid=q.id;c.pn=String(q.name||'প্লেয়ার').slice(0,14);c.kit=+q.team||0;emit();return}
+          c.pid=q.id;c.pn=String(q.name||'প্লেয়ার').slice(0,14);c.kit=+q.team||0;c.pf=cleanPf(q.pf);emit();return}
         if(D.p1.id===q.id||(D.p2&&D.p2.id!==q.id&&!(D.status==='lobby'&&D.p2off))){try{c.send({t:'full'})}catch(e){}return}
         c.pid=q.id;
         const same=D.p2&&D.p2.id===q.id;D={...D,p2:{id:q.id,name:String(q.name||'প্লেয়ার').slice(0,14),team:+q.team||0,pf:cleanPf(q.pf)},p2off:false,rd:same?(D.rd||[0,0]):[(D.rd||[0,0])[0],0],lost:null};
@@ -546,9 +547,10 @@ function hostRoom(code,p){
         if(D.status==='play'){
           const R=roles(D);if(R.s===c.pid&&typeof x.pk==='string'&&ok.test(x.pk)&&!D.pk)out.pk=x.pk;
           if(R.g===c.pid&&typeof x.pg==='string'&&ok.test(x.pg)&&!D.pg)out.pg=x.pg}
+        if(x.pf){const pf=cleanPf(x.pf);c.pf=pf;if(D.tm)out.pl=D.pl.map(a=>a.map(q=>q&&q.id===c.pid?{...q,pf}:q));else if(D.p2&&D.p2.id===c.pid)out.p2={...D.p2,pf}}
         if(x.rd===1&&D.status==='lobby'&&!D.tm&&!D.p2off)out.rd=[(D.rd||[0,0])[0],1];
         if(x.rm===1&&D.status==='done'&&!D.closed){const t=D.tm?teamOf(D,c.pid):1;if(t>=0){const r=[...D.rm];r[t]=1;out.rm=r}}
-        if(D.tm&&D.status==='lobby'&&Array.isArray(x.slot)){const t=+x.slot[0],j=+x.slot[1];if(t===-1||((t===0||t===1)&&j>=0&&j<6))out.pl=slotSet(D.pl,{id:c.pid,name:c.pn,team:c.kit},t,j)}
+        if(D.tm&&D.status==='lobby'&&Array.isArray(x.slot)){const t=+x.slot[0],j=+x.slot[1];if(t===-1||((t===0||t===1)&&j>=0&&j<6))out.pl=slotSet(D.pl,{id:c.pid,name:c.pn,team:c.kit,pf:c.pf},t,j)}
         const last=Array.isArray(x.chat)?x.chat[x.chat.length-1]:null;
         if(last){const i=Math.max(0,Math.min(EM.length-1,+last.i||0));out.chat=[...(D.chat||[]).slice(-9),{u:D.tm?Math.max(0,teamOf(D,c.pid)):1,w:D.tm?c.pn:undefined,p:c.pid,t:EM[i],i,k:String(last.k||Date.now()).slice(0,20)}]}
         if(Object.keys(out).length)api.update(out)}
@@ -757,16 +759,17 @@ function mergeGuest(){if(!CUID)return;try{const gs=localStorage.getItem('ps_bonu
   localStorage.setItem(k,JSON.stringify({coins:(+u.coins||0)+(+g.coins||0),streak,last}));localStorage.removeItem('ps_bonus')}catch(e){}}
 const ISO='AF AX AL DZ AS AD AO AI AQ AG AR AM AW AU AT AZ BS BH BD BB BY BE BZ BJ BM BT BO BQ BA BW BV BR IO BN BG BF BI CV KH CM CA KY CF TD CL CN CX CC CO KM CG CD CK CR CI HR CU CW CY CZ DK DJ DM DO EC EG SV GQ ER EE SZ ET FK FO FJ FI FR GF PF TF GA GM GE DE GH GI GR GL GD GP GU GT GG GN GW GY HT HM VA HN HK HU IS IN ID IR IQ IE IM IL IT JM JP JE JO KZ KE KI KP KR KW KG LA LV LB LS LR LY LI LT LU MO MG MW MY MV ML MT MH MQ MR MU YT MX FM MD MC MN ME MS MA MZ MM NA NR NP NL NC NZ NI NE NG NU NF MK MP NO OM PK PW PS PA PG PY PE PH PN PL PT PR QA RE RO RU RW BL SH KN LC MF PM VC WS SM ST SA SN RS SC SL SG SX SK SI SB SO ZA GS SS ES LK SD SR SJ SE CH SY TW TJ TZ TH TL TG TK TO TT TN TR TM TC TV UG UA AE GB US UM UY UZ VU VE VN VG VI WF EH YE ZM ZW'.split(' ');
 let NAT=[];try{const dn=new Intl.DisplayNames(['bn'],{type:'region'});NAT=ISO.map(c=>[c,dn.of(c)||c])}catch(e){NAT=ISO.map(c=>[c,c])}
-NAT.sort((a,b)=>a[1].localeCompare(b[1],'bn'));
+NAT.sort((a,b)=>a[1].localeCompare(b[1],'bn'));{const k=NAT.findIndex(x=>x[0]==='BD');if(k>0)NAT.unshift(NAT.splice(k,1)[0])}
 const natName=c=>c?(NAT.find(x=>x[0]===c)||[0,c])[1]:'';
 {const o='<option value="">— দেশ বাছাই করো —</option>'+NAT.map(x=>`<option value="${x[0]}">${x[1]}</option>`).join('');$('natS').innerHTML=o;$('pfC').innerHTML=o;$('pfT').innerHTML=$('team').innerHTML;$('natT').innerHTML=$('team').innerHTML;const dd='<option value="">— জেলা বাছাই করো —</option>'+DIST.map(x=>`<option>${x}</option>`).join('');$('natD').innerHTML=dd;$('pfD').innerHTML=dd}
 const IK=()=>'ps_inv_'+(CUID||'x');
 function invGet(){let v={own:{},eq:{}};try{v={...v,...JSON.parse(localStorage.getItem(IK())||'{}')}}catch(e){}v.own=v.own||{};v.eq=v.eq||{};return v}
-function invSet(v){try{localStorage.setItem(IK(),JSON.stringify(v))}catch(e){}pushWallet()}
+function invSet(v){try{localStorage.setItem(IK(),JSON.stringify(v))}catch(e){}pushWallet();pfSync()}
 function myEq(){return invGet().eq}
 function myPf(){return{nat:natName(P.nat),dist:P.nat==='BD'?(P.dist||''):'',mt:P.mt||0,goals:P.goals||0,best:P.best||0,eq:myEq()}}
 function cleanPf(x){x=x||{};const e={};['top','bot','boots','hair','gloves','ball','fx','acc'].forEach(k=>{if(x.eq&&ITEM(x.eq[k]))e[k]=x.eq[k]});return{nat:String(x.nat||'').slice(0,40),dist:String(x.dist||'').slice(0,30),mt:Math.max(0,+x.mt||0),goals:Math.max(0,+x.goals||0),best:Math.max(0,+x.best||0),eq:e}}
-function eqOfId(id){if(id===uid)return myEq();const p=S&&S.p1&&S.p1.id===id?S.p1:(S&&S.p2&&S.p2.id===id?S.p2:null);return(p&&p.pf&&p.pf.eq)||{}}
+function eqOfId(id){if(id===uid)return myEq();let p=null;if(S){if(S.p1&&S.p1.id===id)p=S.p1;else if(S.p2&&S.p2.id===id)p=S.p2;if(S.pl)S.pl.forEach(a=>a.forEach(q=>{if(q&&q.id===id&&q.pf)p=q}))}return(p&&p.pf&&p.pf.eq)||{}}
+function pfSync(){try{if(!ref||local||!S)return;if(ref.isHost)ref.update({pfHost:1});else ref.update({pf:myPf()})}catch(e){}}
 function setBall(eq){const it=eq&&eq.ball&&ITEM(eq.ball);$('ball').firstElementChild.setAttribute('fill',it?it.col:'url(#bl)')}
 function fxClear(){['fxl','fxl2'].forEach(id=>{const e=$(id);e.style.transition='none';e.style.strokeDashoffset=1;e.style.opacity=0;e.setAttribute('d','')});$('ball').style.filter='';setTimeout(()=>['fxl','fxl2'].forEach(id=>$(id).style.transition=''),60)}
 async function loadProf(){P={};try{P=JSON.parse(localStorage.getItem('ps_prof_'+ME.uid)||'{}')}catch(e){}
@@ -1120,10 +1123,14 @@ function applyCfg(c){CFG=c||{};const st=document.documentElement.style;
 function statLog(s,my,won){try{if(!fs||!ME)return;const f=firebase.firestore.FieldValue.increment,m=local?'cpu':s.career?'career':s.tm?'team':s.fr?'friend':'room';fs.doc('stats/'+dayId()).set({plays:f(1),goals:f(my),wins:f(won?1:0),['m_'+m]:f(1)},{merge:true}).catch(()=>{})}catch(e){}}
 try{if(fs)fs.doc('cfg/app').onSnapshot(sn=>applyCfg(sn.data()||{}),()=>{})}catch(e){}
 $('lobScene').innerHTML=lobScene();renderAcct();
-const APP_VER='20261108-b';
-async function verCheck(){if(verShown)return;try{const t=await(await fetch(location.pathname+'?_v='+Date.now(),{cache:'no-store'})).text(),m=t.match(/const APP_VER='([^']+)'/);
-  if(m&&m[1]!==APP_VER){verShown=1;notice('🔄 নতুন ভার্সন এসেছে','গেমের নতুন আপডেট প্রস্তুত। উপহার, ফ্রেন্ড ও অন্যান্য ফিচার ঠিকমতো পেতে এখনই আপডেট করো।<button id="rlB" style="margin-top:10px">⬇️ এখনই আপডেট করো</button>');setTimeout(()=>{const b=$('rlB');if(b)b.onclick=()=>{location.href=location.pathname+'?r='+Date.now()+location.hash}},0)}}catch(e){}}
-setTimeout(verCheck,15000);setInterval(verCheck,300000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)verCheck()});
+const APP_VER='20261108-c';
+let verBase=null,updPend=0;const verHash=t=>{let h=5381;for(let i=0;i<t.length;i++)h=((h<<5)+h+t.charCodeAt(i))|0;return h};
+async function verCheck(){try{const r=await fetch(location.pathname+'?_v='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text(),m=t.match(/const APP_VER='([^']+)'/);if(!m)return;
+  const h=verHash(t);if(verBase===null)verBase=h;
+  if(m[1]!==APP_VER||h!==verBase){updPend=1;const ae=document.activeElement,typing=ae&&/^(INPUT|SELECT|TEXTAREA)$/.test(ae.tagName);
+    if(!S&&!local&&!typing){location.replace(location.pathname+'?r='+Date.now()+location.hash);return}
+    if(!verShown){verShown=1;toast('🔄 নতুন আপডেট এসেছে — ম্যাচ শেষে মেনুতে ফিরলেই নিজে থেকে আপডেট হয়ে যাবে',5000)}}}catch(e){}}
+setTimeout(verCheck,4000);setInterval(verCheck,60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)verCheck()});
 </script>
 </body>
 </html>
