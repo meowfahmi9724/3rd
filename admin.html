@@ -2,7 +2,7 @@
 <html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
 <title>এডমিন প্যানেল — পেনাল্টি শুটআউট</title>
 <style>
-:root{--bg:#f3f4f8;--card:#fff;--tx:#1c1a2b;--mut:#666a80;--ac:#7c3aed;--bd:#dfe1ea;--ok:#16a34a;--bad:#dc2626}
+:root{--bg:#eaf6ee;--card:#fff;--tx:#14261c;--mut:#5b6f63;--ac:#16a34a;--bd:#cfe6d7;--ok:#16a34a;--bad:#dc2626}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,"Noto Sans Bengali",sans-serif;font-size:14px}
 header{background:#1c1a2b;color:#fff;padding:10px 14px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:20}header b{flex:1;font-size:16px}
 nav{display:flex;gap:6px;overflow-x:auto;padding:10px 12px;background:#fff;border-bottom:1px solid var(--bd);position:sticky;top:44px;z-index:19}
@@ -22,10 +22,24 @@ table{width:100%;border-collapse:collapse}th,td{padding:7px 6px;border-bottom:1p
 label{display:block;font-size:12px;color:var(--mut);margin:8px 0 3px}.tag{display:inline-block;background:#eee;border-radius:99px;padding:2px 8px;font-size:11px}.on{color:var(--ok)}.off{color:var(--mut)}
 .items{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:4px}.items label{margin:0;color:var(--tx);font-size:13px;display:flex;gap:6px;align-items:center}.items input{width:auto}
 #msg{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);background:#1c1a2b;color:#fff;padding:10px 16px;border-radius:12px;z-index:99;max-width:92%}
+
+body{background:repeating-linear-gradient(90deg,#e3f4e9 0 64px,#d8efe0 64px 128px) fixed;min-height:100vh}
+header{height:54px;background:linear-gradient(135deg,#064e3b,#16a34a);box-shadow:0 3px 14px rgba(6,78,59,.35);border-bottom:3px solid #bbf7d0}header b{letter-spacing:.3px;font-size:17px}
+nav{top:54px;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--bd);box-shadow:0 2px 8px rgba(0,0,0,.05)}
+nav button{border-color:var(--bd);transition:.15s}nav button:hover{background:#ecfdf3}nav button.on{background:linear-gradient(135deg,#15803d,#22c55e);border-color:#15803d;box-shadow:0 2px 8px rgba(22,163,74,.4)}
+.card{border-radius:18px;border:1px solid var(--bd);box-shadow:0 4px 16px rgba(6,78,59,.07)}
+.card h3{padding-bottom:6px;border-bottom:2px dashed #d5ebdc}
+.stat{border-radius:16px;border:1px solid var(--bd);border-left:5px solid var(--ac);box-shadow:0 3px 12px rgba(6,78,59,.07);transition:.15s}.stat:hover{transform:translateY(-2px)}.stat b{color:#065f46}
+button.b{background:linear-gradient(135deg,#15803d,#22c55e);box-shadow:0 2px 8px rgba(22,163,74,.3)}button.b.s{background:#e3f4e9;color:#14532d;box-shadow:none;border:1px solid var(--bd)}button.b.d{background:linear-gradient(135deg,#b91c1c,#ef4444)}
+input,select,textarea{border-radius:12px;border:1px solid var(--bd)}input:focus,select:focus,textarea:focus{outline:2px solid #86efac;border-color:#22c55e}
+tr.c:hover{background:#ecfdf3}th{background:#f1faf4}
+.tag{background:#dcfce7;color:#14532d}#msg{background:#064e3b}
+#login{margin:0!important;max-width:none!important;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px!important}#login .card{max-width:380px;width:100%;text-align:center;border-top:6px solid #16a34a}#login .card h3{font-size:20px;border:0}#login input{text-align:left}
+.pitchtag{font-size:42px;display:block;margin-bottom:4px}
 </style></head><body>
-<div id="login" class="main" style="max-width:380px;margin:40px auto;padding:12px"><div class="card"><h3>🔐 এডমিন লগইন</h3><label>ইমেইল</label><input id="le" type="email"><label>পাসওয়ার্ড</label><input id="lp" type="password"><div id="lm" style="color:var(--bad);margin:8px 0"></div><button class="b" id="lg" style="width:100%">লগইন</button><button class="b s" id="lgg" style="width:100%;margin-top:8px">Google দিয়ে লগইন</button></div></div>
+<div id="login"><div class="card"><span class="pitchtag">⚽</span><h3>এডমিন লগইন</h3><label>ইমেইল</label><input id="le" type="email"><label>পাসওয়ার্ড</label><input id="lp" type="password"><div id="lm" style="color:var(--bad);margin:8px 0"></div><button class="b" id="lg" style="width:100%">লগইন</button><button class="b s" id="lgg" style="width:100%;margin-top:8px">Google দিয়ে লগইন</button></div></div>
 <div id="app" class="hide">
-<header><b>🛠️ এডমিন প্যানেল</b><span id="who" style="font-size:12px;opacity:.8"></span><button class="b s" id="rl">🔄 রিফ্রেশ</button><button class="b s" id="lo">বের হও</button></header>
+<header><b>⚽ এডমিন প্যানেল</b><span id="who" style="font-size:12px;opacity:.8"></span><button class="b s" id="rl">🔄 রিফ্রেশ</button><button class="b s" id="lo">বের হও</button></header>
 <nav id="nav"><button data-t="dash" class="on">📊 ড্যাশবোর্ড</button><button data-t="pl">👤 প্লেয়ার</button><button data-t="lb">🏆 লিডারবোর্ড</button><button data-t="st">🛍️ স্টোর</button><button data-t="cfg">🎨 থিম ও সেটিংস</button><button data-t="tools">🧰 টুলস</button></nav>
 <main id="main"></main></div>
 <div id="ed" class="ov hide"><div class="card" id="edc"></div></div><div id="msg" class="hide"></div>
@@ -44,6 +58,13 @@ const wk=()=>Math.floor((Date.now()-4*864e5)/(7*864e5));
 const dayId=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 const isOn=l=>Date.now()-(+l||0)<75000;
 function msg(t,ms){const e=$('msg');e.textContent=t;e.classList.remove('hide');clearTimeout(msg.t);msg.t=setTimeout(()=>e.classList.add('hide'),ms||3000)}
+// ---------- গিফট হেল্পার ----------
+const giftForm=p=>`<div class="row"><div><label>🪙 কয়েন</label><input id="${p}_n" type="number" min="0" placeholder="0"></div><div style="flex:2 1 220px"><label>💬 বার্তা (ঐচ্ছিক)</label><input id="${p}_t" maxlength="120" placeholder="যেমন: ঈদ মোবারক!"></div></div><details style="margin-top:8px"><summary style="cursor:pointer;font-weight:700">🛍️ আইটেমও দিতে চাইলে বাছুন</summary>${Object.keys(SLOT).map(s=>`<div style="margin:6px 0 2px;font-weight:700;font-size:12px">${SLOT[s]}</div><div class="items">${STORE.filter(q=>q.slot===s&&!q.hid).map(q=>`<label><input type="checkbox" data-gi="${p}" value="${q.id}"> ${q.e} ${esc(q.n)}</label>`).join('')}</div>`).join('')}</details>`;
+const readGift=p=>({coins:Math.max(0,Math.floor(+$(p+'_n').value||0)),text:$(p+'_t').value.trim().slice(0,120),items:[...document.querySelectorAll('[data-gi="'+p+'"]:checked')].map(i=>i.value)});
+const gDesc=g=>[g.coins?g.coins+' কয়েন':'',g.items.length?g.items.length+'টি আইটেম':'',g.text?'বার্তা':''].filter(Boolean).join(' + ');
+async function sendGift(ids,g){if(!g.coins&&!g.items.length&&!g.text){msg('কয়েন, আইটেম বা বার্তা — অন্তত একটা দিন',3500);return false}
+  try{const t=Date.now();for(let i=0;i<ids.length;i+=400){const b=fs.batch();ids.slice(i,i+400).forEach(id=>b.set(fs.collection('gift/'+id+'/in').doc(),{coins:g.coins,items:g.items,text:g.text,from:'admin',t}));await b.commit()}return true}
+  catch(e){msg('পাঠানো যায়নি: '+e.message+' (gift রুলস দেখুন)',6000);return false}}
 // ---------- লগইন ----------
 $('lg').onclick=async()=>{$('lm').textContent='';try{await auth.signInWithEmailAndPassword($('le').value.trim(),$('lp').value)}catch(e){$('lm').textContent='লগইন হয়নি: '+(e.code||e.message)}};
 $('lgg').onclick=async()=>{try{await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())}catch(e){$('lm').textContent='লগইন হয়নি: '+(e.code||e.message)}};
@@ -60,7 +81,7 @@ function render(){({dash:rDash,pl:rPl,lb:rLb,st:rSt,cfg:rCfg,tools:rTools})[tab]
 // ---------- চার্ট হেল্পার ----------
 const bars=(lab,val,col)=>{const m=Math.max(1,...val);return'<div class="bars">'+val.map((v,i)=>`<div title="${esc(lab[i])}: ${v}"><em>${v||''}</em><i style="height:${Math.round(v/m*100)}%;${col?'background:'+col:''}"></i><span>${esc(lab[i])}</span></div>`).join('')+'</div>'};
 const hbar=(rows,top)=>{rows=rows.slice(0,top||10);const m=Math.max(1,...rows.map(r=>r[1]));return rows.length?rows.map(r=>`<div class="hb"><span title="${esc(r[0])}">${esc(r[0])}</span><i style="width:${Math.round(r[1]/m*60)+2}%"></i><em>${r[1]}</em></div>`).join(''):'<div class="off">তথ্য নেই</div>'};
-const PC=['#7c3aed','#ec4899','#10b981','#f59e0b','#3b82f6','#ef4444','#14b8a6','#8b5cf6'];
+const PC=['#16a34a','#f59e0b','#0ea5e9','#ef4444','#14b8a6','#a3e635','#6366f1','#f97316'];
 const pie=items=>{const tot=items.reduce((a,b)=>a+b[1],0)||1;let a=0;const seg=items.map((it,i)=>{const s=a;a+=it[1]/tot*100;return PC[i%8]+' '+s+'% '+a+'%'}).join(',');return`<div class="pie"><u style="background:conic-gradient(${seg||'#ddd 0 100%'})"></u><div>${items.map((it,i)=>`<p><b style="background:${PC[i%8]}"></b>${esc(it[0])}: <strong>${it[1]}</strong> (${Math.round(it[1]/tot*100)}%)</p>`).join('')}</div></div>`};
 const tally=(arr,f)=>{const m={};arr.forEach(x=>{const k=f(x);if(k)m[k]=(m[k]||0)+1});return Object.entries(m).sort((a,b)=>b[1]-a[1])};
 // ---------- ড্যাশবোর্ড ----------
@@ -86,21 +107,23 @@ function rPl(){const q=plQ.toLowerCase(),L=U.filter(u=>!q||[u.name,u.email,u.dis
   $('plq').oninput=e=>{plQ=e.target.value;const p=e.target.selectionStart;rPl();$('plq').focus();$('plq').setSelectionRange(p,p)};
   $('csv').onclick=()=>{const h=['id','name','email','nat','dist','gender','team','coins','matches','goals','best'],r=U.map(u=>[u.id,u.name,u.email,u.nat,u.dist,u.gender,TEAMS[+u.team||0],u.cn,u.mt,u.goals,u.best].map(x=>'"'+String(x==null?'':x).replace(/"/g,'""')+'"').join(','));const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+h.join(',')+'\n'+r.join('\n')],{type:'text/csv'}));a.download='players.csv';a.click()};
   $('main').onclick=e=>{const r=e.target.closest('[data-u]');if(r)editUser(r.dataset.u)}}
-function editUser(id){const u=U.find(x=>x.id===id);if(!u)return;const own=(u.inv&&u.inv.own)||{};
+async function editUser(id){const u=U.find(x=>x.id===id);if(!u)return;try{const f=await fs.doc('users/'+id).get();if(f.exists)Object.assign(u,f.data())}catch(e){}const own=(u.inv&&u.inv.own)||{};
   const slots=Object.keys(SLOT);
-  $('edc').innerHTML=`<h3>✏️ ${esc(u.name)} <span class="tag">${esc(u.email)}</span></h3><div class="off" style="font-size:11px">UID: ${u.id}</div>
+  $('edc').innerHTML=`<h3>✏️ ${esc(u.name)} <span class="tag">${esc(u.email)}</span></h3><div class="off" style="font-size:11px">UID: ${u.id}<br>শেষ দেখা: ${u.last?new Date(u.last).toLocaleString('bn-BD')+(isOn(u.last)?' 🟢':''):'কখনো না'} • গেম ভার্সন: ${esc(u.ver||'পুরনো/অজানা')}</div>
   <div class="row"><div><label>নাম</label><input id="e_name" maxlength="14" value="${esc(u.name)}"></div><div><label>জেলা</label><input id="e_dist" value="${esc(u.dist)}"></div></div>
   <div class="row"><div><label>দেশ কোড (BD, IN…)</label><input id="e_nat" value="${esc(u.nat)}"></div><div><label>লিঙ্গ</label><select id="e_gender">${['','m','f','o'].map(g=>`<option value="${g}" ${(u.gender||'')===g?'selected':''}>${GEN[g]}</option>`).join('')}</select></div><div><label>টিম</label><select id="e_team">${TEAMS.map((t,i)=>`<option value="${i}" ${(+u.team||0)===i?'selected':''}>${esc(t)}</option>`).join('')}</select></div></div>
   <div class="row"><div><label>🪙 কয়েন ${u.cn==null?'(এখনো সিঙ্ক হয়নি!)':''}</label><input id="e_cn" type="number" value="${u.cn==null?'':u.cn}" placeholder="${u.cn==null?'ফাঁকা রাখলে বদলাবে না':''}"></div><div><label>ম্যাচ</label><input id="e_mt" type="number" value="${u.mt||0}"></div><div><label>মোট গোল</label><input id="e_goals" type="number" value="${u.goals||0}"></div><div><label>সর্বোচ্চ গোল</label><input id="e_best" type="number" value="${u.best||0}"></div></div>
   <div class="row" style="margin-top:6px"><button class="b s" data-add="100">+১০০</button><button class="b s" data-add="500">+৫০০</button><button class="b s" data-add="1000">+১০০০</button><button class="b s" data-add="-100">−১০০</button></div>
-  ${u.cn==null?'<div style="color:var(--bad);font-size:12px;margin-top:6px">⚠️ এই প্লেয়ার নতুন ভার্সনে এখনো লগইন করেনি। কয়েন সেট করলে তার ফোনের আসল কয়েন মুছে যেতে পারে — না বদলানোই ভালো।</div>':''}
+  ${u.cn==null?'<div style="color:var(--bad);font-size:12px;margin-top:6px">⚠️ এই প্লেয়ারের কয়েন-ওয়ালেট এখনো সার্ভারে সিঙ্ক হয়নি (সে আপডেট করা গেম খোলেনি)। কয়েন সরাসরি সেট না করে নিচের 🎁 উপহার বক্স ব্যবহার করুন — সে গেম খুললেই পপ-আপসহ পেয়ে যাবে।</div>':''}
   <label>🛍️ আইটেম (টিক দিলে বিনা কেনায় অ্যাকাউন্টে যোগ হবে)</label>${slots.map(s=>`<div style="margin:6px 0 2px;font-weight:700;font-size:12px">${SLOT[s]}</div><div class="items">${STORE.filter(q=>q.slot===s&&!q.hid).map(q=>`<label><input type="checkbox" data-it="${q.id}" ${own[q.id]?'checked':''}> ${q.e} ${esc(q.n)}</label>`).join('')}</div>`).join('')}
+  <div style="margin-top:12px;padding:10px;border-radius:14px;background:#f1faf4;border:1px dashed #86efac"><h3 style="border:0;margin:0 0 4px">🎁 এই প্লেয়ারকে উপহার পাঠাও</h3><div class="off" style="font-size:11px">গেমে পপ-আপ হয়ে দেখাবে — "এডমিনের পক্ষ থেকে উপহার"। ওয়ালেট সিঙ্ক না থাকলেও কাজ করে।</div>${giftForm('eg')}<button class="b" id="e_gift" style="margin-top:10px">🎁 শুধু এই প্লেয়ারকে পাঠাও</button></div>
   <label>🚫 ব্যান / সীমাবদ্ধ (কারণ লিখলে খেলতে পারবে না; ফাঁকা = ব্যান নেই)</label><input id="e_ban" value="${esc(u.ban||'')}">
   <label>📢 প্লেয়ারকে পপ-আপ বার্তা (সে গেম খুললে/খোলা থাকলে দেখবে)</label><input id="e_msg" placeholder="ফাঁকা রাখলে কিছু যাবে না">
   <div class="row" style="margin-top:12px"><button class="b" id="e_save">💾 সেভ করো</button><button class="b s" id="e_x">বন্ধ</button><button class="b d" id="e_del">🗑️ ডাটা মুছো</button></div>`;
   $('ed').classList.remove('hide');
   $('edc').onclick=async e=>{const a=e.target.closest('[data-add]');if(a){$('e_cn').value=(+$('e_cn').value||0)+(+a.dataset.add);return}
     if(e.target.id==='e_x'){$('ed').classList.add('hide');return}
+    if(e.target.id==='e_gift'){const g=readGift('eg');if(await sendGift([id],g))msg('🎁 '+u.name+'-কে পাঠানো হয়েছে: '+gDesc(g),4500);return}
     if(e.target.id==='e_del'){if(!confirm('এই প্লেয়ারের ডাটাবেস রেকর্ড মুছবে (লগইন অ্যাকাউন্ট থাকবে)। নিশ্চিত?'))return;await fs.doc('users/'+id).delete();U=U.filter(x=>x.id!==id);$('ed').classList.add('hide');msg('মুছে ফেলা হয়েছে');render();return}
     if(e.target.id==='e_save'){const o={name:$('e_name').value.trim().slice(0,14)||u.name,dist:$('e_dist').value.trim(),nat:$('e_nat').value.trim().toUpperCase(),gender:$('e_gender').value,team:+$('e_team').value,mt:+$('e_mt').value||0,goals:+$('e_goals').value||0,best:+$('e_best').value||0,ban:$('e_ban').value.trim()};
       const ow={};document.querySelectorAll('[data-it]').forEach(c=>{if(c.checked)ow[c.dataset.it]=1});const old=(u.inv&&u.inv.own)||{};Object.keys(old).forEach(k=>{if(!STORE.find(q=>q.id===k)||STORE.find(q=>q.id===k).hid)ow[k]=old[k]});
@@ -131,13 +154,15 @@ function rCfg(){const off=CFG.off||[],e=CFG.eco||{};
     ['sg','wc','wo','cc'].forEach(k=>{const v=$('x_'+k).value;if(v!=='')o.eco[k]=+v});
     try{await fs.doc('cfg/app').set(o,{mergeFields:['ac','pitch','mode','ann','maint','mtMsg','off','eco']});Object.assign(CFG,o);msg('✅ সবার গেমে আপডেট হয়েছে')}catch(x){msg('সেভ হয়নি: '+x.message,5000)}}}
 // ---------- টুলস ----------
-function rTools(){$('main').innerHTML=`<div class="g2"><div class="card"><h3>🪙 সবাইকে কয়েন দাও</h3><div class="row"><input id="t_n" type="number" placeholder="কত কয়েন"><button class="b" id="t_c">দাও</button></div><div class="off" style="font-size:11px;margin-top:6px">শুধু তাদের যাদের কয়েন একবার সিঙ্ক হয়েছে (নতুন ভার্সনে লগইন করেছে)। বাকিদের সংখ্যা দেখানো হবে।</div></div>
+function rTools(){$('main').innerHTML=`<div class="g2">
+  <div class="card"><h3>🎁 সবাইকে উপহার</h3>${giftForm('ga')}<button class="b" id="ga_s" style="margin-top:10px">🎁 সবাইকে পাঠাও (${U.length} জন)</button><div class="off" style="font-size:11px;margin-top:6px">যাদের ওয়ালেট সিঙ্ক হয়নি তারাও গেম খুললেই পপ-আপসহ পাবে।</div></div>
+  <div class="card"><h3>🎯 একজনকে উপহার</h3><label>প্লেয়ার (ইমেইল বা নাম)</label><input id="gi_q" list="gi_l" placeholder="ইমেইল / নাম লিখে বাছুন"><datalist id="gi_l">${U.slice(0,600).map(u=>`<option value="${esc(u.email||u.name)}">${esc(u.name)}</option>`).join('')}</datalist>${giftForm('gi')}<button class="b" id="gi_s" style="margin-top:10px">🎁 পাঠাও</button><div class="off" style="font-size:11px;margin-top:6px">প্লেয়ার-তালিকায় কারো সারিতে ট্যাপ করেও আলাদা উপহার পাঠানো যায়।</div></div>
   <div class="card"><h3>📢 সবাইকে পপ-আপ বার্তা</h3><input id="t_m" placeholder="বার্তা লিখো"><button class="b" id="t_b" style="margin-top:8px">পাঠাও</button></div>
-  <div class="card"><h3>🎁 ইমেইল দিয়ে আইটেম গিফট</h3><input id="t_e" type="email" placeholder="প্লেয়ারের ইমেইল"><select id="t_i" style="margin-top:6px">${STORE.filter(q=>!q.hid).map(q=>`<option value="${q.id}">${q.e} ${esc(q.n)}</option>`).join('')}</select><button class="b" id="t_g" style="margin-top:8px">গিফট দাও</button></div>
   <div class="card"><h3>🔍 ব্যান করা প্লেয়ার</h3>${U.filter(u=>u.ban).map(u=>`<div>${esc(u.name)} — ${esc(u.ban)} <button class="b s" data-un="${u.id}">আনব্যান</button></div>`).join('')||'<div class="off">কেউ নেই</div>'}</div></div>`;
   const chunk=async(rows,fn)=>{for(let i=0;i<rows.length;i+=400){const b=fs.batch();rows.slice(i,i+400).forEach(r=>fn(b,r));await b.commit()}};
-  $('t_c').onclick=async()=>{const n=+$('t_n').value;if(!n)return;const ok=U.filter(u=>u.cn!=null);if(!confirm(ok.length+' জনকে '+n+' কয়েন দেবে ('+(U.length-ok.length)+' জন বাদ)। নিশ্চিত?'))return;await chunk(ok,(b,u)=>b.update(fs.doc('users/'+u.id),{cn:FV.increment(n)}));ok.forEach(u=>u.cn+=n);msg('✅ দেওয়া হয়েছে')};
+  $('ga_s').onclick=async()=>{const g=readGift('ga');if(!g.coins&&!g.items.length&&!g.text)return msg('কয়েন, আইটেম বা বার্তা দিন',3000);if(!confirm(U.length+' জনকে পাঠাবে: '+gDesc(g)+'। নিশ্চিত?'))return;if(await sendGift(U.map(u=>u.id),g))msg('✅ সবাইকে পাঠানো হয়েছে — গেম খুললেই পপ-আপ পাবে',4500)};
+  $('gi_s').onclick=async()=>{const q=$('gi_q').value.trim().toLowerCase();if(!q)return msg('প্লেয়ার বাছুন');let m=U.filter(x=>(x.email||'').toLowerCase()===q);if(!m.length)m=U.filter(x=>(x.name||'').toLowerCase()===q);
+    if(!m.length)return msg('এই ইমেইল/নামে কাউকে পাওয়া যায়নি');if(m.length>1)return msg('একই নামে একাধিক প্লেয়ার — ইমেইল দিয়ে খুঁজুন',4000);const g=readGift('gi');if(await sendGift([m[0].id],g))msg('🎁 '+m[0].name+'-কে পাঠানো হয়েছে: '+gDesc(g),4500)};
   $('t_b').onclick=async()=>{const m=$('t_m').value.trim();if(!m||!confirm('সবাইকে পপ-আপ যাবে। নিশ্চিত?'))return;const t=Date.now();await chunk(U,(b,u)=>b.set(fs.doc('users/'+u.id),{msg:{text:m,t}},{merge:true}));msg('✅ পাঠানো হয়েছে')};
-  $('t_g').onclick=async()=>{const e=$('t_e').value.trim().toLowerCase(),u=U.find(x=>(x.email||'')===e);if(!u)return msg('এই ইমেইলে কেউ নেই');if(u.cn==null)return msg('প্লেয়ার এখনো নতুন ভার্সনে লগইন করেনি',4000);const inv=u.inv||{own:{},eq:{}};inv.own=inv.own||{};inv.eq=inv.eq||{};inv.own[$('t_i').value]=1;await fs.doc('users/'+u.id).set({inv},{merge:true});u.inv=inv;msg('✅ গিফট দেওয়া হয়েছে')};
   $('main').onclick=async e=>{const b=e.target.closest('[data-un]');if(b){await fs.doc('users/'+b.dataset.un).set({ban:''},{merge:true});U.find(x=>x.id===b.dataset.un).ban='';msg('আনব্যান হয়েছে');rTools()}}}
 </script></body></html>
