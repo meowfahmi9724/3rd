@@ -809,7 +809,7 @@ const bnOrd=d=>bnum(d)+(d===1?'লা':d===2||d===3?'রা':d===4?'ঠা':d<=1
 const dateInfo=()=>{const t=new Date();return{wd:WD[t.getDay()],dt:bnOrd(t.getDate())+' '+MO[t.getMonth()]+' '+bnum(t.getFullYear())}};
 // লগইনের আগের (গেস্ট) ব্যালান্স নতুন অ্যাকাউন্টের ব্যালান্সের সাথে যোগ করা
 const dparse=k=>{const a=String(k||'').split('-').map(Number);return a.length===3&&a[0]?new Date(a[0],a[1]-1,a[2]).getTime():0};
-function mergeGuest(){if(!CUID)return;let ch=false;
+function mergeGuest(){if(!CUID)return;let ch=false;try{if(fs&&localStorage.getItem('ps_gk'))fs.doc('guests/'+gKey()).set({nm:guestName(),lg:1},{merge:true}).catch(()=>{})}catch(e){}
   try{const gs=localStorage.getItem('ps_bonus');if(gs){const g=JSON.parse(gs)||{},k=BK(),u=JSON.parse(localStorage.getItem(k)||'{}')||{},gl=dparse(g.last),ul=dparse(u.last);
     let last,streak;if(gl>ul){last=g.last;streak=+g.streak||0}else if(ul>gl){last=u.last;streak=+u.streak||0}else{last=u.last||g.last||'';streak=Math.max(+u.streak||0,+g.streak||0)}
     localStorage.setItem(k,JSON.stringify({coins:(+u.coins||0)+(+g.coins||0),streak,last}));localStorage.removeItem('ps_bonus');ch=true}}catch(e){}
@@ -998,7 +998,7 @@ function renderAcct(){$('bAcct').textContent=ME?'⚙️ প্রোফাইল
 function auSet(){const up=auMode==='up';$('auT').textContent=up?'নতুন অ্যাকাউন্ট':'লগইন';$('auN').classList.toggle('hide',!up);$('auGo').textContent=up?'অ্যাকাউন্ট খোলো':'লগইন';$('auSw').textContent=up?'আগে থেকেই অ্যাকাউন্ট আছে? লগইন':'নতুন অ্যাকাউন্ট খুলতে চাও?'}
 function openAuth(m){auMode='in';auSet();$('auMsg').textContent=m||'';$('auM').classList.remove('hide')}
 try{firebase.initializeApp(FBC);auth=firebase.auth();fs=firebase.firestore();
-  auth.onAuthStateChanged(async u=>{ME=u?{uid:u.uid,name:(u.displayName||(u.email||'').split('@')[0]||'প্লেয়ার').slice(0,14)}:null;CUID=ME?ME.uid:'';if(ME){$('name').value=ME.name;await loadProf();mergeGuest();$('name').value=ME.name}else{P={};try{P=JSON.parse(localStorage.getItem('ps_prof_guest')||'{}')||{}}catch(e){P={}}P.mt=+P.mt||0;P.goals=+P.goals||0;P.best=+P.best||0;$('name').value=guestName()}authReady=true;renderAcct();bonusRender();loadLb();payWeekly();gate();frSync()});
+  auth.onAuthStateChanged(async u=>{ME=u?{uid:u.uid,name:(u.displayName||(u.email||'').split('@')[0]||'প্লেয়ার').slice(0,14)}:null;CUID=ME?ME.uid:'';if(ME){$('name').value=ME.name;await loadProf();mergeGuest();$('name').value=ME.name}else{P={};try{P=JSON.parse(localStorage.getItem('ps_prof_guest')||'{}')||{}}catch(e){P={}}P.mt=+P.mt||0;P.goals=+P.goals||0;P.best=+P.best||0;$('name').value=guestName()}authReady=true;renderAcct();bonusRender();loadLb();payWeekly();gate();frSync();guestSync()});
   auth.getRedirectResult().catch(e=>{openAuth(authErr(e))})}catch(e){}
 $('bAcct').onclick=()=>{if(ME){openProf();return}guestPop(true)};
 $('auSw').onclick=()=>{auMode=auMode==='up'?'in':'up';auSet()};
@@ -1184,7 +1184,7 @@ function applyCfg(c){CFG=c||{};const st=document.documentElement.style;
   if(c.maint)mtShow();else $('mtM').classList.add('hide');
   CCOST=eco('cc',20);STORE.forEach(q=>{if(q.p0===undefined)q.p0=q.p;q.p=(c.pr&&c.pr[q.id]!=null&&c.pr[q.id]!=='')?+c.pr[q.id]:q.p0;q.off=!!(c.hide&&c.hide.includes(q.id))});
   TH.apply();try{if(!$('stM').classList.contains('hide'))stRender()}catch(e){}}
-function statLog(s,my,won){try{if(!fs||!ME)return;const f=firebase.firestore.FieldValue.increment,m=local?'cpu':s.career?'career':s.tm?'team':s.fr?'friend':'room';fs.doc('stats/'+dayId()).set({plays:f(1),goals:f(my),wins:f(won?1:0),['m_'+m]:f(1)},{merge:true}).catch(()=>{})}catch(e){}}
+function statLog(s,my,won){try{if(!fs)return;const f=firebase.firestore.FieldValue.increment,m=local?'cpu':s.career?'career':s.tm?'team':s.fr?'friend':'room';const o={plays:f(1),goals:f(my),wins:f(won?1:0),['m_'+m]:f(1)};if(ME)fs.doc('stats/'+dayId()).set(o,{merge:true}).catch(()=>{});else{fs.doc('act/'+dayId()+'/g/'+gKey()).set({t:Date.now(),...o},{merge:true}).catch(()=>{});setTimeout(guestBeat,300)}}catch(e){}}
 try{if(fs)fs.doc('cfg/app').onSnapshot(sn=>applyCfg(sn.data()||{}),()=>{})}catch(e){}
 $('lobScene').innerHTML=lobScene();renderAcct();
 const APP_VER='20261108-h';
@@ -1199,6 +1199,13 @@ setTimeout(verCheck,4000);setInterval(verCheck,120000);document.addEventListener
 <script>
 // ব্যাকগ্রাউন্ড ফটো: নিজের লাইসেন্স করা ছবি 'bg.jpg' নামে index.html এর পাশে রাখলেই বসে যাবে (না থাকলে স্টেডিয়াম-নাইট থিম)
 (function(){var u=window.BG_URL||'bg.jpg',i=new Image();i.onload=function(){var r=document.documentElement;r.style.setProperty('--photo',"url('"+u+"')");r.classList.add('hasbg')};i.src=u})();
+// ===== গেস্ট ট্র্যাকিং (এডমিন প্যানেলের জন্য) =====
+function gKey(){let k='';try{k=localStorage.getItem('ps_gk')||''}catch(e){}if(!/^[a-z0-9]{16}$/.test(k)){k=Array.from({length:16},()=>'abcdefghijklmnopqrstuvwxyz0123456789'[Math.floor(Math.random()*36)]).join('');try{localStorage.setItem('ps_gk',k)}catch(e){}}return k}
+let gbT=null,gActKey='';
+function guestBeat(){try{if(ME||!fs||document.hidden)return;const gk=gKey(),n=new Date(),i=bonusInfo(),o={nm:guestName(),last:Date.now(),team:+$('team').value||0,mt:P.mt||0,goals:P.goals||0,best:P.best||0,cn:i.b.coins,dev:/Mobi|Android|iPhone/i.test(navigator.userAgent)?'m':'d'};let first=false;try{first=!localStorage.getItem('ps_gcr')}catch(e){}if(first)o.cr=Date.now();
+  fs.doc('guests/'+gk).set(o,{merge:true}).then(()=>{if(first)try{localStorage.setItem('ps_gcr','1')}catch(e){}}).catch(()=>{});
+  const k=dayId(n)+'-'+n.getHours();if(k!==gActKey){gActKey=k;fs.doc('act/'+dayId(n)+'/g/'+gk).set({t:Date.now(),hrs:{[n.getHours()]:true}},{merge:true}).catch(()=>{})}}catch(e){}}
+function guestSync(){clearInterval(gbT);gbT=null;if(ME||!fs)return;guestBeat();gbT=setInterval(guestBeat,30000)}
 $('gsTs').innerHTML=$('team').innerHTML;$('gsTs').onchange=()=>{$('team').value=$('gsTs').value;try{localStorage.setItem('ps_team',$('gsTs').value)}catch(e){}$('gsTL').innerHTML=teamLogo(+$('gsTs').value,30);renderAcct()};
 $('gsLogin').onclick=()=>{$('gsM').classList.add('hide');openAuth('লগইন করলে এই ব্রাউজারের কয়েন ও আইটেম অ্যাকাউন্টে যোগ হবে')};$('gsGo').onclick=()=>$('gsM').classList.add('hide');
 setTimeout(()=>{if(!authReady){authReady=true;gate()}},3000);try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
