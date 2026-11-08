@@ -190,6 +190,9 @@ input::placeholder{color:var(--mut)}select option,select optgroup{background:var
 details.card summary{color:var(--tx)}
 .lt,.ls{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6)}.ls{opacity:1}
 .cm,#game .info,#game .tm{color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.7)}
+
+/* ব্যাকগ্রাউন্ড ফটো থাকলে শুধু ফটো (ডিফল্ট থিম লুকিয়ে যায়) */
+:root.hasbg body::before{background-color:#1c7a45!important;background-image:var(--scrim),var(--photo)!important;background-size:cover,cover!important;background-position:center,center!important;background-repeat:no-repeat,no-repeat!important}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
@@ -1171,7 +1174,7 @@ function applyCfg(c){CFG=c||{};const st=document.documentElement.style;
 function statLog(s,my,won){try{if(!fs||!ME)return;const f=firebase.firestore.FieldValue.increment,m=local?'cpu':s.career?'career':s.tm?'team':s.fr?'friend':'room';fs.doc('stats/'+dayId()).set({plays:f(1),goals:f(my),wins:f(won?1:0),['m_'+m]:f(1)},{merge:true}).catch(()=>{})}catch(e){}}
 try{if(fs)fs.doc('cfg/app').onSnapshot(sn=>applyCfg(sn.data()||{}),()=>{})}catch(e){}
 $('lobScene').innerHTML=lobScene();renderAcct();
-const APP_VER='20261108-f';
+const APP_VER='20261108-g';
 let verBase=null,updPend=0;const verHash=t=>{let h=5381;for(let i=0;i<t.length;i++)h=((h<<5)+h+t.charCodeAt(i))|0;return h};
 async function verCheck(){try{const r=await fetch(location.pathname+'?_v='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text(),m=t.match(/const APP_VER='([^']+)'/);if(!m)return;
   const h=verHash(t);if(verBase===null)verBase=h;
@@ -1182,7 +1185,7 @@ setTimeout(verCheck,4000);setInterval(verCheck,120000);document.addEventListener
 </script>
 <script>
 // ব্যাকগ্রাউন্ড ফটো: নিজের লাইসেন্স করা ছবি 'bg.jpg' নামে index.html এর পাশে রাখলেই বসে যাবে (না থাকলে স্টেডিয়াম-নাইট থিম)
-(function(){var u=window.BG_URL||'bg.jpg',i=new Image();i.onload=function(){document.documentElement.style.setProperty('--bgimg',"var(--scrim),url('"+u+"')")};i.src=u})();
+(function(){var u=window.BG_URL||'bg.jpg',i=new Image();i.onload=function(){var r=document.documentElement;r.style.setProperty('--photo',"url('"+u+"')");r.classList.add('hasbg')};i.src=u})();
 </script>
 </body>
 </html>
