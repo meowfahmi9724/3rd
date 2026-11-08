@@ -193,6 +193,24 @@ details.card summary{color:var(--tx)}
 
 /* ব্যাকগ্রাউন্ড ফটো থাকলে শুধু ফটো (ডিফল্ট থিম লুকিয়ে যায়) */
 :root.hasbg body::before{background-color:#1c7a45!important;background-image:var(--scrim),var(--photo)!important;background-size:cover,cover!important;background-position:center,center!important;background-repeat:no-repeat,no-repeat!important}
+
+/* ডেইলি মিশন + লীগ */
+.lgs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:10px 0}.lgs div{background:var(--ac2);border:1px solid var(--bd);border-radius:12px;padding:8px 4px;text-align:center}.lgs b{display:block;font-size:20px}.lgs small{color:var(--mut);font-size:12px}
+.lgl{display:grid;gap:5px;margin:10px 0}.lgl div{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;border-radius:10px;background:var(--ac2);border:1px solid var(--bd);font-size:14px;opacity:.55}.lgl div.dn{opacity:.85}.lgl div.cu{opacity:1;border-color:var(--ac);font-weight:800}.lgl small{color:var(--mut)}
+.lbr{display:flex;gap:8px;align-items:center;padding:8px;border-radius:12px;background:var(--ac2);border:1px solid var(--bd);margin-bottom:6px;text-align:left}.lbr.me{border-color:var(--ac)}.lbr>i{font-style:normal;font-weight:900;min-width:26px;text-align:center}.lbr>div:nth-child(2){flex:1;min-width:0}.lbr b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.lbr small{color:var(--mut);font-size:12px}.lbr .st{text-align:right;font-size:12px;line-height:1.5}
+.dmDemo{position:relative;width:200px;height:160px;margin:6px auto 10px;border-radius:14px;background:linear-gradient(#1f7a3d,#2f9e55);overflow:hidden}
+.dmDemo .g{position:absolute;top:8px;left:50px;width:100px;height:24px;border:3px solid #fff;border-bottom:none}
+.dmDemo .k{position:absolute;top:16px;left:90px;width:20px;height:16px;border-radius:6px;background:#fb923c}
+.dmDemo .r{position:absolute;width:20px;height:22px;border-radius:6px;background:#38bdf8;animation:dmr 1.6s ease-in-out infinite alternate}
+.dmDemo .r1{top:66px;left:40px}.dmDemo .r2{top:96px;left:130px;background:#f472b6;animation-direction:alternate-reverse}
+.dmDemo .b{position:absolute;left:93px;bottom:14px;width:14px;height:14px;border-radius:50%;background:#fff;animation:dmb 2.2s infinite}
+.dmDemo .a{position:absolute;left:99px;bottom:34px;width:3px;height:0;background:rgba(255,255,255,.9);border-radius:2px;animation:dma 2.2s infinite}
+.dmDemo .f{position:absolute;left:86px;bottom:0;font-size:30px;animation:dmf 2.2s infinite}
+@keyframes dmr{from{transform:translateX(-22px)}to{transform:translateX(22px)}}
+@keyframes dmf{0%{transform:translateY(0);opacity:0}10%{opacity:1}50%{transform:translateY(-100px);opacity:1}62%,100%{transform:translateY(-100px);opacity:0}}
+@keyframes dmb{0%,48%{transform:translateY(0) scale(1);opacity:1}78%{transform:translateY(-112px) scale(.6);opacity:1}100%{transform:translateY(-112px) scale(.6);opacity:0}}
+@keyframes dma{0%{height:0;opacity:1}50%{height:96px;opacity:1}100%{height:96px;opacity:0}}
+.dmL{text-align:left;font-size:14px;line-height:1.55;margin:6px 0}.dmL p{margin:6px 0}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
@@ -208,13 +226,15 @@ details.card summary{color:var(--tx)}
 
 <section id="menu">
   <div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><div><div class="tl">👤 <span id="hName">—</span></div><div class="er" id="hInfo" style="margin:3px 0 0;text-align:left"></div></div><button id="bAcct" class="sec" style="width:auto;margin:0;padding:6px 12px;font-size:13px">⚙️ প্রোফাইল</button></div><input id="name" class="hide"><select id="team" class="hide"></select></div>
-  <button id="bCpu" class="big">🤖 কম্পিউটারের সাথে খেলো</button>
+  <button id="bCpu" class="big">🤖 কম্পিউটারের সাথে খেলো<br><small style="font-weight:500;color:var(--mut)">জিতলে <span data-k="cpuw">২০</span> 🪙</small></button>
+  <button id="bDaily" class="big">⭐ ডেইলি মিশন<br><small id="dmSub" style="font-weight:500;color:var(--mut)">সোয়াইপ করে গোল • ৫০ 🪙</small></button>
   <div class="tiles">
     <div class="card tile"><div class="ti">🏟️</div><b>ফ্রেন্ড ম্যাচ</b><small>রুম বানিয়ে বন্ধুকে ডাকো</small><select id="nsel"><option value="3">৩টি শট করে</option><option value="5" selected>৫টি শট করে</option><option value="7">৭টি শট করে</option><option value="10">১০টি শট করে</option></select><button id="bCreate" class="sec" disabled>রুম তৈরি করো</button></div>
     <div class="card tile"><div class="ti">🔑</div><b>রুমে ঢোকো</b><small>বন্ধুর কোড দাও</small><input id="jcode" maxlength="4" placeholder="রুম কোড" style="text-transform:uppercase;text-align:center;letter-spacing:4px"><button id="bJoin" class="sec" disabled>জয়েন</button></div>
   </div>
   <button id="bTeam" class="big">👥 টিম ম্যাচ<br><small style="font-weight:500;color:var(--mut)">২ দল • প্রতি দলে ৩–৬ জন • শটের সংখ্যা ওপরের বক্সের</small></button>
-  <button id="bCareer" class="big">🏅 ক্যারিয়ার ম্যাচ<br><small style="font-weight:500;color:var(--mut)">র‍্যান্ডম প্রতিপক্ষ • এন্ট্রি ৫ 🪙 • জিতলে ১০ 🪙</small></button>
+  <button id="bCareer" class="big">🏅 ক্যারিয়ার ম্যাচ<br><small style="font-weight:500;color:var(--mut)">র‍্যান্ডম প্রতিপক্ষ • এন্ট্রি <span data-k="cfee">২০</span> 🪙 • জিতলে <span data-k="cwin">৪০</span> 🪙</small></button>
+  <button id="bLeague" class="big">🏆 লীগ ম্যাচ<br><small style="font-weight:500;color:var(--mut)">পাড়ার লীগ থেকে বিশ্বকাপ • আলাদা লিডারবোর্ড</small></button>
   <button id="bStore" class="big">🛍️ স্টোর</button>
   <button id="bFriends" class="big">👥 ফ্রেন্ডস <span id="frBadge" class="tag hide" style="background:#dc2626;color:#fff"></span></button>
   <div class="msg pill" id="mmsg"></div>
@@ -311,8 +331,32 @@ details.card summary{color:var(--tx)}
 <div style="font-size:13.5px;line-height:1.65"><b>✅ গেস্ট হিসেবেও পারবে</b><br>• কম্পিউটার, রুম ও টিম ম্যাচ খেলতে<br>• ডেইলি বোনাস নিতে, কয়েন জমাতে, স্টোর ও ভল্ট ব্যবহার করতে<br>• এই ব্রাউজারে কয়েন ও পোশাক সেভ থাকবে<br><br><b>❌ লগইন ছাড়া পারবে না</b><br>• 🏆 লিডারবোর্ডে নাম তুলতে ও সাপ্তাহিক পুরস্কার পেতে<br>• 👥 ফ্রেন্ড বানাতে ও ফ্রেন্ডকে চ্যালেঞ্জ করতে<br>• 🏅 ক্যারিয়ার ম্যাচ খেলতে<br>• 🎁 সাইন-আপ বোনাস কয়েন পেতে<br>• ☁️ অন্য ফোন/ব্রাউজারে ডাটা পেতে — ব্রাউজারের ডাটা বা ক্যাশ মুছলে কয়েন ও আইটেম হারিয়ে যাবে<br><br><span class="er" style="color:var(--tx);margin:0">লগইন করলে এই ব্রাউজারের সব কয়েন, আইটেম ও ম্যাচের হিসাব তোমার অ্যাকাউন্টে যোগ হয়ে যাবে।</span></div>
 <div class="er" style="margin:10px 0 2px;text-align:left">তোমার দল</div><div style="display:flex;align-items:center;gap:8px"><span id="gsTL"></span><select id="gsTs" style="flex:1;margin-top:0"></select></div>
 <button id="gsLogin">🔐 লগইন / সাইন আপ করো</button><button id="gsGo" class="sec">▶ গেস্ট হিসেবে খেলো</button></div></div>
-<div id="mmov" class="mod hide"><div class="card"><div class="en">🏅 ক্যারিয়ার</div><div class="er" id="mmtx"></div><button id="mmx" class="sec">বাতিল করো (৫ 🪙 ফেরত)</button></div></div>
+<div id="mmov" class="mod hide"><div class="card"><div class="en">🏅 ক্যারিয়ার</div><div class="er" id="mmtx"></div><button id="mmx" class="sec">বাতিল করো (<span data-k="cfee">২০</span> 🪙 ফেরত)</button></div></div>
 <div id="edM" class="mod hide"><div class="card"><img class="av" src="data:image/jpeg;base64,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" alt=""><div class="en">ইশতিয়াক ফাহমি</div><div class="er">সম্পাদক</div><a class="fb" href="https://www.facebook.com/share/18c5isr1sK/" target="_blank" rel="noopener">🔗 ফেসবুক প্রোফাইল</a><button id="edX" class="sec">বন্ধ করো</button></div></div>
+<div id="dmM" class="ov hide" style="z-index:90;padding:8px;padding-top:max(8px,env(safe-area-inset-top));flex-direction:column;gap:6px">
+  <div style="width:100%;max-width:400px;display:flex;justify-content:space-between;align-items:center;gap:6px;color:#fff"><b style="font-size:17px">⭐ ডেইলি মিশন</b><span class="tag">🎯 ১টি শট • 🎁 <span data-k="dmp">৫০</span> 🪙</span><button id="dmBack" class="sec" style="width:auto;margin:0;padding:6px 12px;font-size:14px">⬅ ফিরে যাও</button></div>
+  <canvas id="dmC" width="360" height="540" style="width:min(100%,calc(72vh * 2 / 3));height:auto;aspect-ratio:2/3;touch-action:none;border-radius:16px;box-shadow:0 12px 34px rgba(0,0,0,.5);background:#1f7a3d"></canvas>
+  <div style="color:#fff;font-size:13px;text-align:center;text-shadow:0 1px 4px #000">👆 ওপরের দিকে সোয়াইপ করো • যত জোরে সোয়াইপ, তত জোরে শট</div>
+  <div id="dmHelp" class="ov hide" style="z-index:96"><div class="pc">
+    <div class="big" style="font-size:24px">⭐ ডেইলি মিশন</div>
+    <div class="sub" style="margin:0 0 4px">স্পেশাল ফিচার — নিয়ম অন্য ম্যাচের চেয়ে আলাদা!</div>
+    <div class="dmDemo"><div class="g"></div><div class="k"></div><div class="r r1"></div><div class="r r2"></div><div class="a"></div><div class="b"></div><div class="f">👆</div></div>
+    <div class="dmL">
+      <p>👆 <b>কোনো বাটন নেই!</b> স্ক্রিনে বল থেকে গোলের দিকে আঙুল দিয়ে <b>সোয়াইপ</b> করে শট মারো (ওপরের অ্যানিমেশনের মতো)।</p>
+      <p>⚡ যত জোরে সোয়াইপ, বল তত জোরে যাবে — ধীরে মারলে গোলকিপার ধরে ফেলবে।</p>
+      <p>🤖 গোলের সামনে চলমান রোবট ডামি আছে — ওদের ফাঁক দিয়ে বল পাঠাও, গায়ে লাগলে আটকে যাবে।</p>
+      <p>🎯 শুধু <b>১টি শট</b>! গোল হলে পুরস্কার <b><span data-k="dmp">৫০</span> 🪙</b>।</p>
+      <p>🕛 প্রতিদিন একবারই খেলা যাবে। পারো বা না পারো — রাত ১২টার পর নতুন দিনে আবার সুযোগ।</p>
+    </div>
+    <button id="dmGo">বুঝেছি, শুরু করি! 🚀</button>
+  </div></div>
+  <div id="dmRes" class="ov hide" style="z-index:95"><div class="pc"><div class="big" id="dmRT"></div><div class="sub" id="dmRB" style="font-size:15px"></div><button id="dmRX">মেনুতে ফিরে যাও</button></div></div>
+</div>
+<div id="lgM" class="ov hide" style="z-index:70"><div class="pc" style="text-align:left;padding:14px">
+  <div style="display:flex;justify-content:space-between;align-items:center"><div class="big" style="font-size:22px;margin:0">🏆 লীগ ম্যাচ</div><button id="lgX" class="sec" style="width:auto;margin:0;padding:6px 12px">✖</button></div>
+  <div class="pw" style="margin-top:10px"><button id="lgT1" class="on">আমার লীগ</button><button id="lgT2">লিডারবোর্ড</button></div>
+  <div id="lgB1"></div><div id="lgB2" class="hide"></div>
+</div></div>
 <div id="pop" class="ov hide"><div class="pc">
   <div id="pTitle" class="big"></div><div id="pWin" class="big" style="color:var(--ac)"></div>
   <div class="ln" id="pLine"></div><div class="sub" id="pNote"></div><div class="sub" id="pRm" style="font-weight:700"></div>
@@ -511,7 +555,7 @@ let CCOST=20;let CURVE=false,drag=null;
 function spend(n){const i=bonusInfo();if(i.b.coins<n)return false;try{localStorage.setItem(BK(),JSON.stringify({...i.b,coins:i.b.coins-n}))}catch(e){return false}bonusRender();return true}
 function curveToggle(on){CURVE=on;drag=null;$('trail').setAttribute('points','');$('pitch').style.touchAction=on?'none':'auto';$('bCurve').classList.toggle('on',on);$('bCurve').textContent=on?'🌀 কার্ল চালু — ফিল্ডে আঙুল বাঁকিয়ে টানো':'🌀 কার্ল শট ('+CCOST+' 🪙)'}
 function doPick(d){if(busy||!S||S.status!=='play')return;const R=roles(S),isK=R.s===uid;if(!isK&&R.g!==uid)return;
-  if(local){const c=ZN[Math.floor(Math.random()*6)]+(isK?'':1+Math.floor(Math.random()*3)),s={...S};s.pk=isK?d:c;s.pg=isK?c:d;onState({...s,...resolveShot(s)})}
+  if(local){const c=cpuPick(isK,S.lg?S.lg.d:null,d),s={...S};s.pk=isK?d:c;s.pg=isK?c:d;onState({...s,...resolveShot(s)})}
   else{const f=isK?'pk':'pg';if(S[f])return;S={...S,[f]:d};render();ref.update({[f]:d}).catch(()=>{})}}
 const pp=e=>{const r=$('pitch').getBoundingClientRect();return[(e.clientX-r.left)/r.width*300,(e.clientY-r.top)/r.height*190]};
 $('pitch').addEventListener('pointerdown',e=>{if(!CURVE)return;drag=[pp(e)];try{$('pitch').setPointerCapture(e.pointerId)}catch(x){}});
@@ -546,7 +590,7 @@ function resolveShot(s){
   const hist=[...s.hist,{n:s.n,k:z,g,r:res,x,c,kd:kind,cv}],n=s.n+1;
   const sh=[Math.ceil(n/2),Math.floor(n/2)];let status='play';
   const N=s.N||5;if(n<=2*N){const rem=[N-sh[0],N-sh[1]];if(score[0]>score[1]+rem[1]||score[1]>score[0]+rem[0])status='done'}
-  if(n>=2*N&&n%2===0&&score[0]!==score[1])status='done';
+  if(n>=2*N&&n%2===0&&(score[0]!==score[1]||s.lg))status='done';
   return{hist,score,n,pk:null,pg:null,status};
 }
 
@@ -688,6 +732,7 @@ function onState(s){
   if(s.status==='lobby'&&!s.tm)lobbyNotes(s);
   if(s.status==='lobby'){show('lobby');$('lcode').textContent=s.code;view=s;lobbyRender(s);return}
   show('game');$('rcode').classList.toggle('hide',local);if(!local){$('rcode').textContent='রুম '+s.code}
+  if(s.lg){const g=LEAGUES[s.lg.l];$('rcode').classList.remove('hide');$('rcode').textContent='🏆 '+g.n+' • ম্যাচ '+bnum(s.lg.m+1)+'/'+bnum(g.m)+(s.lg.m===g.m-1?' • ফাইনাল':'')}
   if(ref&&ref.isHost&&s.status==='play'&&s.pk&&s.pg&&resolvingN!==s.n){resolvingN=s.n;ref.update(resolveShot(s)).catch(()=>{resolvingN=-1})}
   if(s.status==='done'&&s.rm){const o=1-mi;if(s.rm[o]&&!s.rm[mi]&&rmSeen!==1){rmSeen=1;toast('🔄 '+(o?s.p2:s.p1).name+' আরেক ম্যাচ খেলতে চায়!',5000);beep(660,.2);buzz()}}
   if(s.hist.length>lastLen){
@@ -733,8 +778,8 @@ function render(pre){
   if(done){
     if(!counted){counted=true;matchDone(s)}
     const w=s.win!=null?s.win:(s.score[0]>s.score[1]?0:1),o=1-mi,r=s.rm||[0,0],dead=!!s.closed,mine=r[mi],th=r[o];
-    $('pTitle').textContent=w===mi?'🎉 তুমি জিতেছ!':'😔 তুমি হেরেছ';$('bPoster').classList.toggle('hide',w!==mi||!POST);
-    $('pWin').textContent='🏆 বিজয়ী: '+names[w];
+    const drw=!!s.lg&&s.score[0]===s.score[1];$('pTitle').textContent=drw?'🤝 ম্যাচ ড্র!':w===mi?'🎉 তুমি জিতেছ!':'😔 তুমি হেরেছ';$('bPoster').classList.toggle('hide',drw||w!==mi||!POST);
+    $('pWin').textContent=drw?'দুই দলের স্কোর সমান':'🏆 বিজয়ী: '+names[w];
     $('pLine').innerHTML=`<span>${esc(names[0])}</span><i>${s.score[0]} – ${s.score[1]}</i><span>${esc(names[1])}</span>`;
     $('pNote').textContent=s.ff?(s.ff.why==='net'?'📡 '+s.ff.name+'-এর ইন্টারনেট ফিরে আসেনি — অটো জয়':'🚪 '+s.ff.name+' খেলা ছেড়ে চলে গেছেন — অটো জয়'):'';
     const rt=dead?'🚪 রুম বন্ধ — রিম্যাচ সম্ভব নয়':mine?'⏳ '+names[o]+'-এর সম্মতির অপেক্ষা…':th?'🔄 '+names[o]+' আরেক ম্যাচ খেলতে চায়!':'';
@@ -742,6 +787,7 @@ function render(pre){
     $('pRm').textContent=rt;$('rmTx').textContent=rt;
     [$('bAgain'),$('bAgain2')].forEach(b=>{b.textContent=bt;b.disabled=dead||!!mine});
     if(S.career){[$('bAgain'),$('bAgain2')].forEach(b=>{b.textContent='ক্যারিয়ারে রিম্যাচ নেই';b.disabled=true});$('rmTx').textContent='';$('pRm').textContent=''}
+    if(S.lg){const lr=lgLast||{};[$('bAgain'),$('bAgain2')].forEach(b=>{b.textContent=lr.champ?'🏆 চ্যাম্পিয়ন!':lr.adv?'▶ পরের ম্যাচ':'🔄 আবার খেলো';b.disabled=!!lr.champ});$('rmTx').textContent='';$('pRm').textContent=lr.msg||''}
     $('pop').classList.toggle('hide',popOff);
   }else $('pop').classList.add('hide');
 }
@@ -780,12 +826,13 @@ document.querySelectorAll('#ctl button').forEach(btn=>btn.onclick=()=>{
   }
 });
 function doRematch(){
+  if(S&&S.lg){lgPlay();return}
   if(local){lastLen=0;popOff=false;onState(newState(S.p1,S.p2,S.N));return}
   if(!S||S.closed||(S.rm&&S.rm[mi]))return;
   if(ref.isHost)ref.update({rmHost:mi+1});else ref.update({rm:1})}
 $('bAgain').onclick=$('bAgain2').onclick=doRematch;
 function exitGame(){
-  if(local||!ref){leave();return}
+  if(local||!ref){const wl=!!(S&&S.lg);leave();if(wl)setTimeout(lgOpen,60);return}
   if(ref.isHost){ref.update(S.status==='play'?{status:'done',win:1-mi,ff:{name:S.hn||S.p1.name,why:'leave'},closed:true,pk:null,pg:null,lost:null}:{closed:true});setTimeout(leave,600)}
   else{ref.update({leave:1});setTimeout(leave,400)}}
 $('bExit').onclick=()=>{if(S&&S.status==='play'){$('cfTx').textContent=local?'এই ম্যাচ শেষ হয়ে যাবে।':S.tm?(ref&&ref.isHost?'হোস্ট বের হলে ম্যাচ শেষ হয়ে যাবে।':'বের হলে তোমার পালার শটগুলো মিস ধরা হবে।'):'বের হলে প্রতিপক্ষ অটো জিতে যাবে।';$('cf').classList.remove('hide')}else exitGame()};
@@ -857,7 +904,7 @@ $('pfSave').onclick=async()=>{const u=auth.currentUser,msg=$('pfMsg');msg.textCo
     const pw=$('pfP').value;if(pw){if(pw.length<6){msg.textContent='পাসওয়ার্ড কমপক্ষে ৬ অক্ষর দাও।';return}await u.updatePassword(pw)}
     P.gender=$('pfG').value;P.nat=$('pfC').value;P.dist=P.nat==='BD'?$('pfD').value:'';P.team=+$('pfT').value;$('team').value=P.team;$('name').value=ME.name;saveProf();renderAcct();if(fs)fs.doc('lb/w'+wkOf()+'/p/'+ME.uid).update({name:ME.name,dist:P.dist||''}).catch(()=>{});$('pfP').value='';msg.textContent='✅ আপডেট হয়েছে'}
   catch(x){msg.textContent=x&&x.code==='auth/requires-recent-login'?'নিরাপত্তার জন্য একবার সাইন আউট করে আবার লগইন করে চেষ্টা করো।':authErr(x)}};
-async function payWeekly(){if(!fs||!ME)return;const pw=wkOf()-1,key='ps_wk_'+ME.uid+'_'+pw;try{if(localStorage.getItem(key))return;const q=await fs.collection('lb/w'+pw+'/p').orderBy('goals','desc').limit(10).get();localStorage.setItem(key,'1');const idx=q.docs.findIndex(d=>d.data().uid===ME.uid);if(idx>=0){addCoins(50);toast('🏆 গত সপ্তাহের লিডারবোর্ডে তুমি '+(idx+1)+' নম্বরে ছিলে! +৫০ 🪙',6000)}}catch(e){}}
+async function payWeekly(){if(!fs||!ME)return;const pw=wkOf()-1,key='ps_wk_'+ME.uid+'_'+pw;try{if(localStorage.getItem(key))return;const q=await fs.collection('lb/w'+pw+'/p').orderBy('goals','desc').limit(10).get();localStorage.setItem(key,'1');const idx=q.docs.findIndex(d=>d.data().uid===ME.uid);if(idx>=0){const lbb=rwv('lbw','w',50);addCoins(lbb);toast('🏆 গত সপ্তাহের লিডারবোর্ডে তুমি '+(idx+1)+' নম্বরে ছিলে! +'+bnum(lbb)+' 🪙',6000)}}catch(e){}}
 // স্টোর
 const CATS=[['top','👕 টপ'],['bot','👖 প্যান্ট'],['boots','👟 বুট'],['hair','💇 চুল'],['gloves','🧤 গ্লাভস'],['ball','⚽ বল'],['fx','🔥 শট ইফেক্ট'],['acc','🎽 এক্সেসরি']];let stTab='top',stSel=null,vtTab='top';
 const teamCol=()=>TEAMS[+$('team').value||0][1];
@@ -1018,13 +1065,21 @@ async function loadLb(){if(!fs)return;$('lbT').textContent='রিসেট হ�
 $('lbR').onclick=loadLb;
 function addCoins(n){const i=bonusInfo();try{localStorage.setItem(BK(),JSON.stringify({...i.b,coins:i.b.coins+n}))}catch(e){}bonusRender()}
 function addGoals(g){if(!fs||!ME)return;fs.doc('lb/w'+wkOf()+'/p/'+ME.uid).set({uid:ME.uid,name:ME.name,dist:P.nat==='BD'?(P.dist||''):'',goals:firebase.firestore.FieldValue.increment(g),t:Date.now()},{merge:true}).then(()=>{toast('⚽ +'+g+' গোল লিডারবোর্ডে যোগ হয়েছে',3000);loadLb()}).catch(()=>{})}
-function matchDone(s){const my=s.hist.filter(h=>h.r==='goal'&&roles(s,h.n).s===uid).length,w=s.win!=null?s.win:(s.score[0]>s.score[1]?0:1),won=w===mi;
-  P.mt=(P.mt||0)+1;P.goals=(P.goals||0)+my;P.best=Math.max(P.best||0,my);saveProf();
-  const lg=Math.min(my,20);if(ME&&lg>0)addGoals(lg);
-  if(s.career){if(won){addCoins(10);toast('🏆 ক্যারিয়ারে জিতেছ! +১০ 🪙',5000)}else toast('😔 হেরেছ — এন্ট্রি ফি ৫ 🪙 গেছে',4000)}
-  else if(won){const r=local?eco('wc',5):eco('wo',10);addCoins(r);toast('🏆 ম্যাচ জিতেছ! +'+r+' 🪙',4000)}
-  statLog(s,my,won);if(!ME)setTimeout(()=>guestPop(false,true),2600);
-  if(won)posterQueue(s)}
+function matchDone(s){
+  const my=s.hist.filter(h=>h.r==='goal'&&roles(s,h.n).s===uid).length,dr=!!s.lg&&s.score[0]===s.score[1],w=s.win!=null?s.win:(s.score[0]>s.score[1]?0:1),won=!dr&&w===mi;
+  /* কয়েন সবার আগে — নিচের কোনো ধাপ ভেঙে গেলেও কয়েন যেন হারিয়ে না যায় */
+  try{
+    if(s.lg)lgDone(s,my,s.score[1-mi],won,dr);
+    else{const m=local?'cpu':s.career?'career':s.tm?'team':s.fr?'friend':'room',r=boost((won?rwv(m,'w',m==='career'?40:m==='cpu'?eco('wc',20):eco('wo',10)):rwv(m,'l',0))+my*rwv(m,'g',0)),c=r>0?' +'+bnum(r)+' 🪙':'';
+      if(r>0)addCoins(r);
+      const tx=won?(m==='career'?'🏆 ক্যারিয়ারে জিতেছ!':'🏆 ম্যাচ জিতেছ!')+c:m==='career'?'😔 হেরেছ — এন্ট্রি ফি '+bnum(cFee())+' 🪙 গেছে'+(r>0?' •'+c:''):r>0?'😔 হেরেছ —'+c:'';
+      if(tx)toast(tx,5000)}
+  }catch(e){}
+  try{P.mt=(P.mt||0)+1;P.goals=(P.goals||0)+my;P.best=Math.max(P.best||0,my);saveProf()}catch(e){}
+  try{const lg=Math.min(my,20);if(ME&&lg>0)addGoals(lg)}catch(e){}
+  try{statLog(s,my,won)}catch(e){}
+  try{if(!ME)setTimeout(()=>guestPop(false,true),2600)}catch(e){}
+  try{if(won)posterQueue(s)}catch(e){}}
 function hostOpen(extra,onReady,onFail){const name=myName(),A='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let tries=0;
   const attempt=()=>{const code=Array.from({length:4},()=>A[Math.floor(Math.random()*A.length)]).join(''),p=new Peer('pso-'+code);let done=false;
     p.on('open',()=>{done=true;peer=p;mi=0;lastLen=0;counted=false;ref=hostRoom(code,p);ref.set({code,...newState({id:uid,name,team:myTeam(),pf:myPf()},null,+$('nsel').value),...extra});onReady(code)});
@@ -1037,9 +1092,9 @@ async function careerStart(){
   if(!auth||!fs){toast('অনলাইন সার্ভিস লোড হয়নি',3000);return}
   if(!need())return;
   if(!window.Peer||cq)return;
-  if(!spend(5)){toast('ক্যারিয়ারে ৫ 🪙 লাগে — দৈনিক বোনাস নাও',4000);return}
+  const fee=cFee();if(!spend(fee)){toast('ক্যারিয়ারে '+bnum(fee)+' 🪙 লাগে — দৈনিক বোনাস নাও',4000);return}
   const q=cq={dead:false,hb:null,to:null,un:null,host:false};
-  q.end=(refund,msg)=>{if(q.dead)return;q.dead=true;clearInterval(q.hb);clearTimeout(q.to);$('mmov').classList.add('hide');cq=null;if(refund){addCoins(5);if(msg)toast(msg,4000)}};
+  q.end=(refund,msg)=>{if(q.dead)return;q.dead=true;clearInterval(q.hb);clearTimeout(q.to);$('mmov').classList.add('hide');cq=null;if(refund){addCoins(fee);if(msg)toast(msg,4000)}};
   $('mmov').classList.remove('hide');$('mmtx').textContent='প্রতিপক্ষ খোঁজা হচ্ছে…';
   hostOpen({N:5,career:1},async code=>{
     if(q.dead){try{peer&&peer.destroy()}catch(e){}peer=null;ref=null;return}
@@ -1049,12 +1104,12 @@ async function careerStart(){
         tx.set(mmDoc(),{code,uid:ME.uid,name:ME.name,t:Date.now()});return{}});
       if(q.dead){await clearMine();return}
       if(r.g){q.end(false);try{peer&&peer.destroy()}catch(e){}peer=null;ref=null;toast('প্রতিপক্ষ পাওয়া গেছে! সংযোগ হচ্ছে…',3000);doJoin(r.g);
-        setTimeout(()=>{if(!(S&&S.career)){addCoins(5);toast('সংযোগ হয়নি, ৫ 🪙 ফেরত দেওয়া হলো',4000);leave()}},15000);return}
+        setTimeout(()=>{if(!(S&&S.career)){addCoins(fee);toast('সংযোগ হয়নি, '+bnum(fee)+' 🪙 ফেরত দেওয়া হলো',4000);leave()}},15000);return}
       q.host=true;q.hb=setInterval(()=>mmDoc().update({t:Date.now()}).catch(()=>{}),6000);
       q.un=ref.onSnapshot(sn=>{const d=sn.data();if(d&&d.p2&&!q.dead){const u=q.un;q.un=null;u&&u();q.end(false);sub()}});
-      q.to=setTimeout(async()=>{const u=q.un;q.un=null;u&&u();await clearMine();try{peer&&peer.destroy()}catch(e){}peer=null;ref=null;q.end(true,'প্রতিপক্ষ পাওয়া যায়নি, ৫ 🪙 ফেরত দেওয়া হলো')},60000);
-    }catch(e){q.end(true,'ম্যাচমেকিং চালু করা যায়নি, ৫ 🪙 ফেরত দেওয়া হলো');try{peer&&peer.destroy()}catch(x){}peer=null;ref=null}
-  },()=>q.end(true,'রুম খোলা যায়নি, ৫ 🪙 ফেরত দেওয়া হলো'));
+      q.to=setTimeout(async()=>{const u=q.un;q.un=null;u&&u();await clearMine();try{peer&&peer.destroy()}catch(e){}peer=null;ref=null;q.end(true,'প্রতিপক্ষ পাওয়া যায়নি, '+bnum(fee)+' 🪙 ফেরত দেওয়া হলো')},60000);
+    }catch(e){q.end(true,'ম্যাচমেকিং চালু করা যায়নি, '+bnum(fee)+' 🪙 ফেরত দেওয়া হলো');try{peer&&peer.destroy()}catch(x){}peer=null;ref=null}
+  },()=>q.end(true,'রুম খোলা যায়নি, '+bnum(fee)+' 🪙 ফেরত দেওয়া হলো'));
 }
 $('bCareer').onclick=careerStart;
 function pcard(p,on,rd,me){if(!p)return`<div class="card" style="margin:6px 0;opacity:.7">⏳ খেলোয়াড়ের অপেক্ষা… (কোড/লিংক শেয়ার করো)</div>`;const f=p.pf||{};return`<div class="card" style="margin:6px 0;text-align:left;${rd?'border-color:#16a34a':''}"><b>${esc(p.name)}${me?' (তুমি)':''}</b> <span class="tag">${on?'🟢 অনলাইন':'🔴 নেটওয়ার্কে নেই'}</span> ${rd?'<span class="tag">✅ প্রস্তুত</span>':''}<div style="margin:6px 0 0;font-weight:700">${teamLogo(p.team,26)} ${esc(TEAMS[(+p.team>=0&&TEAMS[+p.team])?+p.team:0][0])}</div><div class="er" style="margin:6px 0 0;text-align:left">🌍 ${esc(f.nat||'—')}${f.dist?', '+esc(f.dist):''} • ম্যাচ ${+f.mt||0} • মোট গোল ${+f.goals||0} • এক ম্যাচে সর্বোচ্চ ${+f.best||0}</div></div>`}
@@ -1167,7 +1222,7 @@ let wApply=false,wT=null,wPend=false,actKey='';
 const sameO=(a,b)=>{a=a||{};b=b||{};const k=Object.keys(a);return k.length===Object.keys(b).length&&k.every(x=>a[x]===b[x])};
 function applyWallet(r){if(r.cn===undefined)return;wApply=true;try{localStorage.setItem(BK(),JSON.stringify({coins:+r.cn||0,streak:+r.stk||0,last:r.lst||''}));if(r.inv)localStorage.setItem(IK(),JSON.stringify({own:r.inv.own||{},eq:r.inv.eq||{}}))}catch(e){}wApply=false}
 function pushWallet(){try{if(!ME||!fs||wApply)return;wPend=true;clearTimeout(wT);wT=setTimeout(()=>{const i=bonusInfo(),v=invGet();fs.doc('users/'+ME.uid).set({cn:i.b.coins,stk:i.b.streak||0,lst:i.b.last||'',inv:{own:v.own,eq:v.eq}},{merge:true}).then(()=>{wPend=false}).catch(()=>{wPend=false})},700)}catch(e){}}
-function applyUser(r){applyWallet(r);BAN=r.ban||'';
+function applyUser(r){applyWallet(r);BAN=r.ban||'';try{if(r.dm===dkey(new Date())){localStorage.setItem(DMK(),r.dm);dmBtn()}}catch(e){}
   if(r.msg&&r.msg.t&&r.msg.text){let seen=0;try{seen=+localStorage.getItem('ps_ms_'+ME.uid)||0}catch(e){}if(r.msg.t>seen){try{localStorage.setItem('ps_ms_'+ME.uid,r.msg.t)}catch(e){}notice('📢 এডমিনের বার্তা',esc(r.msg.text))}}}
 function startUserSync(){try{uUn=fs.doc('users/'+ME.uid).onSnapshot(sn=>{const r=sn.data();if(!r||!ME)return;let ch=false;
     ['nat','dist','team','gender'].forEach(k=>{if(r[k]!==undefined&&P[k]!==r[k]){P[k]=r[k];ch=true}});['mt','goals','best'].forEach(k=>{if(r[k]!==undefined&&P[k]!==(+r[k]||0)){P[k]=+r[k]||0;ch=true}});
@@ -1176,18 +1231,200 @@ function startUserSync(){try{uUn=fs.doc('users/'+ME.uid).onSnapshot(sn=>{const r
     if(!wPend&&r.cn!==undefined){const i=bonusInfo(),v=invGet();if(r.cn!==i.b.coins||(r.inv&&(!sameO(r.inv.own,v.own)||!sameO(r.inv.eq,v.eq)))){applyWallet(r);bonusRender();try{if(!$('stM').classList.contains('hide'))stRender();if(!$('vtM').classList.contains('hide'))vtRender()}catch(e){}}}
     if(r.cn===undefined&&!wPend)pushWallet();applyUser(r)},()=>{})}catch(e){}}
 const eco=(k,d)=>(CFG.eco&&CFG.eco[k]!=null&&CFG.eco[k]!=='')?+CFG.eco[k]:d;
+/* এডমিন প্যানেল থেকে লাইভ কয়েন/লীগ কনফিগ (cfg/app → rw, ev, lgc, flags) */
+const rwv=(m,f,d)=>{const v=CFG.rw&&CFG.rw[m]&&CFG.rw[m][f];return(v!=null&&v!=='')?+v:d};
+const evX=()=>{const e=CFG.ev;return e&&+e.x>1&&+e.until>Date.now()?+e.x:1};
+const boost=n=>Math.round(n*evX());
+const lgPt=k=>{const v=CFG.lgc&&CFG.lgc['p'+k];return(v!=null&&v!=='')?+v:({w:3,d:1,l:0})[k]};
+const lgWin=last=>rwv('league',last?'f':'w',last?50:20);
+const cFee=()=>rwv('career','fee',20),dmP=()=>rwv('daily','w',50);
+const COIN={cpuw:()=>rwv('cpu','w',eco('wc',20)),cfee:cFee,cwin:()=>rwv('career','w',40),dmp:dmP};
+const ff=k=>!!(CFG.flags&&CFG.flags[k]);
+function coinTx(){document.querySelectorAll('[data-k]').forEach(e=>{try{e.textContent=bnum(COIN[e.dataset.k]())}catch(x){}});try{dmBtn()}catch(x){}try{if(!$('lgM').classList.contains('hide'))lgRender()}catch(x){}}
 function mtShow(){$('mtT').textContent=CFG.mtMsg||'গেমে কিছু কাজ চলছে, একটু পরে আসো।';$('mtM').classList.remove('hide')}
 function applyCfg(c){CFG=c||{};const st=document.documentElement.style;
   c.ac?st.setProperty('--ac',c.ac):st.removeProperty('--ac');c.pitch?st.setProperty('--pitch',c.pitch):st.removeProperty('--pitch');
-  const off=c.off||[];[['bCareer','career'],['bTeam','team'],['bStore','store'],['bFriends','friends'],['bCpu','cpu']].forEach(([id,k])=>$(id).classList.toggle('hide',off.includes(k)));
-  const a=$('ann');a.textContent=c.ann||'';a.classList.toggle('hide',!c.ann);
+  const off=c.off||[];[['bCareer','career'],['bTeam','team'],['bStore','store'],['bFriends','friends'],['bCpu','cpu'],['bLeague','league'],['bDaily','daily']].forEach(([id,k])=>$(id).classList.toggle('hide',off.includes(k)));const tl=document.querySelector('#menu .tiles');if(tl)tl.classList.toggle('hide',off.includes('room'));
+  const ex=evX(),at=c.ann||(ex>1?'🔥 ×'+ex+' কয়েন বুস্ট চলছে — এখন খেললে বেশি কয়েন!':''),a=$('ann');a.textContent=at;a.classList.toggle('hide',!at);
   if(c.maint)mtShow();else $('mtM').classList.add('hide');
   CCOST=eco('cc',20);STORE.forEach(q=>{if(q.p0===undefined)q.p0=q.p;q.p=(c.pr&&c.pr[q.id]!=null&&c.pr[q.id]!=='')?+c.pr[q.id]:q.p0;q.off=!!(c.hide&&c.hide.includes(q.id))});
-  TH.apply();try{if(!$('stM').classList.contains('hide'))stRender()}catch(e){}}
+  coinTx();TH.apply();try{if(!$('stM').classList.contains('hide'))stRender()}catch(e){}}
 function statLog(s,my,won){try{if(!fs)return;const f=firebase.firestore.FieldValue.increment,m=local?'cpu':s.career?'career':s.tm?'team':s.fr?'friend':'room';const o={plays:f(1),goals:f(my),wins:f(won?1:0),['m_'+m]:f(1)};if(ME)fs.doc('stats/'+dayId()).set(o,{merge:true}).catch(()=>{});else{fs.doc('act/'+dayId()+'/g/'+gKey()).set({t:Date.now(),...o},{merge:true}).catch(()=>{});setTimeout(guestBeat,300)}}catch(e){}}
 try{if(fs)fs.doc('cfg/app').onSnapshot(sn=>applyCfg(sn.data()||{}),()=>{})}catch(e){}
 $('lobScene').innerHTML=lobScene();renderAcct();
-const APP_VER='20261109-lobby';
+const LEAGUES=[
+{n:'পাড়ার লীগ',ic:'🏘️',m:5,o:['ব্যাটারির গলির কাবিলা','বডি সোহেল','বক্সার পাশা','প্লেবয় নেহাল','চায়ের দোকানের শিমুল']},
+{n:'স্কুলের লীগ',ic:'🏫',m:10,o:['ক্লাস ক্যাপ্টেন রাজু','ব্যাকবেঞ্চার টিটু','টিফিন-চোর মিঠু','ফার্স্ট বয় ফয়সাল','হোমওয়ার্ক-ভোলা হানিফ','স্যারের ছেলে সাকিব','ঘণ্টা-বাজানো বাদল','ক্যান্টিন কামাল','পিটি স্যার রহমত','হেডস্যারের ভাতিজা হাবিব']},
+{n:'কলেজের লীগ',ic:'🎓',m:5,o:['ফ্রেন্ডজোন ফারুক','ক্লাস-পালানো পলাশ','বাইক-বিলাসী বাপ্পি','প্রক্সি-মাস্টার পিয়াস','ক্যাম্পাস কিং কবির']},
+{n:'উপজেলার লীগ',ic:'🌾',m:10,o:['হাটের মাতব্বর মান্নান','চেয়ারম্যানের ভাগ্নে চঞ্চল','বাজারের বাঘা বাবুল','ধানক্ষেতের ধুরন্ধর ধলু','মাছওয়ালা মনু','রিকশা-রেসার রফিক','মেলার মজনু','পুকুরপাড়ের পাঁচু','চায়ের কাপের চাঁন','হাটের গ্যাংস্টার গনি']},
+{n:'জেলার লীগ',ic:'🏙️',m:5,o:['সার্কিট হাউসের সুলতান','মিষ্টির দোকানের মিলন','নদীর ঘাটের নাসির','বাস-টার্মিনালের তুফান','জেলা স্টেডিয়ামের জাদুকর জলিল']},
+{n:'বিভাগের লীগ',ic:'🗺️',m:10,o:['বুড়িগঙ্গার বাবুল','পাহাড়ি পাগলা পলাশ','হাওরের হাঙর হাসান','সুন্দরবনের বাঘা বশির','পদ্মার ইলিশ ইলিয়াস','চা-বাগানের চঞ্চল চাঁন','উত্তরবঙ্গের আম-চোর আজাদ','কক্সবাজারের শুঁটকি শফিক','রংপুরের রাজা রাসেল','মুক্তাগাছার মুসা']},
+{n:'জাতীয় লীগ',ic:'🇧🇩',m:10,o:['ন্যাশনাল ডন নাঈম','ফেসবুক-ফেমাস ফরহাদ','বিজ্ঞাপনের বরকত','স্টেডিয়ামের সিংহ সোহরাব','গোল্ডেন গ্লাভস গাফফার','সুপারস্টার সজীব','টিভি-তারকা তানভীর','জাতীয় ঝড় জুয়েল','ওয়ার্ল্ডক্লাস ওয়াসিম','বাংলার বাঘ বাদশা']},
+{n:'এশিয়া লীগ',ic:'🌏',m:5,o:['টোকিও টর্নেডো তাকাশি','সিউলের সুপারবয় সুং','দুবাইয়ের দিলদার শেখ','দিল্লির দাদা দীপক','বেইজিংয়ের বজ্র বাও']},
+{n:'বিশ্বকাপ',ic:'🏆',m:15,o:['সাম্বা সম্রাট সিলভা','আর্জেন্টিনার আগুন আন্তোনিও','জার্মান যন্ত্র ইয়র্গ','ফ্রেঞ্চ ফাইটার ফ্রাঁসোয়া','ইতালির দেয়াল ইগনাজিও','স্প্যানিশ সাপ সার্জিও','পর্তুগিজ প্রিন্স পেদ্রো','ডাচ ড্রাগন ডার্ক','বেলজিয়ান বজ্র ব্রুনো','ক্রোয়েশিয়ান ক্রাশ ক্রিস্তিয়ান','মরক্কোর মরুঝড় মুস্তাফা','মেক্সিকান মরিচ মিগেল','আফ্রিকান এক্সপ্রেস আবু','উরুগুয়ের উল্কা উগো','ফাইনালের মহারাজ ম্যাক্স']}];
+
+let lgLast=null;
+/* ---------- CPU-র বুদ্ধি (d = কাঠিন্য ০–১; null হলে আগের মতো র‍্যান্ডম) ---------- */
+function cpuPick(isK,d,pick){
+  const rz=()=>ZN[Math.floor(Math.random()*6)];
+  if(d==null)return rz()+(isK?'':1+Math.floor(Math.random()*3));
+  if(isK){ /* CPU কিপার */
+    const pz=String(pick).slice(0,2);
+    if(Math.random()<d*.7)return pz;
+    if(d<.2&&Math.random()<.5){let z;do{z=rz()}while(z===pz);return z}
+    return rz()}
+  /* CPU শুটার */
+  const hard=Math.random()<d*1.2,wild=!hard&&d<.2&&Math.random()<.4,zone=hard?(Math.random()<.5?'TL':'TR'):wild?(Math.random()<.5?'TL':'TR'):rz(),pw=hard?(Math.random()<.6?3:2):wild?3:(1+Math.floor(Math.random()*2));
+  return zone+pw}
+
+/* ---------- লীগ ম্যাচ ---------- */
+const LGK=()=>'ps_lg_'+(CUID||'x');
+function lgLoad(){let L={l:0,m:0,mt:0,gf:0,ga:0,pts:0};try{L={...L,...JSON.parse(localStorage.getItem(LGK())||'{}')}}catch(e){}return L}
+function lgSave(L){try{localStorage.setItem(LGK(),JSON.stringify(L))}catch(e){}
+  try{if(ME&&fs)fs.doc('lgb/'+ME.uid).set({uid:ME.uid,name:ME.name,dist:P.nat==='BD'?(P.dist||''):'',l:L.l,m:L.m,mt:L.mt,gf:L.gf,ga:L.ga,pts:L.pts,t:Date.now()},{merge:true}).catch(()=>{})}catch(e){}}
+function lgInfo(l,m){const g=LEAGUES[l],n=g.m,hn=n<=5?2:n<=10?3:4,last=m===n-1,hard=m>=n-hn;let d=(hard?.28:.04)+l*.025;if(last)d+=.04;
+  return{d:Math.min(.5,d),hard,last,tag:last?'🔥 ফাইনাল ম্যাচ':hard?'💪 কঠিন':'😊 সহজ'}}
+function lgDone(s,my,og,won,dr){
+  const L=lgLoad(),g=LEAGUES[s.lg.l],last=s.lg.m===g.m-1,cur=(L.l===s.lg.l&&L.m===s.lg.m);
+  L.mt++;L.gf+=my;L.ga+=og;L.pts+=won?lgPt('w'):dr?lgPt('d'):lgPt('l');
+  let adv=false,champ=false,msg='';const pg=my*rwv('league','g',0),lc=boost(rwv('league','l',0)+pg),cx=lc>0?' • +'+bnum(lc)+' 🪙':'';
+  if(won){const c=boost(lgWin(last)+pg);if(c>0)addCoins(c);msg='🏆 জিতেছ! +'+bnum(lgPt('w'))+' পয়েন্ট'+(c>0?', +'+bnum(c)+' 🪙':'');adv=true}
+  else if(dr){if(lc>0)addCoins(lc);if(last)msg='🤝 ড্র! +'+bnum(lgPt('d'))+' পয়েন্ট'+cx+' — কিন্তু ফাইনালে জিততেই হবে, আবার খেলো';else{msg='🤝 ড্র! +'+bnum(lgPt('d'))+' পয়েন্ট'+cx+' — পরের ম্যাচে যাও';adv=true}}
+  else{if(lc>0)addCoins(lc);msg='😔 হেরেছ — '+bnum(lgPt('l'))+' পয়েন্ট'+cx+'। এই ম্যাচটাই আবার খেলো (কোনো ডিমোশন নেই)'}
+  if(adv&&cur){if(last){L.l++;L.m=0;if(L.l>=LEAGUES.length){champ=true;msg+=' • 👑 তুমি বিশ্বকাপ জিতে চ্যাম্পিয়ন!'}else msg+=' • 🎉 প্রমোশন! এখন '+LEAGUES[L.l].n}else L.m++}
+  lgSave(L);lgLast={adv:adv&&cur,champ,msg};toast(msg,5000)}
+function lgPlay(){
+  if(!need())return;const L=lgLoad();
+  if(L.l>=LEAGUES.length){toast('👑 তুমি সব লীগ জিতে চ্যাম্পিয়ন!',3000);return}
+  const g=LEAGUES[L.l],inf=lgInfo(L.l,L.m);
+  $('lgM').classList.add('hide');lgLast=null;local=true;mi=0;lastLen=0;counted=false;
+  const st=newState({id:uid,name:myName(),team:myTeam()},{id:'cpu',name:g.o[L.m],team:Math.floor(Math.random()*TEAMS.length)},5);
+  st.lg={l:L.l,m:L.m,d:inf.d};onState(st)}
+function lgRender(){
+  const L=lgLoad(),done=L.l>=LEAGUES.length;
+  let h=`<div class="lgs"><div><b>${bnum(L.mt)}</b><small>ম্যাচ</small></div><div><b>${bnum(L.gf)}</b><small>গোল</small></div><div><b>${bnum(L.pts)}</b><small>পয়েন্ট</small></div></div>`;
+  if(done)h+='<div class="card" style="margin:8px 0;text-align:center"><div style="font-size:40px">👑</div><b>তুমি বিশ্বকাপ জিতে চ্যাম্পিয়ন!</b></div>';
+  else{const g=LEAGUES[L.l],inf=lgInfo(L.l,L.m);
+    h+=`<div class="card" style="margin:8px 0"><div class="tag">${g.ic} ${g.n} • ম্যাচ ${bnum(L.m+1)}/${bnum(g.m)}</div><div style="font-size:19px;font-weight:800;margin:8px 0">${esc(g.o[L.m])}</div><div class="er" style="text-align:left">${inf.tag} • জিতলে ${bnum(lgWin(inf.last))} 🪙${inf.last?'<br>⚠️ জিতলেই পরের লীগ — ড্র হলে প্রমোশন নেই':''}</div><button id="lgGo">▶ ম্যাচ শুরু করো</button></div>`}
+  h+='<div class="lgl">'+LEAGUES.map((g,i)=>`<div class="${i<L.l?'dn':i===L.l?'cu':''}"><span>${i<L.l?'✅':i===L.l?'▶️':'🔒'} ${g.ic} ${g.n}</span><small>${i===L.l?bnum(L.m)+'/':''}${bnum(g.m)} ম্যাচ</small></div>`).join('')+'</div>';
+  h+='<div class="er" style="text-align:left">জয় = '+bnum(lgPt('w'))+' পয়েন্ট • ড্র = '+bnum(lgPt('d'))+' • হার = '+bnum(lgPt('l'))+'। হারলে সেই ম্যাচই আবার খেলবে — কোনো ডিমোশন নেই।</div>';
+  $('lgB1').innerHTML=h;const go=$('lgGo');if(go)go.onclick=lgPlay}
+async function lgLb(){
+  const box=$('lgB2');box.innerHTML='<div class="er">লোড হচ্ছে…</div>';
+  try{const q=await fs.collection('lgb').orderBy('pts','desc').limit(40).get();
+    const a=q.docs.map(d=>d.data());a.sort((x,y)=>((+y.pts||0)-(+x.pts||0))||((+y.gf||0)-(+x.gf||0))||((+x.mt||0)-(+y.mt||0)));
+    box.innerHTML=a.length?a.map((r,i)=>{const lg=(+r.l||0)>=LEAGUES.length?'👑 চ্যাম্পিয়ন':LEAGUES[+r.l||0].n,me=ME&&r.uid===ME.uid;
+      return `<div class="lbr ${me?'me':''}"><i>${bnum(i+1)}</i><div><b>${esc(r.name||'প্লেয়ার')}${me?' (তুমি)':''}</b><small>📍 ${esc(r.dist||'—')}</small></div><div class="st"><span>${lg}</span><br><span>ম্যাচ ${bnum(+r.mt||0)} • গোল ${bnum(+r.gf||0)}</span><br><b>⭐ ${bnum(+r.pts||0)} পয়েন্ট</b></div></div>`}).join(''):'<div class="er">এখনো কেউ লীগ খেলেনি — প্রথম তুমিই হও!</div>'
+  }catch(e){box.innerHTML='<div class="er">লিডারবোর্ড লোড হয়নি — ডাটাবেস পারমিশন দেখো (lgb)</div>'}}
+function lgTab(n){$('lgT1').classList.toggle('on',n===1);$('lgT2').classList.toggle('on',n===2);$('lgB1').classList.toggle('hide',n!==1);$('lgB2').classList.toggle('hide',n!==2);if(n===2)lgLb()}
+async function lgOpen(){
+  if(!ME){guestPop(false,false,'লীগ ম্যাচ');return}
+  if(!need())return;
+  $('lgM').classList.remove('hide');lgTab(1);lgRender();
+  try{if(fs){const sn=await fs.doc('lgb/'+ME.uid).get(),L=lgLoad();
+    if(sn.exists){const d=sn.data();if((+d.mt||0)>L.mt)lgSave({l:+d.l||0,m:+d.m||0,mt:+d.mt||0,gf:+d.gf||0,ga:+d.ga||0,pts:+d.pts||0});else if(L.mt>(+d.mt||0))lgSave(L)}
+    else if(L.mt)lgSave(L);lgRender()}}catch(e){}}
+$('lgX').onclick=()=>$('lgM').classList.add('hide');$('lgT1').onclick=()=>lgTab(1);$('lgT2').onclick=()=>lgTab(2);$('bLeague').onclick=lgOpen;
+
+/* ---------- ডেইলি মিশন (সোয়াইপ শট) ---------- */
+const DMK=()=>'ps_dm_'+(CUID||'x');
+const dmDone=()=>{try{return localStorage.getItem(DMK())===dkey(new Date())}catch(e){return false}};
+const dmLeft=()=>{const n=new Date(),m=new Date(n);m.setHours(24,0,0,0);const t=Math.max(0,m-n),h=Math.floor(t/36e5),mn=Math.floor(t%36e5/6e4);return(h?bnum(h)+' ঘণ্টা ':'')+bnum(mn)+' মিনিট'};
+function dmBtn(){const d=dmDone();$('dmSub').textContent=d?'✅ আজকের মিশন শেষ • নতুন মিশন রাত ১২টায় ('+dmLeft()+' বাকি)':'আজকের মিশন রেডি! সোয়াইপ করে গোল দাও • 🎁 '+bnum(dmP())+' 🪙';$('bDaily').style.opacity=d?.7:1}
+const DM={W:360,H:540,GY:96,GL:66,GR:294,BX:180,BY:480,KW:28,KS:215};
+let dm=null,dmRaf=0;const dmC=$('dmC'),dmX=dmC.getContext('2d');
+const dmBots=()=>[{x:95,y:200,vx:80,c:'#38bdf8'},{x:265,y:200,vx:-80,c:'#f472b6'},{x:180,y:278,vx:115,c:'#a78bfa'},{x:80,y:356,vx:-95,c:'#34d399'},{x:280,y:356,vx:95,c:'#fb923c'}].map(o=>({...o,r:19}));
+function dmOpen(){
+  if(!need())return;
+  if(dmDone()){toast('⭐ আজকের মিশন খেলা হয়ে গেছে — নতুন মিশন রাত ১২টার পর ('+dmLeft()+' বাকি)',4000);return}
+  $('dmM').classList.remove('hide');dmInit();$('dmHelp').classList.remove('hide')}
+function dmInit(){dm={ph:'ready',last:performance.now(),t:0,bots:dmBots(),k:{x:180,tx:180,dive:false,wait:0},b:{x:DM.BX,y:DM.BY,vx:0,vy:0,r:11},drag:null,res:null,hint:true,endAt:0,shown:false,paid:false};
+  cancelAnimationFrame(dmRaf);dmRaf=requestAnimationFrame(dmLoop);$('dmBack').classList.remove('hide');$('dmRes').classList.add('hide')}
+function dmClose(){cancelAnimationFrame(dmRaf);dm=null;$('dmM').classList.add('hide');$('dmHelp').classList.add('hide');$('dmRes').classList.add('hide');dmBtn()}
+function dmLoop(now){if(!dm)return;const dt=Math.min(.05,(now-dm.last)/1000);dm.last=now;dm.t+=dt;dmStep(dt);dmDraw();dmRaf=requestAnimationFrame(dmLoop)}
+function dmEnd(res){if(dm.ph!=='fly')return;dm.ph='end';dm.res=res;dm.endAt=performance.now()+1100;const b=dm.b;
+  if(res==='goal'){if(!dm.paid){dm.paid=true;try{dm.amt=boost(dmP());addCoins(dm.amt)}catch(e){}}}
+  else if(res==='save'){b.vy=140;b.vx=(Math.random()-.5)*120}
+  else if(res==='post'){b.vy=160;b.vx*=-.3}
+  else if(res==='block'){b.vx*=-.15;b.vy=Math.abs(b.vy)*.25}}
+function dmStep(dt){
+  const b=dm.b,k=dm.k;
+  for(const o of dm.bots){o.x+=o.vx*dt;if(o.x<26){o.x=26;o.vx=Math.abs(o.vx)}if(o.x>334){o.x=334;o.vx=-Math.abs(o.vx)}}
+  if(k.dive){if(k.wait>0)k.wait-=dt;else{const d=k.tx-k.x,st=DM.KS*dt;k.x+=Math.abs(d)<st?d:Math.sign(d)*st}}else k.x=180+78*Math.sin(dm.t*1.3);
+  if(dm.ph==='fly'){
+    const py=b.y;b.x+=b.vx*dt;b.y+=b.vy*dt;
+    for(const o of dm.bots){if(Math.hypot(b.x-o.x,b.y-o.y)<o.r+b.r*.7){dmEnd('block');return}}
+    if(py>DM.GY&&b.y<=DM.GY){const x=b.x;
+      if(x<DM.GL-3||x>DM.GR+3)dmEnd('miss');
+      else if(Math.abs(x-DM.GL)<5||Math.abs(x-DM.GR)<5)dmEnd('post');
+      else if(Math.abs(x-k.x)<DM.KW)dmEnd('save');
+      else dmEnd('goal')}
+  }else if(dm.ph==='end'){
+    if(dm.res==='goal'){if(b.y>DM.GY-24){b.x+=b.vx*dt;b.y+=b.vy*dt}}
+    else if(dm.res==='miss'){b.x+=b.vx*dt;b.y+=b.vy*dt}
+    else{const f=Math.pow(.05,dt);b.vx*=f;b.vy*=f;b.x+=b.vx*dt;b.y+=b.vy*dt}
+    if(!dm.shown&&performance.now()>dm.endAt){dm.shown=true;dmShowRes()}}}
+function dmShowRes(){
+  const r=dm.res,T={goal:'🎉 গোওওওল!',save:'🧤 গোলকিপার ঠেকিয়ে দিয়েছে!',block:'🤖 রোবটে লেগে আটকে গেছে!',miss:'😬 বল বাইরে চলে গেছে!',post:'🥅 পোস্টে লেগে ফিরে এসেছে!'}[r];
+  $('dmRT').textContent=T;
+  $('dmRB').innerHTML=r==='goal'?'দারুণ! তুমি ডেইলি মিশন জিতেছ — <b>+'+bnum(dm.amt||dmP())+' 🪙</b> পেয়েছ।<br>আবার খেলতে পারবে রাত ১২টার পর ('+dmLeft()+' বাকি)।':'আজকের একমাত্র শটটা শেষ। চিন্তা নেই — রাত ১২টার পর নতুন দিনে আবার চেষ্টা করতে পারবে ('+dmLeft()+' বাকি)।';
+  $('dmRes').classList.remove('hide')}
+function dmShoot(a,p,ms){
+  const b=dm.b;let dx=p.x-a.x,dy=p.y-a.y;const len=Math.hypot(dx,dy);
+  if(dy>-25||len<35){toast('👆 ওপরের দিকে, গোলের দিকে সোয়াইপ করো!',2200);return}
+  if(Math.abs(dx)>2.6*(-dy))dx=Math.sign(dx)*2.6*(-dy);
+  const n=Math.hypot(dx,dy),sp=Math.max(520,Math.min(1000,len/Math.max(ms,40)*1000*.75));
+  b.vx=dx/n*sp;b.vy=dy/n*sp;dm.ph='fly';dm.hint=false;$('dmBack').classList.add('hide');
+  try{localStorage.setItem(DMK(),dkey(new Date()))}catch(e){}
+  try{if(ME&&fs)fs.doc('users/'+ME.uid).set({dm:dkey(new Date())},{merge:true}).catch(()=>{})}catch(e){}
+  dmBtn();
+  const t=(DM.GY-b.y)/b.vy,xg=b.x+b.vx*t,k=dm.k;
+  if(xg>DM.GL-35&&xg<DM.GR+35){k.dive=true;k.wait=.28;k.tx=Math.max(DM.GL+20,Math.min(DM.GR-20,xg+(Math.random()-.5)*64))}}
+function dmDrawBot(c,o){const x=o.x,y=o.y;
+  c.fillStyle='rgba(0,0,0,.25)';c.beginPath();c.ellipse(x,y+20,17,5,0,0,7);c.fill();
+  c.strokeStyle='#cbd5e1';c.lineWidth=2;c.beginPath();c.moveTo(x,y-20);c.lineTo(x,y-26);c.stroke();c.fillStyle='#ef4444';c.beginPath();c.arc(x,y-27,3,0,7);c.fill();
+  c.fillStyle=o.c;c.beginPath();c.roundRect(x-14,y-8,28,28,6);c.fill();
+  c.fillStyle='#94a3b8';c.fillRect(x-19,y-4,6,16);c.fillRect(x+13,y-4,6,16);
+  c.fillStyle='#e2e8f0';c.beginPath();c.roundRect(x-11,y-21,22,15,4);c.fill();
+  c.fillStyle='#111';c.beginPath();c.arc(x-4,y-14,2.6,0,7);c.arc(x+4,y-14,2.6,0,7);c.fill()}
+function dmDraw(){
+  const c=dmX,{W,H,GY,GL,GR}=DM,k=dm.k,b=dm.b;
+  const g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,'#1f7a3d');g.addColorStop(1,'#2f9e55');c.fillStyle=g;c.fillRect(0,0,W,H);
+  c.fillStyle='rgba(255,255,255,.05)';for(let i=1;i<9;i+=2)c.fillRect(0,i*60,W,60);
+  c.strokeStyle='rgba(255,255,255,.65)';c.lineWidth=2;c.strokeRect(36,GY,288,150);c.strokeRect(GL+34,GY,160,56);
+  c.beginPath();c.arc(W/2,GY+118,3,0,7);c.fillStyle='#fff';c.fill();c.beginPath();c.arc(W/2,GY+118,38,.2*Math.PI,.8*Math.PI);c.stroke();
+  c.fillStyle='rgba(255,255,255,.12)';c.fillRect(GL,56,GR-GL,GY-56);c.strokeStyle='rgba(255,255,255,.28)';c.lineWidth=1;
+  for(let x=GL;x<=GR;x+=14){c.beginPath();c.moveTo(x,56);c.lineTo(x,GY);c.stroke()}for(let y=56;y<=GY;y+=10){c.beginPath();c.moveTo(GL,y);c.lineTo(GR,y);c.stroke()}
+  /* কিপার */
+  const kx=k.x,ky=82,lean=k.dive&&k.wait<=0?Math.max(-.5,Math.min(.5,(k.tx-kx)/90)):0;
+  c.save();c.translate(kx,ky);c.rotate(lean);
+  c.fillStyle='#f59e0b';c.beginPath();c.roundRect(-13,-10,26,24,6);c.fill();c.fillStyle='#fde68a';c.beginPath();c.arc(0,-16,8,0,7);c.fill();
+  c.fillStyle='#22c55e';c.beginPath();c.arc(-22,-6,6,0,7);c.arc(22,-6,6,0,7);c.fill();c.strokeStyle='#f59e0b';c.lineWidth=5;c.beginPath();c.moveTo(-13,-4);c.lineTo(-20,-6);c.moveTo(13,-4);c.lineTo(20,-6);c.stroke();c.restore();
+  c.strokeStyle='#fff';c.lineWidth=5;c.lineCap='round';c.beginPath();c.moveTo(GL,GY);c.lineTo(GL,56);c.lineTo(GR,56);c.lineTo(GR,GY);c.stroke();
+  for(const o of dm.bots)dmDrawBot(c,o);
+  /* বল */
+  const pr=Math.max(0,Math.min(1,(DM.BY-b.y)/(DM.BY-DM.GY))),r=b.r*(1-.35*pr);
+  c.fillStyle='rgba(0,0,0,.25)';c.beginPath();c.ellipse(b.x,b.y+r*.9,r,r*.35,0,0,7);c.fill();
+  c.fillStyle='#fff';c.beginPath();c.arc(b.x,b.y,r,0,7);c.fill();c.fillStyle='#111';c.beginPath();c.arc(b.x,b.y,r*.4,0,7);c.fill();
+  /* সোয়াইপ ট্রেইল */
+  if(dm.drag&&dm.drag.pts.length>1){c.strokeStyle='rgba(255,255,255,.85)';c.lineWidth=5;c.lineCap='round';c.lineJoin='round';c.beginPath();dm.drag.pts.forEach((q,i)=>i?c.lineTo(q.x,q.y):c.moveTo(q.x,q.y));c.stroke()}
+  /* ইন্ডিকেটর */
+  if(dm.hint&&dm.ph==='ready'){const o=(dm.t*70)%70,al=1-o/70;c.strokeStyle='rgba(255,255,255,'+al.toFixed(2)+')';c.lineWidth=4;c.lineCap='round';
+    for(let i=0;i<2;i++){const y=DM.BY-34-o-i*34;c.beginPath();c.moveTo(DM.BX-14,y+10);c.lineTo(DM.BX,y-4);c.lineTo(DM.BX+14,y+10);c.stroke()}
+    c.fillStyle='#fff';c.font='bold 16px system-ui,"Noto Sans Bengali",sans-serif';c.textAlign='center';c.shadowColor='#000';c.shadowBlur=4;c.fillText('👆 এখান থেকে ওপরে সোয়াইপ করো',W/2,H-12);c.shadowBlur=0}}
+const dmPt=e=>{const r=dmC.getBoundingClientRect();return{x:(e.clientX-r.left)/r.width*DM.W,y:(e.clientY-r.top)/r.height*DM.H}};
+dmC.addEventListener('pointerdown',e=>{if(!dm||dm.ph!=='ready')return;e.preventDefault();try{dmC.setPointerCapture(e.pointerId)}catch(x){}const p=dmPt(e);dm.drag={a:p,t:performance.now(),pts:[p]}});
+dmC.addEventListener('pointermove',e=>{if(dm&&dm.drag)dm.drag.pts.push(dmPt(e))});
+dmC.addEventListener('pointerup',e=>{if(!dm||!dm.drag)return;const d=dm.drag;dm.drag=null;dmShoot(d.a,dmPt(e),performance.now()-d.t)});
+dmC.addEventListener('pointercancel',()=>{if(dm)dm.drag=null});
+$('bDaily').onclick=dmOpen;$('dmBack').onclick=dmClose;$('dmRX').onclick=dmClose;$('dmGo').onclick=()=>$('dmHelp').classList.add('hide');
+function dmAnnounce(){let seen='';try{seen=localStorage.getItem('ps_feat_dl1')||''}catch(e){}
+  if(!seen){try{localStorage.setItem('ps_feat_dl1','1')}catch(e){}
+    notice('🆕 গেমে নতুন ২টি ফিচার!','<b>⭐ ডেইলি মিশন</b><br>প্রতিদিন একবার! স্ক্রিনে সোয়াইপ করে গোল দাও — রোবট ডামি আর গোলকিপার পেরিয়ে গোল করলে কয়েন পুরস্কার পাবে।<br><br><b>🏆 লীগ ম্যাচ</b><br>পাড়ার লীগ থেকে বিশ্বকাপ — একটার পর একটা লীগ, আলাদা লিডারবোর্ড।<br><br>🔥 এখনই খেলে দেখো!');return}
+  let t='';try{t=sessionStorage.getItem('ps_dmt')||''}catch(e){}
+  if(!dmDone()&&t!==dkey(new Date())){try{sessionStorage.setItem('ps_dmt',dkey(new Date()))}catch(e){}toast('⭐ আজকের ডেইলি মিশন রেডি! গোল করলেই '+bnum(dmP())+' 🪙',5000)}}
+dmBtn();setInterval(dmBtn,30000);setTimeout(dmAnnounce,3500);
+const APP_VER='20261109-lobby-dl1';
 let verBase=null,updPend=0;const verHash=t=>{let h=5381;for(let i=0;i<t.length;i++)h=((h<<5)+h+t.charCodeAt(i))|0;return h};
 async function verCheck(){try{const r=await fetch(location.pathname+'?_v='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text(),m=t.match(/const APP_VER='([^']+)'/);if(!m)return;
   const h=verHash(t);if(verBase===null)verBase=h;
