@@ -125,6 +125,24 @@ svg.pvb{height:210px;width:100%;margin:6px 0;background:linear-gradient(#bfe6ff,
 .chip2{width:auto;margin:0 0 0 6px;border:0;color:#fff;font-size:16px;padding:6px 10px}
 .chip{white-space:nowrap}.lt{font-size:20px}.ls{letter-spacing:2px;font-size:10px}.hd{gap:8px}
 #ann{background:#fff7d6;color:#5b4300;border-radius:12px;padding:8px 12px;margin:0 0 10px;font-weight:700;font-size:14px;text-align:center}
+#frM .frC{max-width:430px;width:94%;max-height:90vh;overflow:auto;text-align:left;padding:0;border-radius:20px}#frM .fi,#frM .fh,#frM .frH>div{text-align:left}#frM .fi small{line-height:1.35}
+.frH{display:flex;justify-content:space-between;align-items:center;padding:16px;background:linear-gradient(135deg,#047857,#16a34a);color:#fff;border-radius:20px 20px 0 0}
+.frH button{width:auto;margin:0;padding:6px 12px;background:rgba(255,255,255,.2);color:#fff;border:0;font-size:14px}
+.frTabs{display:flex;gap:6px;padding:10px 12px 4px}.frTabs button{flex:1;margin:0;padding:9px 4px;font-size:13px;border-radius:99px;background:var(--ac2);color:var(--tx);border:1px solid var(--bd)}.frTabs button.on{background:#16a34a;color:#fff;border-color:#16a34a}.frTabs i{font-style:normal;background:#dc2626;color:#fff;border-radius:99px;padding:0 6px;font-size:11px;margin-left:3px}.frTabs i:empty{display:none}
+#frL{padding:4px 12px 14px}.frSr{display:flex;gap:6px;padding:6px 12px}.frSr input{margin:0}.frSr button{width:auto;margin:0;padding:0 14px}
+.fh{font-size:12px;font-weight:700;color:var(--mut);margin:10px 2px 4px}
+.fc{display:flex;align-items:center;gap:10px;padding:10px;margin:6px 0;border-radius:16px;background:var(--ac2);border:1px solid var(--bd)}.fc.on{border-color:#86efac;background:linear-gradient(90deg,rgba(34,197,94,.14),transparent)}
+.fav{position:relative;flex:none}.fav .dot{position:absolute;right:-1px;bottom:-1px;width:13px;height:13px;border-radius:50%;background:#9ca3af;border:2px solid var(--card)}.fav .dot.g{background:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,.25)}
+.av2{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-weight:800;flex:none}
+.fi{flex:1;min-width:0}.fi b{font-size:15px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.fi small{display:block;color:var(--mut);font-size:12px;margin-top:1px}
+.fa{display:flex;gap:6px}.fa button{width:auto;margin:0;padding:8px 12px;font-size:13px}.fa .x{padding:8px 10px}
+.fe{text-align:center;padding:26px 10px;color:var(--mut)}.fe b{display:block;color:var(--tx);margin:6px 0 4px;font-size:15px}.fe small{font-size:13px}
+#frPop{position:fixed;left:0;right:0;top:calc(8px + env(safe-area-inset-top,0px));z-index:130;display:flex;justify-content:center;padding:0 10px;pointer-events:none;animation:fpIn .35s ease}
+#frPop .fpIn{pointer-events:auto;max-width:440px;width:100%;display:flex;align-items:center;gap:10px;padding:12px;border-radius:18px;background:linear-gradient(135deg,#047857,#16a34a);color:#fff;box-shadow:0 8px 28px rgba(0,0,0,.4)}
+#frPop button{width:auto;margin:0;padding:8px 12px;font-size:13px;background:#fff;color:#047857;border:0}#frPop button.x{background:rgba(255,255,255,.22);color:#fff}
+@keyframes fpIn{from{transform:translateY(-120%)}to{transform:none}}
+.gfx{font-size:76px;animation:gfb 1s ease infinite}@keyframes gfb{0%,100%{transform:scale(1) rotate(-6deg)}50%{transform:scale(1.15) rotate(6deg)}}
+.gfc{display:inline-block;background:var(--ac2);border:1px solid var(--bd);border-radius:99px;padding:6px 12px;margin:4px;font-weight:700}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -234,7 +252,7 @@ svg.pvb{height:210px;width:100%;margin:6px 0;background:linear-gradient(#bfe6ff,
 <div id="stM" class="mod hide"><div class="card" style="max-width:420px;width:94%;max-height:90vh;overflow:auto;text-align:left"><div style="display:flex;justify-content:space-between;align-items:center"><b>🛍️ স্টোর</b><b>🪙 <span id="stC">0</span></b></div><svg id="stPv" class="pvb" viewBox="-16 -34 32 38"></svg><div id="stCap"></div><div id="stTabs" class="em" style="flex-wrap:wrap"></div><div id="stL"></div><button id="stX" class="sec">বন্ধ করো</button></div></div>
 <div id="vtM" class="mod hide"><div class="card" style="max-width:420px;width:94%;max-height:90vh;overflow:auto;text-align:left"><div style="display:flex;justify-content:space-between;align-items:center"><b>👕 আমার ভল্ট</b><span class="tag" id="vtN"></span></div><div class="er" style="margin:2px 0 0">কেনা সব পোশাক এখানে — যখন খুশি পরো বা খুলে ডিফল্টে ফিরো।</div><svg id="vtPv" class="pvb" viewBox="-16 -34 32 38"></svg><div id="vtTabs" class="em" style="flex-wrap:wrap"></div><div id="vtL"></div><button id="vtReset" class="sec">♻️ সব খুলে ডিফল্ট করো</button><button id="vtGo" class="sec">🛍️ স্টোরে যাও</button><button id="vtX" class="sec">বন্ধ করো</button></div></div>
 <div id="shM" class="mod hide"><div class="card"><div class="en" style="font-size:17px;margin:0 0 6px">📰 আপনার প্রগ্রেস শেয়ার করুন</div><img id="shImg" alt="অসময় টিভি"><button id="shNat" style="margin-top:8px;padding:11px;font-size:14px">📤 ছবিসহ শেয়ার (সব অ্যাপে)</button><div class="shg" style="grid-template-columns:1fr 1fr 1fr"><button id="shWa" class="sec">WhatsApp</button><button id="shFb" class="sec">Facebook</button><button id="shIg" class="sec">Instagram</button><button id="shTg" class="sec">Telegram</button><button id="shTw" class="sec">X</button><button id="shCp" class="sec">🔗 লিংক কপি</button></div><button id="shSv" class="sec" style="padding:11px;font-size:14px">🖼️ গ্যালারিতে সেইভ করুন</button><div class="shg"><button id="shNew" class="sec">🎲 নতুন খবর</button><button id="shX" class="sec">বন্ধ করো</button></div></div></div>
-<div id="frM" class="mod hide"><div class="card" style="max-width:420px;width:94%;max-height:90vh;overflow:auto;text-align:left"><div style="display:flex;justify-content:space-between;align-items:center"><b>👥 ফ্রেন্ডস</b><button id="frX" class="sec" style="width:auto;margin:0;padding:4px 12px;font-size:13px">✕</button></div><div class="em" style="flex-wrap:wrap;margin:8px 0"><button id="frT_fl" data-ft="fl">👥 ফ্রেন্ড লিস্ট</button><button id="frT_rq" data-ft="rq">📩 ফ্রেন্ড রিকুয়েস্ট</button><button id="frT_sr" data-ft="sr">🔍 খোঁজো</button></div><div id="frS" class="hide"><input id="frQ" type="email" placeholder="বন্ধুর ইমেইল লিখো"><button id="frGo">🔍 সার্চ</button></div><div id="frL"></div></div></div>
+<div id="frM" class="mod hide"><div class="card frC"><div class="frH"><div><b style="font-size:18px">👥 ফ্রেন্ডস</b><div id="frSub" style="font-size:12px;opacity:.9;margin-top:2px"></div></div><button id="frX">✕</button></div><div class="frTabs"><button id="frT_fl" data-ft="fl">⚽ ফ্রেন্ডস<i id="frC_fl"></i></button><button id="frT_rq" data-ft="rq">📩 রিকুয়েস্ট<i id="frC_rq"></i></button><button id="frT_sr" data-ft="sr">🔍 খোঁজো</button></div><div id="frS" class="frSr hide"><input id="frQ" type="email" placeholder="বন্ধুর ইমেইল লিখো"><button id="frGo">সার্চ</button></div><div id="frL"></div></div></div>
 <div id="chM" class="mod hide" style="z-index:110"><div class="card"><div class="en">⚔️ ম্যাচ চ্যালেঞ্জ</div><div class="er" id="chTx" style="font-size:15px;color:var(--tx)"></div><button id="chAcc">✅ এক্সেপ্ট</button><button id="chRej" class="sec">❌ রিজেক্ট</button></div></div>
 <div id="ntM" class="mod hide" style="z-index:110"><div class="card"><div class="en" id="ntT"></div><div class="er" id="ntB" style="font-size:15px;color:var(--tx)"></div><button id="ntX">ঠিক আছে</button></div></div>
 <div id="mtM" class="mod hide" style="z-index:130"><div class="card"><div class="en">🛠️ রক্ষণাবেক্ষণ চলছে</div><div class="er" id="mtT" style="font-size:15px;color:var(--tx)"></div></div></div>
@@ -246,7 +264,7 @@ svg.pvb{height:210px;width:100%;margin:6px 0;background:linear-gradient(#bfe6ff,
   <button id="bAgain">🔄 রিম্যাচ</button><button id="bPoster" class="sec hide">📰 জয়ের পোস্টার শেয়ার করো</button><button id="pClose" class="sec">📊 স্কোরবোর্ড দেখো</button><button id="pHome" class="sec">মেনুতে ফিরে যাও</button>
 </div></div>
 <div id="cf" class="ov hide"><div class="pc"><div class="big" style="font-size:22px">খেলা ছেড়ে বের হবে?</div><p class="sub" id="cfTx"></p><button id="cfYes" style="background:var(--bad);color:#fff;border-color:var(--bad)">হ্যাঁ, বের হব</button><button id="cfNo" class="sec">না, খেলা চলুক</button></div></div>
-<div id="pz" class="hide"></div><div id="toast" class="hide"></div>
+<div id="frPop" class="hide"></div><div id="gfM" class="mod hide" style="z-index:120"><div class="card" style="text-align:center;max-width:360px;width:92%"><div class="gfx">🎁</div><div class="en">এডমিনের পক্ষ থেকে উপহার!</div><div id="gfB"></div><button id="gfX">🎉 ধন্যবাদ!</button></div></div><div id="pz" class="hide"></div><div id="toast" class="hide"></div>
 
 <script>
 const $=id=>document.getElementById(id);
@@ -1005,15 +1023,15 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&ref&&!loc
 $('bCopy').onclick=async()=>{try{await navigator.clipboard.writeText(S.code);$('bCopy').textContent='✅ কপি হয়েছে'}catch(e){$('bCopy').textContent='কোডটি হাতে লিখে নাও'}};
 $('jcode').addEventListener('input',e=>{e.target.value=e.target.value.toUpperCase()});
 // ===== ফ্রেন্ডস, অনলাইন স্ট্যাটাস, চ্যালেঞ্জ =====
-let frTab='fl',frData=[],frRes=null,frUn=null,chUn=null,chrUn=null,hbF=null,chWait=null,chAuto=null,CH=null,frFirst=true;
+let frTab='fl',frData=[],frRes=null,frUn=null,chUn=null,chrUn=null,hbF=null,chWait=null,chAuto=null,CH=null,frFirst=true,gUn=null,frLUn=null,frLFirst=true,lastAcc=0,verShown=0,frPT=null;
 const frOn=l=>Date.now()-(+l||0)<75000;
 function notice(t,h){$('ntT').textContent=t;$('ntB').innerHTML=h;$('ntM').classList.remove('hide')}
 $('ntX').onclick=()=>$('ntM').classList.add('hide');
-function frStop(){[frUn,chUn,chrUn,uUn].forEach(u=>{try{u&&u()}catch(e){}});frUn=chUn=chrUn=uUn=null;clearInterval(hbF);hbF=null;$('frBadge').classList.add('hide');$('chM').classList.add('hide')}
-function frSync(){frStop();if(!ME||!fs)return;frFirst=true;if(P.nat)saveProf();startUserSync();
+function frStop(){[frUn,chUn,chrUn,uUn,gUn,frLUn].forEach(u=>{try{u&&u()}catch(e){}});frUn=chUn=chrUn=uUn=gUn=frLUn=null;clearInterval(hbF);hbF=null;$('frBadge').classList.add('hide');$('chM').classList.add('hide')}
+function frSync(){frStop();if(!ME||!fs)return;frFirst=true;if(P.nat)saveProf();startUserSync();startGiftSync();startFrList();fs.doc('users/'+ME.uid).set({ver:APP_VER},{merge:true}).catch(()=>{});
   const beat=()=>{if(ME&&!document.hidden){fs.doc('users/'+ME.uid).set({last:Date.now()},{merge:true}).catch(()=>{});const n=new Date(),k=dayId(n)+'-'+n.getHours();if(k!==actKey){actKey=k;fs.doc('act/'+dayId(n)+'/u/'+ME.uid).set({t:Date.now(),hrs:{[n.getHours()]:true}},{merge:true}).catch(()=>{})}}};beat();hbF=setInterval(beat,30000);
   try{frUn=fs.collection('req/'+ME.uid+'/in').onSnapshot(sn=>{const n=sn.size;$('frBadge').textContent=bnum(n);$('frBadge').classList.toggle('hide',!n);
-    if(!frFirst)sn.docChanges().forEach(c=>{if(c.type==='added')toast('👥 '+(c.doc.data().name||'কেউ')+' তোমাকে ফ্রেন্ড রিকুয়েস্ট পাঠিয়েছে',4500)});frFirst=false;if(!$('frM').classList.contains('hide')&&frTab==='rq')frRender()},()=>{})}catch(e){}
+    if(frFirst){if(n)frPop({ic:'📩',t:'ফ্রেন্ড রিকুয়েস্ট জমা আছে',b:'তোমার জন্য <b>'+bnum(n)+'টি</b> রিকুয়েস্ট অপেক্ষা করছে',btn:'দেখো',go:'rq'})}else sn.docChanges().forEach(c=>{if(c.type==='added'){const r=c.doc.data();frPop({t:'নতুন ফ্রেন্ড রিকুয়েস্ট',b:'<b>'+esc(r.name||'কেউ')+'</b> তোমাকে ফ্রেন্ড রিকুয়েস্ট পাঠিয়েছে',who:r.name||'?',ac:c.doc.id,nm:r.name||''})}});frFirst=false;if(!$('frM').classList.contains('hide')&&frTab==='rq')frRender()},()=>{})}catch(e){}
   try{chUn=fs.doc('ch/'+ME.uid).onSnapshot(sn=>{const d=sn.data();if(!d){$('chM').classList.add('hide');return}
     if(S&&S.status==='play'){fs.doc('chr/'+d.from).set({name:ME.name,why:'busy',t:Date.now()}).catch(()=>{});sn.ref.delete().catch(()=>{});return}
     CH=d;$('chTx').innerHTML='⚔️ <b>'+esc(d.name)+'</b> তোমাকে ফ্রেন্ড ম্যাচ খেলতে চ্যালেঞ্জ করেছে!';$('chM').classList.remove('hide');beep(660,.2);buzz();clearTimeout(chAuto);chAuto=setTimeout(()=>$('chM').classList.add('hide'),60000)},()=>{})}catch(e){}
@@ -1024,18 +1042,45 @@ $('chRej').onclick=()=>{const d=CH;$('chM').classList.add('hide');clearTimeout(c
 function challenge(f){if(!window.Peer||ref||local){toast('আগে বর্তমান রুম/ম্যাচ থেকে বের হও',3500);return}
   hostOpen({fr:1},code=>{$('frM').classList.add('hide');sub();fs.doc('ch/'+f.id).set({from:ME.uid,name:ME.name,code,t:Date.now()}).catch(()=>toast('চ্যালেঞ্জ পাঠানো যায়নি',3000));toast('⚔️ '+f.name+'-কে চ্যালেঞ্জ পাঠানো হয়েছে — অপেক্ষা করো…',4500);
     clearTimeout(chWait);chWait=setTimeout(()=>{fs.doc('ch/'+f.id).delete().catch(()=>{});if(S&&S.status==='lobby'&&!S.p2&&S.fr)toast(f.name+' সাড়া দেয়নি — ইচ্ছে হলে রুম কোড শেয়ার করো',5000)},60000)},()=>toast('রুম খোলা যায়নি, আবার চেষ্টা করো',3000))}
+const frAvc=n=>{let h=0;for(const c of String(n||'?'))h=(h*31+c.charCodeAt(0))%360;return h};
+const frAv=(n,z)=>`<span class="av2" style="width:${z}px;height:${z}px;font-size:${Math.round(z*.45)}px;background:linear-gradient(135deg,hsl(${frAvc(n)},65%,48%),hsl(${(frAvc(n)+40)%360},70%,36%))">${esc([...String(n||'?')][0]||'?')}</span>`;
+const frAgo=t=>{if(!t)return'অনেক আগে';const m=Math.floor((Date.now()-t)/6e4);return m<1?'এইমাত্র':m<60?bnum(m)+' মিনিট আগে':m<1440?bnum(Math.floor(m/60))+' ঘণ্টা আগে':bnum(Math.floor(m/1440))+' দিন আগে'};
+function frPop(o){const e=$('frPop');clearTimeout(frPT);
+  e.innerHTML=`<div class="fpIn">${o.who!=null?frAv(o.who,42):'<span style="font-size:30px">'+(o.ic||'🔔')+'</span>'}<div style="flex:1;min-width:0"><b>${o.t}</b><div style="font-size:13px;opacity:.95;margin-top:2px">${o.b}</div></div>${o.ac?`<button data-pa="${o.ac}" data-nm="${esc(o.nm||'')}">✅ গ্রহণ</button><button data-pd="${o.ac}" class="x">✕</button>`:o.go?`<button data-pg="${o.go}">${o.btn||'দেখো'}</button>`:''}</div>`;
+  e.classList.remove('hide');beep(660,.15);try{buzz()}catch(x){}frPT=setTimeout(()=>e.classList.add('hide'),o.ac?15000:7000)}
+$('frPop').onclick=e=>{const b=e.target.closest('button');if(!b)return;const d=b.dataset;
+  if(d.pa)frAccept(d.pa,d.nm);else if(d.pd)fs.doc('req/'+ME.uid+'/in/'+d.pd).delete().catch(()=>{});else if(d.pg&&need()){frTab=d.pg;$('frM').classList.remove('hide');frRender()}
+  $('frPop').classList.add('hide')};
+async function frAccept(id,nm){try{const bt=fs.batch();bt.set(fs.doc('fr/'+ME.uid+'/list/'+id),{name:nm||'প্লেয়ার',t:Date.now()});bt.set(fs.doc('fr/'+id+'/list/'+ME.uid),{name:ME.name,t:Date.now()});bt.delete(fs.doc('req/'+ME.uid+'/in/'+id));lastAcc=Date.now();await bt.commit();toast('✅ এখন তোমরা ফ্রেন্ড!',3000)}catch(x){toast('এক্সেপ্ট করা যায়নি',3000)}if(!$('frM').classList.contains('hide'))frRender()}
+function startFrList(){frLFirst=true;try{frLUn=fs.collection('fr/'+ME.uid+'/list').onSnapshot(sn=>{
+  if(!frLFirst&&Date.now()-lastAcc>5000)sn.docChanges().forEach(c=>{if(c.type==='added')frPop({ic:'🎉',t:'নতুন ফ্রেন্ড!',b:'<b>'+esc(c.doc.data().name||'প্লেয়ার')+'</b> এখন তোমার ফ্রেন্ড',who:c.doc.data().name||'?'})});
+  frLFirst=false;if(!$('frM').classList.contains('hide')&&frTab==='fl')frRender()},()=>{})}catch(e){}}
+function startGiftSync(){try{gUn=fs.collection('gift/'+ME.uid+'/in').onSnapshot(sn=>{const add=sn.docChanges().filter(c=>c.type==='added');if(!add.length||!ME)return;
+  let seen={};try{seen=JSON.parse(localStorage.getItem('ps_gs_'+ME.uid)||'{}')}catch(e){}
+  let coins=0;const items=[],texts=[];
+  add.forEach(c=>{const d=c.doc.data(),id=c.doc.id;c.doc.ref.delete().catch(()=>{});if(seen[id])return;seen[id]=1;coins+=Math.max(0,Math.floor(+d.coins||0));(d.items||[]).forEach(k=>{if(STORE.find(q=>q.id===k))items.push(k)});if(d.text)texts.push(String(d.text).slice(0,200))});
+  const ks=Object.keys(seen);if(ks.length>80)ks.slice(0,ks.length-80).forEach(k=>delete seen[k]);try{localStorage.setItem('ps_gs_'+ME.uid,JSON.stringify(seen))}catch(e){}
+  if(!coins&&!items.length&&!texts.length)return;
+  if(coins)addCoins(coins);if(items.length){const v=invGet();items.forEach(k=>v.own[k]=1);invSet(v)}
+  giftPop(coins,items,texts)},()=>{})}catch(e){}}
+function giftPop(c,it,tx){const nm=k=>{const q=STORE.find(x=>x.id===k);return q?`<span class="gfc">${q.e} ${esc(q.n)}</span>`:''};
+  $('gfB').innerHTML=(c?`<div class="gfc" style="font-size:20px">🪙 +${bnum(c)} কয়েন</div>`:'')+it.map(nm).join('')+tx.map(t=>`<div class="er" style="font-size:14px;color:var(--tx);margin:8px 0">💬 ${esc(t)}</div>`).join('');
+  $('gfM').classList.remove('hide');beep(880,.2);setTimeout(()=>beep(1175,.25),180);try{buzz()}catch(e){}}
+$('gfX').onclick=()=>$('gfM').classList.add('hide');
 async function frList(){const q=await fs.collection('fr/'+ME.uid+'/list').get(),L=q.docs.map(d=>({id:d.id,...d.data()}));
-  await Promise.all(L.map(async f=>{try{const u=await fs.doc('users/'+f.id).get();if(u.exists){const r=u.data();f.name=r.name||f.name;f.last=r.last||0;f.dist=r.dist||''}}catch(e){}}));return L}
-const frBtn='style="width:auto;margin:0;padding:8px 10px;font-size:13px"';
-async function frRender(){if(!fs||!ME)return;const box=$('frL');['fl','rq','sr'].forEach(k=>{$('frT_'+k).className=k===frTab?'on':'sec'});$('frS').classList.toggle('hide',frTab!=='sr');
+  await Promise.all(L.map(async f=>{try{const u=await fs.doc('users/'+f.id).get();if(u.exists){const r=u.data();f.name=r.name||f.name;f.last=r.last||0;f.dist=r.dist||'';f.mt=+r.mt||0;f.goals=+r.goals||0}}catch(e){}}));return L}
+const frEmpty=(ic,t,s)=>`<div class="fe"><div style="font-size:44px">${ic}</div><b>${t}</b><small>${s}</small></div>`;
+async function frRender(){if(!fs||!ME)return;const box=$('frL');['fl','rq','sr'].forEach(k=>{$('frT_'+k).className=k===frTab?'on':''});$('frS').classList.toggle('hide',frTab!=='sr');
   try{
-    if(frTab==='fl'){box.innerHTML='<div class="er" style="text-align:center">লোড হচ্ছে…</div>';frData=await frList();frData.sort((a,b)=>(frOn(b.last)-frOn(a.last))||String(a.name).localeCompare(b.name,'bn'));
-      box.innerHTML=frData.length?frData.map(f=>{const on=frOn(f.last);return`<div class="itr" style="cursor:default"><div style="flex:1"><b style="font-size:15px">${esc(f.name||'প্লেয়ার')}</b><div class="er" style="margin:0">${on?'🟢 অনলাইন':'⚪ অফলাইন'}${f.dist?' • '+esc(f.dist):''}</div></div><button data-ch="${f.id}" ${frBtn} ${on?'':'disabled'}>⚔️ চ্যালেঞ্জ</button><button data-rm="${f.id}" class="sec" ${frBtn}>✖</button></div>`}).join(''):'<div class="er" style="text-align:center;margin:10px 0">এখনো কোনো ফ্রেন্ড নেই — 🔍 খোঁজো ট্যাবে ইমেইল দিয়ে বন্ধুকে খুঁজে নাও।</div>'}
-    else if(frTab==='rq'){box.innerHTML='<div class="er" style="text-align:center">লোড হচ্ছে…</div>';const q=await fs.collection('req/'+ME.uid+'/in').get();
-      box.innerHTML=q.size?q.docs.map(d=>{const r=d.data();return`<div class="itr" style="cursor:default"><div style="flex:1"><b style="font-size:15px">${esc(r.name||'প্লেয়ার')}</b><div class="er" style="margin:0">${esc(r.email||'')}</div></div><button data-ac="${d.id}" data-nm="${esc(r.name||'')}" ${frBtn}>✅ এক্সেপ্ট</button><button data-dc="${d.id}" class="sec" ${frBtn}>❌</button></div>`}).join(''):'<div class="er" style="text-align:center;margin:10px 0">কোনো নতুন ফ্রেন্ড রিকুয়েস্ট নেই।</div>'}
-    else{if(!frRes){box.innerHTML='<div class="er" style="text-align:center;margin:10px 0">বন্ধুর লগইন-করা ইমেইল লিখে সার্চ দাও।</div>';return}
-      const r=frRes;box.innerHTML=r.none?'<div class="er" style="text-align:center;margin:10px 0">এই ইমেইলে কাউকে পাওয়া যায়নি।</div>':`<div class="itr" style="cursor:default"><div style="flex:1"><b style="font-size:15px">${esc(r.name||'প্লেয়ার')}</b><div class="er" style="margin:0">${esc(r.email||'')}</div></div>${r.self?'<span class="tag">এটা তুমি</span>':r.fr?'<span class="tag">✅ ফ্রেন্ড</span>':`<button data-sr="${r.id}" data-nm="${esc(r.name||'')}" ${frBtn}>➕ রিকুয়েস্ট পাঠাও</button>`}</div>`}
-  }catch(e){box.innerHTML='<div class="er" style="text-align:center;color:var(--bad)">লোড হয়নি — ইন্টারনেট/ডাটাবেস পারমিশন দেখো।</div>'}}
+    if(frTab==='fl'){if(!frData.length)box.innerHTML='<div class="fe">লোড হচ্ছে…</div>';frData=await frList();frData.sort((a,b)=>(frOn(b.last)-frOn(a.last))||String(a.name).localeCompare(b.name,'bn'));
+      const on=frData.filter(f=>frOn(f.last)),off=frData.filter(f=>!frOn(f.last));$('frSub').textContent='🟢 অনলাইন '+bnum(on.length)+' • মোট ফ্রেন্ড '+bnum(frData.length);$('frC_fl').textContent=frData.length?bnum(frData.length):'';
+      const card=f=>{const o=frOn(f.last);return`<div class="fc ${o?'on':''}"><div class="fav">${frAv(f.name,46)}<i class="dot ${o?'g':''}"></i></div><div class="fi"><b>${esc(f.name||'প্লেয়ার')}</b><small>${o?'<span style="color:#16a34a;font-weight:700">● অনলাইন</span>':'অফলাইন • '+frAgo(f.last)}${f.dist?' • 📍'+esc(f.dist):''}</small><small>🎮 ${bnum(f.mt||0)} ম্যাচ • ⚽ ${bnum(f.goals||0)} গোল</small></div><div class="fa"><button data-ch="${f.id}" ${o?'':'disabled'}>⚔️ চ্যালেঞ্জ</button><button data-rm="${f.id}" class="sec x">✖</button></div></div>`};
+      box.innerHTML=frData.length?(on.length?'<div class="fh">🟢 অনলাইন — '+bnum(on.length)+'</div>'+on.map(card).join(''):'')+(off.length?'<div class="fh">⚫ অফলাইন — '+bnum(off.length)+'</div>'+off.map(card).join(''):''):frEmpty('⚽','এখনো কোনো ফ্রেন্ড নেই','🔍 খোঁজো ট্যাবে বন্ধুর ইমেইল দিয়ে রিকুয়েস্ট পাঠাও')}
+    else if(frTab==='rq'){box.innerHTML='<div class="fe">লোড হচ্ছে…</div>';const q=await fs.collection('req/'+ME.uid+'/in').get(),L=q.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.t||0)-(a.t||0));$('frC_rq').textContent=L.length?bnum(L.length):'';
+      box.innerHTML=L.length?L.map(r=>`<div class="fc"><div class="fav">${frAv(r.name,46)}</div><div class="fi"><b>${esc(r.name||'প্লেয়ার')}</b><small>${esc(r.email||'')}</small><small>📩 ${frAgo(r.t)} পাঠিয়েছে</small></div><div class="fa"><button data-ac="${r.id}" data-nm="${esc(r.name||'')}">✅ গ্রহণ</button><button data-dc="${r.id}" class="sec x">✕</button></div></div>`).join(''):frEmpty('📭','কোনো নতুন রিকুয়েস্ট নেই','কেউ রিকুয়েস্ট পাঠালে এখানে (এবং অনলাইনে থাকলে পপ-আপে) দেখতে পাবে')}
+    else{if(!frRes){box.innerHTML=frEmpty('🔍','বন্ধুকে খুঁজে নাও','বন্ধুর সাইন-আপ করা ইমেইল লিখে সার্চ দাও');return}
+      const r=frRes;box.innerHTML=r.none?frEmpty('🤷','কাউকে পাওয়া যায়নি','ইমেইলটি ঠিক আছে কি না দেখো'):`<div class="fc"><div class="fav">${frAv(r.name,46)}</div><div class="fi"><b>${esc(r.name||'প্লেয়ার')}</b><small>${esc(r.email||'')}</small></div><div class="fa">${r.self?'<span class="tag">এটা তুমি</span>':r.fr?'<span class="tag">✅ ফ্রেন্ড</span>':`<button data-sr="${r.id}" data-nm="${esc(r.name||'')}">➕ রিকুয়েস্ট</button>`}</div></div>`}
+  }catch(e){box.innerHTML=frEmpty('⚠️','লোড হয়নি','ইন্টারনেট/ডাটাবেস পারমিশন দেখো')}}
 $('bFriends').onclick=()=>{if(!need())return;frTab='fl';$('frM').classList.remove('hide');frRender()};
 $('frX').onclick=()=>$('frM').classList.add('hide');
 $('frGo').onclick=async()=>{const e=$('frQ').value.trim().toLowerCase();if(!e)return;frRes=null;try{const q=await fs.collection('users').where('email','==',e).limit(1).get();
@@ -1046,9 +1091,9 @@ $('frM').onclick=async e=>{if(e.target===$('frM')){$('frM').classList.add('hide'
   if(b=g('[data-ch]')){const f=frData.find(x=>x.id===b.dataset.ch);if(f)challenge(f);return}
   if(b=g('[data-rm]')){const f=frData.find(x=>x.id===b.dataset.rm);if(f&&confirm((f.name||'ফ্রেন্ড')+'-কে ফ্রেন্ড লিস্ট থেকে সরাবে?')){const bt=fs.batch();bt.delete(fs.doc('fr/'+ME.uid+'/list/'+f.id));bt.delete(fs.doc('fr/'+f.id+'/list/'+ME.uid));bt.commit().catch(()=>{});frData=frData.filter(x=>x!==f);frRender()}return}
   if(b=g('[data-sr]')){b.disabled=true;try{await fs.doc('req/'+b.dataset.sr+'/in/'+ME.uid).set({name:ME.name,email:((auth.currentUser||{}).email||'').toLowerCase(),t:Date.now()});b.outerHTML='<span class="tag">📨 রিকুয়েস্ট পাঠানো হয়েছে</span>'}catch(x){b.disabled=false;toast('রিকুয়েস্ট পাঠানো যায়নি',3000)}return}
-  if(b=g('[data-ac]')){const id=b.dataset.ac,nm=b.dataset.nm||'প্লেয়ার';try{const bt=fs.batch();bt.set(fs.doc('fr/'+ME.uid+'/list/'+id),{name:nm,t:Date.now()});bt.set(fs.doc('fr/'+id+'/list/'+ME.uid),{name:ME.name,t:Date.now()});bt.delete(fs.doc('req/'+ME.uid+'/in/'+id));await bt.commit();toast('✅ এখন তোমরা ফ্রেন্ড!',3000)}catch(x){toast('এক্সেপ্ট করা যায়নি',3000)}frRender();return}
+  if(b=g('[data-ac]')){frAccept(b.dataset.ac,b.dataset.nm||'প্লেয়ার');return}
   if(b=g('[data-dc]')){fs.doc('req/'+ME.uid+'/in/'+b.dataset.dc).delete().catch(()=>{});frRender();return}};
-setInterval(()=>{if(!$('frM').classList.contains('hide')&&frTab==='fl')frRender()},25000);
+setInterval(()=>{if(!$('frM').classList.contains('hide')&&frTab==='fl')frRender()},20000);
 // ===== এডমিন-কন্ট্রোল: ওয়ালেট সিঙ্ক, কনফিগ, অ্যাক্টিভিটি লগ =====
 const dayId=d=>{d=d||new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
 let wApply=false,wT=null,wPend=false,actKey='';
@@ -1062,7 +1107,7 @@ function startUserSync(){try{uUn=fs.doc('users/'+ME.uid).onSnapshot(sn=>{const r
     if(r.name&&r.name!==ME.name){ME.name=String(r.name).slice(0,14);ch=true}
     if(ch){try{localStorage.setItem('ps_prof_'+ME.uid,JSON.stringify(P))}catch(e){}if(P.team!=null)$('team').value=P.team;renderAcct()}
     if(!wPend&&r.cn!==undefined){const i=bonusInfo(),v=invGet();if(r.cn!==i.b.coins||(r.inv&&(!sameO(r.inv.own,v.own)||!sameO(r.inv.eq,v.eq)))){applyWallet(r);bonusRender();try{if(!$('stM').classList.contains('hide'))stRender();if(!$('vtM').classList.contains('hide'))vtRender()}catch(e){}}}
-    applyUser(r)},()=>{})}catch(e){}}
+    if(r.cn===undefined&&!wPend)pushWallet();applyUser(r)},()=>{})}catch(e){}}
 const eco=(k,d)=>(CFG.eco&&CFG.eco[k]!=null&&CFG.eco[k]!=='')?+CFG.eco[k]:d;
 function mtShow(){$('mtT').textContent=CFG.mtMsg||'গেমে কিছু কাজ চলছে, একটু পরে আসো।';$('mtM').classList.remove('hide')}
 function applyCfg(c){CFG=c||{};const st=document.documentElement.style;
@@ -1075,6 +1120,10 @@ function applyCfg(c){CFG=c||{};const st=document.documentElement.style;
 function statLog(s,my,won){try{if(!fs||!ME)return;const f=firebase.firestore.FieldValue.increment,m=local?'cpu':s.career?'career':s.tm?'team':s.fr?'friend':'room';fs.doc('stats/'+dayId()).set({plays:f(1),goals:f(my),wins:f(won?1:0),['m_'+m]:f(1)},{merge:true}).catch(()=>{})}catch(e){}}
 try{if(fs)fs.doc('cfg/app').onSnapshot(sn=>applyCfg(sn.data()||{}),()=>{})}catch(e){}
 $('lobScene').innerHTML=lobScene();renderAcct();
+const APP_VER='20261108-b';
+async function verCheck(){if(verShown)return;try{const t=await(await fetch(location.pathname+'?_v='+Date.now(),{cache:'no-store'})).text(),m=t.match(/const APP_VER='([^']+)'/);
+  if(m&&m[1]!==APP_VER){verShown=1;notice('🔄 নতুন ভার্সন এসেছে','গেমের নতুন আপডেট প্রস্তুত। উপহার, ফ্রেন্ড ও অন্যান্য ফিচার ঠিকমতো পেতে এখনই আপডেট করো।<button id="rlB" style="margin-top:10px">⬇️ এখনই আপডেট করো</button>');setTimeout(()=>{const b=$('rlB');if(b)b.onclick=()=>{location.href=location.pathname+'?r='+Date.now()+location.hash}},0)}}catch(e){}}
+setTimeout(verCheck,15000);setInterval(verCheck,300000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)verCheck()});
 </script>
 </body>
 </html>
