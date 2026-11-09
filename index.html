@@ -211,6 +211,17 @@ details.card summary{color:var(--tx)}
 @keyframes dmb{0%,48%{transform:translateY(0) scale(1);opacity:1}78%{transform:translateY(-112px) scale(.6);opacity:1}100%{transform:translateY(-112px) scale(.6);opacity:0}}
 @keyframes dma{0%{height:0;opacity:1}50%{height:96px;opacity:1}100%{height:96px;opacity:0}}
 .dmL{text-align:left;font-size:14px;line-height:1.55;margin:6px 0}.dmL p{margin:6px 0}
+/* স্পষ্ট বাটন ও রিয়েকশন বার */
+#game #bExit{background:var(--bigbg);color:var(--bigtx);border:1px solid var(--bd);box-shadow:0 2px 8px rgba(0,0,0,.35);font-weight:700}
+#game .em{flex-wrap:wrap;overflow:visible;gap:5px;background:var(--bigbg);border-radius:14px;padding:7px;margin-top:8px;box-shadow:0 2px 10px rgba(0,0,0,.35)}
+#game .em button{background:rgba(127,127,127,.2);color:var(--bigtx);border:1px solid rgba(127,127,127,.3);box-shadow:none;padding:6px 9px;font-size:13px;border-radius:10px}
+/* প্রোফাইল ছবি / কভার */
+.cvB{height:110px;border-radius:14px;background-size:cover;background-position:center;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.avW{width:84px;height:84px;border-radius:50%;margin:-42px auto 6px;border:4px solid var(--bg);background:var(--bg);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
+.avI{border-radius:50%;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;font-weight:900;color:#fff;flex:0 0 auto;vertical-align:middle;line-height:1}.avI img{width:100%;height:100%;object-fit:cover}
+.ppS{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:10px 0}.ppS div{background:var(--ac2);border:1px solid var(--bd);border-radius:12px;padding:8px 4px}.ppS b{display:block;font-size:18px}.ppS small{font-size:11px;color:var(--mut)}
+.ppL{margin:6px 0;text-align:left}.ppL div{display:flex;justify-content:space-between;gap:8px;padding:6px 10px;border-bottom:1px solid var(--bd);font-size:14px}
+.phG{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:8px 0}.phG button{padding:2px;border-radius:50%;border:2px solid transparent;background:none;box-shadow:none;margin:0;display:flex;justify-content:center}.phG.cv{grid-template-columns:repeat(2,1fr)}.phG.cv button{border-radius:14px;padding:2px;display:block}.phG button.on{border-color:var(--ac)}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
@@ -225,7 +236,7 @@ details.card summary{color:var(--tx)}
 
 
 <section id="menu">
-  <div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><div><div class="tl">👤 <span id="hName">—</span></div><div class="er" id="hInfo" style="margin:3px 0 0;text-align:left"></div></div><button id="bAcct" class="sec" style="width:auto;margin:0;padding:6px 12px;font-size:13px">⚙️ প্রোফাইল</button></div><input id="name" class="hide"><select id="team" class="hide"></select></div>
+  <div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><div><div class="tl"><span id="hAv">👤</span> <span id="hName">—</span></div><div class="er" id="hInfo" style="margin:3px 0 0;text-align:left"></div></div><button id="bAcct" class="sec" style="width:auto;margin:0;padding:6px 12px;font-size:13px">⚙️ প্রোফাইল</button></div><input id="name" class="hide"><select id="team" class="hide"></select></div>
   <button id="bCpu" class="big">🤖 কম্পিউটারের সাথে খেলো<br><small style="font-weight:500;color:var(--mut)">জিতলে <span data-k="cpuw">২০</span> 🪙</small></button>
   <button id="bDaily" class="big">⭐ ডেইলি মিশন<br><small id="dmSub" style="font-weight:500;color:var(--mut)">সোয়াইপ করে গোল • ৫০ 🪙</small></button>
   <div class="tiles">
@@ -313,7 +324,7 @@ details.card summary{color:var(--tx)}
 <div id="natDW" class="hide"><div class="er" style="margin:8px 0 0;text-align:left">জেলা (বাংলাদেশ)</div><select id="natD"></select></div>
 <div class="er" style="margin:10px 0 0;text-align:left">যে দল নিয়ে খেলবে</div><div style="display:flex;align-items:center;gap:8px;margin-top:6px"><span id="natTL"></span><select id="natT" style="flex:1;margin-top:0"></select></div>
 <div class="msg" id="natMsg"></div><button id="natGo">নিশ্চিত করো</button></div></div>
-<div id="pfM" class="mod hide"><div class="card" style="text-align:left;max-height:92vh;overflow:auto"><div class="en" style="text-align:center">👤 আমার প্রোফাইল</div><div class="er" id="pfSt" style="text-align:center"></div><button id="bVault" class="sec" style="margin:0 0 4px">👕 ভল্ট / কালেকশন</button>
+<div id="pfM" class="mod hide"><div class="card" style="text-align:left;max-height:92vh;overflow:auto"><div class="en" style="text-align:center">👤 আমার প্রোফাইল</div><div id="pfHd"></div><button id="bPh" class="sec" style="margin:6px 0 4px">🖼️ প্রোফাইল ছবি / কভার বদলাও</button><div class="er" id="pfSt" style="text-align:center"></div><button id="bVault" class="sec" style="margin:0 0 4px">👕 ভল্ট / কালেকশন</button>
 <div class="er" style="margin:8px 0 2px">নাম</div><input id="pfN" maxlength="14">
 <div class="er" style="margin:8px 0 2px">দল (দেশের সাথে মিল থাকা জরুরি নয়)</div><div style="display:flex;align-items:center;gap:8px"><span id="pfTL"></span><select id="pfT" style="flex:1;margin-top:0"></select></div>
 <div class="er" style="margin:8px 0 2px">ইমেইল</div><input id="pfE" type="email">
@@ -323,6 +334,9 @@ details.card summary{color:var(--tx)}
 <div id="stM" class="mod hide"><div class="card" style="max-width:420px;width:94%;max-height:90vh;overflow:auto;text-align:left"><div style="display:flex;justify-content:space-between;align-items:center"><b>🛍️ স্টোর</b><b>🪙 <span id="stC">0</span></b></div><svg id="stPv" class="pvb" viewBox="-16 -34 32 38"></svg><div id="stCap"></div><div id="stTabs" class="em" style="flex-wrap:wrap"></div><div id="stL"></div><button id="stX" class="sec">বন্ধ করো</button></div></div>
 <div id="vtM" class="mod hide"><div class="card" style="max-width:420px;width:94%;max-height:90vh;overflow:auto;text-align:left"><div style="display:flex;justify-content:space-between;align-items:center"><b>👕 আমার ভল্ট</b><span class="tag" id="vtN"></span></div><div class="er" style="margin:2px 0 0">কেনা সব পোশাক এখানে — যখন খুশি পরো বা খুলে ডিফল্টে ফিরো।</div><svg id="vtPv" class="pvb" viewBox="-16 -34 32 38"></svg><div id="vtTabs" class="em" style="flex-wrap:wrap"></div><div id="vtL"></div><button id="vtReset" class="sec">♻️ সব খুলে ডিফল্ট করো</button><button id="vtGo" class="sec">🛍️ স্টোরে যাও</button><button id="vtX" class="sec">বন্ধ করো</button></div></div>
 <div id="shM" class="mod hide"><div class="card"><div class="en" style="font-size:17px;margin:0 0 6px">📰 আপনার প্রগ্রেস শেয়ার করুন</div><img id="shImg" alt="অসময় টিভি"><button id="shNat" style="margin-top:8px;padding:11px;font-size:14px">📤 ছবিসহ শেয়ার (সব অ্যাপে)</button><div class="shg" style="grid-template-columns:1fr 1fr 1fr"><button id="shWa" class="sec">WhatsApp</button><button id="shFb" class="sec">Facebook</button><button id="shIg" class="sec">Instagram</button><button id="shTg" class="sec">Telegram</button><button id="shTw" class="sec">X</button><button id="shCp" class="sec">🔗 লিংক কপি</button></div><button id="shSv" class="sec" style="padding:11px;font-size:14px">🖼️ গ্যালারিতে সেইভ করুন</button><div class="shg"><button id="shNew" class="sec">🎲 নতুন খবর</button><button id="shX" class="sec">বন্ধ করো</button></div></div></div>
+<div id="ppM" class="mod hide" style="z-index:70"><div class="card" style="max-width:380px;width:94%;max-height:92vh;overflow:auto;text-align:center"><div id="ppCv"></div><div id="ppAv" class="avW"></div><b id="ppN" style="font-size:19px"></b><div id="ppI" class="er" style="text-align:center"></div><div class="ppS" id="ppS"></div><div id="ppMc" class="ppL hide"></div><div id="ppA" style="margin:6px 0"></div><button id="ppX" class="sec">বন্ধ করো</button></div></div>
+<div id="phM" class="mod hide" style="z-index:75"><div class="card" style="max-width:420px;width:94%;max-height:92vh;overflow:auto;text-align:left"><b>🖼️ ছবি বাছাই করো</b><div class="em" style="margin:8px 0"><button id="phT0" class="sec on">👤 প্রোফাইল ছবি</button><button id="phT1" class="sec">🌄 কভার ফটো</button></div><div id="phPv"></div><div id="phG"></div><div class="er" id="phHint" style="text-align:left"></div><input type="file" id="phF" accept="image/*" class="hide"><button id="phU" class="sec">📱 ফোন থেকে আপলোড</button><button id="phRm" class="sec">🗑️ ছবি সরাও</button><div class="msg" id="phMsg"></div><button id="phX">✔ হয়েছে</button></div></div>
+<div id="upM" class="ov hide" style="z-index:80"><div class="pc"><div style="font-size:46px">🔄</div><div class="big" style="font-size:22px">নতুন আপডেট এসেছে!</div><p class="sub">নতুন ফিচার পেতে এখনই আপডেট করুন।</p><button id="upGo">🔄 আপডেট করুন</button><button id="upLater" class="sec">পরে</button></div></div>
 <div id="frM" class="mod hide"><div class="card frC"><div class="frH"><div><b style="font-size:18px">👥 ফ্রেন্ডস</b><div id="frSub" style="font-size:12px;opacity:.9;margin-top:2px"></div></div><button id="frX">✕</button></div><div class="frTabs"><button id="frT_fl" data-ft="fl">⚽ ফ্রেন্ডস<i id="frC_fl"></i></button><button id="frT_rq" data-ft="rq">📩 রিকুয়েস্ট<i id="frC_rq"></i></button><button id="frT_sr" data-ft="sr">🔍 খোঁজো</button></div><div id="frS" class="frSr hide"><input id="frQ" type="email" placeholder="বন্ধুর ইমেইল লিখো"><button id="frGo">সার্চ</button></div><div id="frL"></div></div></div>
 <div id="chM" class="mod hide" style="z-index:110"><div class="card"><div class="en">⚔️ ম্যাচ চ্যালেঞ্জ</div><div class="er" id="chTx" style="font-size:15px;color:var(--tx)"></div><button id="chAcc">✅ এক্সেপ্ট</button><button id="chRej" class="sec">❌ রিজেক্ট</button></div></div>
 <div id="ntM" class="mod hide" style="z-index:110"><div class="card"><div class="en" id="ntT"></div><div class="er" id="ntB" style="font-size:15px;color:var(--tx)"></div><button id="ntX">ঠিক আছে</button></div></div>
@@ -883,10 +897,10 @@ function pfSync(){try{if(!ref||local||!S)return;if(ref.isHost)ref.update({pfHost
 function setBall(eq){const it=eq&&eq.ball&&ITEM(eq.ball);$('ball').firstElementChild.setAttribute('fill',it?it.col:'url(#bl)')}
 function fxClear(){['fxl','fxl2'].forEach(id=>{const e=$(id);e.style.transition='none';e.style.strokeDashoffset=1;e.style.opacity=0;e.setAttribute('d','')});$('ball').style.filter='';setTimeout(()=>['fxl','fxl2'].forEach(id=>$(id).style.transition=''),60)}
 async function loadProf(){P={};try{P=JSON.parse(localStorage.getItem('ps_prof_'+ME.uid)||'{}')}catch(e){}
-  if(fs){try{const d=await fs.doc('users/'+ME.uid).get();if(d.exists){const r=d.data();['nat','dist','team','sb','gender','cr'].forEach(k=>{if(r[k]!==undefined)P[k]=r[k]});['mt','goals','best'].forEach(k=>{if(r[k]!==undefined)P[k]=+r[k]||0});if(r.name)ME.name=String(r.name).slice(0,14);applyUser(r)}}catch(e){}}
+  if(fs){try{const d=await fs.doc('users/'+ME.uid).get();if(d.exists){const r=d.data();['nat','dist','team','sb','gender','cr','av','cv'].forEach(k=>{if(r[k]!==undefined)P[k]=r[k]});if(r.mc&&mcSum(r.mc)>=mcSum(P.mc))P.mc=r.mc;['mt','goals','best'].forEach(k=>{if(r[k]!==undefined)P[k]=+r[k]||0});if(r.name)ME.name=String(r.name).slice(0,14);applyUser(r)}}catch(e){}}
   P.mt=+P.mt||0;P.goals=+P.goals||0;P.best=+P.best||0;if(P.team!=null)$('team').value=P.team}
 function saveProf(){if(!ME){try{localStorage.setItem('ps_prof_guest',JSON.stringify({mt:P.mt||0,goals:P.goals||0,best:P.best||0}))}catch(e){}return}try{localStorage.setItem('ps_prof_'+ME.uid,JSON.stringify(P))}catch(e){}
-  if(fs)fs.doc('users/'+ME.uid).set({name:ME.name,email:((auth&&auth.currentUser&&auth.currentUser.email)||'').toLowerCase(),nat:P.nat||'',dist:P.dist||'',team:+P.team||0,mt:P.mt||0,goals:P.goals||0,best:P.best||0,sb:P.sb||0,gender:P.gender||'',cr:P.cr||(P.cr=Date.now()),t:Date.now()},{merge:true}).catch(()=>{})}
+  if(fs)fs.doc('users/'+ME.uid).set({name:ME.name,email:((auth&&auth.currentUser&&auth.currentUser.email)||'').toLowerCase(),nat:P.nat||'',dist:P.dist||'',team:+P.team||0,mt:P.mt||0,goals:P.goals||0,best:P.best||0,sb:P.sb||0,gender:P.gender||'',av:P.av||'',cv:P.cv||'',mc:P.mc||{},cr:P.cr||(P.cr=Date.now()),t:Date.now()},{merge:true}).catch(()=>{})}
 function openNat(){$('natMsg').textContent='';$('natG').value=P.gender||'';$('natS').value=P.nat||'';$('natD').value=P.dist||'';$('natDW').classList.toggle('hide',$('natS').value!=='BD');const tt=P.team!=null?P.team:$('team').value;$('natT').value=tt;$('natTL').innerHTML=teamLogo(+tt,30);$('natM').classList.remove('hide')}
 $('natS').onchange=()=>$('natDW').classList.toggle('hide',$('natS').value!=='BD');$('natT').onchange=()=>$('natTL').innerHTML=teamLogo(+$('natT').value,30);
 $('pfC').onchange=()=>$('pfDW').classList.toggle('hide',$('pfC').value!=='BD');$('pfT').onchange=()=>$('pfTL').innerHTML=teamLogo(+$('pfT').value,30);$('pfTh').onchange=()=>TH.set($('pfTh').value);
@@ -894,7 +908,7 @@ function need(){if(CFG.maint){mtShow();return false}if(BAN){notice('🚫 অ্�
 function gate(){if(!authReady)return;if(!ME){$('natM').classList.add('hide');$('pfM').classList.add('hide');guestIntro();runPending()}else{$('auM').classList.add('hide');if(!profOk())openNat();else{$('natM').classList.add('hide');runPending()}}}
 $('natGo').onclick=()=>{const v=$('natS').value,d=$('natD').value;if(!v){$('natMsg').textContent='দেশ বাছাই করো।';return}const g=$('natG').value;if(!g){$('natMsg').textContent='তুমি ছেলে না মেয়ে — বাছাই করো।';return}if(v==='BD'&&!d){$('natMsg').textContent='জেলা বাছাই করো।';return}P.nat=v;P.gender=g;P.dist=v==='BD'?d:'';P.team=+$('natT').value||0;$('team').value=P.team;if(!P.sb){P.sb=1;addCoins(eco('sg',100));toast('🎁 সাইন আপ বোনাস: +'+bnum(eco('sg',100))+' 🪙 (আগের ব্যালান্সের সাথে যোগ হয়েছে)',5000)}saveProf();$('natM').classList.add('hide');renderAcct();runPending()};
 function openProf(){const u=auth.currentUser;$('pfN').value=ME.name;$('pfT').value=P.team!=null?P.team:$('team').value;$('pfE').value=(u&&u.email)||'';$('pfC').value=P.nat||'';$('pfP').value='';$('pfMsg').textContent='';
-  $('pfSt').textContent='ম্যাচ '+(P.mt||0)+' • মোট গোল '+(P.goals||0)+' • এক ম্যাচে সর্বোচ্চ '+(P.best||0);$('pfG').value=P.gender||'';$('pfD').value=P.dist||'';$('pfDW').classList.toggle('hide',$('pfC').value!=='BD');$('pfTL').innerHTML=teamLogo(+$('pfT').value,30);TH.apply();$('pfM').classList.remove('hide')}
+  $('pfSt').textContent='ম্যাচ '+(P.mt||0)+' • মোট গোল '+(P.goals||0)+' • এক ম্যাচে সর্বোচ্চ '+(P.best||0);$('pfG').value=P.gender||'';$('pfD').value=P.dist||'';$('pfDW').classList.toggle('hide',$('pfC').value!=='BD');$('pfTL').innerHTML=teamLogo(+$('pfT').value,30);TH.apply();pfHdr();$('pfM').classList.remove('hide')}
 $('pfX').onclick=()=>$('pfM').classList.add('hide');
 $('pfOut').onclick=()=>{$('pfM').classList.add('hide');auth.signOut()};
 $('pfSave').onclick=async()=>{const u=auth.currentUser,msg=$('pfMsg');msg.textContent='';
@@ -902,7 +916,7 @@ $('pfSave').onclick=async()=>{const u=auth.currentUser,msg=$('pfMsg');msg.textCo
     if(n!==ME.name){await u.updateProfile({displayName:n});ME.name=n}
     const e=$('pfE').value.trim();if(e&&e!==u.email)await u.updateEmail(e);
     const pw=$('pfP').value;if(pw){if(pw.length<6){msg.textContent='পাসওয়ার্ড কমপক্ষে ৬ অক্ষর দাও।';return}await u.updatePassword(pw)}
-    P.gender=$('pfG').value;P.nat=$('pfC').value;P.dist=P.nat==='BD'?$('pfD').value:'';P.team=+$('pfT').value;$('team').value=P.team;$('name').value=ME.name;saveProf();renderAcct();if(fs)fs.doc('lb/w'+wkOf()+'/p/'+ME.uid).update({name:ME.name,dist:P.dist||''}).catch(()=>{});$('pfP').value='';msg.textContent='✅ আপডেট হয়েছে'}
+    P.gender=$('pfG').value;P.nat=$('pfC').value;P.dist=P.nat==='BD'?$('pfD').value:'';P.team=+$('pfT').value;$('team').value=P.team;$('name').value=ME.name;saveProf();renderAcct();if(fs){const pd={name:ME.name,dist:P.dist||''};fs.doc('lb/w'+wkOf()+'/p/'+ME.uid).update(pd).catch(()=>{});fs.doc('lgb/'+ME.uid).update(pd).catch(()=>{})}$('pfP').value='';msg.textContent='✅ আপডেট হয়েছে'}
   catch(x){msg.textContent=x&&x.code==='auth/requires-recent-login'?'নিরাপত্তার জন্য একবার সাইন আউট করে আবার লগইন করে চেষ্টা করো।':authErr(x)}};
 async function payWeekly(){if(!fs||!ME)return;const pw=wkOf()-1,key='ps_wk_'+ME.uid+'_'+pw;try{if(localStorage.getItem(key))return;const q=await fs.collection('lb/w'+pw+'/p').orderBy('goals','desc').limit(10).get();localStorage.setItem(key,'1');const idx=q.docs.findIndex(d=>d.data().uid===ME.uid);if(idx>=0){const lbb=rwv('lbw','w',50);addCoins(lbb);toast('🏆 গত সপ্তাহের লিডারবোর্ডে তুমি '+(idx+1)+' নম্বরে ছিলে! +'+bnum(lbb)+' 🪙',6000)}}catch(e){}}
 // স্টোর
@@ -1041,7 +1055,7 @@ function lobScene(){const st=c=>`style='fill:var(${c})'`;
 let ME=null,auth=null,fs=null,cq=null,auMode='in';
 const FBC={apiKey:'AIzaSyCRJjJKxUECODxNHd0Da1k55Nb3Gfhe38g',authDomain:'penalty-shootout-830ab.firebaseapp.com',projectId:'penalty-shootout-830ab',storageBucket:'penalty-shootout-830ab.firebasestorage.app',messagingSenderId:'1075775407534',appId:'1:1075775407534:web:2f938c328de0076d92743f'};
 const authErr=e=>({'auth/email-already-in-use':'এই ইমেইলে আগেই অ্যাকাউন্ট আছে।','auth/invalid-email':'ইমেইল ঠিক নয়।','auth/weak-password':'পাসওয়ার্ড কমপক্ষে ৬ অক্ষর দাও।','auth/wrong-password':'ইমেইল বা পাসওয়ার্ড ভুল।','auth/invalid-credential':'ইমেইল বা পাসওয়ার্ড ভুল।','auth/user-not-found':'এই ইমেইলে অ্যাকাউন্ট নেই।','auth/popup-closed-by-user':'Google উইন্ডো বন্ধ হয়ে গেছে।','auth/unauthorized-domain':'এই ডোমেইন Firebase-এ অনুমোদিত নয়।','auth/network-request-failed':'ইন্টারনেট সংযোগ দেখো।','auth/too-many-requests':'অনেকবার চেষ্টা হয়েছে, একটু পরে দাও।','auth/missing-password':'পাসওয়ার্ড দাও।'}[e&&e.code]||'সমস্যা হয়েছে: '+((e&&e.code)||''));
-function renderAcct(){$('bAcct').textContent=ME?'⚙️ প্রোফাইল':'🔐 লগইন';$('hName').textContent=ME?ME.name:guestName()+' (গেস্ট)';const ti=+$('team').value||0;$('hInfo').innerHTML=ME&&P.nat?`🌍 ${esc(natName(P.nat))}${P.nat==='BD'&&P.dist?', '+esc(P.dist):''} &nbsp;•&nbsp; ${teamLogo(ti,16)} ${esc(TEAMS[ti][0])}`:(ME?'':`👤 গেস্ট &nbsp;•&nbsp; ${teamLogo(ti,16)} ${esc(TEAMS[ti][0])}`)}
+function renderAcct(){try{$('hAv').innerHTML=ME?avH(P.av,30,ME.name):'👤'}catch(e){}$('bAcct').textContent=ME?'⚙️ প্রোফাইল':'🔐 লগইন';$('hName').textContent=ME?ME.name:guestName()+' (গেস্ট)';const ti=+$('team').value||0;$('hInfo').innerHTML=ME&&P.nat?`🌍 ${esc(natName(P.nat))}${P.nat==='BD'&&P.dist?', '+esc(P.dist):''} &nbsp;•&nbsp; ${teamLogo(ti,16)} ${esc(TEAMS[ti][0])}`:(ME?'':`👤 গেস্ট &nbsp;•&nbsp; ${teamLogo(ti,16)} ${esc(TEAMS[ti][0])}`)}
 function auSet(){const up=auMode==='up';$('auT').textContent=up?'নতুন অ্যাকাউন্ট':'লগইন';$('auN').classList.toggle('hide',!up);$('auGo').textContent=up?'অ্যাকাউন্ট খোলো':'লগইন';$('auSw').textContent=up?'আগে থেকেই অ্যাকাউন্ট আছে? লগইন':'নতুন অ্যাকাউন্ট খুলতে চাও?'}
 function openAuth(m){auMode='in';auSet();$('auMsg').textContent=m||'';$('auM').classList.remove('hide')}
 try{firebase.initializeApp(FBC);auth=firebase.auth();fs=firebase.firestore();
@@ -1060,7 +1074,7 @@ const wkOf=()=>Math.floor((Date.now()-4*864e5)/(7*864e5));
 function wkLeft(){const e=(wkOf()+1)*7*864e5+4*864e5-Date.now();return Math.floor(e/864e5)+' দিন '+Math.floor(e%864e5/36e5)+' ঘণ্টা'}
 async function loadLb(){if(!fs)return;$('lbT').textContent='রিসেট হতে বাকি: '+wkLeft()+' • সব ম্যাচের গোল গোনা হয়'+(ME?'':' • 🔒 লিডারবোর্ডে আসতে লগইন করো');
   try{const q=await fs.collection('lb/w'+wkOf()+'/p').orderBy('goals','desc').limit(20).get(),rows=q.docs.map(d=>d.data());
-    $('lbl').innerHTML=rows.length?rows.map((r,i)=>`<div style='${ME&&r.uid===ME.uid?"font-weight:800;color:var(--ac)":""}'><span>${i+1}. ${esc(r.name||'প্লেয়ার')}${(dd=>dd?', '+esc(dd):'')(ME&&r.uid===ME.uid?(P.nat==='BD'?P.dist:''):r.dist)}</span><span>⚽ ${r.goals}</span></div>`).join(''):'<div>এই সপ্তাহে এখনো কেউ গোল করেনি।</div>'}
+    $('lbl').innerHTML=rows.length?rows.map((r,i)=>`<div data-u='${esc(r.uid||'')}' style='cursor:pointer;${ME&&r.uid===ME.uid?"font-weight:800;color:var(--ac)":""}'><span>${i+1}. ${esc(r.name||'প্লেয়ার')}${(dd=>dd?', '+esc(dd):'')(ME&&r.uid===ME.uid?(P.nat==='BD'?P.dist:''):r.dist)}</span><span>⚽ ${r.goals}</span></div>`).join(''):'<div>এই সপ্তাহে এখনো কেউ গোল করেনি।</div>'}
   catch(e){$('lbl').innerHTML='<div>লিডারবোর্ড লোড হয়নি।</div>'}}
 $('lbR').onclick=loadLb;
 function addCoins(n){const i=bonusInfo();try{localStorage.setItem(BK(),JSON.stringify({...i.b,coins:i.b.coins+n}))}catch(e){}bonusRender()}
@@ -1075,7 +1089,7 @@ function matchDone(s){
       const tx=won?(m==='career'?'🏆 ক্যারিয়ারে জিতেছ!':'🏆 ম্যাচ জিতেছ!')+c:m==='career'?'😔 হেরেছ — এন্ট্রি ফি '+bnum(cFee())+' 🪙 গেছে'+(r>0?' •'+c:''):r>0?'😔 হেরেছ —'+c:'';
       if(tx)toast(tx,5000)}
   }catch(e){}
-  try{P.mt=(P.mt||0)+1;P.goals=(P.goals||0)+my;P.best=Math.max(P.best||0,my);saveProf()}catch(e){}
+  try{P.mc=P.mc||{};const md=s.lg?'league':local?'cpu':s.career?'career':s.tm?'team':s.fr?'friend':'room';P.mc[md]=(P.mc[md]||0)+1;P.mt=(P.mt||0)+1;P.goals=(P.goals||0)+my;P.best=Math.max(P.best||0,my);saveProf()}catch(e){}
   try{const lg=Math.min(my,20);if(ME&&lg>0)addGoals(lg)}catch(e){}
   try{statLog(s,my,won)}catch(e){}
   try{if(!ME)setTimeout(()=>guestPop(false,true),2600)}catch(e){}
@@ -1150,7 +1164,7 @@ const frOn=l=>Date.now()-(+l||0)<75000;
 function notice(t,h){$('ntT').textContent=t;$('ntB').innerHTML=h;$('ntM').classList.remove('hide')}
 $('ntX').onclick=()=>$('ntM').classList.add('hide');
 function frStop(){[frUn,chUn,chrUn,uUn,gUn,frLUn].forEach(u=>{try{u&&u()}catch(e){}});frUn=chUn=chrUn=uUn=gUn=frLUn=null;clearInterval(hbF);hbF=null;$('frBadge').classList.add('hide');$('chM').classList.add('hide')}
-function frSync(){frStop();if(!ME||!fs)return;frFirst=true;if(P.nat)saveProf();startUserSync();startGiftSync();startFrList();fs.doc('users/'+ME.uid).set({ver:APP_VER},{merge:true}).catch(()=>{});
+function frSync(){frStop();if(!ME||!fs)return;frFirst=true;if(P.nat)saveProf();startUserSync();startGiftSync();startFrList();fs.doc('users/'+ME.uid).set({ver:APP_VER},{merge:true}).catch(()=>{});if(P.nat){const pd={name:ME.name,dist:P.nat==='BD'?(P.dist||''):''};fs.doc('lgb/'+ME.uid).update(pd).catch(()=>{});fs.doc('lb/w'+wkOf()+'/p/'+ME.uid).update(pd).catch(()=>{})}
   const beat=()=>{if(ME&&!document.hidden){fs.doc('users/'+ME.uid).set({last:Date.now()},{merge:true}).catch(()=>{});const n=new Date(),k=dayId(n)+'-'+n.getHours();if(k!==actKey){actKey=k;fs.doc('act/'+dayId(n)+'/u/'+ME.uid).set({t:Date.now(),hrs:{[n.getHours()]:true}},{merge:true}).catch(()=>{})}}};beat();hbF=setInterval(beat,30000);
   try{frUn=fs.collection('req/'+ME.uid+'/in').onSnapshot(sn=>{const n=sn.size;$('frBadge').textContent=bnum(n);$('frBadge').classList.toggle('hide',!n);
     if(frFirst){if(n)frPop({ic:'📩',t:'ফ্রেন্ড রিকুয়েস্ট জমা আছে',b:'তোমার জন্য <b>'+bnum(n)+'টি</b> রিকুয়েস্ট অপেক্ষা করছে',btn:'দেখো',go:'rq'})}else sn.docChanges().forEach(c=>{if(c.type==='added'){const r=c.doc.data();frPop({t:'নতুন ফ্রেন্ড রিকুয়েস্ট',b:'<b>'+esc(r.name||'কেউ')+'</b> তোমাকে ফ্রেন্ড রিকুয়েস্ট পাঠিয়েছে',who:r.name||'?',ac:c.doc.id,nm:r.name||''})}});frFirst=false;if(!$('frM').classList.contains('hide')&&frTab==='rq')frRender()},()=>{})}catch(e){}
@@ -1190,13 +1204,13 @@ function giftPop(c,it,tx){const nm=k=>{const q=STORE.find(x=>x.id===k);return q?
   $('gfM').classList.remove('hide');beep(880,.2);setTimeout(()=>beep(1175,.25),180);try{buzz()}catch(e){}}
 $('gfX').onclick=()=>$('gfM').classList.add('hide');
 async function frList(){const q=await fs.collection('fr/'+ME.uid+'/list').get(),L=q.docs.map(d=>({id:d.id,...d.data()}));
-  await Promise.all(L.map(async f=>{try{const u=await fs.doc('users/'+f.id).get();if(u.exists){const r=u.data();f.name=r.name||f.name;f.last=r.last||0;f.dist=r.dist||'';f.mt=+r.mt||0;f.goals=+r.goals||0}}catch(e){}}));return L}
+  await Promise.all(L.map(async f=>{try{const u=await fs.doc('users/'+f.id).get();if(u.exists){const r=u.data();f.name=r.name||f.name;f.last=r.last||0;f.dist=r.dist||'';f.av=r.av||'';f.mt=+r.mt||0;f.goals=+r.goals||0}}catch(e){}}));return L}
 const frEmpty=(ic,t,s)=>`<div class="fe"><div style="font-size:44px">${ic}</div><b>${t}</b><small>${s}</small></div>`;
 async function frRender(){if(!fs||!ME)return;const box=$('frL');['fl','rq','sr'].forEach(k=>{$('frT_'+k).className=k===frTab?'on':''});$('frS').classList.toggle('hide',frTab!=='sr');
   try{
     if(frTab==='fl'){if(!frData.length)box.innerHTML='<div class="fe">লোড হচ্ছে…</div>';frData=await frList();frData.sort((a,b)=>(frOn(b.last)-frOn(a.last))||String(a.name).localeCompare(b.name,'bn'));
       const on=frData.filter(f=>frOn(f.last)),off=frData.filter(f=>!frOn(f.last));$('frSub').textContent='🟢 অনলাইন '+bnum(on.length)+' • মোট ফ্রেন্ড '+bnum(frData.length);$('frC_fl').textContent=frData.length?bnum(frData.length):'';
-      const card=f=>{const o=frOn(f.last);return`<div class="fc ${o?'on':''}"><div class="fav">${frAv(f.name,46)}<i class="dot ${o?'g':''}"></i></div><div class="fi"><b>${esc(f.name||'প্লেয়ার')}</b><small>${o?'<span style="color:#16a34a;font-weight:700">● অনলাইন</span>':'অফলাইন • '+frAgo(f.last)}${f.dist?' • 📍'+esc(f.dist):''}</small><small>🎮 ${bnum(f.mt||0)} ম্যাচ • ⚽ ${bnum(f.goals||0)} গোল</small></div><div class="fa"><button data-ch="${f.id}" ${o?'':'disabled'}>⚔️ চ্যালেঞ্জ</button><button data-rm="${f.id}" class="sec x">✖</button></div></div>`};
+      const card=f=>{const o=frOn(f.last);return`<div class="fc ${o?'on':''}" data-u="${f.id}"><div class="fav">${f.av?avH(f.av,46,f.name):frAv(f.name,46)}<i class="dot ${o?'g':''}"></i></div><div class="fi"><b>${esc(f.name||'প্লেয়ার')}</b><small>${o?'<span style="color:#16a34a;font-weight:700">● অনলাইন</span>':'অফলাইন • '+frAgo(f.last)}${f.dist?' • 📍'+esc(f.dist):''}</small><small>🎮 ${bnum(f.mt||0)} ম্যাচ • ⚽ ${bnum(f.goals||0)} গোল</small></div><div class="fa"><button data-ch="${f.id}" ${o?'':'disabled'}>⚔️ চ্যালেঞ্জ</button><button data-rm="${f.id}" class="sec x">✖</button></div></div>`};
       box.innerHTML=frData.length?(on.length?'<div class="fh">🟢 অনলাইন — '+bnum(on.length)+'</div>'+on.map(card).join(''):'')+(off.length?'<div class="fh">⚫ অফলাইন — '+bnum(off.length)+'</div>'+off.map(card).join(''):''):frEmpty('⚽','এখনো কোনো ফ্রেন্ড নেই','🔍 খোঁজো ট্যাবে বন্ধুর ইমেইল দিয়ে রিকুয়েস্ট পাঠাও')}
     else if(frTab==='rq'){box.innerHTML='<div class="fe">লোড হচ্ছে…</div>';const q=await fs.collection('req/'+ME.uid+'/in').get(),L=q.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.t||0)-(a.t||0));$('frC_rq').textContent=L.length?bnum(L.length):'';
       box.innerHTML=L.length?L.map(r=>`<div class="fc"><div class="fav">${frAv(r.name,46)}</div><div class="fi"><b>${esc(r.name||'প্লেয়ার')}</b><small>${esc(r.email||'')}</small><small>📩 ${frAgo(r.t)} পাঠিয়েছে</small></div><div class="fa"><button data-ac="${r.id}" data-nm="${esc(r.name||'')}">✅ গ্রহণ</button><button data-dc="${r.id}" class="sec x">✕</button></div></div>`).join(''):frEmpty('📭','কোনো নতুন রিকুয়েস্ট নেই','কেউ রিকুয়েস্ট পাঠালে এখানে (এবং অনলাইনে থাকলে পপ-আপে) দেখতে পাবে')}
@@ -1209,6 +1223,7 @@ $('frGo').onclick=async()=>{const e=$('frQ').value.trim().toLowerCase();if(!e)re
     if(q.empty)frRes={none:1};else{const d=q.docs[0],r=d.data();let fr=false;if(d.id!==ME.uid){try{fr=(await fs.doc('fr/'+ME.uid+'/list/'+d.id).get()).exists}catch(x){}}frRes={id:d.id,name:r.name,email:r.email,self:d.id===ME.uid,fr}}}catch(x){frRes={none:1};toast('সার্চ করা যায়নি — ডাটাবেস পারমিশন দেখো',3500)}frRender()};
 $('frM').onclick=async e=>{if(e.target===$('frM')){$('frM').classList.add('hide');return}
   const g=s=>e.target.closest(s);let b;
+  if(!g('button')&&(b=g('.fc[data-u]'))){profOpen(b.dataset.u,1);return}
   if(b=g('[data-ft]')){frTab=b.dataset.ft;frRender();return}
   if(b=g('[data-ch]')){const f=frData.find(x=>x.id===b.dataset.ch);if(f)challenge(f);return}
   if(b=g('[data-rm]')){const f=frData.find(x=>x.id===b.dataset.rm);if(f&&confirm((f.name||'ফ্রেন্ড')+'-কে ফ্রেন্ড লিস্ট থেকে সরাবে?')){const bt=fs.batch();bt.delete(fs.doc('fr/'+ME.uid+'/list/'+f.id));bt.delete(fs.doc('fr/'+f.id+'/list/'+ME.uid));bt.commit().catch(()=>{});frData=frData.filter(x=>x!==f);frRender()}return}
@@ -1225,7 +1240,7 @@ function pushWallet(){try{if(!ME||!fs||wApply)return;wPend=true;clearTimeout(wT)
 function applyUser(r){applyWallet(r);BAN=r.ban||'';try{if(r.dm===dkey(new Date())){localStorage.setItem(DMK(),r.dm);dmBtn()}}catch(e){}
   if(r.msg&&r.msg.t&&r.msg.text){let seen=0;try{seen=+localStorage.getItem('ps_ms_'+ME.uid)||0}catch(e){}if(r.msg.t>seen){try{localStorage.setItem('ps_ms_'+ME.uid,r.msg.t)}catch(e){}notice('📢 এডমিনের বার্তা',esc(r.msg.text))}}}
 function startUserSync(){try{uUn=fs.doc('users/'+ME.uid).onSnapshot(sn=>{const r=sn.data();if(!r||!ME)return;let ch=false;
-    ['nat','dist','team','gender'].forEach(k=>{if(r[k]!==undefined&&P[k]!==r[k]){P[k]=r[k];ch=true}});['mt','goals','best'].forEach(k=>{if(r[k]!==undefined&&P[k]!==(+r[k]||0)){P[k]=+r[k]||0;ch=true}});
+    ['nat','dist','team','gender','av','cv'].forEach(k=>{if(r[k]!==undefined&&P[k]!==r[k]){P[k]=r[k];ch=true}});if(r.mc&&mcSum(r.mc)>mcSum(P.mc)){P.mc=r.mc;ch=true}['mt','goals','best'].forEach(k=>{if(r[k]!==undefined&&P[k]!==(+r[k]||0)){P[k]=+r[k]||0;ch=true}});
     if(r.name&&r.name!==ME.name){ME.name=String(r.name).slice(0,14);ch=true}
     if(ch){try{localStorage.setItem('ps_prof_'+ME.uid,JSON.stringify(P))}catch(e){}if(P.team!=null)$('team').value=P.team;renderAcct()}
     if(!wPend&&r.cn!==undefined){const i=bonusInfo(),v=invGet();if(r.cn!==i.b.coins||(r.inv&&(!sameO(r.inv.own,v.own)||!sameO(r.inv.eq,v.eq)))){applyWallet(r);bonusRender();try{if(!$('stM').classList.contains('hide'))stRender();if(!$('vtM').classList.contains('hide'))vtRender()}catch(e){}}}
@@ -1314,7 +1329,7 @@ async function lgLb(){
   try{const q=await fs.collection('lgb').orderBy('pts','desc').limit(40).get();
     const a=q.docs.map(d=>d.data());a.sort((x,y)=>((+y.pts||0)-(+x.pts||0))||((+y.gf||0)-(+x.gf||0))||((+x.mt||0)-(+y.mt||0)));
     box.innerHTML=a.length?a.map((r,i)=>{const lg=(+r.l||0)>=LEAGUES.length?'👑 চ্যাম্পিয়ন':LEAGUES[+r.l||0].n,me=ME&&r.uid===ME.uid;
-      return `<div class="lbr ${me?'me':''}"><i>${bnum(i+1)}</i><div><b>${esc(r.name||'প্লেয়ার')}${me?' (তুমি)':''}</b><small>📍 ${esc(r.dist||'—')}</small></div><div class="st"><span>${lg}</span><br><span>ম্যাচ ${bnum(+r.mt||0)} • গোল ${bnum(+r.gf||0)}</span><br><b>⭐ ${bnum(+r.pts||0)} পয়েন্ট</b></div></div>`}).join(''):'<div class="er">এখনো কেউ লীগ খেলেনি — প্রথম তুমিই হও!</div>'
+      return `<div class="lbr ${me?'me':''}" data-u="${esc(r.uid||'')}" style="cursor:pointer"><i>${bnum(i+1)}</i><div><b>${esc(r.name||'প্লেয়ার')}${me?' (তুমি)':''}</b><small>📍 ${esc(r.dist||'—')}</small></div><div class="st"><span>${lg}</span><br><span>ম্যাচ ${bnum(+r.mt||0)} • গোল ${bnum(+r.gf||0)}</span><br><b>⭐ ${bnum(+r.pts||0)} পয়েন্ট</b></div></div>`}).join(''):'<div class="er">এখনো কেউ লীগ খেলেনি — প্রথম তুমিই হও!</div>'
   }catch(e){box.innerHTML='<div class="er">লিডারবোর্ড লোড হয়নি — ডাটাবেস পারমিশন দেখো (lgb)</div>'}}
 function lgTab(n){$('lgT1').classList.toggle('on',n===1);$('lgT2').classList.toggle('on',n===2);$('lgB1').classList.toggle('hide',n!==1);$('lgB2').classList.toggle('hide',n!==2);if(n===2)lgLb()}
 async function lgOpen(){
@@ -1424,13 +1439,67 @@ function dmAnnounce(){let seen='';try{seen=localStorage.getItem('ps_feat_dl1')||
   let t='';try{t=sessionStorage.getItem('ps_dmt')||''}catch(e){}
   if(!dmDone()&&t!==dkey(new Date())){try{sessionStorage.setItem('ps_dmt',dkey(new Date()))}catch(e){}toast('⭐ আজকের ডেইলি মিশন রেডি! গোল করলেই '+bnum(dmP())+' 🪙',5000)}}
 dmBtn();setInterval(dmBtn,30000);setTimeout(dmAnnounce,3500);
-const APP_VER='20261109-lobby-dl1';
+/* ===== প্রোফাইল ছবি / কভার / পপআপ ===== */
+const AVC=['#16a34a','#dc2626','#2563eb','#f59e0b','#7c3aed','#0891b2','#db2777','#111827'];
+const AVE=['⚽','🧤','🏆','👑','🔥','⚡','🦁','🐯','🦅','🐺','🐉','🚀','💎','🎯','🥅','👟','🏅','😎','🤖','👽'];
+const AVN=['n:1|#dc2626','n:2|#2563eb','n:3|#16a34a','n:7|#f59e0b','n:9|#7c3aed','n:10|#0891b2','n:11|#db2777','n:99|#111827'];
+const COVERS=[['linear-gradient(135deg,#16a34a,#065f46)','⚽'],['repeating-linear-gradient(90deg,#1c7a45 0 28px,#17693b 28px 56px)','🥅'],['radial-gradient(circle at 50% 130%,#1e3a8a,#0b1020 70%)','🏟️'],['linear-gradient(135deg,#f59e0b,#b45309)','🏆'],['linear-gradient(135deg,#dc2626,#7f1d1d)','🔥'],['linear-gradient(135deg,#7c3aed,#312e81)','⚡'],['linear-gradient(135deg,#0ea5e9,#1e3a8a)','👑'],['linear-gradient(135deg,#111827,#4b5563)','10'],['linear-gradient(135deg,#16a34a,#14532d)','1'],['linear-gradient(135deg,#2563eb,#1e1b4b)','2'],['linear-gradient(135deg,#db2777,#4c0519)','3'],['linear-gradient(135deg,#f59e0b,#78350f)','🧤']];
+const okD=v=>/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+\/=]+$/.test(v)&&v.length<200000;
+const mcSum=m=>Object.values(m||{}).reduce((a,b)=>a+(+b||0),0);
+function avH(av,sz,nm){av=String(av||'');const st=`width:${sz}px;height:${sz}px;font-size:${Math.round(sz*.5)}px`;let m;
+  if(okD(av))return`<span class="avI" style="${st}"><img src="${av}" alt=""></span>`;
+  if(m=av.match(/^t:(\d{1,3})$/)){if(TEAMS[+m[1]])return`<span class="avI" style="${st};background:#fff">${teamLogo(+m[1],Math.round(sz*.8))}</span>`}
+  if(m=av.match(/^n:(\d{1,2})\|(#[0-9a-f]{6})$/i))return`<span class="avI" style="${st};background:${m[2]};font-size:${Math.round(sz*.46)}px">${m[1]}</span>`;
+  if(m=av.match(/^e:([^|<>"'&]{1,8})\|(#[0-9a-f]{6})$/i))return`<span class="avI" style="${st};background:${m[2]}">${m[1]}</span>`;
+  return`<span class="avI" style="${st};background:#334155">${esc(String(nm||'?').trim().charAt(0)||'?')}</span>`}
+function cvH(v,h){v=String(v||'');let bg=COVERS[0][0],tx=COVERS[0][1],m;
+  if(okD(v))return`<div class="cvB" style="height:${h}px;background-image:url(${v})"></div>`;
+  if(m=v.match(/^c:(\d+)$/)){const c=COVERS[+m[1]];if(c){bg=c[0];tx=c[1]}}
+  else if(m=v.match(/^ct:(\d+)$/)){const t=TEAMS[+m[1]];if(t){bg='linear-gradient(135deg,'+t[1]+',#0b1020)';tx=teamLogo(+m[1],Math.round(h*.7))}}
+  return`<div class="cvB" style="height:${h}px;background:${bg}"><span style="font-size:${Math.round(h*.55)}px;opacity:.45;font-weight:900;color:#fff;line-height:1">${tx}</span></div>`}
+function pfHdr(){const l=P.nat?natName(P.nat)+(P.nat==='BD'&&P.dist?', '+P.dist:''):'';$('pfHd').innerHTML=cvH(P.cv,110)+`<div class="avW">${avH(P.av,76,ME.name)}</div><div style="text-align:center;font-weight:800;font-size:18px">${esc(ME.name)}</div><div class="er" style="text-align:center">${l?'📍 '+esc(l):''}</div>`}
+let phT=0;
+function phDraw(){$('phT0').classList.toggle('on',!phT);$('phT1').classList.toggle('on',!!phT);const cur=phT?P.cv:P.av;
+  $('phPv').innerHTML=phT?cvH(P.cv,90):`<div style="text-align:center">${avH(P.av,84,ME.name)}</div>`;
+  const L=phT?COVERS.map((_,i)=>'c:'+i).concat(TEAMS.map((_,i)=>'ct:'+i)):TEAMS.map((_,i)=>'t:'+i).concat(AVN,AVE.map((e,i)=>'e:'+e+'|'+AVC[i%8]));
+  $('phG').className='phG'+(phT?' cv':'');$('phG').innerHTML=L.map(v=>`<button data-v="${v}" class="${cur===v?'on':''}">${phT?cvH(v,54):avH(v,52)}</button>`).join('');
+  $('phHint').textContent=phT?'ফোন থেকে দিলে: চওড়া ছবি (৩:১), কমপক্ষে ১০০০×৩৩৩ px ভালো। যেকোনো সাইজ দিলে অটো ক্রপ ও ছোট হবে — সর্বোচ্চ ১০ MB।':'ফোন থেকে দিলে: স্কোয়ার (১:১) ছবি, কমপক্ষে ৩০০×৩০০ px ভালো। যেকোনো সাইজ দিলে অটো ক্রপ ও ছোট হবে — সর্বোচ্চ ১০ MB।'}
+const phSaved=()=>{saveProf();renderAcct();pfHdr();phDraw()};
+function imgPack(f,w,h,cb){const fr=new FileReader();fr.onload=()=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d'),r=Math.max(w/im.width,h/im.height),dw=im.width*r,dh=im.height*r;x.fillStyle='#fff';x.fillRect(0,0,w,h);x.drawImage(im,(w-dw)/2,(h-dh)/2,dw,dh);let q=.85,u=c.toDataURL('image/jpeg',q);while(u.length>90000&&q>.35){q-=.1;u=c.toDataURL('image/jpeg',q)}cb(u.length<200000?u:null)};im.onerror=()=>cb(null);im.src=fr.result};fr.onerror=()=>cb(null);fr.readAsDataURL(f)}
+$('bPh').onclick=()=>{phT=0;$('phMsg').textContent='';phDraw();$('phM').classList.remove('hide')};
+$('phT0').onclick=()=>{phT=0;phDraw()};$('phT1').onclick=()=>{phT=1;phDraw()};
+$('phG').onclick=e=>{const b=e.target.closest('[data-v]');if(!b)return;P[phT?'cv':'av']=b.dataset.v;phSaved()};
+$('phU').onclick=()=>$('phF').click();
+$('phF').onchange=()=>{const f=$('phF').files[0];$('phF').value='';if(!f)return;if(!/^image\//.test(f.type)){$('phMsg').textContent='শুধু ছবি দাও।';return}if(f.size>10*1048576){$('phMsg').textContent='ছবি ১০ MB এর বেশি — ছোট ছবি দাও।';return}$('phMsg').textContent='প্রসেস হচ্ছে…';imgPack(f,phT?640:192,phT?240:192,u=>{if(!u){$('phMsg').textContent='ছবি পড়া যায়নি, অন্য ছবি দাও।';return}P[phT?'cv':'av']=u;$('phMsg').textContent='✅ আপলোড হয়েছে';phSaved()})};
+$('phRm').onclick=()=>{P[phT?'cv':'av']='';phSaved()};$('phX').onclick=()=>$('phM').classList.add('hide');
+let rkC={t:0},ppTok=0;
+async function rkLoad(){if(Date.now()-rkC.t<60000)return;rkC.t=Date.now();try{const[a,b]=await Promise.all([fs.collection('lb/w'+wkOf()+'/p').orderBy('goals','desc').limit(100).get(),fs.collection('lgb').orderBy('pts','desc').limit(100).get()]);rkC.w=a.docs.map(d=>d.data().uid||d.id);const L=b.docs.map(d=>d.data());L.sort((x,y)=>((+y.pts||0)-(+x.pts||0))||((+y.gf||0)-(+x.gf||0))||((+x.mt||0)-(+y.mt||0)));rkC.l=L.map(d=>d.uid)}catch(e){rkC.t=0;rkC.w=rkC.w||[];rkC.l=rkC.l||[]}}
+async function profOpen(uid,isF){
+  if(!ME||!fs){toast('প্রোফাইল দেখতে লগইন করো',3000);return}
+  const tok=ppTok=Date.now();$('ppM').classList.remove('hide');$('ppCv').innerHTML=cvH('',110);$('ppAv').innerHTML=avH('',76,'');$('ppN').textContent='লোড হচ্ছে…';['ppI','ppS','ppA','ppMc'].forEach(k=>$(k).innerHTML='');$('ppMc').classList.add('hide');
+  try{const[sn]=await Promise.all([fs.doc('users/'+uid).get(),rkLoad()]);if(tok!==ppTok)return;
+    if(!sn.exists){$('ppN').textContent='প্রোফাইল পাওয়া যায়নি';return}
+    const r=sn.data(),t=TEAMS[+r.team]?+r.team:0,loc=r.nat?natName(r.nat)+(r.nat==='BD'&&r.dist?', '+r.dist:''):'',rk=(a,id)=>{a=a||[];const i=a.indexOf(id);return i>=0?'#'+bnum(i+1):a.length>=100?'১০০+':'—'};
+    $('ppCv').innerHTML=cvH(r.cv,110);$('ppAv').innerHTML=avH(r.av,76,r.name);$('ppN').textContent=r.name||'প্লেয়ার';
+    $('ppI').innerHTML=(loc?'📍 '+esc(loc)+'<br>':'')+teamLogo(t,16)+' '+esc(TEAMS[t][0]);
+    $('ppS').innerHTML=`<div data-mc="1" style="cursor:pointer"><b>${bnum(+r.mt||0)}</b><small>মোট ম্যাচ ▾</small></div><div><b>${bnum(+r.goals||0)}</b><small>মোট গোল</small></div><div><b>${bnum(+r.best||0)}</b><small>সেরা (১ ম্যাচে)</small></div><div><b>${rk(rkC.w,uid)}</b><small>সাপ্তাহিক লিডারবোর্ড</small></div><div><b>${rk(rkC.l,uid)}</b><small>লীগ লিডারবোর্ড</small></div>`;
+    const mc=r.mc||{},K=[['cpu','🤖 কম্পিউটারের সাথে'],['room','🚪 ফ্রেন্ড রুম'],['friend','⚔️ ফ্রেন্ড চ্যালেঞ্জ'],['team','👥 টিম ম্যাচ'],['career','🏅 ক্যারিয়ার'],['league','🏆 লীগ']],old=Math.max(0,(+r.mt||0)-mcSum(mc));
+    $('ppMc').innerHTML=K.map(([k,l])=>`<div><span>${l}</span><b>${bnum(+mc[k]||0)}</b></div>`).join('')+(old?`<div><span>🕘 আগের ম্যাচ (ধরন হিসাব নেই)</span><b>${bnum(old)}</b></div>`:'');
+    if(uid===ME.uid)$('ppA').innerHTML='<span class="tag">এটা তোমার প্রোফাইল</span>';
+    else{let f=!!isF;if(!f){try{f=(await fs.doc('fr/'+ME.uid+'/list/'+uid).get()).exists}catch(e){}}if(tok!==ppTok)return;
+      $('ppA').innerHTML=f?'<span class="tag">✅ ফ্রেন্ড</span>':'<button id="ppAdd">➕ ফ্রেন্ড রিকুয়েস্ট পাঠাও</button>';
+      if(!f)$('ppAdd').onclick=async()=>{$('ppAdd').disabled=true;try{await fs.doc('req/'+uid+'/in/'+ME.uid).set({name:ME.name,email:((auth.currentUser||{}).email||'').toLowerCase(),t:Date.now()});$('ppA').innerHTML='<span class="tag">📨 রিকুয়েস্ট পাঠানো হয়েছে</span>'}catch(x){$('ppA').innerHTML='<span class="tag">📨 আগেই পাঠানো হয়ে থাকতে পারে</span>'}}}
+  }catch(e){if(tok===ppTok)$('ppN').textContent='লোড হয়নি — ডাটাবেস পারমিশন দেখো'}}
+$('ppS').onclick=e=>{if(e.target.closest('[data-mc]'))$('ppMc').classList.toggle('hide')};$('ppX').onclick=()=>$('ppM').classList.add('hide');$('ppM').onclick=e=>{if(e.target===$('ppM'))$('ppM').classList.add('hide')};
+[$('lbl'),$('lgB2')].forEach(el=>el.onclick=e=>{const r=e.target.closest('[data-u]');if(r&&r.dataset.u)profOpen(r.dataset.u)});
+$('upGo').onclick=()=>location.replace(location.pathname+'?r='+Date.now()+location.hash);$('upLater').onclick=()=>{window.upSnooze=Date.now()+9e5;$('upM').classList.add('hide')};
+const APP_VER='20261109-profile1';
 let verBase=null,updPend=0;const verHash=t=>{let h=5381;for(let i=0;i<t.length;i++)h=((h<<5)+h+t.charCodeAt(i))|0;return h};
 async function verCheck(){try{const r=await fetch(location.pathname+'?_v='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text(),m=t.match(/const APP_VER='([^']+)'/);if(!m)return;
   const h=verHash(t);if(verBase===null)verBase=h;
   if(m[1]!==APP_VER||h!==verBase){updPend=1;const ae=document.activeElement,typing=ae&&/^(INPUT|SELECT|TEXTAREA)$/.test(ae.tagName);
-    if(!S&&!local&&!typing){location.replace(location.pathname+'?r='+Date.now()+location.hash);return}
-    if(!verShown){verShown=1;toast('🔄 নতুন আপডেট এসেছে — ম্যাচ শেষে মেনুতে ফিরলেই নিজে থেকে আপডেট হয়ে যাবে',5000)}}}catch(e){}}
+    if(!S&&!local&&!typing){if(Date.now()>(window.upSnooze||0))$('upM').classList.remove('hide');return}
+    if(!verShown){verShown=1;toast('🔄 নতুন আপডেট এসেছে — ম্যাচ শেষে মেনুতে ফিরলে আপডেট করার অপশন আসবে',5000)}}}catch(e){}}
 setTimeout(verCheck,4000);setInterval(verCheck,120000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)verCheck()});
 </script>
 <script>
