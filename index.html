@@ -319,6 +319,27 @@ button.mr:disabled{opacity:.5}
 #nav button.act{background:linear-gradient(180deg,#22c55e,#15803d);color:#fff;box-shadow:0 6px 16px rgba(34,197,94,.4),inset 0 1px 0 rgba(255,255,255,.35)}
 #nav u{position:absolute;top:6px;right:calc(50% - 20px);width:9px;height:9px;border-radius:50%;background:#ef4444;border:2px solid #0a120e;text-decoration:none}
 body.nv .edb{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+
+/* ===== v2 ফিক্স: ম্যাচ স্ক্রিন এক স্ক্রিনে, কার্ল বাটন সলিড, সম্পাদক ও হিরো প্রিমিয়াম ===== */
+#game .cm:not(:empty),#game .info:not(:empty),#game .tm:not(:empty){background:rgba(15,23,42,.9);color:#fff;border-radius:10px;padding:4px 10px;text-shadow:none;border:1px solid rgba(255,255,255,.14)}
+#game #adc{max-height:2.7em;overflow:hidden;font-size:13px;line-height:1.3}
+#game .info{max-height:2.7em;overflow:hidden;font-size:13px;line-height:1.3}
+#game #chat{max-height:3.2em;overflow:hidden}
+#game svg#pitch{width:100%;max-height:33dvh;margin:4px 0}
+#game .sc{font-size:17px}
+#game .rb{padding:4px 8px;margin:4px 0}
+#game .ctl{position:sticky;bottom:calc(6px + env(safe-area-inset-bottom,0px));z-index:6}
+#game #bCurve{background:linear-gradient(180deg,#312e81,#1e1b4b)!important;color:#fff!important;border:1px solid #a5b4fc!important;border-radius:12px;padding:8px 10px;font-size:13px;font-weight:800;box-shadow:0 3px 10px rgba(0,0,0,.45);text-shadow:none}
+#game #bCurve.on{background:linear-gradient(180deg,#fde047,#f59e0b)!important;color:#3b2400!important;border-color:#fff3b0!important}
+.edb{background:linear-gradient(110deg,#b45309,#fde047 35%,#fff7c2 50%,#fde047 65%,#b45309)!important;background-size:250% 100%;color:#3b2400!important;border:2px solid #fff3b0!important;font-weight:900;letter-spacing:.3px;text-shadow:0 1px 0 rgba(255,255,255,.65);box-shadow:0 0 0 2px #92400e,0 6px 20px rgba(245,158,11,.6);animation:edSh 3.2s linear infinite,edPl 2.2s ease-in-out infinite}
+@keyframes edSh{to{background-position:-250% 0}}@keyframes edPl{50%{transform:scale(1.07)}}
+#hero{background:linear-gradient(135deg,#0b1736,#1e3a8a 50%,#0b1736)!important;background-size:220% 220%;animation:heroBg 9s ease infinite;color:#fff!important;border:1px solid rgba(250,204,21,.6)!important;box-shadow:0 10px 26px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.3);position:relative;overflow:hidden}
+@keyframes heroBg{50%{background-position:100% 100%}}
+#hero::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.22) 50%,transparent 62%) 0 0/260% 100%;animation:heroSh 4.5s linear infinite}
+@keyframes heroSh{to{background-position:-160% 0}}
+#hero .tl{color:#fff!important;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+#hero .er{color:#e2e8f0!important}
+#hero #bAcct{background:linear-gradient(180deg,#fde047,#f59e0b)!important;color:#3b2400!important;border:0!important;font-weight:800;position:relative;z-index:1}
 </style>
 </head>
 <body>
@@ -416,9 +437,9 @@ body.nv .edb{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
   <div class="em" id="em"></div><div class="cm" id="chat"></div>
   </section>
 </main>
-<nav id="nav" class="hide"><div class="nb"><button data-t="play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5.5 3.5-5.5 3.5z"/></svg><span>খেলো</span></button><button data-t="online"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span>অনলাইন</span></button><button data-t="chal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 4 5 5.5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z"/></svg><u id="nvDot" class="hide"></u><span>চ্যালেঞ্জ</span></button><button data-t="deco"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3l-5 4 3 3 2-1v11h8V9l2 1 3-3-5-4a4 4 0 0 1-8 0z"/></svg><span>সাজাও</span></button><button data-t="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg><span>হিসাব</span></button></div></nav>
+<nav id="nav" class="hide"><div class="nb"><button data-t="play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5.5 3.5-5.5 3.5z"/></svg><span>খেলো</span></button><button data-t="online"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span>ফ্রেন্ডস</span></button><button data-t="chal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 4 5 5.5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z"/></svg><u id="nvDot" class="hide"></u><span>চ্যালেঞ্জ</span></button><button data-t="deco"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3l-5 4 3 3 2-1v11h8V9l2 1 3-3-5-4a4 4 0 0 1-8 0z"/></svg><span>সাজাও</span></button><button data-t="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg><span>লিডারবোর্ড</span></button></div></nav>
 <button id="edBtn" class="edb">✍️ সম্পাদক</button>
-<div id="auM" class="mod hide"><div class="card" style="text-align:left"><div class="en" id="auT" style="text-align:center">লগইন</div><input id="auN" class="hide" maxlength="14" placeholder="তোমার নাম"><input id="auE" type="email" placeholder="ইমেইল" style="margin-top:8px"><input id="auP" type="password" placeholder="পাসওয়ার্ড (কমপক্ষে ৬ অক্ষর)" style="margin-top:8px"><div class="msg" id="auMsg"></div><button id="auGo">লগইন</button><button id="auG" class="sec">🔵 Google দিয়ে চালিয়ে যাও</button><button id="auSw" class="sec"></button><button id="auX" class="sec hide">বন্ধ করো</button></div></div>
+<div id="auM" class="mod hide"><div class="card" style="text-align:left"><div class="en" id="auT" style="text-align:center">লগইন</div><input id="auN" class="hide" maxlength="14" placeholder="তোমার নাম"><div id="auNH" class="er hide" style="text-align:left;margin:4px 0 0">🎁 প্রথমবার নাম দেওয়া ফ্রি! পরে নাম বদলাতে <span data-k="nfee">১০০০</span> 🪙 লাগবে — ভেবে নাম দাও।</div><input id="auE" type="email" placeholder="ইমেইল" style="margin-top:8px"><input id="auP" type="password" placeholder="পাসওয়ার্ড (কমপক্ষে ৬ অক্ষর)" style="margin-top:8px"><div class="msg" id="auMsg"></div><button id="auGo">লগইন</button><button id="auG" class="sec">🔵 Google দিয়ে চালিয়ে যাও</button><button id="auSw" class="sec"></button><button id="auX" class="sec hide">বন্ধ করো</button></div></div>
 <div id="natM" class="mod hide" style="z-index:90"><div class="card" style="max-height:92vh;overflow:auto"><div class="en">🌍 প্রোফাইল সেটআপ</div><div class="er">দেশ আর জেলা বাছাই বাধ্যতামূলক। দল আলাদা জিনিস — দেশ যা-ই হোক, যেকোনো দেশ বা ক্লাব নিয়ে খেলতে পারো।</div>
 <div class="er" style="margin:6px 0 0;text-align:left">জাতীয়তা (দেশ)</div><select id="natS"></select>
 <div class="er" style="margin:8px 0 0;text-align:left">তুমি</div><select id="natG"><option value="">— বাছাই করো —</option><option value="m">👦 ছেলে</option><option value="f">👧 মেয়ে</option><option value="o">বলতে চাই না</option></select>
@@ -731,7 +752,7 @@ $('bCpu').onclick=()=>{if(!need())return;local=true;mi=0;lastLen=0;onState(newSt
 function hostRoom(code,p){
   let D=null;const subs=[],conns=[];
   const snap=()=>({exists:true,data:()=>JSON.parse(JSON.stringify(D))});
-  const emit=()=>{subs.slice().forEach(f=>f(snap()));const R={...D,pk:D.pk?'?':null,pg:D.pg?'?':null};conns.forEach(c=>{try{c.open&&c.send({t:'state',s:R})}catch(e){}})};
+  const emit=()=>{D={...D,sp:conns.filter(c=>c.spec&&c.open).map(c=>c.pn||'দর্শক')};subs.slice().forEach(f=>f(snap()));const R={...D,pk:D.pk?'?':null,pg:D.pg?'?':null};conns.forEach(c=>{try{c.open&&c.send({t:'state',s:R})}catch(e){}})};
   const api={id:code,isHost:true,
     set(d){D=d;emit();return Promise.resolve()},
     update(x){if(x.rdHost){x={rd:[1,(D.rd||[0,0])[1]]}}if(x.rmHost){const r=[...D.rm];r[x.rmHost-1]=1;x={rm:r}}
@@ -756,10 +777,11 @@ function hostRoom(code,p){
   p.on('close',()=>clearInterval(ti));
   p.on('connection',c=>{
     c.seen=Date.now();conns.push(c);
-    c.on('close',()=>{const i=conns.indexOf(c);if(i>=0)conns.splice(i,1);if(D&&D.tm&&D.status==='lobby'&&c.pid){D={...D,pl:slotSet(D.pl,{id:c.pid},-1,0)};emit()}
+    c.on('close',()=>{const i=conns.indexOf(c);if(i>=0)conns.splice(i,1);if(c.spec)setTimeout(emit,0);if(D&&D.tm&&D.status==='lobby'&&c.pid){D={...D,pl:slotSet(D.pl,{id:c.pid},-1,0)};emit()}
       if(D&&!D.tm&&D.status==='lobby'&&D.p2&&c.pid===D.p2.id&&!conns.some(x=>x.pid===c.pid)){D={...D,p2off:true,rd:[(D.rd||[0,0])[0],0]};emit()}});
     c.on('data',m=>{
       c.seen=Date.now();if(!m||!D)return;
+      if(m.t==='spec'){c.spec=true;c.pn=String(m.name||'দর্শক').slice(0,14);emit();return}
       if(m.t==='join'&&m.p&&m.p.id){
         const q=m.p;
         if(D.tm){const inn=D.pl.some(a=>a.some(p=>p&&p.id===q.id));if(q.id===uid||(D.status!=='lobby'&&!inn)){try{c.send({t:'full'})}catch(e){}return}
@@ -880,7 +902,7 @@ function render(pre){
     const mine=shown.hist.filter(h=>h.n%2===i),cnt=Math.max(shown.N||5,mine.length+(shown.status==='play'&&kicker===i?1:0));
     let dots='';for(let j=0;j<cnt;j++)dots+=mine[j]?(mine[j].r==='goal'?'✅':'❌'):'⚪';
     const pl=shown.status==='play',tg=pl?`<span class="tag" style="background:${kicker===i?'#16a34a':'#2563eb'};color:#fff">${kicker===i?'⚽ শুটার':'🧤 কিপার'}</span>`:'';
-    return `<div class="pl ${pl&&kicker===i?'act':''}" style="border-left:8px solid ${tc(i)}"><b>${esc(names[i])}${i===mi?' (তুমি)':''}</b>${tg}<span class="dots">${dots}</span><span class="sc">${shown.score[i]}</span></div>`}).join('');
+    return `<div class="pl ${pl&&kicker===i?'act':''}" style="border-left:8px solid ${tc(i)}"><b>${esc(names[i])}${i===mi&&!SPEC?' (তুমি)':''}</b>${tg}<span class="dots">${dots}</span><span class="sc">${shown.score[i]}</span></div>`}).join('');
   const NN=shown.N||5;$('rnd').textContent=shown.n>=2*NN?'⚡ সাডেন ডেথ':'শট '+(Math.floor(shown.n/2)+1)+'/'+NN;drawField(busy?{...shown,n:S.n-1}:shown);
   $('kpn').textContent='🧤 '+roles(S,busy?S.n-1:S.n).gn;
   // কে শুটার, কে কিপার — বড় ব্যানার
@@ -1028,7 +1050,7 @@ $('pfX').onclick=()=>$('pfM').classList.add('hide');
 $('pfOut').onclick=()=>{$('pfM').classList.add('hide');auth.signOut()};
 $('pfSave').onclick=async()=>{const u=auth.currentUser,msg=$('pfMsg');msg.textContent='';
   try{const n=$('pfN').value.trim().slice(0,14);if(!n){msg.textContent='নাম দাও।';return}if(!$('pfC').value){msg.textContent='দেশ বাছাই করো।';return}if($('pfC').value==='BD'&&!$('pfD').value){msg.textContent='জেলা বাছাই করো।';return}if(!$('pfG').value){msg.textContent='ছেলে/মেয়ে বাছাই করো।';return}
-    if(n!==ME.name){await u.updateProfile({displayName:n});ME.name=n}
+    if(n!==ME.name){const nf=rwv('name','fee',1000);if(!spend(nf)){msg.textContent='নাম বদলাতে '+bnum(nf)+' 🪙 লাগে — তোমার কয়েন যথেষ্ট নেই।';return}P.nc=(P.nc||0)+1;try{addCoins(0)}catch(x){}await u.updateProfile({displayName:n});ME.name=n;toast('✏️ নাম বদলানো হয়েছে • '+bnum(nf)+' 🪙 কাটা গেছে',4000)}
     const e=$('pfE').value.trim();if(e&&e!==u.email)await u.updateEmail(e);
     const pw=$('pfP').value;if(pw){if(pw.length<6){msg.textContent='পাসওয়ার্ড কমপক্ষে ৬ অক্ষর দাও।';return}await u.updatePassword(pw)}
     P.gender=$('pfG').value;P.nat=$('pfC').value;P.dist=P.nat==='BD'?$('pfD').value:'';P.team=+$('pfT').value;$('team').value=P.team;$('name').value=ME.name;saveProf();renderAcct();if(fs)pubSync();$('pfP').value='';msg.textContent='✅ আপডেট হয়েছে'}
@@ -1227,7 +1249,7 @@ function lobScene(){const st=c=>`style='fill:var(${c})'`;
 let ME=null,auth=null,fs=null,cq=null,auMode='in';
 const FBC={apiKey:'AIzaSyCRJjJKxUECODxNHd0Da1k55Nb3Gfhe38g',authDomain:'penalty-shootout-830ab.firebaseapp.com',projectId:'penalty-shootout-830ab',storageBucket:'penalty-shootout-830ab.firebasestorage.app',messagingSenderId:'1075775407534',appId:'1:1075775407534:web:2f938c328de0076d92743f'};
 const authErr=e=>({'auth/email-already-in-use':'এই ইমেইলে আগেই অ্যাকাউন্ট আছে।','auth/invalid-email':'ইমেইল ঠিক নয়।','auth/weak-password':'পাসওয়ার্ড কমপক্ষে ৬ অক্ষর দাও।','auth/wrong-password':'ইমেইল বা পাসওয়ার্ড ভুল।','auth/invalid-credential':'ইমেইল বা পাসওয়ার্ড ভুল।','auth/user-not-found':'এই ইমেইলে অ্যাকাউন্ট নেই।','auth/popup-closed-by-user':'Google উইন্ডো বন্ধ হয়ে গেছে।','auth/unauthorized-domain':'এই ডোমেইন Firebase-এ অনুমোদিত নয়।','auth/network-request-failed':'ইন্টারনেট সংযোগ দেখো।','auth/too-many-requests':'অনেকবার চেষ্টা হয়েছে, একটু পরে দাও।','auth/missing-password':'পাসওয়ার্ড দাও।'}[e&&e.code]||'সমস্যা হয়েছে: '+((e&&e.code)||''));
-function renderAcct(){try{$('hAv').innerHTML=ME?avH(P.av,30,ME.name):'👤'}catch(e){}$('bAcct').textContent=ME?'⚙️ প্রোফাইল':'🔐 লগইন';$('hName').textContent=ME?ME.name:guestName()+' (গেস্ট)';const ti=+$('team').value||0;$('hInfo').innerHTML=ME&&P.nat?`🌍 ${esc(natName(P.nat))}${P.nat==='BD'&&P.dist?', '+esc(P.dist):''} &nbsp;•&nbsp; ${teamLogo(ti,16)} ${esc(TEAMS[ti][0])}`:(ME?'':`👤 গেস্ট &nbsp;•&nbsp; ${teamLogo(ti,16)} ${esc(TEAMS[ti][0])}`)}
+function renderAcct(){try{$('hAv').innerHTML=ME?avH(P.av,30,ME.name,awMask(ssbGet())):'👤'}catch(e){}$('bAcct').textContent=ME?'⚙️ প্রোফাইল':'🔐 লগইন';$('hName').textContent=ME?ME.name:guestName()+' (গেস্ট)';const ti=+$('team').value||0;$('hInfo').innerHTML=ME&&P.nat?`🌍 ${esc(natName(P.nat))}${P.nat==='BD'&&P.dist?', '+esc(P.dist):''} &nbsp;•&nbsp; ${teamLogo(ti,16)} ${esc(TEAMS[ti][0])}`:(ME?'':`👤 গেস্ট &nbsp;•&nbsp; ${teamLogo(ti,16)} ${esc(TEAMS[ti][0])}`)}
 function auSet(){const up=auMode==='up';$('auT').textContent=up?'নতুন অ্যাকাউন্ট':'লগইন';$('auN').classList.toggle('hide',!up);$('auGo').textContent=up?'অ্যাকাউন্ট খোলো':'লগইন';$('auSw').textContent=up?'আগে থেকেই অ্যাকাউন্ট আছে? লগইন':'নতুন অ্যাকাউন্ট খুলতে চাও?'}
 function openAuth(m){auMode='in';auSet();$('auMsg').textContent=m||'';$('auM').classList.remove('hide')}
 try{firebase.initializeApp(FBC);auth=firebase.auth();fs=firebase.firestore();
@@ -1246,7 +1268,7 @@ const wkOf=()=>Math.floor((Date.now()-4*864e5)/(7*864e5));
 function wkLeft(){const e=(wkOf()+1)*7*864e5+4*864e5-Date.now();return Math.floor(e/864e5)+' দিন '+Math.floor(e%864e5/36e5)+' ঘণ্টা'}
 async function loadLb(){if(!fs)return;$('lbT').textContent='রিসেট হতে বাকি: '+wkLeft()+' • সব ম্যাচের গোল গোনা হয়'+(ME?'':' • 🔒 লিডারবোর্ডে আসতে লগইন করো');
   try{const q=await fs.collection('lb/w'+wkOf()+'/p').orderBy('goals','desc').limit(20).get(),rows=q.docs.map(d=>d.data());
-    $('lbl').innerHTML=rows.length?rows.map((r,i)=>`<div class='${prc(r.aw).trim()}' data-u='${esc(r.uid||'')}' style='cursor:pointer;${ME&&r.uid===ME.uid?"font-weight:800;color:var(--ac)":""}'><span>${i+1}. ${avH(r.av,24,r.name)} ${esc(r.name||'প্লেয়ার')}${prt(r.aw)}${(dd=>dd?', '+esc(dd):'')(ME&&r.uid===ME.uid?(P.nat==='BD'?P.dist:''):r.dist)}</span><span>⚽ ${r.goals}</span></div>`).join(''):'<div>এই সপ্তাহে এখনো কেউ গোল করেনি।</div>'}
+    $('lbl').innerHTML=rows.length?rows.map((r,i)=>`<div class='${prc(r.aw).trim()}' data-u='${esc(r.uid||'')}' style='cursor:pointer;${ME&&r.uid===ME.uid?"font-weight:800;color:var(--ac)":""}'><span>${i+1}. ${avH(r.av,24,r.name,r.aw)} ${esc(r.name||'প্লেয়ার')}${prt(r.aw)}${(dd=>dd?', '+esc(dd):'')(ME&&r.uid===ME.uid?(P.nat==='BD'?P.dist:''):r.dist)}</span><span>⚽ ${r.goals}</span></div>`).join(''):'<div>এই সপ্তাহে এখনো কেউ গোল করেনি।</div>'}
   catch(e){$('lbl').innerHTML='<div>লিডারবোর্ড লোড হয়নি।</div>'}}
 $('lbR').onclick=loadLb;
 function addCoins(n){const i=bonusInfo();try{localStorage.setItem(BK(),JSON.stringify({...i.b,coins:i.b.coins+n}))}catch(e){}bonusRender()}
@@ -1279,7 +1301,7 @@ async function careerStart(){
   if(!need())return;
   if(!window.Peer||cq)return;
   const fee=cFee();if(!spend(fee)){toast('ক্যারিয়ারে '+bnum(fee)+' 🪙 লাগে — দৈনিক বোনাস নাও',4000);return}
-  const q=cq={dead:false,hb:null,to:null,un:null,host:false};
+  const q=cq={dead:false,hb:null,to:null,un:null,host:false,fee};
   q.end=(refund,msg)=>{if(q.dead)return;q.dead=true;clearInterval(q.hb);clearTimeout(q.to);$('mmov').classList.add('hide');cq=null;if(refund){addCoins(fee);if(msg)toast(msg,4000)}};
   $('mmov').classList.remove('hide');$('mmtx').textContent='প্রতিপক্ষ খোঁজা হচ্ছে…';
   hostOpen({N:5,career:1},async code=>{
@@ -1315,7 +1337,7 @@ $('bGo').onclick=()=>{if(ref&&ref.isHost)ref.update({go:1})};
 $('bTeam').onclick=()=>{if(!need())return;if(!window.Peer||ref)return;$('mmsg').textContent='';$('bTeam').disabled=true;
   hostOpen({tm:1,hn:myName(),p1:{id:'T0',name:'দল ১',team:0},p2:{id:'T1',name:'দল ২',team:0},status:'lobby',pl:[Array(6).fill(null),Array(6).fill(null)],ord:[[],[]]},
     ()=>{$('bTeam').disabled=false;sub()},()=>{$('bTeam').disabled=false;$('mmsg').textContent='রুম তৈরি করা যায়নি, আবার চেষ্টা করো।'})};
-$('mmx').onclick=async()=>{const q=cq;if(!q)return;const u=q.un;q.un=null;u&&u();if(q.host)await clearMine();try{peer&&peer.destroy()}catch(e){}peer=null;ref=null;q.end(true,'বাতিল — ৫ 🪙 ফেরত দেওয়া হলো')};
+$('mmx').onclick=async()=>{const q=cq;if(!q)return;const u=q.un;q.un=null;u&&u();if(q.host)await clearMine();try{peer&&peer.destroy()}catch(e){}peer=null;ref=null;q.end(true,'বাতিল — '+bnum(q.fee)+' 🪙 ফেরত দেওয়া হলো')};
 $('edBtn').onclick=()=>$('edM').classList.remove('hide');$('edX').onclick=()=>$('edM').classList.add('hide');$('edM').onclick=e=>{if(e.target===$('edM'))$('edM').classList.add('hide')};
 $('bClaim').onclick=()=>{if(!need())return;const i=bonusInfo();if(i.claimed)return;const d=(i.st%7)+1;let amt=d===7?40:10+5*(d-1)+Math.floor(Math.random()*5),gift=0;if(d===7){gift=1+Math.floor(Math.random()*50);amt+=gift}
   try{localStorage.setItem(BK(),JSON.stringify({...i.b,coins:i.b.coins+amt,streak:i.st+1,last:i.today}))}catch(e){}
@@ -1376,13 +1398,13 @@ function giftPop(c,it,tx){const nm=k=>{const q=STORE.find(x=>x.id===k);return q?
   $('gfM').classList.remove('hide');beep(880,.2);setTimeout(()=>beep(1175,.25),180);try{buzz()}catch(e){}}
 $('gfX').onclick=()=>$('gfM').classList.add('hide');
 async function frList(){const q=await fs.collection('fr/'+ME.uid+'/list').get(),L=q.docs.map(d=>({id:d.id,...d.data()}));
-  await Promise.all(L.map(async f=>{try{const u=await fs.doc('users/'+f.id).get();if(u.exists){const r=u.data();f.name=r.name||f.name;f.last=r.last||0;f.dist=r.dist||'';f.av=r.av||'';f.mt=+r.mt||0;f.goals=+r.goals||0;f.aw=awMask(r.ssb)}}catch(e){}}));return L}
+  await Promise.all(L.map(async f=>{try{const u=await fs.doc('users/'+f.id).get();if(u.exists){const r=u.data();f.name=r.name||f.name;f.last=r.last||0;f.dist=r.dist||'';f.av=r.av||'';f.mt=+r.mt||0;f.goals=+r.goals||0;f.aw=awMask(r.ssb);f.pl=r.pl||null}}catch(e){}}));return L}
 const frEmpty=(ic,t,s)=>`<div class="fe"><div style="font-size:44px">${ic}</div><b>${t}</b><small>${s}</small></div>`;
 async function frRender(){if(!fs||!ME)return;const box=$('frL');['fl','rq','sr'].forEach(k=>{$('frT_'+k).className=k===frTab?'on':''});$('frS').classList.toggle('hide',frTab!=='sr');
   try{
     if(frTab==='fl'){if(!frData.length)box.innerHTML='<div class="fe">লোড হচ্ছে…</div>';frData=await frList();frData.sort((a,b)=>(frOn(b.last)-frOn(a.last))||String(a.name).localeCompare(b.name,'bn'));
       const on=frData.filter(f=>frOn(f.last)),off=frData.filter(f=>!frOn(f.last));$('frSub').textContent='🟢 অনলাইন '+bnum(on.length)+' • মোট ফ্রেন্ড '+bnum(frData.length);$('frC_fl').textContent=frData.length?bnum(frData.length):'';
-      const card=f=>{const o=frOn(f.last);return`<div class="fc ${o?'on':''}${prc(f.aw)}" data-u="${f.id}"><div class="fav">${f.av?avH(f.av,46,f.name):frAv(f.name,46)}<i class="dot ${o?'g':''}"></i></div><div class="fi"><b>${esc(f.name||'প্লেয়ার')}${prt(f.aw)}</b><small>${o?'<span style="color:#16a34a;font-weight:700">● অনলাইন</span>':'অফলাইন • '+frAgo(f.last)}${f.dist?' • 📍'+esc(f.dist):''}</small><small>🎮 ${bnum(f.mt||0)} ম্যাচ • ⚽ ${bnum(f.goals||0)} গোল</small></div><div class="fa"><button data-ch="${f.id}" ${o?'':'disabled'}>⚔️ চ্যালেঞ্জ</button><button data-rm="${f.id}" class="sec x">✖</button></div></div>`};
+      const card=f=>{const o=frOn(f.last);return`<div class="fc ${o?'on':''}${prc(f.aw)}" data-u="${f.id}"><div class="fav">${f.av?avH(f.av,46,f.name,f.aw):frAv(f.name,46)}<i class="dot ${o?'g':''}"></i></div><div class="fi"><b>${esc(f.name||'প্লেয়ার')}${prt(f.aw)}</b><small>${f.pl&&Date.now()-f.pl.t<60000?'<span style="color:#ea580c;font-weight:800">🎮 এখন খেলছে</span>':o?'<span style="color:#16a34a;font-weight:700">● অনলাইন</span>':'অফলাইন • '+frAgo(f.last)}${f.dist?' • 📍'+esc(f.dist):''}</small><small>🎮 ${bnum(f.mt||0)} ম্যাচ • ⚽ ${bnum(f.goals||0)} গোল</small></div><div class="fa">${f.pl&&Date.now()-f.pl.t<60000?`<button data-sp="${esc(f.pl.c)}" class="sec">👁 দেখো</button>`:''}<button data-ch="${f.id}" ${o?'':'disabled'}>⚔️ চ্যালেঞ্জ</button><button data-rm="${f.id}" class="sec x">✖</button></div></div>`};
       box.innerHTML=frData.length?(on.length?'<div class="fh">🟢 অনলাইন — '+bnum(on.length)+'</div>'+on.map(card).join(''):'')+(off.length?'<div class="fh">⚫ অফলাইন — '+bnum(off.length)+'</div>'+off.map(card).join(''):''):frEmpty('⚽','এখনো কোনো ফ্রেন্ড নেই','🔍 খোঁজো ট্যাবে বন্ধুর ইমেইল দিয়ে রিকুয়েস্ট পাঠাও')}
     else if(frTab==='rq'){box.innerHTML='<div class="fe">লোড হচ্ছে…</div>';const q=await fs.collection('req/'+ME.uid+'/in').get(),L=q.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.t||0)-(a.t||0));$('frC_rq').textContent=L.length?bnum(L.length):'';
       box.innerHTML=L.length?L.map(r=>`<div class="fc"><div class="fav">${frAv(r.name,46)}</div><div class="fi"><b>${esc(r.name||'প্লেয়ার')}</b><small>${esc(r.email||'')}</small><small>📩 ${frAgo(r.t)} পাঠিয়েছে</small></div><div class="fa"><button data-ac="${r.id}" data-nm="${esc(r.name||'')}">✅ গ্রহণ</button><button data-dc="${r.id}" class="sec x">✕</button></div></div>`).join(''):frEmpty('📭','কোনো নতুন রিকুয়েস্ট নেই','কেউ রিকুয়েস্ট পাঠালে এখানে (এবং অনলাইনে থাকলে পপ-আপে) দেখতে পাবে')}
@@ -1397,6 +1419,7 @@ $('frM').onclick=async e=>{if(e.target===$('frM')){$('frM').classList.add('hide'
   const g=s=>e.target.closest(s);let b;
   if(!g('button')&&(b=g('.fc[data-u]'))){profOpen(b.dataset.u,1);return}
   if(b=g('[data-ft]')){frTab=b.dataset.ft;frRender();return}
+  if(b=g('[data-sp]')){$('frM').classList.add('hide');doSpec(b.dataset.sp);return}
   if(b=g('[data-ch]')){const f=frData.find(x=>x.id===b.dataset.ch);if(f)challenge(f);return}
   if(b=g('[data-rm]')){const f=frData.find(x=>x.id===b.dataset.rm);if(f&&confirm((f.name||'ফ্রেন্ড')+'-কে ফ্রেন্ড লিস্ট থেকে সরাবে?')){const bt=fs.batch();bt.delete(fs.doc('fr/'+ME.uid+'/list/'+f.id));bt.delete(fs.doc('fr/'+f.id+'/list/'+ME.uid));bt.commit().catch(()=>{});frData=frData.filter(x=>x!==f);frRender()}return}
   if(b=g('[data-sr]')){b.disabled=true;try{await fs.doc('req/'+b.dataset.sr+'/in/'+ME.uid).set({name:ME.name,email:((auth.currentUser||{}).email||'').toLowerCase(),t:Date.now()});b.outerHTML='<span class="tag">📨 রিকুয়েস্ট পাঠানো হয়েছে</span>'}catch(x){b.disabled=false;toast('রিকুয়েস্ট পাঠানো যায়নি',3000)}return}
@@ -1425,7 +1448,7 @@ const boost=n=>Math.round(n*evX());
 const lgPt=k=>{const v=CFG.lgc&&CFG.lgc['p'+k];return(v!=null&&v!=='')?+v:({w:3,d:1,l:0})[k]};
 const lgWin=last=>rwv('league',last?'f':'w',last?50:20);
 const cFee=()=>rwv('career','fee',20),dmP=()=>rwv('daily','w',50);
-const COIN={cpuw:()=>rwv('cpu','w',eco('wc',20)),cfee:cFee,cwin:()=>rwv('career','w',40),dmp:dmP};
+const COIN={nfee:()=>rwv('name','fee',1000),cpuw:()=>rwv('cpu','w',eco('wc',20)),cfee:cFee,cwin:()=>rwv('career','w',40),dmp:dmP};
 const ff=k=>!!(CFG.flags&&CFG.flags[k]);
 function coinTx(){document.querySelectorAll('[data-k]').forEach(e=>{try{e.textContent=bnum(COIN[e.dataset.k]())}catch(x){}});try{dmBtn()}catch(x){}try{if(!$('lgM').classList.contains('hide'))lgRender()}catch(x){}}
 function mtShow(){$('mtT').textContent=CFG.mtMsg||'গেমে কিছু কাজ চলছে, একটু পরে আসো।';$('mtM').classList.remove('hide')}
@@ -1501,7 +1524,7 @@ async function lgLb(){
   try{const q=await fs.collection('lgb').orderBy('pts','desc').limit(40).get();
     const a=q.docs.map(d=>d.data());a.sort((x,y)=>((+y.pts||0)-(+x.pts||0))||((+y.gf||0)-(+x.gf||0))||((+x.mt||0)-(+y.mt||0)));
     box.innerHTML=a.length?a.map((r,i)=>{const lg=(+r.l||0)>=LEAGUES.length?'👑 চ্যাম্পিয়ন':LEAGUES[+r.l||0].n,me=ME&&r.uid===ME.uid;
-      return `<div class="lbr ${me?'me':''}${prc(r.aw)}" data-u="${esc(r.uid||'')}" style="cursor:pointer"><i>${bnum(i+1)}</i>${avH(r.av,38,r.name)}<div><b>${esc(r.name||'প্লেয়ার')}${prt(r.aw)}${me?' (তুমি)':''}</b><small>📍 ${esc(r.dist||'—')}</small></div><div class="st"><span>${lg}</span><br><span>ম্যাচ ${bnum(+r.mt||0)} • গোল ${bnum(+r.gf||0)}</span><br><b>⭐ ${bnum(+r.pts||0)} পয়েন্ট</b></div></div>`}).join(''):'<div class="er">এখনো কেউ লীগ খেলেনি — প্রথম তুমিই হও!</div>'
+      return `<div class="lbr ${me?'me':''}${prc(r.aw)}" data-u="${esc(r.uid||'')}" style="cursor:pointer"><i>${bnum(i+1)}</i>${avH(r.av,38,r.name,r.aw)}<div><b>${esc(r.name||'প্লেয়ার')}${prt(r.aw)}${me?' (তুমি)':''}</b><small>📍 ${esc(r.dist||'—')}</small></div><div class="st"><span>${lg}</span><br><span>ম্যাচ ${bnum(+r.mt||0)} • গোল ${bnum(+r.gf||0)}</span><br><b>⭐ ${bnum(+r.pts||0)} পয়েন্ট</b></div></div>`}).join(''):'<div class="er">এখনো কেউ লীগ খেলেনি — প্রথম তুমিই হও!</div>'
   }catch(e){box.innerHTML='<div class="er">লিডারবোর্ড লোড হয়নি — ডাটাবেস পারমিশন দেখো (lgb)</div>'}}
 function lgTab(n){$('lgT1').classList.toggle('on',n===1);$('lgT2').classList.toggle('on',n===2);$('lgB1').classList.toggle('hide',n!==1);$('lgB2').classList.toggle('hide',n!==2);if(n===2)lgLb()}
 async function lgOpen(){
@@ -1521,12 +1544,12 @@ const SSK=()=>'ps_ss_'+(CUID||'x'),SBK=()=>'ps_ssb_'+(CUID||'x'),ssNL=new Set();
 let SS=null,ssLast=null,ssCer=false,ssPrev={},ssSig='',ssT=null,ssPick=0,ssPC='ucl',awTm=[],ssAcD=null;
 function ssL(){let v=null;try{v=JSON.parse(localStorage.getItem(SSK())||'null')}catch(e){}return v&&v.res?v:null}
 function ssSave(){try{localStorage.setItem(SSK(),JSON.stringify(SS))}catch(e){}try{if(ME&&fs&&SS)fs.doc('users/'+ME.uid).set({ss:SS},{merge:true}).catch(()=>{})}catch(e){}}
-function ssbGet(){let b={ucl:0,ll:0,potw:0,potm:0,hl:[]};try{b={...b,...JSON.parse(localStorage.getItem(SBK())||'{}')}}catch(e){}if(!Array.isArray(b.hl))b.hl=[];return b}
+function ssbGet(){let b={ucl:0,ll:0,ur:0,lr:0,potw:0,potm:0,tw:0,tm:0,xa:0,sn:{},st:{},th:[],hl:[]};try{b={...b,...JSON.parse(localStorage.getItem(SBK())||'{}')}}catch(e){}if(!Array.isArray(b.hl))b.hl=[];return b}
 function ssbSet(b){try{localStorage.setItem(SBK(),JSON.stringify(b))}catch(e){}try{awPub(b)}catch(e){}try{if(ME&&fs)fs.doc('users/'+ME.uid).set({ssb:b},{merge:true}).catch(()=>{})}catch(e){}}
 
-const awMask=b=>{b=b||{};return(+b.ucl>0?1:0)|(+b.ll>0?2:0)|(+b.potw>0?4:0)|(+b.potm>0?8:0)};
-const prc=m=>{m=(+m||0)&15;return m&3?' pr2':m?' pr1':''};
-const prt=m=>{m=(+m||0)&15;return m?`<span class="prt">${m&1?'🏆':''}${m&2?'🥇':''}${m&4?'⭐':''}${m&8?'🌟':''}</span>`:''};
+var SPEC=null;const AW15=1296e6;const awMask=b=>{b=b||{};const n=Date.now();return(+b.ucl>0?1:0)|(+b.ll>0?2:0)|((+b.potw>0&&n-(+b.tw||+b.adm||0)<AW15)?4:0)|((+b.potm>0&&n-(+b.tm||+b.adm||0)<AW15)?8:0)|(+b.ur>0?16:0)|(+b.lr>0?32:0)|((+b.xa||0)&192)};
+const prc=m=>{m=(+m||0)&255;return(m&67)?' pr2':m?' pr1':''};
+const prt=m=>{m=(+m||0)&255;return m?`<span class="prt">${m&67?'👑':''}${m&1?'🏆':''}${m&2?'🥇':''}${m&176?'🥈':''}${m&4?'⭐':''}${m&8?'🌟':''}</span>`:''};
 function awPub(b){if(!ME||!fs)return;const m=awMask(b||ssbGet());fs.doc('lgb/'+ME.uid).update({aw:m}).catch(()=>{});fs.doc('lb/w'+wkOf()+'/p/'+ME.uid).update({aw:m}).catch(()=>{})}
 function ssbMerge(r){try{if(!r||!r.ssb)return false;const b=ssbGet(),s=r.ssb,K=['ucl','ll','potw','potm'],m={hl:b.hl,adm:b.adm||0};
   if(+s.adm>(+b.adm||0)){K.forEach(k=>m[k]=Math.max(0,Math.min(999,Math.floor(+s[k]||0))));m.hl=Array.isArray(s.hl)?s.hl.slice(-24):[];m.adm=+s.adm}
@@ -1537,7 +1560,7 @@ function ssCrest(i,z,cc){const x=SSC[cc||(SS?SS.c:ssPC)].cl[i],c1=x[1],c2=x[5],p
   let pat='';if(pt===1)pat=`<rect x="12" y="0" width="7" height="46" fill="${c2}"/><rect x="25" y="0" width="7" height="46" fill="${c2}"/>`;else if(pt===2)pat=`<rect x="20" y="0" width="20" height="46" fill="${c2}"/>`;else if(pt===3)pat=`<rect x="0" y="12" width="40" height="7" fill="${c2}"/><rect x="0" y="27" width="40" height="7" fill="${c2}"/>`;else if(pt===4)pat=`<rect x="0" y="0" width="40" height="13" fill="${c2}"/>`;
   const tx=z>=20?`<text x="20" y="30" text-anchor="middle" font-size="11" font-weight="900" font-family="Arial,sans-serif" fill="${fg}" style="paint-order:stroke;stroke:${fg==='#ffffff'?'rgba(0,0,0,.55)':'rgba(255,255,255,.8)'};stroke-width:2.2px">${cd}</text>`:'';
   const P='M4 4H36V24C36 35 28 41 20 44C12 41 4 35 4 24Z';
-  return`<span class="ssw" style="width:${z}px;height:${Math.round(z*1.12)}px"><svg viewBox="0 0 40 46" width="100%" height="100%"><defs><clipPath id="ssCP"><path d="${P}"/></clipPath></defs><g clip-path="url(#ssCP)"><rect width="40" height="46" fill="${c1}"/>${pat}<ellipse cx="14" cy="10" rx="14" ry="8" fill="#fff" opacity=".16"/></g><path d="${P}" fill="none" stroke="${lum(c1)>.7?'#9ca3af':'rgba(255,255,255,.85)'}" stroke-width="1.6"/>${tx}</svg>${ssNL.has(k)?'':`<img src="logos/clubs/${k}.png" alt="" onload="this.previousElementSibling.style.visibility='hidden';this.style.opacity=1" onerror="ssNL.add('${k}');this.remove()">`}</span>`}
+  return`<span class="ssw" style="width:${z}px;height:${Math.round(z*1.12)}px"><svg viewBox="0 0 40 46" width="100%" height="100%"><defs><clipPath id="ssCP${z}${k}"><path d="${P}"/></clipPath></defs><g clip-path="url(#ssCP${z}${k})"><rect width="40" height="46" fill="${c1}"/>${pat}<ellipse cx="14" cy="10" rx="14" ry="8" fill="#fff" opacity=".16"/></g><path d="${P}" fill="none" stroke="${lum(c1)>.7?'#9ca3af':'rgba(255,255,255,.85)'}" stroke-width="1.6"/>${tx}</svg>${ssNL.has(k)?'':`<img src="logos/clubs/${k}.png" alt="" onload="this.previousElementSibling.style.visibility='hidden';this.style.opacity=1" onerror="ssNL.add('${k}');this.remove()">`}</span>`}
 function ssSched(){const a=[0,1,2,3,4,5,6,7,8,9],R=[];for(let r=0;r<9;r++){const p=[];for(let i=0;i<5;i++)p.push([a[i],a[9-i]]);R.push(p);a.splice(1,0,a.pop())}return R}
 function ssG(s){let g=0,p=Math.max(.38,Math.min(.82,.5+(s-.8)*.9));for(let i=0;i<5;i++)if(Math.random()<p)g++;return g}
 function ssTable(now){const c=SSC[SS.c].cl,T=c.map((x,i)=>({i,p:0,w:0,d:0,l:0,gf:0,ga:0,pt:0}));SS.res.forEach(r=>{if(r.at>now)return;const A=T[r.a],B=T[r.b];A.p++;B.p++;A.gf+=r.x;A.ga+=r.y;B.gf+=r.y;B.ga+=r.x;if(r.x>r.y){A.w++;B.l++;A.pt+=3}else if(r.x<r.y){B.w++;A.l++;B.pt+=3}else{A.d++;B.d++;A.pt++;B.pt++}});return T.sort((x,y)=>y.pt-x.pt||(y.gf-y.ga)-(x.gf-x.ga)||y.gf-x.gf||x.i-y.i)}
@@ -1613,7 +1636,7 @@ function ssStart(c,me){const old=SS||{};SS={c,me,sn:(old.sn||0)+1,md:0,res:[],aw
 function ssRender(){
   const B=$('ssB');
   if(!SS||ssPick){const cl=SSC[ssPC].cl;
-    B.innerHTML=`<div class="er" style="text-align:left;margin:8px 0">প্রতিযোগিতা বেছে নাও, তারপর তোমার ক্লাব। ১০টি ক্লাব • ৯টি ম্যাচডে • জয় ৩, ড্র ১, হার ০ পয়েন্ট।<br>${ssRwTxt()}</div><div class="pw"><button id="ssC1" class="${ssPC==='ucl'?'on':''}">🏆 চ্যাম্পিয়নস লীগ</button><button id="ssC2" class="${ssPC==='ll'?'on':''}">🇪🇸 লা লিগা</button></div><div class="ssg" style="margin-top:8px">${cl.map((x,i)=>`<button class="sec" data-c="${i}">${ssCrest(i,20)}${esc(x[0])}</button>`).join('')}</div>`;
+    B.innerHTML=`<div class="er" style="text-align:left;margin:8px 0">প্রতিযোগিতা বেছে নাও, তারপর তোমার ক্লাব। ১০টি ক্লাব • ৯টি ম্যাচডে • জয় ৩, ড্র ১, হার ০ পয়েন্ট।<br>${ssRwTxt()}</div><div class="pw"><button id="ssC1" class="${ssPC==='ucl'?'on':''}">🏆 চ্যাম্পিয়নস লীগ</button><button id="ssC2" class="${ssPC==='ll'?'on':''}">🇪🇸 লা লিগা</button></div><div class="ssg" style="margin-top:8px">${cl.map((x,i)=>`<button class="sec" data-c="${i}">${ssCrest(i,20,ssPC)}${esc(x[0])}</button>`).join('')}</div>`;
     $('ssC1').onclick=()=>{ssPC='ucl';ssRender()};$('ssC2').onclick=()=>{ssPC='ll';ssRender()};
     B.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>ssStart(ssPC,+b.dataset.c));return}
   const c=SSC[SS.c],cl=c.cl,md=SS.md;let top='';
@@ -1760,7 +1783,9 @@ const AVN=['n:1|#dc2626','n:2|#2563eb','n:3|#16a34a','n:7|#f59e0b','n:9|#7c3aed'
 const COVERS=[['linear-gradient(135deg,#16a34a,#065f46)','⚽'],['repeating-linear-gradient(90deg,#1c7a45 0 28px,#17693b 28px 56px)','🥅'],['radial-gradient(circle at 50% 130%,#1e3a8a,#0b1020 70%)','🏟️'],['linear-gradient(135deg,#f59e0b,#b45309)','🏆'],['linear-gradient(135deg,#dc2626,#7f1d1d)','🔥'],['linear-gradient(135deg,#7c3aed,#312e81)','⚡'],['linear-gradient(135deg,#0ea5e9,#1e3a8a)','👑'],['linear-gradient(135deg,#111827,#4b5563)','10'],['linear-gradient(135deg,#16a34a,#14532d)','1'],['linear-gradient(135deg,#2563eb,#1e1b4b)','2'],['linear-gradient(135deg,#db2777,#4c0519)','3'],['linear-gradient(135deg,#f59e0b,#78350f)','🧤']];
 const okD=v=>/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+\/=]+$/.test(v)&&v.length<200000;
 const mcSum=m=>Object.values(m||{}).reduce((a,b)=>a+(+b||0),0);
-function avH(av,sz,nm){av=String(av||'');const st=`width:${sz}px;height:${sz}px;font-size:${Math.round(sz*.5)}px`;let m;
+function crownWrap(h,m,sz){m=+m||0;const g=m&67,r=m&176;if(!g&&!r)return h;return`<span class="crw ${g?'g':'r'}" style="--cz:${Math.max(12,Math.round(sz*.4))}px">${h}<b class="crn">${g?'👑':'🥈'}</b></span>`}
+function avH(av,sz,nm,aw){const _r=avH0(av,sz,nm);return aw?crownWrap(_r,aw,sz):_r}
+function avH0(av,sz,nm){av=String(av||'');const st=`width:${sz}px;height:${sz}px;font-size:${Math.round(sz*.5)}px`;let m;
   if(okD(av))return`<span class="avI" style="${st}"><img src="${av}" alt=""></span>`;
   if(m=av.match(/^t:(\d{1,3})$/)){if(TEAMS[+m[1]])return`<span class="avI" style="${st};background:#fff">${teamLogo(+m[1],Math.round(sz*.8))}</span>`}
   if(m=av.match(/^n:(\d{1,2})\|(#[0-9a-f]{6})$/i))return`<span class="avI" style="${st};background:${m[2]};font-size:${Math.round(sz*.46)}px">${m[1]}</span>`;
@@ -1771,7 +1796,7 @@ function cvH(v,h){v=String(v||'');let bg=COVERS[0][0],tx=COVERS[0][1],m;
   if(m=v.match(/^c:(\d+)$/)){const c=COVERS[+m[1]];if(c){bg=c[0];tx=c[1]}}
   else if(m=v.match(/^ct:(\d+)$/)){const t=TEAMS[+m[1]];if(t){bg='linear-gradient(135deg,'+t[1]+',#0b1020)';tx=teamLogo(+m[1],Math.round(h*.7))}}
   return`<div class="cvB" style="height:${h}px;background:${bg}"><span style="font-size:${Math.round(h*.55)}px;opacity:.45;font-weight:900;color:#fff;line-height:1">${tx}</span></div>`}
-function pfHdr(){const l=P.nat?natName(P.nat)+(P.nat==='BD'&&P.dist?', '+P.dist:''):'';$('pfHd').innerHTML=cvH(P.cv,110)+`<div class="avW">${avH(P.av,76,ME.name)}</div><div style="text-align:center;font-weight:800;font-size:18px">${esc(ME.name)}</div><div class="er" style="text-align:center">${l?'📍 '+esc(l):''}</div>${ssBadgeHtml(ssbGet())}`}
+function pfHdr(){const l=P.nat?natName(P.nat)+(P.nat==='BD'&&P.dist?', '+P.dist:''):'';$('pfHd').innerHTML=cvH(P.cv,110)+`<div class="avW">${avH(P.av,76,ME.name,awMask(ssbGet()))}</div><div style="text-align:center;font-weight:800;font-size:18px">${esc(ME.name)}</div><div class="er" style="text-align:center">${l?'📍 '+esc(l):''}</div>${ssBadgeHtml(ssbGet())}`}
 let phT=0;
 function phDraw(){$('phT0').classList.toggle('on',!phT);$('phT1').classList.toggle('on',!!phT);const cur=phT?P.cv:P.av;
   $('phPv').innerHTML=phT?cvH(P.cv,90):`<div style="text-align:center">${avH(P.av,84,ME.name)}</div>`;
@@ -1794,7 +1819,7 @@ async function profOpen(uid,isF){
   try{const[sn]=await Promise.all([fs.doc('users/'+uid).get(),rkLoad()]);if(tok!==ppTok)return;
     if(!sn.exists){$('ppN').textContent='প্রোফাইল পাওয়া যায়নি';return}
     const r=sn.data(),t=TEAMS[+r.team]?+r.team:0,loc=r.nat?natName(r.nat)+(r.nat==='BD'&&r.dist?', '+r.dist:''):'',rk=(a,id)=>{a=a||[];const i=a.indexOf(id);return i>=0?'#'+bnum(i+1):a.length>=100?'১০০+':'—'};
-    $('ppCv').innerHTML=cvH(r.cv,110);$('ppAv').innerHTML=avH(r.av,76,r.name);$('ppN').textContent=r.name||'প্লেয়ার';
+    $('ppCv').innerHTML=cvH(r.cv,110);$('ppAv').innerHTML=avH(r.av,76,r.name,r.aw);$('ppN').textContent=r.name||'প্লেয়ার';
     $('ppI').innerHTML=(loc?'📍 '+esc(loc)+'<br>':'')+teamLogo(t,16)+' '+esc(TEAMS[t][0]);ssProf(r);
     $('ppS').innerHTML=`<div data-mc="1" style="cursor:pointer"><b>${bnum(+r.mt||0)}</b><small>মোট ম্যাচ ▾</small></div><div><b>${bnum(+r.goals||0)}</b><small>মোট গোল</small></div><div><b>${bnum(+r.best||0)}</b><small>সেরা (১ ম্যাচে)</small></div><div><b>${rk(rkC.w,uid)}</b><small>সাপ্তাহিক লিডারবোর্ড</small></div><div><b>${rk(rkC.l,uid)}</b><small>লীগ লিডারবোর্ড</small></div>`;
     const mc=r.mc||{},K=[['cpu','🤖 কম্পিউটারের সাথে'],['room','🚪 ফ্রেন্ড রুম'],['friend','⚔️ ফ্রেন্ড চ্যালেঞ্জ'],['team','👥 টিম ম্যাচ'],['career','🏅 ক্যারিয়ার'],['league','🏆 লীগ'],['season','⚽ ক্লাব সিজন']],old=Math.max(0,(+r.mt||0)-mcSum(mc));
@@ -1885,5 +1910,5 @@ $('gsTs').innerHTML=$('team').innerHTML;$('gsTs').onchange=()=>{$('team').value=
 $('gsLogin').onclick=()=>{$('gsM').classList.add('hide');openAuth('লগইন করলে এই ব্রাউজারের কয়েন ও আইটেম অ্যাকাউন্টে যোগ হবে')};$('gsGo').onclick=()=>$('gsM').classList.add('hide');
 setTimeout(()=>{if(!authReady){authReady=true;gate()}},3000);try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
 </script>
-</body>
+<script>try{const n=document.getElementById('auN'),h=document.getElementById('auNH');if(n&&h)new MutationObserver(()=>h.classList.toggle('hide',n.classList.contains('hide'))).observe(n,{attributes:true,attributeFilter:['class']})}catch(e){}</script></body>
 </html>
