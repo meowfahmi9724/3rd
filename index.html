@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>পেনাল্টি শুটআউট</title>
+<link rel="manifest" href="manifest.json"><meta name="theme-color" content="#0f6b3a"><link rel="apple-touch-icon" href="icon-192.png">
 <style>
 :root{--bg:#f5f4fa;--card:#fff;--tx:#1c1a2b;--mut:#625f78;--ac:#7c3aed;--ac2:#f4f2fb;--bd:#dcd8ec;--bad:#d64545;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12101c;--card:#1c1a2b;--tx:#efeefa;--mut:#a29fba;--ac:#a78bfa;--ac2:#252238;--bd:#34304d;--bad:#ef6a6a;color-scheme:dark}}
@@ -287,6 +288,38 @@ details.card summary{color:var(--tx)}
 @media(prefers-reduced-motion:reduce){.t3 .st,.t3 .sh,.pr1::after,.pr2::after{animation:none}}
 
 </style>
+<style id="navCss">
+/* ===== নিচের নেভিগেশন + গোছানো প্রিমিয়াম মেনু ===== */
+body.nv main{padding-bottom:118px}
+.tp{animation:tpIn .28s ease}@keyframes tpIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.sh2{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6);font-weight:800;font-size:13px;letter-spacing:.4px;margin:16px 4px 8px;display:flex;align-items:center;gap:8px}
+.sh2::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.45),transparent)}
+#hero{padding:14px 16px;background:linear-gradient(135deg,var(--card),var(--ac2));margin-bottom:4px}
+#hero .tl{font-size:18px;font-weight:800;display:flex;align-items:center;gap:8px}
+button.mr{display:flex;align-items:center;gap:13px;text-align:left;padding:12px 14px;margin:0 0 10px;border-radius:20px;background:var(--card);color:var(--tx);border:1px solid var(--bd);box-shadow:0 8px 22px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.35)}
+button.mr:active{transform:scale(.98);background:var(--card);color:var(--tx);border:1px solid var(--bd);filter:brightness(.96)}
+button.mr:disabled{opacity:.5}
+.mi{flex:none;width:50px;height:50px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:25px;font-style:normal;background:var(--g);box-shadow:0 6px 14px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.45)}
+.mt{flex:1;min-width:0;display:block}.mt b{display:block;font-size:16px;font-weight:800;line-height:1.3}
+.mt small{display:block;color:var(--mut);font-weight:500;font-size:12.5px;line-height:1.4;margin-top:2px}
+.mc{flex:none;font-style:normal;font-size:24px;color:var(--mut);opacity:.7}
+#menu .tiles{gap:10px}#menu .tile{border-radius:20px;box-shadow:0 8px 22px rgba(0,0,0,.22)}
+#menu .tile>b{display:block;font-size:15px}
+#bonus,#menu .lb{border-radius:22px}
+#inst{display:flex;align-items:center;gap:10px;margin:0 0 12px;padding:9px 10px 9px 14px;border-radius:18px;background:linear-gradient(135deg,rgba(6,78,59,.94),rgba(4,120,87,.94));border:1px solid rgba(110,231,183,.45);color:#fff;box-shadow:0 8px 22px rgba(0,0,0,.35)}
+#inst b{flex:1;font-size:15px}#inst .ii{font-size:22px}
+#inst button{width:auto;margin:0;padding:8px 16px;font-size:14px;border-radius:12px;background:linear-gradient(180deg,#34d399,#10b981);color:#04281c;box-shadow:none}
+#inst button#instX{padding:8px 11px;background:transparent;color:#fff;font-size:18px}
+#nav{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;justify-content:center;padding:18px 10px calc(10px + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,rgba(3,10,6,.6));pointer-events:none}
+#nav .nb{pointer-events:auto;display:flex;gap:2px;width:100%;max-width:460px;padding:6px;border-radius:26px;background:rgba(10,18,14,.82);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.14);box-shadow:0 14px 34px rgba(0,0,0,.5)}
+#nav button{position:relative;flex:1;width:auto;margin:0;padding:8px 2px 7px;border:0;border-radius:20px;background:transparent;box-shadow:none;color:#a9b8b0;font-size:11px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:3px;transition:background .2s,color .2s,transform .12s}
+#nav button svg{width:23px;height:23px;display:block;background:none;margin:0;border-radius:0}
+#nav button span{font-size:11px;line-height:1.1;white-space:nowrap}
+#nav button:active{transform:scale(.94);background:rgba(255,255,255,.08);color:#fff;filter:none}
+#nav button.act{background:linear-gradient(180deg,#22c55e,#15803d);color:#fff;box-shadow:0 6px 16px rgba(34,197,94,.4),inset 0 1px 0 rgba(255,255,255,.35)}
+#nav u{position:absolute;top:6px;right:calc(50% - 20px);width:9px;height:9px;border-radius:50%;background:#ef4444;border:2px solid #0a120e;text-decoration:none}
+body.nv .edb{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+</style>
 </head>
 <body>
 <main>
@@ -295,23 +328,30 @@ details.card summary{color:var(--tx)}
 
 
 <section id="menu">
-  <div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><div><div class="tl"><span id="hAv">👤</span> <span id="hName">—</span></div><div class="er" id="hInfo" style="margin:3px 0 0;text-align:left"></div></div><button id="bAcct" class="sec" style="width:auto;margin:0;padding:6px 12px;font-size:13px">⚙️ প্রোফাইল</button></div><input id="name" class="hide"><select id="team" class="hide"></select></div>
-  <button id="bCpu" class="big">🤖 কম্পিউটারের সাথে খেলো<br><small style="font-weight:500;color:var(--mut)">জিতলে <span data-k="cpuw">২০</span> 🪙</small></button>
-  <button id="bDaily" class="big">⭐ ডেইলি মিশন<br><small id="dmSub" style="font-weight:500;color:var(--mut)">সোয়াইপ করে গোল • ৫০ 🪙</small></button>
-  <div class="tiles">
+<div id="inst" class="hide"><span class="ii">📲</span><b>ফোনে ইনস্টল করো</b><button id="instGo">ইনস্টল</button><button id="instX" aria-label="বন্ধ করো">✕</button></div>
+<div class="msg pill" id="mmsg"></div>
+<div class="tp" data-tp="play">
+  <div class="card" id="hero"><div style="display:flex;justify-content:space-between;align-items:center"><div><div class="tl"><span id="hAv">👤</span> <span id="hName">—</span></div><div class="er" id="hInfo" style="margin:3px 0 0;text-align:left"></div></div><button id="bAcct" class="sec" style="width:auto;margin:0;padding:6px 12px;font-size:13px">⚙️ প্রোফাইল</button></div><input id="name" class="hide"><select id="team" class="hide"></select></div>
+<div class="sh2">একা খেলো</div><button id="bCpu" class="big mr"><i class="mi" style="--g:linear-gradient(135deg,#34d399,#059669)">🤖</i><span class="mt"><b>কম্পিউটারের সাথে খেলো</b><small>জিতলে <span data-k="cpuw">২০</span> 🪙</small></span><em class="mc">›</em></button><button id="bCareer" class="big mr"><i class="mi" style="--g:linear-gradient(135deg,#fde68a,#f59e0b)">🏅</i><span class="mt"><b>ক্যারিয়ার ম্যাচ</b><small>র‍্যান্ডম প্রতিপক্ষ • এন্ট্রি <span data-k="cfee">২০</span> 🪙 • জিতলে <span data-k="cwin">৪০</span> 🪙</small></span><em class="mc">›</em></button><button id="bLeague" class="big mr"><i class="mi" style="--g:linear-gradient(135deg,#c4b5fd,#7c3aed)">🏆</i><span class="mt"><b>লীগ ম্যাচ</b><small>পাড়ার লীগ থেকে বিশ্বকাপ • আলাদা লিডারবোর্ড</small></span><em class="mc">›</em></button><button id="bSeason" class="big mr"><i class="mi" style="--g:linear-gradient(135deg,#60a5fa,#2563eb)">⚽</i><span class="mt"><b>ক্লাব সিজন</b><small>চ্যাম্পিয়নস লীগ • লা লিগা • পয়েন্ট টেবিল ও অ্যাওয়ার্ড</small></span><em class="mc">›</em></button>
+</div>
+<div class="tp hide" data-tp="online">
+<div class="sh2">বন্ধুদের সাথে</div>  <div class="tiles">
     <div class="card tile"><div class="ti">🏟️</div><b>ফ্রেন্ড ম্যাচ</b><small>রুম বানিয়ে বন্ধুকে ডাকো</small><select id="nsel"><option value="3">৩টি শট করে</option><option value="5" selected>৫টি শট করে</option><option value="7">৭টি শট করে</option><option value="10">১০টি শট করে</option></select><button id="bCreate" class="sec" disabled>রুম তৈরি করো</button></div>
     <div class="card tile"><div class="ti">🔑</div><b>রুমে ঢোকো</b><small>বন্ধুর কোড দাও</small><input id="jcode" maxlength="4" placeholder="রুম কোড" style="text-transform:uppercase;text-align:center;letter-spacing:4px"><button id="bJoin" class="sec" disabled>জয়েন</button></div>
   </div>
-  <button id="bTeam" class="big">👥 টিম ম্যাচ<br><small style="font-weight:500;color:var(--mut)">২ দল • প্রতি দলে ৩–৬ জন • শটের সংখ্যা ওপরের বক্সের</small></button>
-  <button id="bCareer" class="big">🏅 ক্যারিয়ার ম্যাচ<br><small style="font-weight:500;color:var(--mut)">র‍্যান্ডম প্রতিপক্ষ • এন্ট্রি <span data-k="cfee">২০</span> 🪙 • জিতলে <span data-k="cwin">৪০</span> 🪙</small></button>
-  <button id="bLeague" class="big">🏆 লীগ ম্যাচ<br><small style="font-weight:500;color:var(--mut)">পাড়ার লীগ থেকে বিশ্বকাপ • আলাদা লিডারবোর্ড</small></button>
-  <button id="bSeason" class="big">⚽ ক্লাব সিজন<br><small style="font-weight:500;color:var(--mut)">চ্যাম্পিয়নস লীগ • লা লিগা • পয়েন্ট টেবিল ও অ্যাওয়ার্ড</small></button>
-  <button id="bStore" class="big">🛍️ স্টোর</button>
-  <button id="bFriends" class="big">👥 ফ্রেন্ডস <span id="frBadge" class="tag hide" style="background:#dc2626;color:#fff"></span></button>
-  <div class="msg pill" id="mmsg"></div>
+<button id="bTeam" class="big mr"><i class="mi" style="--g:linear-gradient(135deg,#5eead4,#0d9488)">👥</i><span class="mt"><b>টিম ম্যাচ</b><small>২ দল • প্রতি দলে ৩–৬ জন • শটের সংখ্যা ওপরের বক্সের</small></span><em class="mc">›</em></button><button id="bFriends" class="big mr"><i class="mi" style="--g:linear-gradient(135deg,#60a5fa,#2563eb)">🤝</i><span class="mt"><b>ফ্রেন্ডস<span id="frBadge" class="tag hide" style="background:#dc2626;color:#fff;margin-left:6px"></span></b><small>বন্ধু খোঁজো, রিকুয়েস্ট ও চ্যালেঞ্জ</small></span><em class="mc">›</em></button>
+</div>
+<div class="tp hide" data-tp="chal">
+<div class="sh2">আজকের চ্যালেঞ্জ</div><button id="bDaily" class="big mr"><i class="mi" style="--g:linear-gradient(135deg,#fde68a,#f59e0b)">⭐</i><span class="mt"><b>ডেইলি মিশন</b><small id="dmSub">সোয়াইপ করে গোল • ৫০ 🪙</small></span><em class="mc">›</em></button>
   <div class="card" id="bonus"><div style="display:flex;justify-content:space-between;align-items:center"><b>🪙 <span id="coins">0</span> কয়েন</b><span class="tag" id="stk"></span></div><div class="days" id="days"></div><button id="bClaim">🎁 আজকের বোনাস নাও</button></div>
-  <div class="card lb"><div style="display:flex;justify-content:space-between;align-items:center"><b>🏆 সাপ্তাহিক লিডারবোর্ড</b><button id="lbR" class="sec" style="width:auto;margin:0;padding:4px 10px;font-size:13px">🔄</button></div><div class="er" id="lbT" style="margin:4px 0 6px"></div><div id="lbl"><div>লোড হচ্ছে…</div></div></div>
+</div>
+<div class="tp hide" data-tp="deco">
+<div class="sh2">নিজেকে সাজাও</div><button id="bStore" class="big mr"><i class="mi" style="--g:linear-gradient(135deg,#fca5a5,#dc2626)">🛍️</i><span class="mt"><b>স্টোর</b><small>কয়েন দিয়ে পোশাক ও আইটেম কেনো</small></span><em class="mc">›</em></button><button id="bDecoVt" class="big mr"><i class="mi" style="--g:linear-gradient(135deg,#c4b5fd,#7c3aed)">👕</i><span class="mt"><b>আমার ভল্ট</b><small>কেনা সব পোশাক — যখন খুশি পরো</small></span><em class="mc">›</em></button><button id="bDecoPh" class="big mr"><i class="mi" style="--g:linear-gradient(135deg,#60a5fa,#2563eb)">🖼️</i><span class="mt"><b>প্রোফাইল ছবি ও কভার</b><small>ছবি বাছাই বা নিজের ফোন থেকে আপলোড</small></span><em class="mc">›</em></button>
+</div>
+<div class="tp hide" data-tp="stat">
+<div class="sh2">র‍্যাংক ও নিয়ম</div>  <div class="card lb"><div style="display:flex;justify-content:space-between;align-items:center"><b>🏆 সাপ্তাহিক লিডারবোর্ড</b><button id="lbR" class="sec" style="width:auto;margin:0;padding:4px 10px;font-size:13px">🔄</button></div><div class="er" id="lbT" style="margin:4px 0 6px"></div><div id="lbl"><div>লোড হচ্ছে…</div></div></div>
   <details class="card"><summary>ℹ️ খেলার নিয়ম</summary><p>৫টি করে শট (ফ্রেন্ড ম্যাচে বেছে নেওয়া যায়)। শুটার ৬টি জোনের একটি বাছে, গোলকিপারও একটি জোনে ঝাঁপ দেয়। একই জোনে সেভ, কাছের জোনেও সেভের সুযোগ আছে। প্রতি শটে ১০ সেকেন্ড সময়। ২০ কয়েনে কার্ল শট: শুটার হলে ফিল্ডে আঙুল বাঁকিয়ে টানো। সমান হলে সাডেন ডেথ।</p></details>
+</div>
 </section>
 
 <section id="lobby" class="hide">
@@ -376,6 +416,7 @@ details.card summary{color:var(--tx)}
   <div class="em" id="em"></div><div class="cm" id="chat"></div>
   </section>
 </main>
+<nav id="nav" class="hide"><div class="nb"><button data-t="play"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5.5 3.5-5.5 3.5z"/></svg><span>খেলো</span></button><button data-t="online"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span>অনলাইন</span></button><button data-t="chal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 4 5 5.5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z"/></svg><u id="nvDot" class="hide"></u><span>চ্যালেঞ্জ</span></button><button data-t="deco"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3l-5 4 3 3 2-1v11h8V9l2 1 3-3-5-4a4 4 0 0 1-8 0z"/></svg><span>সাজাও</span></button><button data-t="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg><span>হিসাব</span></button></div></nav>
 <button id="edBtn" class="edb">✍️ সম্পাদক</button>
 <div id="auM" class="mod hide"><div class="card" style="text-align:left"><div class="en" id="auT" style="text-align:center">লগইন</div><input id="auN" class="hide" maxlength="14" placeholder="তোমার নাম"><input id="auE" type="email" placeholder="ইমেইল" style="margin-top:8px"><input id="auP" type="password" placeholder="পাসওয়ার্ড (কমপক্ষে ৬ অক্ষর)" style="margin-top:8px"><div class="msg" id="auMsg"></div><button id="auGo">লগইন</button><button id="auG" class="sec">🔵 Google দিয়ে চালিয়ে যাও</button><button id="auSw" class="sec"></button><button id="auX" class="sec hide">বন্ধ করো</button></div></div>
 <div id="natM" class="mod hide" style="z-index:90"><div class="card" style="max-height:92vh;overflow:auto"><div class="en">🌍 প্রোফাইল সেটআপ</div><div class="er">দেশ আর জেলা বাছাই বাধ্যতামূলক। দল আলাদা জিনিস — দেশ যা-ই হোক, যেকোনো দেশ বা ক্লাব নিয়ে খেলতে পারো।</div>
@@ -396,8 +437,8 @@ details.card summary{color:var(--tx)}
 <div id="shM" class="mod hide"><div class="card"><div class="en" style="font-size:17px;margin:0 0 6px">📰 আপনার প্রগ্রেস শেয়ার করুন</div><img id="shImg" alt="অসময় টিভি"><button id="shNat" style="margin-top:8px;padding:11px;font-size:14px">📤 ছবিসহ শেয়ার (সব অ্যাপে)</button><div class="shg" style="grid-template-columns:1fr 1fr 1fr"><button id="shWa" class="sec">WhatsApp</button><button id="shFb" class="sec">Facebook</button><button id="shIg" class="sec">Instagram</button><button id="shTg" class="sec">Telegram</button><button id="shTw" class="sec">X</button><button id="shCp" class="sec">🔗 লিংক কপি</button></div><button id="shSv" class="sec" style="padding:11px;font-size:14px">🖼️ গ্যালারিতে সেইভ করুন</button><div class="shg"><button id="shNew" class="sec">🎲 নতুন খবর</button><button id="shX" class="sec">বন্ধ করো</button></div></div></div>
 <div id="ppM" class="mod hide" style="z-index:110"><div class="card" style="max-width:380px;width:94%;max-height:92vh;overflow:auto;text-align:center"><div id="ppCv"></div><div id="ppAv" class="avW"></div><b id="ppN" style="font-size:19px"></b><div id="ppI" class="er" style="text-align:center"></div><div class="ppS" id="ppS"></div><div id="ppTr" class="trS hide"></div><div class="ppS" id="ppAc"></div><div id="ppAL" class="ppL hide"></div><div id="ppMc" class="ppL hide"></div><div id="ppA" style="margin:6px 0"></div><button id="ppX" class="sec">বন্ধ করো</button></div></div>
 <div id="phM" class="mod hide" style="z-index:115"><div class="card" style="max-width:420px;width:94%;max-height:92vh;overflow:auto;text-align:left"><b>🖼️ ছবি বাছাই করো</b><div class="em" style="margin:8px 0"><button id="phT0" class="sec on">👤 প্রোফাইল ছবি</button><button id="phT1" class="sec">🌄 কভার ফটো</button></div><div id="phPv"></div><div id="phG"></div><div class="er" id="phHint" style="text-align:left"></div><input type="file" id="phF" accept="image/*" class="hide"><button id="phU" class="sec">📱 ফোন থেকে আপলোড</button><button id="phRm" class="sec">🗑️ ছবি সরাও</button><div class="msg" id="phMsg"></div><button id="phX">✔ হয়েছে</button></div></div>
-<div id="wnM" class="ov hide" style="z-index:118"><div class="pc" style="text-align:left"><div style="text-align:center;font-size:42px">🎉</div><div class="big" style="font-size:21px;text-align:center">নতুন আপডেটে যা যা যুক্ত হলো</div><ul style="padding-left:18px;margin:8px 0;font-size:14px;line-height:1.55"><li>🏆 <b>৩D ঘুরন্ত ট্রফি ও মেডেল</b> — যেকোনো প্লেয়ারের প্রোফাইলে ট্যাপ করলেই UCL/লা লিগা শিরোপা, প্লেয়ার অফ দ্য উইক/মান্থ ৩D তে ঘুরবে।</li><li>✨ <b>প্রিমিয়াম গ্লসি প্রোফাইল</b> — লিডারবোর্ড, ওয়েটিং লবি ও ফ্রেন্ড লিস্টে শিরোপাধারীর নাম ঝলমলে সোনালি/রংধনু গ্লোতে উপর থেকেই আলাদা করে চেনা যাবে।</li><li>🔔 <b>নোটিফিকেশন অনুমতি</b> — মেইনটেন্যান্স বা বড় আপডেট শেষ হলেই জানাতে পারব, তাই অনুমতি দেওয়া পর্যন্ত মাঝেমধ্যে মনে করানো হবে।</li><li>🛠️ এডমিন এখন থেকে শিরোপা/মেডেল দিতে, থিম বদলাতে ও নোটিফিকেশন পাঠাতে পারে।</li><li>⚽ <b>ক্লাব সিজন</b> — চ্যাম্পিয়নস লীগ ও লা লিগা খেলো, লাইভ পয়েন্ট টেবিল দেখো। চ্যাম্পিয়ন হলে বড় কয়েন বোনাস!</li><li>🎬 <b>৩D বিতরণী অনুষ্ঠান</b> — ট্রফি বা মেডেল মঞ্চে তুলে দেওয়া হয়, সাথে সেলিব্রেশন।</li><li>🏅 <b>প্লেয়ার অফ দ্য উইক/মান্থ ও ব্যাজ</b> — জিতলে প্রোফাইল ঝলমল করবে, ট্যাপ করলে সবাই অর্জন দেখবে।</li><li>📰 জয়ের পোস্টারে এখন নতুন নতুন মজার লেখা।</li><li>🔔 চাইলে নতুন খবর ফোনের নোটিফিকেশনেও পাবে।</li><li>🖼️ <b>প্রোফাইল ছবি ও কভার ফটো</b> — "আমার প্রোফাইল" থেকে বাছাই করো: দলের লোগো, নম্বর ব্যাজ, ইউনিক আইকন; অথবা <b>নিজের ফোন থেকে আপলোড</b> করো (প্রোফাইল ১:১ — কমপক্ষে ৩০০×৩০০ px; কভার ৩:১ — কমপক্ষে ১০০০×৩৩৩ px; সর্বোচ্চ ১০ MB; অটো ক্রপ হবে)।</li><li>👀 <b>সুবিধা:</b> তোমার ছবি সাপ্তাহিক ও লীগ লিডারবোর্ডে নামের পাশে আর প্রোফাইল পপআপে সবাই দেখবে — ভিড়ে আলাদা করে চেনা যাবে, বন্ধুরা সহজে খুঁজে পাবে।</li><li>👤 <b>প্রোফাইল পপআপ:</b> লিডারবোর্ড বা ফ্রেন্ড লিস্টে যেকোনো নামে ট্যাপ করো — ম্যাচ, গোল, র‍্যাংক, কোন ধরনের কত ম্যাচ খেলেছে সব দেখো আর ফ্রেন্ড রিকুয়েস্ট পাঠাও।</li><li>🏆 নাম বা জেলা বদলালে এখন লীগ লিডারবোর্ডেও সাথে সাথে বদলায়।</li><li>😎 রিয়েকশন ও কমেন্ট এখন একসাথে স্পষ্ট বারে — সোয়াইপ ছাড়াই; "খেলা ছেড়ে বের হও" বাটনও স্পষ্ট।</li><li>🔥 কয়েন বুস্ট ইভেন্ট ও ম্যাচ-ভিত্তিক কয়েন রিওয়ার্ড এখন লাইভ বদলায় — ইভেন্ট চললে হোমে ঘোষণা দেখাবে।</li></ul><button id="wnGo">🖼️ এখনই ছবি দিই</button><button id="wnX" class="sec">বুঝেছি</button></div></div>
-<div id="upM" class="ov hide" style="z-index:118"><div class="pc"><div style="font-size:46px">🔄</div><div class="big" style="font-size:22px">নতুন আপডেট এসেছে!</div><p class="sub">নতুন ফিচার পেতে এখনই আপডেট করুন।</p><ul style="text-align:left;padding-left:20px;margin:6px 0;font-size:13px;line-height:1.5"><li>🏆 ৩D ঘুরন্ত ট্রফি/মেডেল ও গ্লসি প্রিমিয়াম প্রোফাইল</li><li>⚽ ক্লাব সিজন (UCL/লা লিগা), প্লেয়ার অফ দ্য উইক/মান্থ</li><li>🖼️ প্রোফাইল ছবি ও কভার ফটো</li><li>🔔 ফোন নোটিফিকেশন ও লাইভ এডমিন কন্ট্রোল</li></ul><button id="upGo">🔄 আপডেট করুন</button><button id="upLater" class="sec">পরে</button></div></div>
+<div id="wnM" class="ov hide" style="z-index:118"><div class="pc" style="text-align:left"><div style="text-align:center;font-size:42px">🎉</div><div class="big" style="font-size:21px;text-align:center">নতুন আপডেটে যা যা যুক্ত হলো</div><ul style="padding-left:18px;margin:8px 0;font-size:14px;line-height:1.55"><li>📱 <b>নিচের নেভিগেশন বার</b> — খেলো, অনলাইন, চ্যালেঞ্জ, সাজাও ও হিসাব: এক ট্যাপেই দরকারি জায়গায় যাও। আগের মতো সবকিছু একসাথে ওপরে ঠাসা নেই।</li><li>✨ <b>নতুন প্রিমিয়াম ডিজাইন</b> — আইকনসহ গোছানো মোড লিস্ট, ঝকঝকে কার্ড ও মসৃণ অ্যানিমেশন।</li><li>📲 <b>ফোনে ইনস্টল</b> — হোম স্ক্রিনে অ্যাপের মতো যোগ করার বাটন; এক ট্যাপেই ফুল-স্ক্রিনে খেলো।</li><li>🏆 <b>৩D ঘুরন্ত ট্রফি ও মেডেল</b> — যেকোনো প্লেয়ারের প্রোফাইলে ট্যাপ করলেই UCL/লা লিগা শিরোপা, প্লেয়ার অফ দ্য উইক/মান্থ ৩D তে ঘুরবে।</li><li>✨ <b>প্রিমিয়াম গ্লসি প্রোফাইল</b> — লিডারবোর্ড, ওয়েটিং লবি ও ফ্রেন্ড লিস্টে শিরোপাধারীর নাম ঝলমলে সোনালি/রংধনু গ্লোতে উপর থেকেই আলাদা করে চেনা যাবে।</li><li>🔔 <b>নোটিফিকেশন অনুমতি</b> — মেইনটেন্যান্স বা বড় আপডেট শেষ হলেই জানাতে পারব, তাই অনুমতি দেওয়া পর্যন্ত মাঝেমধ্যে মনে করানো হবে।</li><li>🛠️ এডমিন এখন থেকে শিরোপা/মেডেল দিতে, থিম বদলাতে ও নোটিফিকেশন পাঠাতে পারে।</li><li>⚽ <b>ক্লাব সিজন</b> — চ্যাম্পিয়নস লীগ ও লা লিগা খেলো, লাইভ পয়েন্ট টেবিল দেখো। চ্যাম্পিয়ন হলে বড় কয়েন বোনাস!</li><li>🎬 <b>৩D বিতরণী অনুষ্ঠান</b> — ট্রফি বা মেডেল মঞ্চে তুলে দেওয়া হয়, সাথে সেলিব্রেশন।</li><li>🏅 <b>প্লেয়ার অফ দ্য উইক/মান্থ ও ব্যাজ</b> — জিতলে প্রোফাইল ঝলমল করবে, ট্যাপ করলে সবাই অর্জন দেখবে।</li><li>📰 জয়ের পোস্টারে এখন নতুন নতুন মজার লেখা।</li><li>🔔 চাইলে নতুন খবর ফোনের নোটিফিকেশনেও পাবে।</li><li>🖼️ <b>প্রোফাইল ছবি ও কভার ফটো</b> — "আমার প্রোফাইল" থেকে বাছাই করো: দলের লোগো, নম্বর ব্যাজ, ইউনিক আইকন; অথবা <b>নিজের ফোন থেকে আপলোড</b> করো (প্রোফাইল ১:১ — কমপক্ষে ৩০০×৩০০ px; কভার ৩:১ — কমপক্ষে ১০০০×৩৩৩ px; সর্বোচ্চ ১০ MB; অটো ক্রপ হবে)।</li><li>👀 <b>সুবিধা:</b> তোমার ছবি সাপ্তাহিক ও লীগ লিডারবোর্ডে নামের পাশে আর প্রোফাইল পপআপে সবাই দেখবে — ভিড়ে আলাদা করে চেনা যাবে, বন্ধুরা সহজে খুঁজে পাবে।</li><li>👤 <b>প্রোফাইল পপআপ:</b> লিডারবোর্ড বা ফ্রেন্ড লিস্টে যেকোনো নামে ট্যাপ করো — ম্যাচ, গোল, র‍্যাংক, কোন ধরনের কত ম্যাচ খেলেছে সব দেখো আর ফ্রেন্ড রিকুয়েস্ট পাঠাও।</li><li>🏆 নাম বা জেলা বদলালে এখন লীগ লিডারবোর্ডেও সাথে সাথে বদলায়।</li><li>😎 রিয়েকশন ও কমেন্ট এখন একসাথে স্পষ্ট বারে — সোয়াইপ ছাড়াই; "খেলা ছেড়ে বের হও" বাটনও স্পষ্ট।</li><li>🔥 কয়েন বুস্ট ইভেন্ট ও ম্যাচ-ভিত্তিক কয়েন রিওয়ার্ড এখন লাইভ বদলায় — ইভেন্ট চললে হোমে ঘোষণা দেখাবে।</li></ul><button id="wnGo">🖼️ এখনই ছবি দিই</button><button id="wnX" class="sec">বুঝেছি</button></div></div>
+<div id="upM" class="ov hide" style="z-index:118"><div class="pc"><div style="font-size:46px">🔄</div><div class="big" style="font-size:22px">নতুন আপডেট এসেছে!</div><p class="sub">নতুন ফিচার পেতে এখনই আপডেট করুন।</p><ul style="text-align:left;padding-left:20px;margin:6px 0;font-size:13px;line-height:1.5"><li>📱 নিচের নেভিগেশন বার (খেলো • অনলাইন • চ্যালেঞ্জ • সাজাও • হিসাব)</li><li>✨ নতুন প্রিমিয়াম ডিজাইন</li><li>📲 ফোনে ইনস্টল বাটন</li><li>🏆 ৩D ঘুরন্ত ট্রফি/মেডেল ও গ্লসি প্রিমিয়াম প্রোফাইল</li><li>⚽ ক্লাব সিজন (UCL/লা লিগা), প্লেয়ার অফ দ্য উইক/মান্থ</li><li>🖼️ প্রোফাইল ছবি ও কভার ফটো</li><li>🔔 ফোন নোটিফিকেশন ও লাইভ এডমিন কন্ট্রোল</li></ul><button id="upGo">🔄 আপডেট করুন</button><button id="upLater" class="sec">পরে</button></div></div>
 <div id="frM" class="mod hide"><div class="card frC"><div class="frH"><div><b style="font-size:18px">👥 ফ্রেন্ডস</b><div id="frSub" style="font-size:12px;opacity:.9;margin-top:2px"></div></div><button id="frX">✕</button></div><div class="frTabs"><button id="frT_fl" data-ft="fl">⚽ ফ্রেন্ডস<i id="frC_fl"></i></button><button id="frT_rq" data-ft="rq">📩 রিকুয়েস্ট<i id="frC_rq"></i></button><button id="frT_sr" data-ft="sr">🔍 খোঁজো</button></div><div id="frS" class="frSr hide"><input id="frQ" type="email" placeholder="বন্ধুর ইমেইল লিখো"><button id="frGo">সার্চ</button></div><div id="frL"></div></div></div>
 <div id="chM" class="mod hide" style="z-index:110"><div class="card"><div class="en">⚔️ ম্যাচ চ্যালেঞ্জ</div><div class="er" id="chTx" style="font-size:15px;color:var(--tx)"></div><button id="chAcc">✅ এক্সেপ্ট</button><button id="chRej" class="sec">❌ রিজেক্ট</button></div></div>
 <div id="ntM" class="mod hide" style="z-index:110"><div class="card"><div class="en" id="ntT"></div><div class="er" id="ntB" style="font-size:15px;color:var(--tx)"></div><button id="ntX">ঠিক আছে</button></div></div>
@@ -542,7 +583,7 @@ let uid='';try{uid=sessionStorage.getItem('ps_uid')||''}catch(e){}
 if(!uid){uid=Math.random().toString(36).slice(2,10);try{sessionStorage.setItem('ps_uid',uid)}catch(e){}}
 try{const n=localStorage.getItem('ps_name');if(n)$('name').value=n}catch(e){}
 const myName=()=>{const v=(ME&&ME.name)||guestName();try{localStorage.setItem('ps_name',v)}catch(e){}return v};
-const show=id=>{['menu','lobby','game'].forEach(x=>$(x).classList.toggle('hide',x!==id));$('edBtn').classList.toggle('hide',id==='game');document.querySelector('.hd').classList.toggle('hide',id==='game')};
+const show=id=>{['menu','lobby','game'].forEach(x=>$(x).classList.toggle('hide',x!==id));$('edBtn').classList.toggle('hide',id==='game');document.querySelector('.hd').classList.toggle('hide',id==='game');navSync(id)};
 let AC=null;const getAC=()=>{if(!AC)AC=new(window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();return AC};
 const beep=(f,d)=>{try{const a=getAC(),o=a.createOscillator(),g=a.createGain();o.frequency.value=f;g.gain.value=.08;o.connect(g);g.connect(a.destination);o.start();o.stop(a.currentTime+d)}catch(e){}};
 const buzz=()=>{try{navigator.vibrate&&navigator.vibrate(60)}catch(e){}};
@@ -1812,6 +1853,23 @@ async function verCheck(){try{const r=await fetch(location.pathname+'?_v='+Date.
     if(!S&&!local&&!typing){if(Date.now()>(window.upSnooze||0))$('upM').classList.remove('hide');return}
     if(!verShown){verShown=1;toast('🔄 নতুন আপডেট এসেছে — ম্যাচ শেষে মেনুতে ফিরলে আপডেট করার অপশন আসবে',5000)}}}catch(e){}}
 setTimeout(verCheck,4000);setInterval(verCheck,120000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)verCheck()});
+/* ===== নিচের নেভিগেশন ও ইনস্টল ব্যানার ===== */
+const NV_TABS=['play','online','chal','deco','stat'];
+function setTab(k){if(!NV_TABS.includes(k))k='play';try{localStorage.setItem('ps_tab',k)}catch(e){}document.querySelectorAll('#menu .tp').forEach(x=>x.classList.toggle('hide',x.dataset.tp!==k));document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('act',b.dataset.t===k));window.scrollTo(0,0)}
+function navSync(id){const m=id==='menu';$('nav').classList.toggle('hide',!m);document.body.classList.toggle('nv',m)}
+document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>setTab(b.dataset.t));
+$('bDecoVt').onclick=()=>$('bVault').click();
+$('bDecoPh').onclick=()=>{ME?$('bPh').click():$('bAcct').click()};
+let nvT='play';try{nvT=localStorage.getItem('ps_tab')||'play'}catch(e){}
+setTab(nvT);navSync('menu');
+setInterval(()=>{try{$('nvDot').classList.toggle('hide',$('bClaim').disabled)}catch(e){}},2000);
+let ipE=null;const inSa=()=>(window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone;
+function instShow(){if(inSa())return;try{if(Date.now()<(+localStorage.getItem('ps_inq')||0))return}catch(e){}$('inst').classList.remove('hide')}
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();ipE=e;instShow()});
+window.addEventListener('appinstalled',()=>{$('inst').classList.add('hide');ipE=null});
+if(/iPhone|iPad|iPod/i.test(navigator.userAgent)&&!inSa())setTimeout(instShow,1500);
+$('instGo').onclick=()=>{if(ipE){ipE.prompt();Promise.resolve(ipE.userChoice).finally(()=>{ipE=null;$('inst').classList.add('hide')})}else toast('📲 Safari-তে নিচের Share বাটনে ট্যাপ করে "Add to Home Screen" বাছাই করো',6000)};
+$('instX').onclick=()=>{$('inst').classList.add('hide');try{localStorage.setItem('ps_inq',String(Date.now()+6048e5))}catch(e){}};
 </script>
 <script>
 // ব্যাকগ্রাউন্ড ফটো: নিজের লাইসেন্স করা ছবি 'bg.jpg' নামে index.html এর পাশে রাখলেই বসে যাবে (না থাকলে স্টেডিয়াম-নাইট থিম)
