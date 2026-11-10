@@ -424,12 +424,13 @@ body.nv .edb{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
 </section>
 
 <section id="game" class="hide">
-  <button id="bExit" class="sec" style="margin:0 0 10px">⬅️ খেলা ছেড়ে বের হও</button>
+  <div id="gTop">
   <div class="card">
+    <div class="gChips"><button id="bExit" class="sec" title="খেলা ছেড়ে বের হও" aria-label="খেলা ছেড়ে বের হও">🚪</button><span class="tag" id="rnd"></span><span class="tag hide" id="rcode"></span><span class="tag" id="bSnd" style="cursor:pointer">🔊 সাউন্ড চালু</span><span class="tag" id="bVib" style="cursor:pointer">📳 ভাইব্রেট চালু</span></div>
     <div class="sb" id="sb"></div><div id="rmBar" class="hide" style="margin-top:6px"><div class="sub" id="rmTx" style="margin:4px 0"></div><button id="bAgain2">🔄 রিম্যাচ</button></div>
-    <div style="text-align:center;margin-top:8px"><span class="tag" id="rnd"></span> <span class="tag hide" id="rcode"></span> <span class="tag" id="bSnd" style="cursor:pointer">🔊 সাউন্ড চালু</span></div>
   </div>
-  <div class="rb W" id="rb"></div>
+  <div id="gRow"><div class="rb W" id="rb"></div><div class="tm" id="tm"></div></div>
+  </div>
   <svg id="pitch" viewBox="0 0 300 190" preserveAspectRatio="xMidYMid slice" aria-label="গোলপোস্ট">
     <defs>
       <pattern id="net" width="6" height="6" patternUnits="userSpaceOnUse"><path d="M0 0H6M0 0V6" stroke="#fff" stroke-opacity=".4" stroke-width=".6"/></pattern>
@@ -464,7 +465,7 @@ body.nv .edb{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
     <polyline id="trail" points="" fill="none" stroke="#c4b5fd" stroke-width="2.2" stroke-linecap="round"/><path id="fxl" pathLength="1" d=""/><path id="fxl2" pathLength="1" d=""/>
     <text id="res" x="150" y="85" text-anchor="middle" font-size="34" font-weight="800" fill="#fff" stroke="#000" stroke-width="1" opacity="0"></text>
   </svg>
-  <div class="cm" id="adc" style="min-height:22px;margin:2px 0"></div><div class="tm" id="tm"></div><div class="info" id="info"></div><button id="bCurve" class="sec hide" style="margin:0 0 8px"></button>
+  <div class="cm" id="adc" style="min-height:22px;margin:2px 0"></div><div class="info" id="info"></div><button id="bCurve" class="sec hide" style="margin:0 0 8px"></button>
   <div class="ctl" id="ctl">
     <button data-d="L">⬅️<br>বাম</button>
     <button data-d="C">⬆️<br>মাঝ</button>
@@ -643,7 +644,8 @@ const myName=()=>{const v=(ME&&ME.name)||guestName();try{localStorage.setItem('p
 const show=id=>{['menu','lobby','game'].forEach(x=>$(x).classList.toggle('hide',x!==id));$('edBtn').classList.toggle('hide',id==='game');document.querySelector('.hd').classList.toggle('hide',id==='game');navSync(id)};
 let AC=null;const getAC=()=>{if(!AC)AC=new(window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();return AC};
 const beep=(f,d)=>{try{const a=getAC(),o=a.createOscillator(),g=a.createGain();o.frequency.value=f;g.gain.value=.08;o.connect(g);g.connect(a.destination);o.start();o.stop(a.currentTime+d)}catch(e){}};
-const buzz=()=>{try{navigator.vibrate&&navigator.vibrate(60)}catch(e){}};
+let VIB=true;try{VIB=localStorage.getItem('ps_vib')!=='0'}catch(e){}
+const buzz=()=>{try{VIB&&navigator.vibrate&&navigator.vibrate(60)}catch(e){}};
 
 // অনলাইন (PeerJS, হোস্ট-ভিত্তিক)
 let peer=null;
@@ -742,7 +744,7 @@ function drawPosters(){
  h+=`<path d='M40 31L27 46M40 31L32 46M260 31L268 46M260 31L273 46' stroke='${rope}' stroke-width='.7'/>`+B(2,22,46,15,62,1,.3)+B(5,263,46,15,46,1,1.1);
  [[16,4],[238,3]].forEach(([x,i],k)=>{h+=`<path d='M${x} 130H${x+46}' stroke='${rope}' stroke-width='.8'/><path d='M${x+8} 148V156M${x+38} 148V156' stroke='#6b4f2a' stroke-width='2'/>`+B(i,x,134,46,14,0,k*.9)});
  $('posters').innerHTML=h}
-function adShow(){const k=adI++%ADS.length,a=ADS[k];$('adc').innerHTML=`${LOGO[a[5]]?`<img src='${LG[a[5]]}' style='height:24px;flex:none;background:#fff;border-radius:4px;padding:1px 3px'>`:'<span style="flex:none">🤣</span>'}<span><b>${a[0]}</b>: ${adJoke(a)}</span>`;document.querySelectorAll('.bn').forEach(g=>g.classList.toggle('hi',+g.dataset.i===k))}
+function adShow(){const k=adI++%ADS.length,a=ADS[k];$('adc').innerHTML=`${LOGO[a[5]]?`<img src='${LG[a[5]]}' style='height:18px;flex:none;background:#fff;border-radius:4px;padding:1px 3px'>`:'<span style="flex:none">🤣</span>'}<span><b>${a[0]}</b>: ${adJoke(a)}</span>`;document.querySelectorAll('.bn').forEach(g=>g.classList.toggle('hi',+g.dataset.i===k))}
 drawPosters();adShow();setInterval(adShow,4500);
 // কার্ল শট (২০ কয়েন): ফিল্ডে আঙুল টেনে বাঁকিয়ে ছাড়ো
 let CCOST=20;let CURVE=false,drag=null;
@@ -946,7 +948,7 @@ function render(pre){
   $('sb').innerHTML=[0,1].map(i=>{
     const mine=shown.hist.filter(h=>h.n%2===i),cnt=Math.max(shown.N||5,mine.length+(shown.status==='play'&&kicker===i?1:0));
     let dots='';for(let j=0;j<cnt;j++)dots+=mine[j]?(mine[j].r==='goal'?'✅':'❌'):'⚪';
-    const pl=shown.status==='play',tg=pl?`<span class="tag" style="background:${kicker===i?'#16a34a':'#2563eb'};color:#fff">${kicker===i?'⚽ শুটার':'🧤 কিপার'}</span>`:'';
+    const pl=shown.status==='play',tg=pl?`<span class="tag" style="background:${kicker===i?'#16a34a':'#2563eb'};color:#fff;padding:1px 6px">${kicker===i?'⚽':'🧤'}</span>`:'';
     return `<div class="pl ${pl&&kicker===i?'act':''}" style="border-left:8px solid ${tc(i)}"><b>${esc(names[i])}${i===mi&&!SPEC?' (তুমি)':''}</b>${tg}<span class="dots">${dots}</span><span class="sc">${shown.score[i]}</span></div>`}).join('');
   const NN=shown.N||5;$('rnd').textContent=shown.n>=2*NN?'⚡ সাডেন ডেথ':'শট '+(Math.floor(shown.n/2)+1)+'/'+NN;drawField(busy?{...shown,n:S.n-1}:shown);
   $('kpn').textContent='🧤 '+roles(S,busy?S.n-1:S.n).gn;
@@ -956,7 +958,7 @@ function render(pre){
   else if(busy){rb.className='rb W';rb.innerHTML='<big>⏳ শট হচ্ছে…</big>'}
   else if(wt){rb.className='rb W';rb.innerHTML='<big>👀 অপেক্ষা করো</big><small>⚽ '+esc(R.sn)+' শুট করছেন • 🧤 '+esc(R.gn)+' কিপার</small>'}
   else{rb.className='rb '+(isK?'K':'G');const w=locked?'✅ বাছাই হয়েছে — '+on+'-এর অপেক্ষা…':null;
-    rb.innerHTML=isK?`<big>⚽ তুমি শুটার!</big><small>${w||'গোলকিপার: '+on+' — নিচ থেকে গোলের কোণ বাছো'}</small>`:`<big>🧤 তুমি গোলকিপার!</big><small>${w||'শুটার: '+on+' — কোন দিকে ঝাঁপ দেবে বাছো'}</small>`}
+    rb.innerHTML=isK?`<big>⚽ তুমি শুটার</big><small>${w||'কিপার: '+on+' • কোণ বাছো'}</small>`:`<big>🧤 তুমি কিপার</big><small>${w||'শুটার: '+on+' • ঝাঁপের দিক বাছো'}</small>`}
   $('ctl').style.outline=done||wt?'':'3px solid '+(isK?'#16a34a':'#2563eb');$('ctl').style.borderRadius='16px';
   $('ctl').classList.toggle('hide',done);$('em').classList.toggle('hide',local);
   if(!isK||locked||busy||paused)curveToggle(false);$('bCurve').classList.toggle('hide',done||!isK||locked||busy);
@@ -1392,6 +1394,7 @@ $('edBtn').onclick=()=>$('edM').classList.remove('hide');$('edX').onclick=()=>$(
 $('bClaim').onclick=()=>{if(!need())return;const i=bonusInfo();if(i.claimed)return;const d=(i.st%7)+1;let amt=d===7?40:10+5*(d-1)+Math.floor(Math.random()*5),gift=0;if(d===7){gift=1+Math.floor(Math.random()*50);amt+=gift}
   try{localStorage.setItem(BK(),JSON.stringify({...i.b,coins:i.b.coins+amt,streak:i.st+1,last:i.today}))}catch(e){}
   bonusRender();$('bClaim').textContent='🎉 +'+amt+' কয়েন পেয়েছ!'+(gift?' (গিফট বক্সে '+gift+')':'');if(gift)toast('🎁 ৭ দিনের স্ট্রিক! গিফট বক্স থেকে '+gift+' কয়েন উঠেছে!',5000);beep(740,.15)};
+const vibUi=()=>{$('bVib').textContent=VIB?'📳 ভাইব্রেট চালু':'📴 ভাইব্রেট বন্ধ'};vibUi();$('bVib').onclick=()=>{VIB=!VIB;try{localStorage.setItem('ps_vib',VIB?'1':'0')}catch(e){}vibUi();if(VIB)buzz()};
 $('bSnd').onclick=()=>{VOICE=!VOICE;$('bSnd').textContent=VOICE?'🔊 সাউন্ড চালু':'🔇 সাউন্ড বন্ধ';if(!VOICE&&window.speechSynthesis)speechSynthesis.cancel()};
 $('bLeave').onclick=()=>{if(ref&&!ref.isHost&&S&&S.status==='lobby'){ref.update({leave:1});setTimeout(leave,300)}else leave()};
 $('bReady').onclick=()=>{if(!ref||!S||S.tm)return;if(ref.isHost)ref.update({rdHost:1});else ref.update({rd:1})};
@@ -2176,7 +2179,28 @@ drawPoster=function(d){
 #game #adc{display:flex;align-items:center;justify-content:center;gap:8px;max-height:none;overflow:visible;font-size:14px;line-height:1.45;padding:7px 12px;text-align:left}
 #game #adc:empty{display:none}
 #game .info{max-height:none;overflow:visible}
-#game svg#pitch{max-height:none!important;height:auto;width:100%;aspect-ratio:300/212}
+#game:not(.hide){padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+#gTop{position:sticky;top:0;z-index:30;margin:0 -4px 4px;padding:4px;border-radius:14px;background:rgba(6,18,10,.9)}
+#game .card{padding:4px 6px;margin-bottom:3px;border-radius:10px}
+.gChips{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px;margin-bottom:3px}
+#game .gChips .tag{font-size:11px;padding:2px 8px;line-height:1.3}
+#game #bVib{background:#0f172a!important;color:#fff!important;border:1px solid rgba(255,255,255,.18);border-radius:10px;text-shadow:none}
+#game #bExit{width:30px;height:26px;margin:0;padding:0;border-radius:99px;font-size:14px;line-height:1;flex:none;display:flex;align-items:center;justify-content:center}
+#game .sb{gap:3px}
+#game .pl{padding:2px 6px;gap:6px;border-left-width:5px!important;border-radius:9px}
+#game .pl b{font-size:13px}
+#game .dots{font-size:11px;gap:1px}
+#game .sc{font-size:16px;min-width:16px}
+#gRow{display:flex;gap:4px;align-items:stretch;margin:0}
+#gRow .rb{flex:1;min-width:0;margin:0!important;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0 8px;padding:3px 8px!important;border-radius:10px!important}
+#gRow .rb big{display:inline;font-size:14px!important;line-height:1.3}
+#gRow .rb small{display:inline;font-size:11px!important;margin:0!important;line-height:1.3}
+#gRow .tm{flex:none;display:flex;align-items:center;margin:0!important;padding:2px 9px!important;font-size:14px!important;border-radius:10px!important}
+#game svg#pitch{max-height:none!important;width:100%;aspect-ratio:auto;margin:4px 0;height:min(calc(min(100vw - 20px,452px)*.72),calc(100dvh - 290px))}
+#game #adc{font-size:12.5px;line-height:1.3;padding:4px 8px;gap:6px;margin:2px 0}
+#spBan{margin:2px 0!important;padding:2px 8px!important;font-size:12px!important}
+#game .ctl{padding:5px!important;gap:5px!important;border-radius:14px!important}
+#game .ctl button{padding:7px 2px!important;font-size:13px!important;border-radius:10px}
 </style>
 </body>
 </html>
