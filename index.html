@@ -426,7 +426,7 @@ body.nv .edb{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
 <section id="game" class="hide">
   <div id="gTop">
   <div class="card">
-    <div class="gChips"><button id="bExit" class="sec" title="খেলা ছেড়ে বের হও" aria-label="খেলা ছেড়ে বের হও">🚪</button><span class="tag" id="rnd"></span><span class="tag hide" id="rcode"></span><span class="tag" id="bSnd" style="cursor:pointer">🔊 সাউন্ড চালু</span><span class="tag" id="bVib" style="cursor:pointer">📳 ভাইব্রেট চালু</span></div>
+    <div class="gChips"><button id="bExit" class="sec" title="খেলা ছেড়ে বের হও" aria-label="খেলা ছেড়ে বের হও">🚪 বের হন</button><span class="tag" id="rnd"></span><span class="tag hide" id="rcode"></span><span class="tag" id="bSnd" style="cursor:pointer">🔊 সাউন্ড চালু</span><span class="tag" id="bVib" style="cursor:pointer">📳 ভাইব্রেট চালু</span></div>
     <div class="sb" id="sb"></div><div id="rmBar" class="hide" style="margin-top:6px"><div class="sub" id="rmTx" style="margin:4px 0"></div><button id="bAgain2">🔄 রিম্যাচ</button></div>
   </div>
   <div id="gRow"><div class="rb W" id="rb"></div><div class="tm" id="tm"></div></div>
@@ -594,6 +594,62 @@ CM.curve=['কী বাঁকানো শট! গোলকিপার দা�
 CM.goal.push('ওমাইগস! কী শট!');CM.save.push('উরিহ বাবা! কী সেভ!');CM.miss.push('ঐ মামা না প্লিজ! এটা কী করলেন!');
 CM.late=['সময় শেষ! শট নেওয়াই হলো না, এটা মিস ধরা হলো!','এহহে! দেরি করে ফেললেন, সময় পেরিয়ে গেছে!'];
 CM.slow=['কিপার সময়মতো ঝাঁপই দিলেন না! সহজ গোল!','ঘুমিয়ে ছিলেন নাকি গোলকিপার! গোল!'];
+/* ===== আরও মজার ভাষ্য (পুরনো ইনডেক্স অপরিবর্তিত, শুধু নতুন লাইন যোগ) ===== */
+CM.goal.push('জাআআল! {k} আজ বুট নয়, বোমা নিয়ে নেমেছেন!','গোল গোল গোল! গ্যালারিতে আনন্দের বন্যা বইছে!','{g}-কে বোকা বানিয়ে দিলেন {k}!','এই গোল দেখলে পেলেও উঠে দাঁড়িয়ে হাততালি দিত!','বুলেটের মতো শট! জাল ছিঁড়ে যায়নি, এটাই ভাগ্য!','পাখির মতো উড়ে গিয়ে বল বসল সোজা জালে!','গোল! আজ রাতে কিপারের ঘুম হারাম!','কী দারুণ! এই গোলটা ফ্রেমে বাঁধিয়ে রাখার মতো!','ঠান্ডা মাথায় গোল! {k} যেন পেনাল্টি স্পেশালিস্ট!','জালে জড়াল বল! {g}-এর হাত আর বলের দূরত্ব ছিল বিশাল!','এই না হলে খেলা! কী শট মেরেছেন ভাই!','কমেন্ট্রি বক্সে বসে আমারই মাথা ঘুরছে! গোওওল!','দেখলেন তো! এটাকেই বলে ওস্তাদের মার!','বিশ্বকাপের যোগ্য গোল! {k}-কে সেলাম!','এই শট আটকাতে হলে গোলপোস্টের সামনে দেয়াল লাগত!','আনন্দে চেঁচাতে চেঁচাতে গলা ভেঙে গেল! গোওওল!');
+CM.save.push('কী সেভ! {g} আজ গোলপোস্টের সামনে দেয়াল তুলে দিয়েছেন!','আটকে দিলেন! শট ভালো ছিল, কিপার আরও ভালো!','{g}-এর হাতে যেন চুম্বক লাগানো!','ওহ না! এটাও আটকে গেল! শুটার মাথা চুলকাচ্ছেন!','কী রিফ্লেক্স! বিড়ালও লজ্জা পাবে!','সেভ! {g} আজ গোলপোস্টের মালিক!','বল জালে যেতে চাইছিল, কিপার বললেন, না ভাই, আজ না!','দারুণ বুদ্ধি! ঠিক দিকেই ঝাঁপ দিলেন {g}!','কী দুর্ধর্ষ সেভ! গ্যালারি উঠে দাঁড়িয়ে গেছে!','এটাকেই বলে গোলকিপারের জাদু! বল জালে ঢুকল না!','শুটার ভাবছেন, আমার শট গেল কই! কিপার মিটিমিটি হাসছেন!','দুর্ভেদ্য দুর্গ! {g}-কে ভেদ করা সহজ নয়!');
+CM.part.push('নাকের ডগা দিয়ে বেঁচে গেল! {g} কোনোমতে হাত লাগালেন!','আধখানা সেভ! তবু গোলটা তো হলো না!','ওরে বাবা! আরেকটু হলেই গোল! {g} কোনোমতে বাঁচালেন!','হাতে লেগে ছিটকে গেল! কী ভাগ্য {g}-এর!','কপাল ভালো! বল হাতে লাগল, জালে নয়!','ধরতে পারলেন না, তবে ঠেকিয়ে তো দিলেন! গোল বাতিল!');
+CM.miss.push('এ কী! বল গেল আকাশে মেঘ খুঁজতে!','শট নয় যেন রকেট! সোজা গ্যালারিতে!','বল গেল পাশের মাঠে! কেউ একটু এনে দিন!','{k}-এর শট দেখে গোলপোস্টও হতাশ!','ওহো! বলকে বোধহয় জালের ঠিকানা বলে দেওয়া হয়নি!','এত কাছে এসেও ব্যর্থ! আফসোস আফসোস!','মাথায় হাত! এমন সুযোগ কেউ হাতছাড়া করে!','ভাই, গোলপোস্টটা সামনেই ছিল, আরেকটু দেখে মারতেন!','বলকে দোষ দিয়ে লাভ নেই, দোষ ওই পায়ের!','গ্যালারি থেকে শুধু আহ্ আহ্ শব্দ শোনা যাচ্ছে!','এমন শট মেরে {k} নিজেই অবাক!');
+CM.curve.push('বাঁকানো শট! বল যেন ঘুরপথে জালে ঢুকে গেল!','কী কার্ল! রবার্তো কার্লোসও হাততালি দিচ্ছেন!','এ তো বাঁকা পথের সোজা গোল! চমৎকার!','কিপার এক দিকে, বল অন্য দিকে ঘুরে জালে! ম্যাজিক!','বাঁকানো শটে {g}-এর মাথা ঘুরে গেছে!','ওহো! বল এঁকেবেঁকে গিয়ে জালে! এটাকেই বলে শিল্প!');
+CM.late.push('সময় ফুরিয়ে গেল! শুটার নাকি ঘুমিয়ে পড়েছিলেন!','ঘড়ির কাঁটা কারও জন্য থামে না! শট মিস!','এত ভাবলে কি হয়! সময় শেষ, শট বাতিল!','দশ সেকেন্ডও পার করে ফেললেন! এ কী কাণ্ড!');
+CM.slow.push('কিপার তো দাঁড়িয়ে দাঁড়িয়ে দেখলেন! গোল!','{g} সময়মতো সিদ্ধান্তই নিলেন না! উপহারের গোল!','এত দেরি করলে বল তো জালে যাবেই!','কিপার কি চায়ের অর্ডার দিচ্ছিলেন? সময় শেষ, গোল!');
+/* একই ধরনের লাইন পরপর রিপিট না হওয়ার জন্য */
+function pickC(kind,hist){const n=CM[kind].length;let c=Math.floor(Math.random()*n);if(n>3){const used=(hist||[]).filter(h=>h.kd===kind).slice(-Math.min(8,n-2)).map(h=>h.c);for(let t=0;t<20&&used.includes(c);t++)c=Math.floor(Math.random()*n)}return c}
+
+/* ===== ভাষ্যকারের ফাঁকের কথা (শটের আগে) + স্পনসর ঘোষণা (ম্যাচে ২-৩ বার) ===== */
+let adHold=0;
+const NW=['শূন্য','এক','দুই','তিন','চার','পাঁচ','ছয়','সাত','আট','নয়','দশ'],nw=x=>NW[x]!=null?NW[x]:String(x).replace(/\d/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
+const ADN={pathao:'থাপাও',walton:'বাল্টন',pizzaburg:'হাইজেনবার্গ',chajoy:'না জয়',aarong:'ফারং',foodanda:'ফুড আন্ডা'};
+const SPI=['আমাদের আজকের স্পনসর {b}।','একটু বিরতি নিয়ে বলি, আমাদের আজকের স্পনসর {b}।','মাইকে ঘোষণা! আমাদের আজকের স্পনসর {b}।'];
+let CMX={id:0,said:0,pts:[],used:[],recent:[]};
+/* আগের উচ্চারণ কেটে না দিয়ে সারিতে বলে (ফলাফলের say() এটাকে বাতিল করে দেয়) */
+function sayQ(t,ci,done){if(!VOICE||!window.speechSynthesis||!t)return false;try{const u=new SpeechSynthesisUtterance(String(t).replace(/ওমাইগস/g,'ও মাই গস')),vs=speechSynthesis.getVoices().filter(v=>/^bn/i.test(v.lang)),k=(ci||0)%3;let t0=0;u.lang='bn-BD';if(vs.length)u.voice=vs[k%vs.length];u.pitch=PRO[k][0];u.rate=PRO[k][1];u.onstart=()=>{t0=Date.now()};u.onend=()=>{if(t0&&done)done(Date.now()-t0)};speechSynthesis.speak(u);return true}catch(e){return false}}
+function sponsorTry(){
+  if(!VOICE||!window.speechSynthesis)return false;
+  const all=ADS.map((_,i)=>i),pool=all.filter(i=>!CMX.used.includes(i)),ks=pool.length?pool:all;
+  const k=ks[Math.floor(Math.random()*ks.length)],a=ADS[k],tx=adJoke(a),b=ADN[a[5]]||a[0];
+  const full=SPI[Math.floor(Math.random()*SPI.length)].replace('{b}',b)+' '+String(tx).replace(/%/g,' শতাংশ'),mid=CMX.id;
+  const ok=sayQ(full,Math.floor(Math.random()*3),el=>{if(mid===CMX.id&&el>=full.length*30){CMX.said++;CMX.used.push(k)}adHold=0});
+  if(ok){adHold=Date.now()+Math.min(14000,Math.max(6500,full.length*95+1500));adShow(k,tx)}
+  return ok}
+function buildUp(s){
+  const N=s.N||5,n=s.n,i=n%2,j=1-i,nm=[s.p1.name,(s.p2||{}).name||''],sc=s.score,kn=nm[i],gn=nm[j];
+  const sh=[Math.ceil(n/2),Math.floor(n/2)],sd=n>=2*N,rem=sd?[1,1]:[N-sh[0],N-sh[1]],gap=sc[j]-sc[i],tot=sc[0]+sc[1];
+  const hot=[],gen=[];
+  if(sd){hot.push(`সাডেন ডেথ! একটা ভুল মানেই ম্যাচ শেষ! ${kn} কি চাপ সামলাতে পারবেন? দেখা যাক!`,`সাডেন ডেথ চলছে! ${kn}-এর শটে ${gn}-এর ভাগ্য ঝুলছে, আবার উল্টোটাও সত্যি!`)}
+  else{
+    if(gap>0){hot.push(`হাড্ডাহাড্ডি লড়াই! সমতায় ফিরতে ${kn}-এর লাগে ${nw(gap)}টি গোল, চান্স আছে ${nw(rem[i])}টি। সে কি পারবে? দেখা যাক!`);
+      if(rem[i]===gap)hot.push(`${kn}-এর প্রতিটা শটই এখন জীবন-মরণ! বাকি ${nw(rem[i])}টি শটের সবকটাই গোল করতে হবে! পারবেন তো?`)}
+    else if(gap===0){if(tot===0&&n>=2)hot.push('এখনো গোলশূন্য! কেউ কাউকে এক ইঞ্চি জমি ছাড়ছে না!');
+      gen.push(`স্কোর সমান সমান! ${kn} গোল করলেই এগিয়ে যাবেন, ${gn} কি আটকাতে পারবেন?`)}
+    else{hot.push(`${kn} এগিয়ে আছেন ${nw(-gap)}টি গোলে, কিন্তু ফুটবলে সবই সম্ভব! ${gn} কি ফিরে আসতে পারবেন?`);
+      gen.push(`আরেকটা গোল করলে ${kn} ম্যাচ প্রায় শেষ করে দেবেন!`)}
+    if(rem[i]===1)hot.push(`শেষ শট! ${kn}-এর হাতে এই পর্বের শেষ সুযোগ! হৃৎস্পন্দন থেমে যাওয়ার মতো অবস্থা!`);
+    if(n>0)gen.push(`এখন স্কোর ${nm[0]} ${nw(sc[0])}, ${nm[1]} ${nw(sc[1])}। লড়াই কিন্তু জমে উঠেছে!`)}
+  gen.push(`${kn} বল বসাচ্ছেন... গ্যালারি একদম চুপ!`,`${gn} গ্লাভস ঠিক করছেন। কোনদিকে ঝাঁপ দেবেন, আন্দাজ করা কঠিন!`,'দর্শকরা দম বন্ধ করে বসে আছে! কী হবে এই শটে?','চাপ নেবেন না, তবে চাপ তো আছেই!','কিপার ভাই, ভুল দিকে ঝাঁপ দিলে কিন্তু ভিডিও ভাইরাল হয়ে যাবে!','শুটার ভাই, বলটা গোলের দিকে মারবেন, গ্যালারির দিকে নয়!','টেনশনে আমার চা ঠান্ডা হয়ে গেল!',`${kn}, বড় করে একটা নিঃশ্বাস নিন। আপনি পারবেন!`,`${gn} একদম দেয়ালের মতো দাঁড়িয়ে আছেন, দেখা যাক কী হয়!`,'ম্যাচ এখন দারুণ জমে উঠেছে, চোখ সরাবেন না!','পেনাল্টি মানেই স্নায়ুর পরীক্ষা! কার স্নায়ু শক্ত, আজ বোঝা যাবে!',`${kn} আর ${gn}, দুজনেই কিন্তু ভিতরে ভিতরে কাঁপছেন!`,'ঝড়ের আগে এই নীরবতা! গোল হবে নাকি সেভ?','এই মুহূর্তে বাড়ির সবাই ফোনের দিকে তাকিয়ে! কী হবে এবার?');
+  const fresh=a=>a.filter(t=>!CMX.recent.includes(t));
+  let t=null;const h=fresh(hot),g=fresh(gen);
+  if(h.length&&Math.random()<.8)t=h[Math.floor(Math.random()*h.length)];
+  else if(g.length&&Math.random()<.6)t=g[Math.floor(Math.random()*g.length)];
+  if(t){CMX.recent.push(t);if(CMX.recent.length>8)CMX.recent.shift()}
+  return t}
+function commIdle(s){
+  if(!VOICE||!window.speechSynthesis||!s||s.status!=='play'||!s.p2)return;
+  const tot=2*(s.N||5);
+  if(s.n===0||!CMX.pts.length){CMX={id:CMX.id+1,said:0,pts:[...new Set([.2,.5,.8].map(f=>Math.max(1,Math.round(tot*f))))],used:[],recent:[]}}
+  if(s.n===0){sayQ(`${s.p1.name} বনাম ${s.p2.name}! শুরু হচ্ছে হাড্ডাহাড্ডি লড়াই! সবাই তৈরি তো?`,Math.floor(Math.random()*3));return}
+  if(CMX.said<CMX.pts.filter(p=>p<=s.n).length&&sponsorTry())return;
+  const t=buildUp(s);if(t)sayQ(t,Math.floor(Math.random()*3))}
+
 (function(){const C=['#e63946','#f4a261','#2a9d8f','#e9c46a','#8ecae6','#fff','#9b5de5','#f15bb5'];let h='';
  const add=(x,y)=>{h+=`<circle cx='${x}' cy='${y}' r='2.7' fill='${C[Math.random()*C.length|0]}' style='animation-delay:${(Math.random()*.3).toFixed(2)}s'/>`};
  for(let y=6;y<=26;y+=7)for(let x=4;x<300;x+=7)add(x+(y%14?3:0),y);
@@ -744,7 +800,7 @@ function drawPosters(){
  h+=`<path d='M40 31L27 46M40 31L32 46M260 31L268 46M260 31L273 46' stroke='${rope}' stroke-width='.7'/>`+B(2,22,46,15,62,1,.3)+B(5,263,46,15,46,1,1.1);
  [[16,4],[238,3]].forEach(([x,i],k)=>{h+=`<path d='M${x} 130H${x+46}' stroke='${rope}' stroke-width='.8'/><path d='M${x+8} 148V156M${x+38} 148V156' stroke='#6b4f2a' stroke-width='2'/>`+B(i,x,134,46,14,0,k*.9)});
  $('posters').innerHTML=h}
-function adShow(){const k=adI++%ADS.length,a=ADS[k];$('adc').innerHTML=`${LOGO[a[5]]?`<img src='${LG[a[5]]}' style='height:18px;flex:none;background:#fff;border-radius:4px;padding:1px 3px'>`:'<span style="flex:none">🤣</span>'}<span><b>${a[0]}</b>: ${adJoke(a)}</span>`;document.querySelectorAll('.bn').forEach(g=>g.classList.toggle('hi',+g.dataset.i===k))}
+function adShow(fk,ft){if(typeof fk!=='number')fk=null;if(fk==null&&Date.now()<adHold)return;const k=fk!=null?fk:adI++%ADS.length,a=ADS[k],tx=ft||adJoke(a);$('adc').innerHTML=`${LOGO[a[5]]?`<img src='${LG[a[5]]}' style='height:18px;flex:none;background:#fff;border-radius:4px;padding:1px 3px'>`:'<span style="flex:none">🤣</span>'}<span><b>${a[0]}</b>: ${tx}</span>`;document.querySelectorAll('.bn').forEach(g=>g.classList.toggle('hi',+g.dataset.i===k))}
 drawPosters();adShow();setInterval(adShow,4500);
 // কার্ল শট (২০ কয়েন): ফিল্ডে আঙুল টেনে বাঁকিয়ে ছাড়ো
 let CCOST=20;let CURVE=false,drag=null;
@@ -781,7 +837,7 @@ function resolveShot(s){
   else if(Math.random()<.04+(p-1)*.07+(z[0]==='T'?.05:0)+(cv?.06:0))res='miss';
   else if(near===2&&!(p===3&&Math.random()<.2)&&!(cv&&Math.random()>.35))res='save';
   else if(near===1&&!cv&&Math.random()<.5-(p-1)*.2){res='save';x=1}
-  const kind=lateK?'late':lateG?'slow':res==='goal'?(cv?'curve':'goal'):res==='miss'?'miss':x?'part':'save',c=Math.floor(Math.random()*CM[kind].length),kick=s.n%2,score=[...s.score];
+  const kind=lateK?'late':lateG?'slow':res==='goal'?(cv?'curve':'goal'):res==='miss'?'miss':x?'part':'save',c=pickC(kind,s.hist),kick=s.n%2,score=[...s.score];
   if(res==='goal')score[kick]++;
   const hist=[...s.hist,{n:s.n,k:z,g,r:res,x,c,kd:kind,cv}],n=s.n+1;
   const sh=[Math.ceil(n/2),Math.floor(n/2)];let status='play';
@@ -963,7 +1019,7 @@ function render(pre){
   $('ctl').classList.toggle('hide',done);$('em').classList.toggle('hide',local);
   if(!isK||locked||busy||paused)curveToggle(false);$('bCurve').classList.toggle('hide',done||!isK||locked||busy);
   if(!locked)document.querySelectorAll('#ctl button').forEach(b=>b.classList.remove('on'));
-  if(!busy&&s.status==='play'&&S.p2&&!paused){if(tKey!==S.n){tKey=S.n;startTimer();if(!wt)flash(isK)}}else{stopTimer();if(s.status!=='play'||paused)tKey=-1}
+  if(!busy&&s.status==='play'&&S.p2&&!paused){if(tKey!==S.n){tKey=S.n;startTimer();if(!wt)flash(isK);try{commIdle(S)}catch(e){}}}else{stopTimer();if(s.status!=='play'||paused)tKey=-1}
   renderChat();
   if(!busy){const kc=tc(1-kicker);const ke=eqOfId(R.g);kpKit(kc,ke);const gl=ke.gloves&&ITEM(ke.gloves);['kg1','kg2'].forEach(id=>$(id).setAttribute('fill',gl?gl.col:'#22c55e'));$('kh').setAttribute('fill',ke.hair&&ITEM(ke.hair)?ITEM(ke.hair).col:'#2b1b12');setBall(eqOfId(R.s))}
   document.querySelectorAll('#ctl button').forEach(b=>b.disabled=busy||locked||!S.p2||paused||wt);
@@ -2185,7 +2241,7 @@ drawPoster=function(d){
 .gChips{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px;margin-bottom:3px}
 #game .gChips .tag{font-size:11px;padding:2px 8px;line-height:1.3}
 #game #bVib{background:#0f172a!important;color:#fff!important;border:1px solid rgba(255,255,255,.18);border-radius:10px;text-shadow:none}
-#game #bExit{width:30px;height:26px;margin:0;padding:0;border-radius:99px;font-size:14px;line-height:1;flex:none;display:flex;align-items:center;justify-content:center}
+#game #bExit{width:auto;height:26px;margin:0;padding:0 10px;border-radius:99px;font-size:11px;font-weight:700;line-height:1;flex:none;display:flex;align-items:center;justify-content:center;gap:3px;white-space:nowrap}
 #game .sb{gap:3px}
 #game .pl{padding:2px 6px;gap:6px;border-left-width:5px!important;border-radius:9px}
 #game .pl b{font-size:13px}
