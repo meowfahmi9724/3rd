@@ -1445,12 +1445,12 @@ async function frRender(){if(!fs||!ME)return;const box=$('frL');['fl','rq','sr']
   try{
     if(frTab==='fl'){if(!frData.length)box.innerHTML='<div class="fe">লোড হচ্ছে…</div>';frData=await frList();frData.sort((a,b)=>(frOn(b.last)-frOn(a.last))||String(a.name).localeCompare(b.name,'bn'));
       const on=frData.filter(f=>frOn(f.last)),off=frData.filter(f=>!frOn(f.last));$('frSub').textContent='🟢 অনলাইন '+bnum(on.length)+' • মোট ফ্রেন্ড '+bnum(frData.length);$('frC_fl').textContent=frData.length?bnum(frData.length):'';
-      const card=f=>{const o=frOn(f.last);return`<div class="fc ${o?'on':''}${prc(f.aw)}" data-u="${f.id}"><div class="fav">${f.av?avH(f.av,46,f.name,f.aw):frAv(f.name,46)}<i class="dot ${o?'g':''}"></i></div><div class="fi"><b>${esc(f.name||'প্লেয়ার')}${prt(f.aw)}</b><small>${f.pl&&Date.now()-f.pl.t<60000?'<span style="color:#ea580c;font-weight:800">🎮 এখন খেলছে</span>':o?'<span style="color:#16a34a;font-weight:700">● অনলাইন</span>':'অফলাইন • '+frAgo(f.last)}${f.dist?' • 📍'+esc(f.dist):''}</small><small>🎮 ${bnum(f.mt||0)} ম্যাচ • ⚽ ${bnum(f.goals||0)} গোল</small></div><div class="fa">${f.pl&&Date.now()-f.pl.t<60000?`<button data-sp="${esc(f.pl.c)}" class="sec">👁 দেখো</button>`:''}<button data-ch="${f.id}" ${o?'':'disabled'}>⚔️ চ্যালেঞ্জ</button><button data-rm="${f.id}" class="sec x">✖</button></div></div>`};
+      const card=f=>{const o=frOn(f.last);return`<div class="fc ${o?'on':''}${prc(f.aw)}" data-u="${f.id}"><div class="fav">${f.av?avH(f.av,46,f.name,f.aw):frAv(f.name,46)}<i class="dot ${o?'g':''}"></i></div><div class="fi"><b>${esc(f.name||'প্লেয়ার')}${prt(f.aw)}</b><small>${f.pl&&Date.now()-f.pl.t<60000?'<span style="color:#ea580c;font-weight:800">🎮 এখন খেলছে</span>'+(window.plDet?plDet(f.pl):''):o?'<span style="color:#16a34a;font-weight:700">● অনলাইন</span>':'অফলাইন • '+frAgo(f.last)}${f.dist?' • 📍'+esc(f.dist):''}</small><small>🎮 ${bnum(f.mt||0)} ম্যাচ • ⚽ ${bnum(f.goals||0)} গোল</small></div><div class="fa">${f.pl&&Date.now()-f.pl.t<60000?`<button data-sp="${esc(f.pl.c)}" class="sec">👁 দেখো</button>`:''}<button data-ch="${f.id}" ${o?'':'disabled'}>⚔️ চ্যালেঞ্জ</button><button data-rm="${f.id}" class="sec x">✖</button></div></div>`};
       box.innerHTML=frData.length?(on.length?'<div class="fh">🟢 অনলাইন — '+bnum(on.length)+'</div>'+on.map(card).join(''):'')+(off.length?'<div class="fh">⚫ অফলাইন — '+bnum(off.length)+'</div>'+off.map(card).join(''):''):frEmpty('⚽','এখনো কোনো ফ্রেন্ড নেই','🔍 খোঁজো ট্যাবে বন্ধুর ইমেইল দিয়ে রিকুয়েস্ট পাঠাও')}
     else if(frTab==='rq'){box.innerHTML='<div class="fe">লোড হচ্ছে…</div>';const q=await fs.collection('req/'+ME.uid+'/in').get(),L=q.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.t||0)-(a.t||0));$('frC_rq').textContent=L.length?bnum(L.length):'';
-      box.innerHTML=L.length?L.map(r=>`<div class="fc"><div class="fav">${frAv(r.name,46)}</div><div class="fi"><b>${esc(r.name||'প্লেয়ার')}</b><small>${esc(r.email||'')}</small><small>📩 ${frAgo(r.t)} পাঠিয়েছে</small></div><div class="fa"><button data-ac="${r.id}" data-nm="${esc(r.name||'')}">✅ গ্রহণ</button><button data-dc="${r.id}" class="sec x">✕</button></div></div>`).join(''):frEmpty('📭','কোনো নতুন রিকুয়েস্ট নেই','কেউ রিকুয়েস্ট পাঠালে এখানে (এবং অনলাইনে থাকলে পপ-আপে) দেখতে পাবে')}
+      box.innerHTML=L.length?L.map(r=>`<div class="fc" data-u="${r.id}"><div class="fav">${frAv(r.name,46)}</div><div class="fi"><b>${esc(r.name||'প্লেয়ার')}</b><small>${esc(r.email||'')}</small><small>📩 ${frAgo(r.t)} পাঠিয়েছে</small></div><div class="fa"><button data-ac="${r.id}" data-nm="${esc(r.name||'')}">✅ গ্রহণ</button><button data-dc="${r.id}" class="sec x">✕</button></div></div>`).join(''):frEmpty('📭','কোনো নতুন রিকুয়েস্ট নেই','কেউ রিকুয়েস্ট পাঠালে এখানে (এবং অনলাইনে থাকলে পপ-আপে) দেখতে পাবে')}
     else{if(!frRes){box.innerHTML=frEmpty('🔍','বন্ধুকে খুঁজে নাও','বন্ধুর সাইন-আপ করা ইমেইল লিখে সার্চ দাও');return}
-      const r=frRes;box.innerHTML=r.none?frEmpty('🤷','কাউকে পাওয়া যায়নি','ইমেইলটি ঠিক আছে কি না দেখো'):`<div class="fc"><div class="fav">${frAv(r.name,46)}</div><div class="fi"><b>${esc(r.name||'প্লেয়ার')}</b><small>${esc(r.email||'')}</small></div><div class="fa">${r.self?'<span class="tag">এটা তুমি</span>':r.fr?'<span class="tag">✅ ফ্রেন্ড</span>':`<button data-sr="${r.id}" data-nm="${esc(r.name||'')}">➕ রিকুয়েস্ট</button>`}</div></div>`}
+      const r=frRes;box.innerHTML=r.none?frEmpty('🤷','কাউকে পাওয়া যায়নি','ইমেইলটি ঠিক আছে কি না দেখো'):`<div class="fc" data-u="${r.id}"><div class="fav">${frAv(r.name,46)}</div><div class="fi"><b>${esc(r.name||'প্লেয়ার')}</b><small>${esc(r.email||'')}</small></div><div class="fa">${r.self?'<span class="tag">এটা তুমি</span>':r.fr?'<span class="tag">✅ ফ্রেন্ড</span>':`<button data-sr="${r.id}" data-nm="${esc(r.name||'')}">➕ রিকুয়েস্ট</button>`}</div></div>`}
   }catch(e){box.innerHTML=frEmpty('⚠️','লোড হয়নি','ইন্টারনেট/ডাটাবেস পারমিশন দেখো')}}
 $('bFriends').onclick=()=>{if(!ME){guestPop(false,false,'ফ্রেন্ডস');return}if(!need())return;frTab='fl';$('frM').classList.remove('hide');frRender()};
 $('frX').onclick=()=>$('frM').classList.add('hide');
@@ -1914,8 +1914,8 @@ function pnLoop(){if(!pnNeed()){const m=$('pnM');if(m)m.classList.add('hide');re
 try{if(PNOK())navigator.serviceWorker.register('sw.js').catch(()=>{})}catch(e){}
 setTimeout(pnLoop,9000);setInterval(pnLoop,45000);
 /* ===== প্রতিটি আপডেটে শুধু APP_VER ও APP_LOG বদলান — ব্যবহারকারী আগে তালিকা দেখবে, তারপর "আপডেট করুন" পাবে ===== */
-const APP_VER='20261113-pst';
-const APP_LOG=["📰 জয়ের পোস্টার এখন এনিমেটেড — ঘুরে আসা, ঝিলিক ও কনফেটি সহ","⚡ পোস্টার আগেভাগেই তৈরি হয়, তাই দ্রুত খোলে","🔁 রিম্যাচে চাপলে পুরনো পোস্টার আর দেরিতে উঠে আসবে না","↩️ পোস্টার বন্ধ/স্কিপ করলে আবার রিম্যাচ অপশন ফিরে আসবে","🔔 প্রতিটি আপডেটে নতুন কী যুক্ত হলো তা আগে জানিয়ে তবে আপডেট বাটন দেখানো হবে"];
+const APP_VER='20261114-pls';
+const APP_LOG=["🎮 কেউ খেলছে দেখালে এখন কোন মোডে আর কার সাথে খেলছে তাও দেখা যাবে","👁 যেকোনো প্লেয়ারের প্রোফাইলে (লিডারবোর্ড, রিকুয়েস্ট, সার্চ — সব জায়গা থেকে) অনলাইন/অফলাইন/প্লেয়িং স্ট্যাটাস ও স্পেক্টেটর বাটন","🕒 অফলাইন হলে শেষ কত মিনিট/ঘণ্টা/দিন আগে সক্রিয় ছিল তা দেখাবে","🔄 প্রোফাইল ও ফ্রেন্ড লিস্টের স্ট্যাটাস নিজে নিজেই আপডেট হয়","📰 জয়ের পোস্টার ঠিক সময়ে খোলে ও বন্ধ করলে রিম্যাচ অপশন ফেরে (আগের আপডেট)"];
 function fillLog(id,a){const u=$(id);if(!u)return;u.innerHTML='';(Array.isArray(a)?a:[]).forEach(x=>{const l=document.createElement('li');l.textContent=String(x);u.appendChild(l)})}
 let verBase=null,updPend=0;const verHash=t=>{let h=5381;for(let i=0;i<t.length;i++)h=((h<<5)+h+t.charCodeAt(i))|0;return h};
 async function verCheck(){try{const r=await fetch(location.pathname+'?_v='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text(),m=t.match(/const APP_VER='([^']+)'/);if(!m)return;
@@ -2022,22 +2022,32 @@ window.doSpec=function(c0){
  p.on('error',()=>fail('সংযোগ করা যায়নি।'));
 };
 /* যাকে দেখা হচ্ছে তার স্ক্রিনে 👁 সংখ্যা; চাপলে দর্শকদের ইনগেইম নাম */
-const _os=onState;onState=function(s){_os.apply(this,arguments);try{specUi(s)}catch(e){}};
+const _os=onState;onState=function(s){_os.apply(this,arguments);try{specUi(s)}catch(e){}try{plSync(true)}catch(e){}};
 function specUi(s){const row=document.getElementById('rnd')&&document.getElementById('rnd').parentNode;if(!row)return;
  let e=document.getElementById('spEye');if(!e){e=document.createElement('span');e.id='spEye';e.className='tag hide';e.onclick=()=>{const n=(window.__spN||[]);if(n.length)notice('👁 কে কে দেখছে',n.map(esc).join('<br>'))};row.appendChild(e)}
  const n=Array.isArray(s.sp)?s.sp:[];window.__spN=n;e.textContent='👁 '+bnum(n.length);e.classList.toggle('hide',!n.length);
  if(window.__spec&&!document.getElementById('spBan')){const b=document.createElement('div');b.id='spBan';b.textContent='👁 তুমি দর্শক — খেলায় অংশ নিতে পারবে না';const g=document.getElementById('pitch');if(g)g.parentNode.insertBefore(b,g)}}
 /* নিজের প্লেয়িং স্ট্যাটাস (হোস্ট রুম থেকে) — বন্ধু/প্রোফাইলে "এখন খেলছে" */
-let wasPl=false;setInterval(()=>{try{if(!ME||!fs)return;const on=!!(S&&!local&&ref&&ref.isHost&&!window.__spec&&S.status==='play'&&ref.id);
- if(on){fs.doc('users/'+ME.uid).set({pl:{c:ref.id,t:Date.now()}},{merge:true}).catch(()=>{});wasPl=true}
- else if(wasPl){wasPl=false;fs.doc('users/'+ME.uid).set({pl:null},{merge:true}).catch(()=>{})}}catch(e){}},15000);
+window.plDet=pl=>{if(!pl)return'';let t='';if(pl.m)t+=' • '+esc(pl.m);if(Array.isArray(pl.w)&&pl.w.length)t+=' • '+pl.w.map(esc).join(pl.m&&/টিম/.test(pl.m)?', ':' বনাম ');return t};
+let wasPl=false;
+function plSync(edge){try{if(!ME||!fs)return;const on=!!(S&&!local&&ref&&!window.__spec&&S.status==='play'&&ref.id&&!S.lg&&!S.ss);
+ if(edge&&on===wasPl)return;
+ if(on){const w=[];if(S.tm){(S.pl||[]).forEach(a=>a.forEach(q=>q&&q.name&&w.push(String(q.name).slice(0,14))))}else{if(S.p1&&S.p1.name)w.push(String(S.p1.name).slice(0,14));if(S.p2&&S.p2.name)w.push(String(S.p2.name).slice(0,14))}
+  fs.doc('users/'+ME.uid).set({pl:{c:ref.id,t:Date.now(),m:S.tm?'👥 টিম ম্যাচ':'⚔️ ১ বনাম ১',w:w.slice(0,8)}},{merge:true}).catch(()=>{});wasPl=true}
+ else if(wasPl){wasPl=false;fs.doc('users/'+ME.uid).set({pl:null},{merge:true}).catch(()=>{})}}catch(e){}}
+setInterval(plSync,10000);
+setInterval(()=>{try{if(ME&&fs&&!$('frM').classList.contains('hide')&&frTab==='fl')frRender()}catch(e){}},15000);
 /* যেকোনো প্রোফাইল খুললে অনলাইন / অফলাইন / প্লেয়িং + 👁 দেখো */
 const _po=profOpen;profOpen=async function(uid,isF){const r=await _po.apply(this,arguments);
  try{if(!ME||!fs||uid===ME.uid)return r;const sn=await fs.doc('users/'+uid).get();if(!sn.exists||$('ppM').classList.contains('hide'))return r;
-  const d=sn.data(),pl=d.pl&&d.pl.c&&Date.now()-(+d.pl.t||0)<60000,on=Date.now()-(+d.last||0)<75000;
-  let e=$('ppSt');if(!e){e=document.createElement('div');e.id='ppSt';e.style.cssText='margin:6px 0;font-size:14px';$('ppI').parentNode.insertBefore(e,$('ppI').nextSibling)}
-  e.innerHTML=(pl?'<span style="color:#ea580c;font-weight:800">🎮 এখন খেলছে</span>':on?'<span style="color:#16a34a;font-weight:700">● অনলাইন</span>':'<span style="color:var(--mut)">⚫ অফলাইন</span>')+(pl?' <button id="ppSp" class="sec" style="width:auto;margin:0 0 0 8px;padding:4px 12px;font-size:13px">👁 দেখো</button>':'');
-  const b=$('ppSp');if(b)b.onclick=()=>{$('ppM').classList.add('hide');doSpec(d.pl.c)}}catch(x){}return r};
+  clearInterval(window.__ppT);
+  const paint=d=>{if($('ppM').classList.contains('hide')){clearInterval(window.__ppT);return}
+   const pl=d.pl&&d.pl.c&&Date.now()-(+d.pl.t||0)<60000,on=Date.now()-(+d.last||0)<75000;
+   let e=$('ppSt');if(!e){e=document.createElement('div');e.id='ppSt';e.style.cssText='margin:6px 0;font-size:14px;line-height:1.5';$('ppI').parentNode.insertBefore(e,$('ppI').nextSibling)}
+   e.innerHTML=(pl?'<span style="color:#ea580c;font-weight:800">🎮 এখন খেলছে</span><div style="font-size:13px;color:var(--mut)">'+plDet(d.pl).replace(/^ • /,'')+'</div><button id="ppSp" class="sec" style="width:auto;margin:6px 0 0;padding:6px 16px;font-size:14px">👁 দেখো (স্পেক্টেটর)</button>':on?'<span style="color:#16a34a;font-weight:700">● অনলাইন</span>':'<span style="color:var(--mut)">⚫ অফলাইন • শেষ সক্রিয় '+frAgo(d.last)+'</span>');
+   const b=$('ppSp');if(b)b.onclick=()=>{clearInterval(window.__ppT);$('ppM').classList.add('hide');doSpec(d.pl.c)}};
+  paint(sn.data());
+  window.__ppT=setInterval(async()=>{try{const x=await fs.doc('users/'+uid).get();if(x.exists)paint(x.data())}catch(e){}},10000)}catch(x){}return r};
 })();
 </script>
 <script id="v4">/* v4: প্রিমিয়াম ৩D পোস্টার, সিজন ফ্রেম/কভার, ৩D ক্রাউন, ১৫ দিনের মেডেল গ্লো, নাম পপ-আপ */
